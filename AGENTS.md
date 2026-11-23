@@ -1,6 +1,7 @@
 # AGENTS.md: building kits in procgen-hy4
 
-Written for coding agents (Hy4 Flash first, but any agent). Read this file, then work. Keep context small:
+Written for coding agents (Hy4 Flash first, but any agent). Read this file, then work. For a new kit, also read
+[BUILDING_KITS.md](BUILDING_KITS.md) (briefs, model choice, what to do when a gate fails). Keep context small:
 do not read whole `kitlib*.py` files; search them (`grep -n "def name" procgen/recipes/kitlib*.py`).
 
 ## What you are doing

@@ -6,7 +6,9 @@ meshes, every control swept to its limits, parts that touch, MuJoCo/CoACD collis
 harness around it lets **Hy4 Flash** (`tencent/hy4-flash`) build kits that hold up against frontier models
 at about a tenth of the cost.
 
-Agents: start with [AGENTS.md](AGENTS.md).
+- To build a new kit, read [BUILDING_KITS.md](BUILDING_KITS.md).
+- Agents: start with [AGENTS.md](AGENTS.md).
+- To use any model, including local ones, see [procgen-kit](https://github.com/wrong-nebula/procgen-kit).
 
 ## Quick start
 

@@ -1,0 +1,1359 @@
+[
+ {
+  "key": "--help needs a value",
+  "count": 33,
+  "runs": 30,
+  "examples": [
+   {
+    "run": "reeving-block/haiku-5.5",
+    "error": "--help needs a value",
+    "next": null
+   },
+   {
+    "run": "reeving-block/sonnet-5.5",
+    "error": "--help needs a value",
+    "next": null
+   },
+   {
+    "run": "reeving-block/gpt-6.1-terra",
+    "error": "--help needs a value",
+    "next": null
+   }
+  ]
+ },
+ {
+  "key": "Detail # is further than <q> (# m) from the surface",
+  "count": 92,
+  "runs": 26,
+  "examples": [
+   {
+    "run": "handwheel-valve/gemini-3.8-flash",
+    "error": "all-parts.baked: all-parts: iron-mat: iron-parts: foot-anchors-w: Detail 2 is further than `reach` (0.100000 m) from the surface",
+    "next": null
+   },
+   {
+    "run": "handwheel-valve/seed-2.1-turbo",
+    "error": "parts.baked: parts: bonnet-bolts: Detail 0 is further than `reach` (0.020000 m) from the surface",
+    "next": null
+   },
+   {
+    "run": "handwheel-valve/seed-2.1-turbo",
+    "error": "parts.baked: parts: bonnet-bolts: Detail 0 is further than `reach` (0.015000 m) from the surface",
+    "next": null
+   }
+  ]
+ },
+ {
+  "key": "no JSON from pgm",
+  "count": 17,
+  "runs": 17,
+  "examples": [
+   {
+    "run": "arched-spandrel/gpt-6.1-terra-high--D-r2",
+    "error": "no JSON from pgm ",
+    "next": "{\"file_path\": \"/private/tmp/pgbench/2026-11-17/arched-spandrel/gpt-6.1-terra-high--D-r2/critique.py\"}"
+   },
+   {
+    "run": "arched-spandrel/gpt-6.1-terra-high--E-r2s1",
+    "error": "no JSON from pgm ",
+    "next": "{\"file_path\": \"/private/tmp/pgbench/2026-11-17/arched-spandrel/gpt-6.1-terra-high--E-r2s1/docs/DETAILING.md\", \"limit\": 230}"
+   },
+   {
+    "run": "arched-spandrel/gpt-6.1-terra-high--E-r2",
+    "error": "no JSON from pgm ",
+    "next": "{\"file_path\": \"/private/tmp/pgbench/2026-11-17/arched-spandrel/gpt-6.1-terra-high--E-r2s2/critique.py\", \"limit\": 200}"
+   }
+  ]
+ },
+ {
+  "key": "Extrusion profile crosses itself",
+  "count": 35,
+  "runs": 16,
+  "examples": [
+   {
+    "run": "reeving-block/fable-5.2",
+    "error": "parts.baked: parts: iron: iron-parts: cheek-e: cheek-e-beaded: cheek-e-plain: cheek-e-stock: Extrusion profile crosses itself",
+    "next": null
+   },
+   {
+    "run": "reeving-block/fable-5.2",
+    "error": "a: Extrusion profile crosses itself",
+    "next": null
+   },
+   {
+    "run": "reeving-block/fable-5.2",
+    "error": "a: Extrusion profile crosses itself",
+    "next": null
+   }
+  ]
+ },
+ {
+  "key": "align must be centre, left or right",
+  "count": 9,
+  "runs": 7,
+  "examples": [
+   {
+    "run": "handwheel-valve/gpt-6.1-sol",
+    "error": "valve.baked: valve: front-cast-number: front-lettered: align must be centre, left or right",
+    "next": null
+   },
+   {
+    "run": "handwheel-valve/gpt-6-astra",
+    "error": "valve.baked: valve: cast-body: cast-body-pieces: body-number: align must be centre, left or right",
+    "next": null
+   },
+   {
+    "run": "handwheel-valve/qwen4-max",
+    "error": "parts.baked: parts: iron: cast-parts: body-numbered: body-sized: align must be centre, left or right",
+    "next": null
+   }
+  ]
+ },
+ {
+  "key": "name <q> is not defined",
+  "count": 7,
+  "runs": 7,
+  "examples": [
+   {
+    "run": "handwheel-valve/nemotron-3.5-vl",
+    "error": "NameError: name 'T' is not defined",
+    "next": null
+   },
+   {
+    "run": "handwheel-valve/deepseek-v4.1-flash",
+    "error": "NameError: name 'bench' is not defined",
+    "next": null
+   },
+   {
+    "run": "handwheel-valve/grok-4.7",
+    "error": "NameError: name 'T' is not defined",
+    "next": null
+   }
+  ]
+ },
+ {
+  "key": "cannot open recipes<path>",
+  "count": 26,
+  "runs": 6,
+  "examples": [
+   {
+    "run": "reeving-block/gpt-6.1-terra",
+    "error": "json: cannot open recipes/site/bench/reereeving-block.json",
+    "next": null
+   },
+   {
+    "run": "handwheel-valve/kimi-k3.1-pro",
+    "error": "json: cannot open recipes/site/greenhouse/fittings/gh-pendant.json",
+    "next": null
+   },
+   {
+    "run": "handwheel-valve/sonnet-5.5",
+    "error": "json: cannot open recipes/site/bench/handwheel-valve.json",
+    "next": null
+   }
+  ]
+ },
+ {
+  "key": "not a clean solid (run pgm check with these settings)",
+  "count": 32,
+  "runs": 4,
+  "examples": [
+   {
+    "run": "reeving-block/fable-5.2",
+    "error": "not a clean solid (run pgm check with these settings)",
+    "next": null
+   },
+   {
+    "run": "reeving-block/fable-5.2",
+    "error": "not a clean solid (run pgm check with these settings)",
+    "next": null
+   },
+   {
+    "run": "reeving-block/fable-5.2",
+    "error": "not a clean solid (run pgm check with these settings)",
+    "next": null
+   }
+  ]
+ },
+ {
+  "key": "profile must contain #\u00e2\u0080\u00a6# entries",
+  "count": 29,
+  "runs": 4,
+  "examples": [
+   {
+    "run": "mitre-gate-jamb/gpt-6.1-sol",
+    "error": "jamb.baked: jamb: anchor-iron: anchor-forging: collar: collar-ring: profile must contain 3\u00e2\u0080\u00a696 entries",
+    "next": null
+   },
+   {
+    "run": "mitre-gate-jamb/gpt-6.1-sol",
+    "error": "jamb.baked: jamb: anchor-iron: anchor-forging: collar: collar-ring: profile must contain 3\u00e2\u0080\u00a696 entries",
+    "next": null
+   },
+   {
+    "run": "mitre-gate-jamb/gpt-6.1-sol",
+    "error": "jamb.baked: jamb: anchor-iron: anchor-forging: collar: collar-ring: profile must contain 3\u00e2\u0080\u00a696 entries",
+    "next": null
+   }
+  ]
+ },
+ {
+  "key": "missing document or pack",
+  "count": 3,
+  "runs": 3,
+  "examples": [
+   {
+    "run": "reeving-block/fable-5.2",
+    "error": "missing argument: document or pack",
+    "next": null
+   },
+   {
+    "run": "handwheel-valve/gemini-3.8-flash",
+    "error": "missing argument: document or pack",
+    "next": null
+   },
+   {
+    "run": "arched-spandrel/fable-5.2",
+    "error": "missing argument: document or pack",
+    "next": null
+   }
+  ]
+ },
+ {
+  "key": "cannot access local variable <q> where it is not associated with a value",
+  "count": 3,
+  "runs": 3,
+  "examples": [
+   {
+    "run": "handwheel-valve/qwen3.8-27b",
+    "error": "UnboundLocalError: cannot access local variable 'bonnet' where it is not associated with a value",
+    "next": null
+   },
+   {
+    "run": "handwheel-valve/seed-2.1-turbo",
+    "error": "UnboundLocalError: cannot access local variable 'handnut_h' where it is not associated with a value",
+    "next": null
+   },
+   {
+    "run": "arched-spandrel/gpt-6-luna",
+    "error": "UnboundLocalError: cannot access local variable 'ring_depth' where it is not associated with a value",
+    "next": "{\"pattern\": \"across_y\\\\(g, \\\"pier-|spandrel-stock|courses-stone|arch-bead|reach=\", \"path\": \"/private/tmp/pgbench/2026-11-17/arched-spandrel/gpt-6-luna/recipes/build_bench_kit.py\", \"output_mode\": \"content\", \"head_limit\": 30}"
+   }
+  ]
+ },
+ {
+  "key": "<q> object has no attribute <q>",
+  "count": 3,
+  "runs": 3,
+  "examples": [
+   {
+    "run": "handwheel-valve/deepseek-v4.1-flash",
+    "error": "AttributeError: 'Graph' object has no attribute 'curve'",
+    "next": null
+   },
+   {
+    "run": "handwheel-valve/gemma-4-31b",
+    "error": "AttributeError: 'Graph' object has no attribute 'cylinder'",
+    "next": null
+   },
+   {
+    "run": "mitre-gate-jamb/haiku-5.5",
+    "error": "AttributeError: 'str' object has no attribute 'nodes'",
+    "next": null
+   }
+  ]
+ },
+ {
+  "key": "must be real number, not X",
+  "count": 3,
+  "runs": 3,
+  "examples": [
+   {
+    "run": "mitre-gate-jamb/gpt-6-luna",
+    "error": "TypeError: must be real number, not X",
+    "next": null
+   },
+   {
+    "run": "arched-spandrel/deepseek-v4-pro",
+    "error": "TypeError: must be real number, not X",
+    "next": null
+   },
+   {
+    "run": "arched-spandrel/stopped-gpt-6-luna--A-r1",
+    "error": "TypeError: must be real number, not X",
+    "next": null
+   }
+  ]
+ },
+ {
+  "key": "Unknown or unavailable point field @index",
+  "count": 3,
+  "runs": 2,
+  "examples": [
+   {
+    "run": "arched-spandrel/grok-4.7",
+    "error": "bay.baked: bay: limestone: stone-raw: arch-ring: long-ring: long-turned: Unknown or unavailable point field @index",
+    "next": null
+   },
+   {
+    "run": "arched-spandrel/grok-4.7",
+    "error": "bay.baked: bay: limestone: stone-raw: arch-ring: long-ring: long-turned: Unknown or unavailable point field @index",
+    "next": null
+   },
+   {
+    "run": "arched-spandrel/minimax-m3",
+    "error": "bay-baked: bay: stone-all: stone-parts: long-voussoirs: voussoir-long-ring: long-or-key: Unknown or unavailable point field @index",
+    "next": null
+   }
+  ]
+ },
+ {
+  "key": "Profile solid exceeds polygon corner budget",
+  "count": 2,
+  "runs": 2,
+  "examples": [
+   {
+    "run": "reeving-block/opus-5.5",
+    "error": "parts.baked: parts: sheave: sheave-iron: sheave-local: web-local: web-plate: Profile solid exceeds polygon corner budget",
+    "next": null
+   },
+   {
+    "run": "reeving-block/gemini-4-argon",
+    "error": "parts.baked: parts: sheave-iron: sheave-parts: sheave-web: sheave-web-ringed: sheave-web-center: sheave-web-center-stock: Profile solid exceeds polygon corner budget",
+    "next": null
+   }
+  ]
+ },
+ {
+  "key": "unsupported operand type(s) for ** or pow(): <q> and <q>",
+  "count": 2,
+  "runs": 2,
+  "examples": [
+   {
+    "run": "handwheel-valve/gemini-3.8-flash",
+    "error": "TypeError: unsupported operand type(s) for ** or pow(): 'X' and 'int'",
+    "next": null
+   },
+   {
+    "run": "arched-spandrel/gpt-6-luna",
+    "error": "TypeError: unsupported operand type(s) for ** or pow(): 'X' and 'int'",
+    "next": null
+   }
+  ]
+ },
+ {
+  "key": "unknown node type boolean",
+  "count": 2,
+  "runs": 2,
+  "examples": [
+   {
+    "run": "handwheel-valve/kimi-k3.1-pro",
+    "error": "unknown node type boolean",
+    "next": "{\"file_path\": \"/private/tmp/pgbench/2026-11-17/handwheel-valve/kimi-k3.1-pro/recipes/build_civic_kits.py\", \"limit\": 900}"
+   },
+   {
+    "run": "mitre-gate-jamb/kimi-k3.1-pro",
+    "error": "unknown node type boolean",
+    "next": null
+   }
+  ]
+ },
+ {
+  "key": "<q>",
+  "count": 2,
+  "runs": 2,
+  "examples": [
+   {
+    "run": "handwheel-valve/hy4",
+    "error": "KeyError: 'review'",
+    "next": null
+   },
+   {
+    "run": "arched-spandrel/deepseek-v4.1-flash",
+    "error": "KeyError: 'nodes'",
+    "next": null
+   }
+  ]
+ },
+ {
+  "key": "<q> not supported between instances of <q> and <q>",
+  "count": 2,
+  "runs": 2,
+  "examples": [
+   {
+    "run": "handwheel-valve/minimax-m3",
+    "error": "TypeError: '>' not supported between instances of 'X' and 'float'",
+    "next": null
+   },
+   {
+    "run": "arched-spandrel/sonnet-5.5",
+    "error": "TypeError: '<' not supported between instances of 'X' and 'X'",
+    "next": null
+   }
+  ]
+ },
+ {
+  "key": "duplicate node id iron",
+  "count": 2,
+  "runs": 2,
+  "examples": [
+   {
+    "run": "handwheel-valve/qwen3.6-35b-a3b",
+    "error": "AssertionError: duplicate node id iron",
+    "next": null
+   },
+   {
+    "run": "handwheel-valve/gemma-4-31b",
+    "error": "AssertionError: duplicate node id iron",
+    "next": null
+   }
+  ]
+ },
+ {
+  "key": "missing document",
+  "count": 2,
+  "runs": 2,
+  "examples": [
+   {
+    "run": "handwheel-valve/qwen3.6-35b-a3b",
+    "error": "missing argument: document",
+    "next": null
+   },
+   {
+    "run": "arched-spandrel/grok-4.7",
+    "error": "missing argument: document",
+    "next": null
+   }
+  ]
+ },
+ {
+  "key": "bad operand type for abs(): <q>",
+  "count": 2,
+  "runs": 2,
+  "examples": [
+   {
+    "run": "arched-spandrel/deepseek-v4-pro",
+    "error": "TypeError: bad operand type for abs(): 'X'",
+    "next": null
+   },
+   {
+    "run": "arched-spandrel/pilot-gpt-6-luna--D-r1",
+    "error": "TypeError: bad operand type for abs(): 'X'",
+    "next": null
+   }
+  ]
+ },
+ {
+  "key": "unknown node type thickness",
+  "count": 2,
+  "runs": 2,
+  "examples": [
+   {
+    "run": "arched-spandrel/kimi-k3.1-pro",
+    "error": "unknown node type thickness",
+    "next": null
+   },
+   {
+    "run": "reeving-block/grok-4.7",
+    "error": "unknown node type thickness",
+    "next": null
+   }
+  ]
+ },
+ {
+  "key": "No module named <q>",
+  "count": 2,
+  "runs": 2,
+  "examples": [
+   {
+    "run": "arched-spandrel/deepseek-v4.1-flash",
+    "error": "ModuleNotFoundError: No module named 'kitlib'",
+    "next": null
+   },
+   {
+    "run": "arched-spandrel/qwen4-max",
+    "error": "ModuleNotFoundError: No module named 'kitlib'",
+    "next": null
+   }
+  ]
+ },
+ {
+  "key": "name <q> is not defined. Did you <q>?",
+  "count": 2,
+  "runs": 2,
+  "examples": [
+   {
+    "run": "arched-spandrel/glm-5.3",
+    "error": "NameError: name 'rnd' is not defined. Did you mean: 'end'?",
+    "next": null
+   },
+   {
+    "run": "arched-spandrel/qwen4-max",
+    "error": "NameError: name 'gt' is not defined. Did you mean: 'zt'?",
+    "next": null
+   }
+  ]
+ },
+ {
+  "key": "unknown node type render",
+  "count": 2,
+  "runs": 2,
+  "examples": [
+   {
+    "run": "arched-spandrel/gpt-6.1-terra-high--E-r1s3",
+    "error": "unknown node type render",
+    "next": null
+   },
+   {
+    "run": "arched-spandrel/gpt-6.1-terra-high--C-r2",
+    "error": "unknown node type render",
+    "next": null
+   }
+  ]
+ },
+ {
+  "key": "Second input must supply a curve",
+  "count": 3,
+  "runs": 1,
+  "examples": [
+   {
+    "run": "arched-spandrel/pilot-gpt-6-luna--D-r1",
+    "error": "bay.baked: bay: pierwork: pierwork-raw: pier-west-coursed: Second input must supply a curve",
+    "next": null
+   },
+   {
+    "run": "arched-spandrel/pilot-gpt-6-luna--D-r1",
+    "error": "bay.baked: bay: pierwork: pierwork-raw: pier-west-coursed: Second input must supply a curve",
+    "next": null
+   },
+   {
+    "run": "arched-spandrel/pilot-gpt-6-luna--D-r1",
+    "error": "bay.baked: bay: pierwork: pierwork-raw: pier-west-coursed: Second input must supply a curve",
+    "next": null
+   }
+  ]
+ },
+ {
+  "key": "input must be a closed, consistently oriented manifold",
+  "count": 2,
+  "runs": 1,
+  "examples": [
+   {
+    "run": "handwheel-valve/deepseek-v4.1-flash",
+    "error": "bevel: input must be a closed, consistently oriented manifold",
+    "next": null
+   },
+   {
+    "run": "handwheel-valve/deepseek-v4.1-flash",
+    "error": "bevel: input must be a closed, consistently oriented manifold",
+    "next": null
+   }
+  ]
+ },
+ {
+  "key": "Unknown geometry group handwheel-valve",
+  "count": 2,
+  "runs": 1,
+  "examples": [
+   {
+    "run": "handwheel-valve/deepseek-v4.1-flash",
+    "error": "t: valve: Unknown geometry group handwheel-valve",
+    "next": null
+   },
+   {
+    "run": "handwheel-valve/deepseek-v4.1-flash",
+    "error": "t: valve: Unknown geometry group handwheel-valve",
+    "next": null
+   }
+  ]
+ },
+ {
+  "key": "p#p#: Expected a three-component vector",
+  "count": 2,
+  "runs": 1,
+  "examples": [
+   {
+    "run": "handwheel-valve/step-5-preview",
+    "error": "out: welded: joined: body: p1b: p1: Expected a three-component vector",
+    "next": null
+   },
+   {
+    "run": "handwheel-valve/step-5-preview",
+    "error": "out: welded: joined: body: p1b: p1: Expected a three-component vector",
+    "next": null
+   }
+  ]
+ },
+ {
+  "key": "loft needs at least two curves",
+  "count": 2,
+  "runs": 1,
+  "examples": [
+   {
+    "run": "handwheel-valve/step-5-preview",
+    "error": "out: welded: joined: body: loft needs at least two curves",
+    "next": null
+   },
+   {
+    "run": "handwheel-valve/step-5-preview",
+    "error": "out: welded: joined: body: loft needs at least two curves",
+    "next": null
+   }
+  ]
+ },
+ {
+  "key": "loft curves need the same point count and closure",
+  "count": 2,
+  "runs": 1,
+  "examples": [
+   {
+    "run": "handwheel-valve/step-5-preview",
+    "error": "out: welded: joined: body: loft curves need the same point count and closure",
+    "next": null
+   },
+   {
+    "run": "handwheel-valve/step-5-preview",
+    "error": "out: welded: joined: body: loft curves need the same point count and closure",
+    "next": null
+   }
+  ]
+ },
+ {
+  "key": "Invalid inputs for meshBoolean",
+  "count": 2,
+  "runs": 1,
+  "examples": [
+   {
+    "run": "handwheel-valve/step-5-preview",
+    "error": "out: united: Invalid inputs for meshBoolean",
+    "next": null
+   },
+   {
+    "run": "handwheel-valve/step-5-preview",
+    "error": "out: united: Invalid inputs for meshBoolean",
+    "next": null
+   }
+  ]
+ },
+ {
+  "key": "[Errno #] No such file or <q>",
+  "count": 2,
+  "runs": 1,
+  "examples": [
+   {
+    "run": "handwheel-valve/glm-5.3-flash",
+    "error": "FileNotFoundError: [Errno 2] No such file or directory: 'recipes/site/bench/handwheel-valve.json'",
+    "next": null
+   },
+   {
+    "run": "handwheel-valve/glm-5.3-flash",
+    "error": "FileNotFoundError: [Errno 2] No such file or directory: 'renders/test-planar.json'",
+    "next": null
+   }
+  ]
+ },
+ {
+  "key": "curve needs point [x, y, z] in terms of @t",
+  "count": 2,
+  "runs": 1,
+  "examples": [
+   {
+    "run": "handwheel-valve/gemma-4-31b",
+    "error": "parts.baked: parts: mat-wheel: wheel-parts: wheel-rim: wheel-rim-path: curve needs point [x, y, z] in terms of @t",
+    "next": null
+   },
+   {
+    "run": "handwheel-valve/gemma-4-31b",
+    "error": "parts.baked: parts: mat-wheel: wheel-parts: wheel-rim: wheel-rim-path: curve needs point [x, y, z] in terms of @t",
+    "next": null
+   }
+  ]
+ },
+ {
+  "key": "AttributeError(<q>)",
+  "count": 2,
+  "runs": 1,
+  "examples": [
+   {
+    "run": "arched-spandrel/gpt-6.1-terra-high--F-r1",
+    "error": "AttributeError(\"'NoneType' object has no attribute 'strip'\")",
+    "next": null
+   },
+   {
+    "run": "arched-spandrel/gpt-6.1-terra-high--F-r1",
+    "error": "AttributeError(\"'NoneType' object has no attribute 'strip'\")",
+    "next": null
+   }
+  ]
+ },
+ {
+  "key": "spandrel-bed-cut#: Detail # is further than <q> (# m) from the surface",
+  "count": 2,
+  "runs": 1,
+  "examples": [
+   {
+    "run": "arched-spandrel/gpt-6-luna",
+    "error": "bay: stone-assembly: courses-stone: courses-raw: spandrel-joints: spandrel-bed-cut-0: Detail 0 is further than `reach` (0.080000 m) from the surface",
+    "next": null
+   },
+   {
+    "run": "arched-spandrel/gpt-6-luna",
+    "error": "bay: stone-assembly: courses-stone: courses-raw: spandrel-joints: spandrel-bed-cut-0: Detail 12 is further than `reach` (0.080000 m) from the surface",
+    "next": null
+   }
+  ]
+ },
+ {
+  "key": "Expected XY profile points",
+  "count": 2,
+  "runs": 1,
+  "examples": [
+   {
+    "run": "reeving-block/qwen4-max",
+    "error": "m: p: Expected XY profile points",
+    "next": null
+   },
+   {
+    "run": "reeving-block/qwen4-max",
+    "error": "m: p: Expected XY profile points",
+    "next": null
+   }
+  ]
+ },
+ {
+  "key": "cheek-e-bead#: Expected a number, control or expression",
+  "count": 1,
+  "runs": 1,
+  "examples": [
+   {
+    "run": "reeving-block/fable-5.2",
+    "error": "parts.baked: parts: iron: iron-parts: cheek-e: cheek-e-beaded: cheek-e-beads: cheek-e-bead-0: Expected a number, control or expression",
+    "next": null
+   }
+  ]
+ },
+ {
+  "key": "duplicate node id guard-lug-stock",
+  "count": 1,
+  "runs": 1,
+  "examples": [
+   {
+    "run": "reeving-block/gpt-6-luna",
+    "error": "AssertionError: duplicate node id guard-lug-stock",
+    "next": null
+   }
+  ]
+ },
+ {
+  "key": "Unknown node type sphere (pgm nodes lists them)",
+  "count": 1,
+  "runs": 1,
+  "examples": [
+   {
+    "run": "handwheel-valve/qwen3.7-plus",
+    "error": "parts.baked: parts: grip-bronze: grip: grip-stock: Unknown node type sphere (pgm nodes lists them)",
+    "next": null
+   }
+  ]
+ },
+ {
+  "key": "unknown node type box",
+  "count": 1,
+  "runs": 1,
+  "examples": [
+   {
+    "run": "handwheel-valve/nemotron-3.5-vl",
+    "error": "unknown node type box",
+    "next": null
+   }
+  ]
+ },
+ {
+  "key": "Revolve radius must be >= #",
+  "count": 1,
+  "runs": 1,
+  "examples": [
+   {
+    "run": "handwheel-valve/deepseek-v4.1-flash",
+    "error": "all: out-at: out-turned: Revolve radius must be >= 0",
+    "next": null
+   }
+  ]
+ },
+ {
+  "key": "duplicate node id spokes-at",
+  "count": 1,
+  "runs": 1,
+  "examples": [
+   {
+    "run": "handwheel-valve/deepseek-v4.1-flash",
+    "error": "AssertionError: duplicate node id spokes-at",
+    "next": null
+   }
+  ]
+ },
+ {
+  "key": "A detail needs a height (positive is raised, negative is sunk) or a slot (a flat mark)",
+  "count": 1,
+  "runs": 1,
+  "examples": [
+   {
+    "run": "handwheel-valve/gemini-4-carbon",
+    "error": "all-parts.baked: all-parts: steel-mat: steel-parts: bonnet-heads: bonnet-heads-nut: A detail needs a height (positive is raised, negative is sunk) or a slot (a flat mark)",
+    "next": null
+   }
+  ]
+ },
+ {
+  "key": "Unknown geometry module ..<path>",
+  "count": 1,
+  "runs": 1,
+  "examples": [
+   {
+    "run": "handwheel-valve/gemini-4-carbon",
+    "error": "out: v: Unknown geometry module ../recipes/site/bench/handwheel-valve.json",
+    "next": null
+   }
+  ]
+ },
+ {
+  "key": "string indices must be integers, not <q>",
+  "count": 1,
+  "runs": 1,
+  "examples": [
+   {
+    "run": "handwheel-valve/hy4",
+    "error": "TypeError: string indices must be integers, not 'str'",
+    "next": null
+   }
+  ]
+ },
+ {
+  "key": "meshBoolean needs one closed mesh per input",
+  "count": 1,
+  "runs": 1,
+  "examples": [
+   {
+    "run": "handwheel-valve/grok-4.7",
+    "error": "parts.baked: parts: iron: cast-parts: body: body-parted: body-cast: meshBoolean needs one closed mesh per input",
+    "next": null
+   }
+  ]
+ },
+ {
+  "key": "Unknown geometry node flange-west-bolts-bolts",
+  "count": 1,
+  "runs": 1,
+  "examples": [
+   {
+    "run": "handwheel-valve/glm-5.3-flash",
+    "error": "parts.baked: parts: flange-iron: flanges: Unknown geometry node flange-west-bolts-bolts",
+    "next": null
+   }
+  ]
+ },
+ {
+  "key": "UV plane must be xy, xz or yz",
+  "count": 1,
+  "runs": 1,
+  "examples": [
+   {
+    "run": "handwheel-valve/glm-5.3-flash",
+    "error": "parts.baked: parts: body-uv: UV plane must be xy, xz or yz",
+    "next": null
+   }
+  ]
+ },
+ {
+  "key": "duplicate node id flange-west-at",
+  "count": 1,
+  "runs": 1,
+  "examples": [
+   {
+    "run": "handwheel-valve/glm-5.3-flash",
+    "error": "AssertionError: duplicate node id flange-west-at",
+    "next": null
+   }
+  ]
+ },
+ {
+  "key": "Invalid inputs for smoothNormals",
+  "count": 1,
+  "runs": 1,
+  "examples": [
+   {
+    "run": "handwheel-valve/qwen4-max",
+    "error": "parts.baked: parts: iron: cast-parts: stubs-smooth: Invalid inputs for smoothNormals",
+    "next": null
+   }
+  ]
+ },
+ {
+  "key": "module body has no reference record",
+  "count": 1,
+  "runs": 1,
+  "examples": [
+   {
+    "run": "handwheel-valve/mimo-v2.6-pro",
+    "error": "AssertionError: module body has no reference record",
+    "next": null
+   }
+  ]
+ },
+ {
+  "key": "unknown node type stamp",
+  "count": 1,
+  "runs": 1,
+  "examples": [
+   {
+    "run": "handwheel-valve/minimax-m3.1-flash",
+    "error": "unknown node type stamp",
+    "next": null
+   }
+  ]
+ },
+ {
+  "key": "Unknown geometry node crossbar",
+  "count": 1,
+  "runs": 1,
+  "examples": [
+   {
+    "run": "handwheel-valve/minimax-m3.1-flash",
+    "error": "parts.baked: parts: iron: bolts-bonnet: bolts-e: bolts: iron-parts: yoke: Unknown geometry node crossbar",
+    "next": null
+   }
+  ]
+ },
+ {
+  "key": "duplicate node id body-iron",
+  "count": 1,
+  "runs": 1,
+  "examples": [
+   {
+    "run": "handwheel-valve/minimax-m3",
+    "error": "AssertionError: duplicate node id body-iron",
+    "next": null
+   }
+  ]
+ },
+ {
+  "key": "duplicate node id stem-bronze",
+  "count": 1,
+  "runs": 1,
+  "examples": [
+   {
+    "run": "handwheel-valve/minimax-m3",
+    "error": "AssertionError: duplicate node id stem-bronze",
+    "next": null
+   }
+  ]
+ },
+ {
+  "key": "duplicate node id stem",
+  "count": 1,
+  "runs": 1,
+  "examples": [
+   {
+    "run": "handwheel-valve/qwen3.6-35b-a3b",
+    "error": "AssertionError: duplicate node id stem",
+    "next": null
+   }
+  ]
+ },
+ {
+  "key": "int() argument must be a string, a bytes-like object or a real number, not <q>",
+  "count": 1,
+  "runs": 1,
+  "examples": [
+   {
+    "run": "handwheel-valve/qwen3.6-35b-a3b",
+    "error": "TypeError: int() argument must be a string, a bytes-like object or a real number, not 'X'",
+    "next": null
+   }
+  ]
+ },
+ {
+  "key": "duplicate node id bonnet-seam",
+  "count": 1,
+  "runs": 1,
+  "examples": [
+   {
+    "run": "handwheel-valve/qwen3.6-35b-a3b",
+    "error": "AssertionError: duplicate node id bonnet-seam",
+    "next": null
+   }
+  ]
+ },
+ {
+  "key": "duplicate node id yoke-beads",
+  "count": 1,
+  "runs": 1,
+  "examples": [
+   {
+    "run": "handwheel-valve/qwen3.6-35b-a3b",
+    "error": "AssertionError: duplicate node id yoke-beads",
+    "next": null
+   }
+  ]
+ },
+ {
+  "key": "cannot import name <q> from <q> (<path>)",
+  "count": 1,
+  "runs": 1,
+  "examples": [
+   {
+    "run": "handwheel-valve/qwen3.6-35b-a3b",
+    "error": "ImportError: cannot import name 'round' from 'kitlib' (/private/tmp/pgbench/2026-11-17/handwheel-valve/qwen3.6-35b-a3b/recipes/kitlib.py)",
+    "next": null
+   }
+  ]
+ },
+ {
+  "key": "duplicate node id body-flange-bead",
+  "count": 1,
+  "runs": 1,
+  "examples": [
+   {
+    "run": "handwheel-valve/qwen3.6-35b-a3b",
+    "error": "AssertionError: duplicate node id body-flange-bead",
+    "next": null
+   }
+  ]
+ },
+ {
+  "key": "cannot open site/bench",
+  "count": 1,
+  "runs": 1,
+  "examples": [
+   {
+    "run": "handwheel-valve/qwen3.6-35b-a3b",
+    "error": "json: cannot open site/bench",
+    "next": null
+   }
+  ]
+ },
+ {
+  "key": "unexpected end at byte #",
+  "count": 1,
+  "runs": 1,
+  "examples": [
+   {
+    "run": "handwheel-valve/qwen3.6-35b-a3b",
+    "error": "json: unexpected end at byte 0",
+    "next": null
+   }
+  ]
+ },
+ {
+  "key": "A graph needs an output node",
+  "count": 1,
+  "runs": 1,
+  "examples": [
+   {
+    "run": "handwheel-valve/qwen3.6-35b-a3b",
+    "error": "A graph needs an output node",
+    "next": null
+   }
+  ]
+ },
+ {
+  "key": "count is outside its range",
+  "count": 1,
+  "runs": 1,
+  "examples": [
+   {
+    "run": "mitre-gate-jamb/sonnet-5.5",
+    "error": "jamb.baked: jamb: ironwork: iron-parts: recess-iron: rungs: rungs-at: count is outside its range",
+    "next": null
+   }
+  ]
+ },
+ {
+  "key": "Detail # is further than <q> (# {",
+  "count": 1,
+  "runs": 1,
+  "examples": [
+   {
+    "run": "arched-spandrel/haiku-5.5",
+    "error": "parts.baked: parts: head-stone: head-coursed: Detail 1 is further than `reach` (1.500000\n{",
+    "next": null
+   }
+  ]
+ },
+ {
+  "key": "unknown node type polyhedron",
+  "count": 1,
+  "runs": 1,
+  "examples": [
+   {
+    "run": "arched-spandrel/kimi-k3.1-pro",
+    "error": "unknown node type polyhedron",
+    "next": null
+   }
+  ]
+ },
+ {
+  "key": "unsupported operand type(s) for -: <q> and <q>",
+  "count": 1,
+  "runs": 1,
+  "examples": [
+   {
+    "run": "arched-spandrel/kimi-k3.1-pro",
+    "error": "TypeError: unsupported operand type(s) for -: 'int' and 'list'",
+    "next": null
+   }
+  ]
+ },
+ {
+  "key": "point #: Expected a number, control or expression",
+  "count": 1,
+  "runs": 1,
+  "examples": [
+   {
+    "run": "arched-spandrel/kimi-k3.1-pro",
+    "error": "parts.baked: parts: stonework: spandrels: spandrel-coursed: spandrel-joint-guides: bed-guides-w: point 0: Expected a number, control or expression",
+    "next": null
+   }
+  ]
+ },
+ {
+  "key": "spandrel-joints##: spandrel-joints##-count is outside its range",
+  "count": 1,
+  "runs": 1,
+  "examples": [
+   {
+    "run": "arched-spandrel/kimi-k3.1-pro",
+    "error": "parts.baked: parts: stonework: spandrels: spandrel-coursed: spandrel-joint-guides: spandrel-joints-0-1: spandrel-joints-0-1-at: count is outside its range",
+    "next": null
+   }
+  ]
+ },
+ {
+  "key": "cannot open recipes/site/bench/bench",
+  "count": 1,
+  "runs": 1,
+  "examples": [
+   {
+    "run": "arched-spandrel/gpt-6.1-terra-high--A-r2",
+    "error": "json: cannot open recipes/site/bench/bench",
+    "next": null
+   }
+  ]
+ },
+ {
+  "key": "unsupported operand type(s) for //: <q> and <q>",
+  "count": 1,
+  "runs": 1,
+  "examples": [
+   {
+    "run": "arched-spandrel/glm-5.3",
+    "error": "TypeError: unsupported operand type(s) for //: 'X' and 'int'",
+    "next": null
+   }
+  ]
+ },
+ {
+  "key": "Unknown numeric control $@index",
+  "count": 1,
+  "runs": 1,
+  "examples": [
+   {
+    "run": "arched-spandrel/glm-5.3",
+    "error": "parts.baked: parts: long-voussoirs: long-ring-both: long-street: long-ring: long-at: Unknown numeric control $@index",
+    "next": null
+   }
+  ]
+ },
+ {
+  "key": "pass must be beauty, clay or parts",
+  "count": 1,
+  "runs": 1,
+  "examples": [
+   {
+    "run": "arched-spandrel/fable-5.2",
+    "error": "pass must be beauty, clay or parts",
+    "next": null
+   }
+  ]
+ },
+ {
+  "key": "not a clean solid (ru {",
+  "count": 1,
+  "runs": 1,
+  "examples": [
+   {
+    "run": "arched-spandrel/fable-5.2",
+    "error": "not a clean solid (ru\n{",
+    "next": "{\"file_path\": \"/private/tmp/pgbench/2026-11-17/arched-spandrel/fable-5.2/renders/c-iso.png\"}"
+   }
+  ]
+ },
+ {
+  "key": "Detail # is further than {",
+  "count": 1,
+  "runs": 1,
+  "examples": [
+   {
+    "run": "arched-spandrel/sonnet-5.5",
+    "error": "parts.baked: parts: piers: piers-raw: spandrel: Detail 152 is further than {",
+    "next": null
+   }
+  ]
+ },
+ {
+  "key": "spandrel-bed-cut#: spandrel-bed#: Numeric expression exceeds its finite range",
+  "count": 1,
+  "runs": 1,
+  "examples": [
+   {
+    "run": "arched-spandrel/gpt-6-luna",
+    "error": "bay: stone-assembly: courses-stone: courses-raw: spandrel-joints: spandrel-bed-cut-0: spandrel-bed-0: Numeric expression exceeds its finite range",
+    "next": null
+   }
+  ]
+ },
+ {
+  "key": "spandrel-bed-cut#: Extrusion profile crosses itself",
+  "count": 1,
+  "runs": 1,
+  "examples": [
+   {
+    "run": "arched-spandrel/gpt-6-luna",
+    "error": "bay: stone-assembly: courses-stone: courses-raw: spandrel-joints: spandrel-bed-cut-0: spandrel: spandrel-stock: spandrel-stock-stock: Extrusion profile crosses itself",
+    "next": null
+   }
+  ]
+ },
+ {
+  "key": "duplicate node id keystone",
+  "count": 1,
+  "runs": 1,
+  "examples": [
+   {
+    "run": "arched-spandrel/grok-4.7",
+    "error": "AssertionError: duplicate node id keystone",
+    "next": null
+   }
+  ]
+ },
+ {
+  "key": "v#: v#-v#-Unknown geometry node v#-stone-stock",
+  "count": 1,
+  "runs": 1,
+  "examples": [
+   {
+    "run": "arched-spandrel/grok-4.7",
+    "error": "v5: v5-turned: v5-stone: Unknown geometry node v5-stone-stock",
+    "next": null
+   }
+  ]
+ },
+ {
+  "key": "Unknown numeric control running",
+  "count": 1,
+  "runs": 1,
+  "examples": [
+   {
+    "run": "arched-spandrel/gpt-6.1-terra-high--B-r2",
+    "error": "all-parts.baked: all-parts: west-shaft-stone: west-shaft: west-shaft-faced: west-shaft-courses: west-shaft-courses-flat: Unknown numeric control running",
+    "next": null
+   }
+  ]
+ },
+ {
+  "key": "duplicate node id west-front-bed#",
+  "count": 1,
+  "runs": 1,
+  "examples": [
+   {
+    "run": "arched-spandrel/gpt-6.1-terra-high--E-r1s3",
+    "error": "AssertionError: duplicate node id west-front-bed-1",
+    "next": null
+   }
+  ]
+ },
+ {
+  "key": "duplicate node id pier-bed-west-line",
+  "count": 1,
+  "runs": 1,
+  "examples": [
+   {
+    "run": "arched-spandrel/minimax-m3",
+    "error": "AssertionError: duplicate node id pier-bed-west-line",
+    "next": null
+   }
+  ]
+ },
+ {
+  "key": "<q> object cannot be interpreted as an integer",
+  "count": 1,
+  "runs": 1,
+  "examples": [
+   {
+    "run": "arched-spandrel/minimax-m3",
+    "error": "TypeError: 'X' object cannot be interpreted as an integer",
+    "next": null
+   }
+  ]
+ },
+ {
+  "key": "Expected one box solid",
+  "count": 1,
+  "runs": 1,
+  "examples": [
+   {
+    "run": "arched-spandrel/minimax-m3",
+    "error": "bay-baked: bay: stone-all: stone-parts: impost-moulded: impost-chamfered: Expected one box solid",
+    "next": null
+   }
+  ]
+ },
+ {
+  "key": "<q> object is not callable",
+  "count": 1,
+  "runs": 1,
+  "examples": [
+   {
+    "run": "arched-spandrel/minimax-m3",
+    "error": "TypeError: 'int' object is not callable",
+    "next": null
+   }
+  ]
+ },
+ {
+  "key": "duplicate node id impost-moulded",
+  "count": 1,
+  "runs": 1,
+  "examples": [
+   {
+    "run": "arched-spandrel/minimax-m3",
+    "error": "AssertionError: duplicate node id impost-moulded",
+    "next": null
+   }
+  ]
+ },
+ {
+  "key": "Graph.tube() missing # required positional <q>",
+  "count": 1,
+  "runs": 1,
+  "examples": [
+   {
+    "run": "reeving-block/grok-4.7",
+    "error": "TypeError: Graph.tube() missing 1 required positional argument: 'radius'",
+    "next": null
+   }
+  ]
+ },
+ {
+  "key": "ref() got an unexpected keyword argument <q>",
+  "count": 1,
+  "runs": 1,
+  "examples": [
+   {
+    "run": "arched-spandrel/stopped-gpt-6-luna--A-r1",
+    "error": "TypeError: ref() got an unexpected keyword argument 'improve'",
+    "next": null
+   }
+  ]
+ }
+]

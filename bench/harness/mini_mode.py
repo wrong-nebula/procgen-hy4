@@ -934,7 +934,7 @@ def main():
     p_run.add_argument("--model", default="inkling-2-mini")
     p_run.add_argument("--slug", default=None)
     p_run.add_argument("--max-calls", type=int, default=16)
-    p_run.add_argument("--date", default="2026-11-21")
+    p_run.add_argument("--date", default=time.strftime("%Y-%m-%d"))
 
     args = ap.parse_args()
     if args.cmd == "diversity":
@@ -952,7 +952,7 @@ def main():
     elif args.cmd == "run":
         os.environ["PGBENCH_DATE"] = args.date
         bench.TODAY = args.date
-        slug = args.slug or f"{args.model}--MINI-r1"
+        slug = args.slug or re.sub(r"[^A-Za-z0-9._-]+", "-", args.model) + "--MINI-r1"
         box, spec, base_prompt = bench.make_sandbox(args.task, slug)
         brief = (bench.BENCH / "tasks" / args.task / "brief.md").read_text()
         div = generate_diversity_briefs(brief, spec, k=1)[0]["hint"]
