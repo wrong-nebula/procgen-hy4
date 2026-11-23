@@ -44,7 +44,7 @@ Numbers are from [`examples/hy4/results.json`](examples/hy4/results.json) (runs 
 
 | Kit | Hy4 build | Frontier rival | Judges preferred Hy4 | Hy4 cost | Frontier cost |
 |---|---|---|---|---|---|
-| Railway turntable | ![](examples/hy4/renders/turntable.jpg) | gpt-6.1-terra (high) | **yes**, p = 0.71 | $0.048 | $0.486 |
+| Railway turntable | ![](examples/hy4/renders/turntable-wall1.jpg)<br>`wall=1` | gpt-6.1-terra (high) | **yes**, p = 0.71 | $0.048 | $0.486 |
 | City gate | ![](examples/hy4/renders/city-gate.jpg) | gpt-6.1-terra (high) | **yes**, p = 0.68 | $0.057 | $0.434 |
 | Metro entrance | ![](examples/hy4/renders/metro-edicule.jpg) | gpt-6.1-sol | no, p = 0.19 | $0.044 | $0.764 |
 | Iron shopfront | ![](examples/hy4/renders/iron-shopfront.jpg) | gpt-6.1-sol | no, p = 0.19 | $0.045 | $0.619 |
@@ -58,22 +58,6 @@ Rebuild a document from Hy4's builder:
 ```bash
 python3 examples/hy4/turntable.py                       # -> examples/hy4/out/turntable/turntable.json
 ```
-
-### Turntable `wall` control
-
-The turntable has one control added after the Hy4 run:
-
-- `wall=0` (default): Hy4's block-built pit (192 wall blocks, 64 coping stones, 132 floor flags),
-  geometrically identical to Hy4's build. 101,276 triangles.
-- `wall=1`: one turned wall ring, one coping ring and a plain floor. 56,764 triangles.
-
-```bash
-procgen/build-release/pgm render examples/hy4/out/turntable/turntable.json --set wall=1 --out /tmp/turntable.png --view iso
-```
-
-![Turntable with wall=1](examples/hy4/renders/turntable-wall1.jpg)
-
-Both settings pass `check`, `sweep` and `audit --sweep`.
 
 ## How it works
 
