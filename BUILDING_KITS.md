@@ -90,7 +90,8 @@ python3 bench/harness/mini_mode.py run door-knocker --model anthropic/claude-opu
 python3 bench/harness/mini_mode.py run door-knocker --model hy4-flash-xhigh --max-calls 60
 ```
 
-Results land in `bench/runs/<date>/<task>/<model>--MINI-r1/`. To evolve a kit with a cheap model,
+The builder (`build.py`), the model's `NOTES.md` and the generated kit (`out/`) land in
+`bench/runs/<date>/<task>/<model>--LM-r1/`; the sandbox stays in `/tmp/pgbench/` for inspection. To evolve a kit with a cheap model,
 `kit_evolve.py` seeds several builders, edits one function at a time and tunes proportions:
 
 ```bash

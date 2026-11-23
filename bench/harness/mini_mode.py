@@ -28,6 +28,7 @@ import json
 import os
 import re
 import resource
+import shutil
 import subprocess
 import sys
 import time
@@ -952,7 +953,7 @@ def main():
     elif args.cmd == "run":
         os.environ["PGBENCH_DATE"] = args.date
         bench.TODAY = args.date
-        slug = args.slug or re.sub(r"[^A-Za-z0-9._-]+", "-", args.model) + "--MINI-r1"
+        slug = args.slug or re.sub(r"[^A-Za-z0-9._-]+", "-", args.model) + "--LM-r1"   # lean harness + lessons memory, as kit_evolve seeds use; letters after -- are bench.py conditions
         box, spec, base_prompt = bench.make_sandbox(args.task, slug)
         brief = (bench.BENCH / "tasks" / args.task / "brief.md").read_text()
         div = generate_diversity_briefs(brief, spec, k=1)[0]["hint"]
@@ -964,6 +965,14 @@ def main():
             seed_scaffold=True, spec=spec,
         )
         (out_dir / "run.json").write_text(json.dumps(res, indent=2))
+        # Keep what the model delivered next to the run record: the builder, its notes and the generated kit.
+        if (box / "recipes" / "build_bench_kit.py").exists():
+            shutil.copy2(box / "recipes" / "build_bench_kit.py", out_dir / "build.py")
+        if (box / "NOTES.md").exists():
+            shutil.copy2(box / "NOTES.md", out_dir / "NOTES.md")
+        if (box / "recipes" / "site" / "bench").is_dir():
+            shutil.copytree(box / "recipes" / "site" / "bench", out_dir / "out", dirs_exist_ok=True)
+        print(f"builder, notes and generated kit copied to {out_dir} (sandbox kept at {box})")
         gate = check_context_thermodynamics_gate(res.get("thermodynamics") or {})
         (out_dir / "thermodynamics_gate.json").write_text(json.dumps(gate, indent=2))
         print(json.dumps({"run_summary": {k: res.get(k) for k in ("exit", "num_turns", "tool_calls", "cost_usd_openrouter", "wall_s")}, "gate": gate}, indent=2))
