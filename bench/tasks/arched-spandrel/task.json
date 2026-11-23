@@ -1,0 +1,202 @@
+{
+ "id": "arched-spandrel",
+ "title": "Arched arcade bay with voussoirs and spandrels",
+ "module": "arched-bay",
+ "baseline": {
+  "label": "repo baseline: civic arcade-bay, arch variant (Opus 5.5 medium, 2026-11-16)",
+  "document": "recipes/site/civic/arcade-bay.json",
+  "set": {
+   "variant": 1
+  }
+ },
+ "scrub": {
+  "python_drop": [
+   {
+    "file": "recipes/build_civic_kits.py",
+    "functions": [
+     "arcade_bay",
+     "promoted_arched_bay"
+    ],
+    "dict_keys": {
+     "REFS": [
+      "arcade-bay"
+     ]
+    }
+   }
+  ],
+  "replace": [
+   {
+    "file": "recipes/build_civic_kits.py",
+    "old": "arcade_bay(), boardwalk_bay()",
+    "new": "boardwalk_bay()"
+   },
+   {
+    "file": "recipes/build_civic_kits.py",
+    "old": "arcade bay, boardwalk bay",
+    "new": "boardwalk bay"
+   }
+  ],
+  "drop_lines": [
+   {
+    "file": "recipes/build_civic_kits.py",
+    "pattern": "^promoted_arched_bay\\(\\)$"
+   },
+   {
+    "file": "docs/KIT_REFERENCES.md",
+    "pattern": "arcade-bay"
+   },
+   {
+    "file": "docs/KIT_REVIEW.md",
+    "pattern": "arcade-bay"
+   },
+   {
+    "file": "docs/KIT_CANDIDATES.md",
+    "pattern": "arcade-bay"
+   },
+   {
+    "file": "docs/SITE_KIT_BACKLOG.md",
+    "pattern": "arcade-bay"
+   },
+   {
+    "file": "recipes/sheets/site-civic-feet.json",
+    "pattern": "arcade-bay"
+   },
+   {
+    "file": "docs/KIT_REFERENCES.md",
+    "pattern": "arched-bay"
+   },
+   {
+    "file": "docs/KIT_REVIEW.md",
+    "pattern": "arched-bay"
+   }
+  ],
+  "rebuild": [
+   [
+    "python3",
+    "recipes/build_civic_kits.py"
+   ]
+  ],
+  "leak_terms": [
+   "arcade-bay",
+   "arcade_bay",
+   "arcadebay",
+   "arched-bay",
+   "arched_bay"
+  ]
+ },
+ "renders": [
+  {
+   "name": "iso-beauty",
+   "view": "iso",
+   "pass": "beauty",
+   "size": "1280x960"
+  },
+  {
+   "name": "iso-clay",
+   "view": "iso",
+   "pass": "clay",
+   "size": "1280x960"
+  },
+  {
+   "name": "opposite-beauty",
+   "view": "opposite",
+   "pass": "beauty",
+   "size": "1280x960"
+  },
+  {
+   "name": "front-clay",
+   "view": "front",
+   "pass": "clay",
+   "size": "1280x960",
+   "projection": "ortho"
+  },
+  {
+   "name": "parts",
+   "view": "iso",
+   "pass": "parts",
+   "size": "960x720"
+  }
+ ],
+ "contract": {
+  "controls": {
+   "pitch": [
+    3.6,
+    2.4,
+    6
+   ],
+   "height": [
+    4.2,
+    3,
+    5.4
+   ],
+   "depth": [
+    2.2,
+    1.2,
+    4
+   ]
+  },
+  "ports": {
+   "west": {
+    "type": "deck",
+    "origin": [
+     "-pitch/2",
+     "-depth/2",
+     0
+    ],
+    "normal": [
+     -1,
+     0,
+     0
+    ],
+    "dims": {
+     "width": "depth"
+    }
+   },
+   "east": {
+    "type": "deck",
+    "origin": [
+     "pitch/2",
+     "-depth/2",
+     0
+    ],
+    "normal": [
+     1,
+     0,
+     0
+    ],
+    "dims": {
+     "width": "depth"
+    }
+   }
+  },
+  "envelope": {
+   "x": [
+    "-pitch/2 - 0.05",
+    "pitch/2 + 0.05"
+   ],
+   "y": [
+    "-depth - 0.4",
+    "0.05"
+   ],
+   "z": [
+    "-1",
+    "height + 0.15"
+   ]
+  },
+  "span": {
+   "x": "0.95 * pitch",
+   "z": "height - 0.15"
+  },
+  "clearances": {
+   "archway": {
+    "lo": ["-pitch * 0.24", "-depth - 0.05", "0.14"],
+    "hi": ["pitch * 0.24", "-depth * 0.48", "height * 0.38"]
+   },
+   "walkway": {
+    "lo": ["-pitch/2 + 0.02", "-depth * 0.46", "0.14"],
+    "hi": ["pitch/2 - 0.02", "-depth * 0.41", "min(1.25, height * 0.28)"]
+   }
+  },
+  "min_materials": 4
+ }
+}

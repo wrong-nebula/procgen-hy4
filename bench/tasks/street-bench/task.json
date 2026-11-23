@@ -1,0 +1,47 @@
+{
+ "id": "street-bench",
+ "title": "Brussels boulevard bench (stone-pedestal and cast-iron whiplash variants)",
+ "module": "bench",
+ "renders": [
+  {"name": "iso-beauty", "view": "iso", "pass": "beauty", "size": "1280x960"},
+  {"name": "iso-clay", "view": "iso", "pass": "clay", "size": "1280x960"},
+  {"name": "opposite-beauty", "view": "opposite", "pass": "beauty", "size": "1280x960"},
+  {"name": "front-clay", "view": "front", "pass": "clay", "size": "1280x960", "projection": "ortho"},
+  {"name": "parts", "view": "iso", "pass": "parts", "size": "960x720"}
+ ],
+ "baseline": null,
+ "scrub": {
+  "python_drop": [{"file": "recipes/build_site_kits.py", "functions": ["bench"], "dict_keys": {"REFS": ["bench"]}}],
+  "replace": [{"file": "recipes/build_site_kits.py", "old": "bench(), platform_clock(), tree()", "new": "platform_clock(), tree()"}],
+  "drop_lines": [
+   {"file": "docs/KIT_REFERENCES.md", "pattern": "\\| `bench` \\|"},
+   {"file": "docs/KIT_REVIEW.md", "pattern": "\\| `bench` \\|"}
+  ],
+  "leak_terms": []
+ },
+ "contract": {
+  "controls": {
+   "length": [1.8, 1.0, 4.0],
+   "variant": [0, 0, 1]
+  },
+  "ports": {
+   "base": {
+    "type": "footing",
+    "origin": [0, 0, 0],
+    "normal": [0, 0, -1],
+    "up": [1, 0, 0],
+    "dims": {"width": "length"}
+   }
+  },
+  "envelope": {
+   "x": ["-length/2 - 0.12", "length/2 + 0.12"],
+   "y": ["-0.55", "0.55"],
+   "z": ["-0.04", "1.15"]
+  },
+  "span": {
+   "x": "0.9 * length",
+   "z": "0.75"
+  },
+  "min_materials": 3
+ }
+}

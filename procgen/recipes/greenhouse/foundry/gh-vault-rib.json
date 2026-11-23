@@ -1,0 +1,600 @@
+{
+ "version": 1,
+ "references": {
+  "atlas": [
+   "G01",
+   "M01",
+   "W04",
+   "E03"
+  ],
+  "sources": [
+   "kew",
+   "kew-palm-ribs",
+   "laeken-painted-ribs"
+  ],
+  "plates": [
+   "s09",
+   "s185"
+  ],
+  "notes": "Curved bay of G01 (design range span 6-18 m, pitch 3-7 m, rise 2-9 m; smaller or larger spans extrapolate it). Half-ellipse rib; the I-section is a model dimension. A row of rivets runs near each edge of both side faces as surface detail: the built-up girder of W04 and E03 with heads at one pitch (pitch and head size are design assumptions).",
+  "other": [
+   "Atlas expansion IW09 (not yet merged): Horta's riveted girder, rivets left as part of the look"
+  ],
+  "review": {
+   "by": "Fable 5.2",
+   "reviewed": "Opus 5.5 (medium)",
+   "date": "2026-11-15",
+   "seen": "sheet renders",
+   "weak": "Thin at sheet size; its rivet rows not visible there.",
+   "improve": [
+    "Spans outside G01's 6-18 m are extrapolations [KIT_REFERENCES]"
+   ],
+   "pass1": "Not touched.",
+   "left": [
+    "Spans outside G01's 6-18 m are extrapolations [KIT_REFERENCES]"
+   ]
+  }
+ },
+ "controls": {
+  "span": {
+   "value": 10,
+   "min": 2,
+   "max": 40
+  },
+  "spring": {
+   "value": 6.6,
+   "min": 2.0,
+   "max": 24
+  },
+  "rise": {
+   "value": 4.8,
+   "min": 0.5,
+   "max": 20
+  },
+  "gauge": {
+   "value": 1,
+   "min": 0.2,
+   "max": 2.5
+  }
+ },
+ "modulePorts": {
+  "west-seat": {
+   "origin": [
+    [
+     "*",
+     "$span",
+     -0.5
+    ],
+    0,
+    "$spring"
+   ],
+   "normal": [
+    0,
+    0,
+    -1
+   ],
+   "up": [
+    1,
+    0,
+    0
+   ],
+   "type": "greenhouse.seat",
+   "dimensions": {
+    "gauge": "$gauge"
+   }
+  },
+  "east-seat": {
+   "origin": [
+    [
+     "*",
+     "$span",
+     0.5
+    ],
+    0,
+    "$spring"
+   ],
+   "normal": [
+    0,
+    0,
+    -1
+   ],
+   "up": [
+    1,
+    0,
+    0
+   ],
+   "type": "greenhouse.seat",
+   "dimensions": {
+    "gauge": "$gauge"
+   }
+  }
+ },
+ "nodes": [
+  {
+   "id": "arc",
+   "type": "curve",
+   "options": {
+    "point": [
+     [
+      "*",
+      [
+       "*",
+       [
+        "/",
+        "$span",
+        "$gauge"
+       ],
+       0.5
+      ],
+      [
+       "cos",
+       [
+        "*",
+        "@t",
+        3.141592653589793
+       ]
+      ]
+     ],
+     0,
+     [
+      "+",
+      [
+       "/",
+       "$spring",
+       "$gauge"
+      ],
+      [
+       "*",
+       [
+        "/",
+        "$rise",
+        "$gauge"
+       ],
+       [
+        "sin",
+        [
+         "*",
+         "@t",
+         3.141592653589793
+        ]
+       ]
+      ]
+     ]
+    ],
+    "segments": 48
+   }
+  },
+  {
+   "id": "section-plain",
+   "type": "profileSweep",
+   "inputs": [
+    "arc"
+   ],
+   "options": {
+    "profile": [
+     [
+      -0.13,
+      -0.11
+     ],
+     [
+      0.13,
+      -0.11
+     ],
+     [
+      0.13,
+      -0.075
+     ],
+     [
+      0.035,
+      -0.075
+     ],
+     [
+      0.035,
+      0.075
+     ],
+     [
+      0.13,
+      0.075
+     ],
+     [
+      0.13,
+      0.11
+     ],
+     [
+      -0.13,
+      0.11
+     ],
+     [
+      -0.13,
+      0.075
+     ],
+     [
+      -0.035,
+      0.075
+     ],
+     [
+      -0.035,
+      -0.075
+     ],
+     [
+      -0.13,
+      -0.075
+     ]
+    ],
+    "up": [
+     0,
+     1,
+     0
+    ]
+   }
+  },
+  {
+   "id": "row-n-outer",
+   "type": "curve",
+   "options": {
+    "point": [
+     [
+      "*",
+      [
+       "+",
+       [
+        "*",
+        [
+         "/",
+         "$span",
+         "$gauge"
+        ],
+        0.5
+       ],
+       0.09
+      ],
+      [
+       "cos",
+       [
+        "*",
+        [
+         "+",
+         0.012,
+         [
+          "*",
+          0.976,
+          "@t"
+         ]
+        ],
+        3.141592653589793
+       ]
+      ]
+     ],
+     0.3,
+     [
+      "+",
+      [
+       "/",
+       "$spring",
+       "$gauge"
+      ],
+      [
+       "*",
+       [
+        "+",
+        [
+         "/",
+         "$rise",
+         "$gauge"
+        ],
+        0.09
+       ],
+       [
+        "sin",
+        [
+         "*",
+         [
+          "+",
+          0.012,
+          [
+           "*",
+           0.976,
+           "@t"
+          ]
+         ],
+         3.141592653589793
+        ]
+       ]
+      ]
+     ]
+    ],
+    "segments": 48
+   }
+  },
+  {
+   "id": "row-n-inner",
+   "type": "curve",
+   "options": {
+    "point": [
+     [
+      "*",
+      [
+       "+",
+       [
+        "*",
+        [
+         "/",
+         "$span",
+         "$gauge"
+        ],
+        0.5
+       ],
+       -0.09
+      ],
+      [
+       "cos",
+       [
+        "*",
+        [
+         "+",
+         0.012,
+         [
+          "*",
+          0.976,
+          "@t"
+         ]
+        ],
+        3.141592653589793
+       ]
+      ]
+     ],
+     0.3,
+     [
+      "+",
+      [
+       "/",
+       "$spring",
+       "$gauge"
+      ],
+      [
+       "*",
+       [
+        "+",
+        [
+         "/",
+         "$rise",
+         "$gauge"
+        ],
+        -0.09
+       ],
+       [
+        "sin",
+        [
+         "*",
+         [
+          "+",
+          0.012,
+          [
+           "*",
+           0.976,
+           "@t"
+          ]
+         ],
+         3.141592653589793
+        ]
+       ]
+      ]
+     ]
+    ],
+    "segments": 48
+   }
+  },
+  {
+   "id": "row-s-outer",
+   "type": "curve",
+   "options": {
+    "point": [
+     [
+      "*",
+      [
+       "+",
+       [
+        "*",
+        [
+         "/",
+         "$span",
+         "$gauge"
+        ],
+        0.5
+       ],
+       0.09
+      ],
+      [
+       "cos",
+       [
+        "*",
+        [
+         "+",
+         0.012,
+         [
+          "*",
+          0.976,
+          "@t"
+         ]
+        ],
+        3.141592653589793
+       ]
+      ]
+     ],
+     -0.3,
+     [
+      "+",
+      [
+       "/",
+       "$spring",
+       "$gauge"
+      ],
+      [
+       "*",
+       [
+        "+",
+        [
+         "/",
+         "$rise",
+         "$gauge"
+        ],
+        0.09
+       ],
+       [
+        "sin",
+        [
+         "*",
+         [
+          "+",
+          0.012,
+          [
+           "*",
+           0.976,
+           "@t"
+          ]
+         ],
+         3.141592653589793
+        ]
+       ]
+      ]
+     ]
+    ],
+    "segments": 48
+   }
+  },
+  {
+   "id": "row-s-inner",
+   "type": "curve",
+   "options": {
+    "point": [
+     [
+      "*",
+      [
+       "+",
+       [
+        "*",
+        [
+         "/",
+         "$span",
+         "$gauge"
+        ],
+        0.5
+       ],
+       -0.09
+      ],
+      [
+       "cos",
+       [
+        "*",
+        [
+         "+",
+         0.012,
+         [
+          "*",
+          0.976,
+          "@t"
+         ]
+        ],
+        3.141592653589793
+       ]
+      ]
+     ],
+     -0.3,
+     [
+      "+",
+      [
+       "/",
+       "$spring",
+       "$gauge"
+      ],
+      [
+       "*",
+       [
+        "+",
+        [
+         "/",
+         "$rise",
+         "$gauge"
+        ],
+        -0.09
+       ],
+       [
+        "sin",
+        [
+         "*",
+         [
+          "+",
+          0.012,
+          [
+           "*",
+           0.976,
+           "@t"
+          ]
+         ],
+         3.141592653589793
+        ]
+       ]
+      ]
+     ]
+    ],
+    "segments": 48
+   }
+  },
+  {
+   "id": "row-guides",
+   "type": "join",
+   "inputs": [
+    "row-n-outer",
+    "row-n-inner",
+    "row-s-outer",
+    "row-s-inner"
+   ]
+  },
+  {
+   "id": "section",
+   "type": "rivetLine",
+   "inputs": [
+    "section-plain",
+    "row-guides"
+   ],
+   "options": {
+    "pitch": 0.16,
+    "radius": 0.016,
+    "height": 0.008,
+    "reach": 0.4
+   }
+  },
+  {
+   "id": "iron",
+   "type": "material",
+   "inputs": [
+    "section"
+   ],
+   "options": {
+    "slot": "iron"
+   }
+  },
+  {
+   "id": "rib",
+   "type": "transform",
+   "inputs": [
+    "iron"
+   ],
+   "options": {
+    "scale": [
+     "$gauge",
+     "$gauge",
+     "$gauge"
+    ]
+   }
+  },
+  {
+   "id": "rib.baked",
+   "type": "bake",
+   "inputs": [
+    "rib"
+   ]
+  }
+ ],
+ "output": "rib.baked"
+}

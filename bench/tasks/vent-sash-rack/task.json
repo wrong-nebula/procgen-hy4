@@ -1,0 +1,90 @@
+{
+ "id": "vent-sash-rack",
+ "title": "Glasshouse vent sash with rack gear",
+ "module": "vent-sash-rack",
+ "renders": [
+  {
+   "name": "iso-beauty",
+   "view": "iso",
+   "pass": "beauty",
+   "size": "1280x960"
+  },
+  {
+   "name": "iso-clay",
+   "view": "iso",
+   "pass": "clay",
+   "size": "1280x960"
+  },
+  {
+   "name": "opposite-beauty",
+   "view": "opposite",
+   "pass": "beauty",
+   "size": "1280x960"
+  },
+  {
+   "name": "front-clay",
+   "view": "front",
+   "pass": "clay",
+   "size": "1280x960",
+   "projection": "ortho"
+  },
+  {
+   "name": "parts",
+   "view": "iso",
+   "pass": "parts",
+   "size": "960x720"
+  }
+ ],
+ "baseline": null,
+ "scrub": {
+  "leak_terms": []
+ },
+ "contract": {
+  "controls": {
+   "width": [
+    1.2,
+    0.8,
+    1.8
+   ],
+   "pitch": [
+    26,
+    20,
+    40
+   ],
+   "open": [
+    0,
+    0,
+    1
+   ]
+  },
+  "ports": {
+   "roof-west": {
+    "type": "deck",
+    "origin": [
+     "-width/2 - 0.6",
+     null,
+     null
+    ],
+    "normal": [
+     -1,
+     0,
+     0
+    ]
+   },
+   "roof-east": {
+    "type": "deck",
+    "origin": [
+     "width/2 + 0.6",
+     null,
+     null
+    ],
+    "normal": [
+     1,
+     0,
+     0
+    ]
+   }
+  },
+  "min_materials": 3
+ }
+}

@@ -1,0 +1,332 @@
+{
+ "version": 1,
+ "references": {
+  "atlas": [
+   "G01",
+   "G02",
+   "RD01"
+  ],
+  "sources": [
+   "kew",
+   "laeken"
+  ],
+  "plates": [
+   "s185",
+   "s10"
+  ],
+  "notes": "The reference gallery: 10 m span, 4.2 m pitch, 4.8 m rise.",
+  "review": {
+   "by": "Fable 5.2",
+   "reviewed": "Opus 5.5 (medium)",
+   "date": "2026-11-15",
+   "seen": "sheet renders",
+   "weak": "Assembly; not looked at in this review.",
+   "improve": [
+    "Uses per-plant tint the previewer cannot show; look at it in the engine [transcript]"
+   ],
+   "pass1": "Audit: the pendants' mount is inside the ridge beam.",
+   "left": [
+    "Uses per-plant tint the previewer cannot show; look at it in the engine [transcript]"
+   ]
+  }
+ },
+ "controls": {
+  "bays": {
+   "value": 5,
+   "min": 1,
+   "max": 16,
+   "integer": true
+  }
+ },
+ "modulePorts": {
+  "door": {
+   "origin": [
+    0,
+    0,
+    0
+   ],
+   "normal": [
+    0,
+    -1,
+    0
+   ],
+   "up": [
+    0,
+    0,
+    1
+   ],
+   "type": "deck",
+   "dimensions": {
+    "width": 2.4
+   }
+  }
+ },
+ "moduleImports": {
+  "gallery": "gh-gallery",
+  "bay": "gh-bay",
+  "aisle": "gh-lean-to",
+  "screen": "gh-end-screen",
+  "crossing": "gh-crossing",
+  "planter": "gh-planter",
+  "pendant": "gh-pendant",
+  "bridge": "gh-bridge-bay",
+  "terrace": "gh-terrace"
+ },
+ "nodes": [
+  {
+   "id": "hall",
+   "type": "group",
+   "group": "gallery",
+   "bindings": {
+    "pitch": 4.2,
+    "bays": "$bays",
+    "northFrame": 1,
+    "span": 10,
+    "spring": 6.6,
+    "rise": 4.8,
+    "gauge": 1
+   }
+  },
+  {
+   "id": "door-screen",
+   "type": "group",
+   "group": "screen",
+   "bindings": {
+    "door": 1,
+    "span": 10,
+    "spring": 6.6,
+    "rise": 4.8,
+    "gauge": 1
+   }
+  },
+  {
+   "id": "back-screen",
+   "type": "group",
+   "group": "screen",
+   "bindings": {
+    "door": 0,
+    "span": 10,
+    "spring": 6.6,
+    "rise": 4.8,
+    "gauge": 1
+   }
+  },
+  {
+   "id": "front",
+   "type": "connect",
+   "inputs": [
+    "door-screen"
+   ],
+   "options": {
+    "a": [
+     "@hall",
+     "south"
+    ],
+    "b": [
+     "@door-screen",
+     "section"
+    ]
+   }
+  },
+  {
+   "id": "back",
+   "type": "connect",
+   "inputs": [
+    "back-screen"
+   ],
+   "options": {
+    "a": [
+     "@hall",
+     "north"
+    ],
+    "b": [
+     "@back-screen",
+     "section"
+    ]
+   }
+  },
+  {
+   "id": "planter",
+   "type": "group",
+   "group": "planter"
+  },
+  {
+   "id": "planters-east-at",
+   "type": "line",
+   "options": {
+    "start": [
+     4.25,
+     2.1,
+     0
+    ],
+    "step": [
+     0,
+     4.2,
+     0
+    ],
+    "count": "$bays"
+   }
+  },
+  {
+   "id": "planters-east",
+   "type": "instance",
+   "inputs": [
+    "planters-east-at",
+    "planter"
+   ],
+   "options": {
+    "randomSeed": 3,
+    "rotation": [
+     0,
+     0,
+     [
+      "*",
+      "@random",
+      6.28
+     ]
+    ],
+    "tint": [
+     [
+      "+",
+      0.72,
+      [
+       "*",
+       "@random",
+       0.28
+      ]
+     ],
+     [
+      "+",
+      0.8,
+      [
+       "*",
+       "@random",
+       0.2
+      ]
+     ],
+     [
+      "+",
+      0.66,
+      [
+       "*",
+       "@random",
+       0.34
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "id": "planters-west-at",
+   "type": "line",
+   "options": {
+    "start": [
+     -4.25,
+     2.1,
+     0
+    ],
+    "step": [
+     0,
+     4.2,
+     0
+    ],
+    "count": "$bays"
+   }
+  },
+  {
+   "id": "planters-west",
+   "type": "instance",
+   "inputs": [
+    "planters-west-at",
+    "planter"
+   ],
+   "options": {
+    "randomSeed": 7,
+    "rotation": [
+     0,
+     0,
+     [
+      "*",
+      "@random",
+      6.28
+     ]
+    ],
+    "tint": [
+     [
+      "+",
+      0.72,
+      [
+       "*",
+       "@random",
+       0.28
+      ]
+     ],
+     [
+      "+",
+      0.8,
+      [
+       "*",
+       "@random",
+       0.2
+      ]
+     ],
+     [
+      "+",
+      0.66,
+      [
+       "*",
+       "@random",
+       0.34
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "id": "lamp",
+   "type": "group",
+   "group": "pendant",
+   "bindings": {
+    "drop": 4.0
+   }
+  },
+  {
+   "id": "lamps-at",
+   "type": "line",
+   "options": {
+    "start": [
+     0,
+     2.1,
+     11.319999999999999
+    ],
+    "step": [
+     0,
+     4.2,
+     0
+    ],
+    "count": "$bays"
+   }
+  },
+  {
+   "id": "lamps",
+   "type": "instance",
+   "inputs": [
+    "lamps-at",
+    "lamp"
+   ]
+  },
+  {
+   "id": "out",
+   "type": "join",
+   "inputs": [
+    "hall",
+    "front",
+    "back",
+    "planters-east",
+    "planters-west",
+    "lamps"
+   ]
+  }
+ ],
+ "output": "out"
+}

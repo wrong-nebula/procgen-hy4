@@ -1,0 +1,18 @@
+{
+  "name": "weld",
+  "description": "Vertex welding (mesh cleanup); also dominates make_box. Minimize weld time on a 98k-quad box given as polygon soup (393k corners -> 98k vertices). Output must be watertight with exact volume.",
+  "build": [
+    ["cmake", "--build", "--preset", "release", "-j", "8"],
+    ["cmake", "--build", "--preset", "asan", "-j", "8"]
+  ],
+  "verify": [
+    ["./build-release/pg_tests"],
+    ["./build-asan/pg_tests"]
+  ],
+  "bench": ["./build-release/pg_bench", "--json", "--reps", "15"],
+  "trials": 3,
+  "objective": { "case": "weld_soup_box128", "metric": "median_ns" },
+  "guards": ["make_box_seg128", "extrude_region_box128_top", "extrude_region_box128_all", "analyze_box_seg128_noSI"],
+  "min_gain": 0.05,
+  "guard_tolerance": 0.10
+}

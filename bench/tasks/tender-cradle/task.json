@@ -1,0 +1,79 @@
+{
+ "id": "tender-cradle",
+ "title": "Boat cradle on the dock floor",
+ "module": "tender-cradle",
+ "renders": [
+  {
+   "name": "iso-beauty",
+   "view": "iso",
+   "pass": "beauty",
+   "size": "1280x960"
+  },
+  {
+   "name": "iso-clay",
+   "view": "iso",
+   "pass": "clay",
+   "size": "1280x960"
+  },
+  {
+   "name": "opposite-beauty",
+   "view": "opposite",
+   "pass": "beauty",
+   "size": "1280x960"
+  },
+  {
+   "name": "front-clay",
+   "view": "front",
+   "pass": "clay",
+   "size": "1280x960",
+   "projection": "ortho"
+  },
+  {
+   "name": "parts",
+   "view": "iso",
+   "pass": "parts",
+   "size": "960x720"
+  }
+ ],
+ "baseline": null,
+ "scrub": {
+  "leak_terms": []
+ },
+ "contract": {
+  "controls": {
+   "length": [
+    6,
+    4,
+    9
+   ]
+  },
+  "ports": {
+   "floor": {
+    "type": "footing",
+    "origin": [
+     0,
+     0,
+     0
+    ],
+    "normal": [
+     0,
+     0,
+     -1
+    ],
+    "dims": {
+     "width": 2.5
+    }
+   }
+  },
+  "envelope": {
+   "z": [
+    "-0.05",
+    "length"
+   ]
+  },
+  "span": {
+   "x": "length"
+  },
+  "min_materials": 3
+ }
+}

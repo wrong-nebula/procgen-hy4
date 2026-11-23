@@ -1,0 +1,97 @@
+{
+ "id": "iron-shopfront",
+ "title": "Brussels painted-iron shopfront",
+ "module": "iron-shopfront",
+ "renders": [
+  {
+   "name": "iso-beauty",
+   "view": "iso",
+   "pass": "beauty",
+   "size": "1280x960"
+  },
+  {
+   "name": "iso-clay",
+   "view": "iso",
+   "pass": "clay",
+   "size": "1280x960"
+  },
+  {
+   "name": "opposite-beauty",
+   "view": "opposite",
+   "pass": "beauty",
+   "size": "1280x960"
+  },
+  {
+   "name": "front-clay",
+   "view": "front",
+   "pass": "clay",
+   "size": "1280x960",
+   "projection": "ortho"
+  },
+  {
+   "name": "parts",
+   "view": "iso",
+   "pass": "parts",
+   "size": "960x720"
+  }
+ ],
+ "baseline": null,
+ "scrub": {
+  "leak_terms": []
+ },
+ "contract": {
+  "controls": {
+   "width": [
+    4.5,
+    3,
+    7
+   ],
+   "height": [
+    3.6,
+    3,
+    4.6
+   ],
+   "name": [
+    0,
+    0,
+    2
+   ]
+  },
+  "ports": {
+   "wall": {
+    "type": "wall",
+    "origin": [
+     0,
+     0,
+     0
+    ],
+    "normal": [
+     0,
+     -1,
+     0
+    ],
+    "dims": {
+     "width": "width",
+     "height": "height"
+    }
+   }
+  },
+  "envelope": {
+   "x": [
+    "-width/2 - 0.1",
+    "width/2 + 0.1"
+   ]
+  },
+  "span": {
+   "x": "width",
+   "z": "height - 0.1"
+  },
+  "clearances": {
+   "vestibule": {
+    "lo": ["-width * 0.06", "-0.08", "0.14"],
+    "hi": ["width * 0.06", "0.35", "height * 0.52"]
+   }
+  },
+  "min_materials": 4
+ }
+}

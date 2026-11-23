@@ -1,0 +1,57 @@
+{
+ "version": 1,
+ "kit": "city-gate",
+ "modules": {
+  "city-gate": {
+   "document": "city-gate.json",
+   "ports": {
+    "road-front": {
+     "origin": [
+      0.0,
+      [
+       "-",
+       0,
+       "$gate-half-depth"
+      ],
+      0.0
+     ],
+     "normal": [
+      0.0,
+      -1.0,
+      0.0
+     ],
+     "up": [
+      0,
+      0,
+      1
+     ],
+     "type": "deck",
+     "dimensions": {
+      "width": 5
+     }
+    },
+    "road-back": {
+     "origin": [
+      0.0,
+      "$gate-half-depth",
+      0.0
+     ],
+     "normal": [
+      0.0,
+      1.0,
+      0.0
+     ],
+     "up": [
+      0,
+      0,
+      1
+     ],
+     "type": "deck",
+     "dimensions": {
+      "width": 5
+     }
+    }
+   }
+  }
+ }
+}

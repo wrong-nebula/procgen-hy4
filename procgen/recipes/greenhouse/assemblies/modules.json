@@ -1,0 +1,115 @@
+{
+ "version": 1,
+ "kit": "greenhouse-assemblies",
+ "imports": [
+  "../nave",
+  "../crossing",
+  "../fittings"
+ ],
+ "modules": {
+  "gh-potting-house": {
+   "document": "gh-potting-house.json",
+   "ports": {
+    "door": {
+     "origin": [
+      0,
+      0,
+      0
+     ],
+     "normal": [
+      0,
+      -1,
+      0
+     ],
+     "up": [
+      0,
+      0,
+      1
+     ],
+     "type": "deck",
+     "dimensions": {
+      "width": 0.9
+     }
+    }
+   }
+  },
+  "gh-orangery": {
+   "document": "gh-orangery.json",
+   "ports": {
+    "door": {
+     "origin": [
+      0,
+      0,
+      0
+     ],
+     "normal": [
+      0,
+      -1,
+      0
+     ],
+     "up": [
+      0,
+      0,
+      1
+     ],
+     "type": "deck",
+     "dimensions": {
+      "width": 2.4
+     }
+    }
+   }
+  },
+  "gh-winter-garden": {
+   "document": "gh-winter-garden.json",
+   "ports": {
+    "entry": {
+     "origin": [
+      0,
+      0,
+      0
+     ],
+     "normal": [
+      0,
+      -1,
+      0
+     ],
+     "up": [
+      0,
+      0,
+      1
+     ],
+     "type": "deck",
+     "dimensions": {
+      "width": 2.4
+     }
+    }
+   }
+  },
+  "gh-palm-house": {
+   "document": "gh-palm-house.json",
+   "ports": {
+    "door": {
+     "origin": [
+      0,
+      0,
+      0
+     ],
+     "normal": [
+      0,
+      -1,
+      0
+     ],
+     "up": [
+      0,
+      0,
+      1
+     ],
+     "type": "deck",
+     "dimensions": {
+      "width": 3.2
+     }
+    }
+   }
+  }
+ }
+}

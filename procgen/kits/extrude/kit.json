@@ -1,0 +1,18 @@
+{
+  "name": "extrude",
+  "description": "Region extrude of a 16k-face patch on a 98k-face box; output must stay watertight, intersection-free, and volume-exact.",
+  "build": [
+    ["cmake", "--build", "--preset", "release", "-j", "8"],
+    ["cmake", "--build", "--preset", "asan", "-j", "8"]
+  ],
+  "verify": [
+    ["./build-release/pg_tests"],
+    ["./build-asan/pg_tests"]
+  ],
+  "bench": ["./build-release/pg_bench", "--json", "--reps", "21", "--filter", "extrude"],
+  "trials": 3,
+  "objective": { "case": "extrude_region_box128_top", "metric": "median_ns" },
+  "guards": ["extrude_region_box128_all", "extrude_individual_grid256"],
+  "min_gain": 0.05,
+  "guard_tolerance": 0.10
+}

@@ -1,0 +1,274 @@
+{
+ "version": 1,
+ "kit": "greenhouse-nave",
+ "imports": [
+  "../foundry",
+  "../glazing"
+ ],
+ "modules": {
+  "gh-bay": {
+   "document": "gh-bay.json",
+   "ports": {
+    "south": {
+     "origin": [
+      0,
+      0,
+      0
+     ],
+     "normal": [
+      0,
+      -1,
+      0
+     ],
+     "up": [
+      0,
+      0,
+      1
+     ],
+     "type": "greenhouse.section",
+     "dimensions": {
+      "span": "$span",
+      "spring": "$spring",
+      "rise": "$rise",
+      "gauge": "$gauge"
+     }
+    },
+    "north": {
+     "origin": [
+      0,
+      "$pitch",
+      0
+     ],
+     "normal": [
+      0,
+      1,
+      0
+     ],
+     "up": [
+      0,
+      0,
+      1
+     ],
+     "type": "greenhouse.section",
+     "dimensions": {
+      "span": "$span",
+      "spring": "$spring",
+      "rise": "$rise",
+      "gauge": "$gauge"
+     }
+    },
+    "east": {
+     "origin": [
+      [
+       "*",
+       "$span",
+       0.5
+      ],
+      [
+       "*",
+       "$pitch",
+       0.5
+      ],
+      0
+     ],
+     "normal": [
+      1,
+      0,
+      0
+     ],
+     "up": [
+      0,
+      0,
+      1
+     ],
+     "type": "greenhouse.side",
+     "dimensions": {
+      "pitch": "$pitch",
+      "spring": "$spring",
+      "gauge": "$gauge"
+     }
+    },
+    "west": {
+     "origin": [
+      [
+       "-",
+       0,
+       [
+        "*",
+        "$span",
+        0.5
+       ]
+      ],
+      [
+       "*",
+       "$pitch",
+       0.5
+      ],
+      0
+     ],
+     "normal": [
+      -1,
+      0,
+      0
+     ],
+     "up": [
+      0,
+      0,
+      1
+     ],
+     "type": "greenhouse.side",
+     "dimensions": {
+      "pitch": "$pitch",
+      "spring": "$spring",
+      "gauge": "$gauge"
+     }
+    }
+   }
+  },
+  "gh-gallery": {
+   "document": "gh-gallery.json",
+   "ports": {
+    "south": {
+     "origin": [
+      0,
+      0,
+      0
+     ],
+     "normal": [
+      0,
+      -1,
+      0
+     ],
+     "up": [
+      0,
+      0,
+      1
+     ],
+     "type": "greenhouse.section",
+     "dimensions": {
+      "span": "$span",
+      "spring": "$spring",
+      "rise": "$rise",
+      "gauge": "$gauge"
+     }
+    },
+    "north": {
+     "origin": [
+      0,
+      [
+       "*",
+       "$bays",
+       "$pitch"
+      ],
+      0
+     ],
+     "normal": [
+      0,
+      1,
+      0
+     ],
+     "up": [
+      0,
+      0,
+      1
+     ],
+     "type": "greenhouse.section",
+     "dimensions": {
+      "span": "$span",
+      "spring": "$spring",
+      "rise": "$rise",
+      "gauge": "$gauge"
+     }
+    }
+   }
+  },
+  "gh-lean-to": {
+   "document": "gh-lean-to.json",
+   "ports": {
+    "inner": {
+     "origin": [
+      0,
+      [
+       "*",
+       "$pitch",
+       0.5
+      ],
+      0
+     ],
+     "normal": [
+      -1,
+      0,
+      0
+     ],
+     "up": [
+      0,
+      0,
+      1
+     ],
+     "type": "greenhouse.side",
+     "dimensions": {
+      "pitch": "$pitch",
+      "spring": "$spring",
+      "gauge": "$gauge"
+     }
+    },
+    "south": {
+     "origin": [
+      [
+       "*",
+       "$width",
+       0.5
+      ],
+      0,
+      0
+     ],
+     "normal": [
+      0,
+      -1,
+      0
+     ],
+     "up": [
+      0,
+      0,
+      1
+     ],
+     "type": "greenhouse.aisle",
+     "dimensions": {
+      "width": "$width",
+      "spring": "$spring",
+      "eave": "$eave",
+      "gauge": "$gauge"
+     }
+    },
+    "north": {
+     "origin": [
+      [
+       "*",
+       "$width",
+       0.5
+      ],
+      "$pitch",
+      0
+     ],
+     "normal": [
+      0,
+      1,
+      0
+     ],
+     "up": [
+      0,
+      0,
+      1
+     ],
+     "type": "greenhouse.aisle",
+     "dimensions": {
+      "width": "$width",
+      "spring": "$spring",
+      "eave": "$eave",
+      "gauge": "$gauge"
+     }
+    }
+   }
+  }
+ }
+}

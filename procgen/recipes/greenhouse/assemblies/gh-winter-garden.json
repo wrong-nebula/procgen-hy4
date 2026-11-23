@@ -1,0 +1,376 @@
+{
+ "version": 1,
+ "references": {
+  "atlas": [
+   "G01",
+   "G02",
+   "G08"
+  ],
+  "sources": [
+   "laeken",
+   "greisch"
+  ],
+  "plates": [
+   "s09"
+  ],
+  "notes": "Nave, domed crossing and wings after the Laeken winter garden.",
+  "review": {
+   "by": "Fable 5.2",
+   "reviewed": "Opus 5.5 (medium)",
+   "date": "2026-11-15",
+   "seen": "sheet renders",
+   "weak": "Assembly; not looked at in this review.",
+   "improve": [
+    "Pack grew 1.3 to 3.1 MB after baking; glass is opaque in the engine until a transparency pass [transcript]"
+   ],
+   "pass1": "Audit: fixed through gh-bay, gh-gallery and gh-terrace.",
+   "left": [
+    "Pack grew 1.3 to 3.1 MB after baking; glass is opaque in the engine until a transparency pass [transcript]"
+   ]
+  }
+ },
+ "controls": {
+  "bays": {
+   "value": 3,
+   "min": 1,
+   "max": 16,
+   "integer": true
+  },
+  "lantern": {
+   "value": 8,
+   "min": 2,
+   "max": 20
+  },
+  "platform": {
+   "value": 3.6,
+   "min": 1.5,
+   "max": 12
+  }
+ },
+ "modulePorts": {
+  "entry": {
+   "origin": [
+    0,
+    0,
+    0
+   ],
+   "normal": [
+    0,
+    -1,
+    0
+   ],
+   "up": [
+    0,
+    0,
+    1
+   ],
+   "type": "deck",
+   "dimensions": {
+    "width": 2.4
+   }
+  }
+ },
+ "moduleImports": {
+  "gallery": "gh-gallery",
+  "bay": "gh-bay",
+  "aisle": "gh-lean-to",
+  "screen": "gh-end-screen",
+  "crossing": "gh-crossing",
+  "planter": "gh-planter",
+  "pendant": "gh-pendant",
+  "bridge": "gh-bridge-bay",
+  "terrace": "gh-terrace"
+ },
+ "nodes": [
+  {
+   "id": "nave",
+   "type": "group",
+   "group": "gallery",
+   "bindings": {
+    "pitch": 4.2,
+    "bays": "$bays",
+    "plinth": "$platform",
+    "span": 10,
+    "spring": 6.6,
+    "rise": 4.8,
+    "gauge": 1
+   }
+  },
+  {
+   "id": "hall",
+   "type": "group",
+   "group": "crossing",
+   "bindings": {
+    "lantern": "$lantern",
+    "plinth": "$platform",
+    "span": 10,
+    "spring": 6.6,
+    "rise": 4.8,
+    "gauge": 1
+   }
+  },
+  {
+   "id": "hall-at",
+   "type": "connect",
+   "inputs": [
+    "hall"
+   ],
+   "options": {
+    "a": [
+     "@nave",
+     "north"
+    ],
+    "b": [
+     "@hall",
+     "south"
+    ]
+   }
+  },
+  {
+   "id": "wing",
+   "type": "group",
+   "group": "gallery",
+   "bindings": {
+    "pitch": 4.2,
+    "bays": "$bays",
+    "southFrame": 0,
+    "northFrame": 1,
+    "plinth": "$platform",
+    "span": 10,
+    "spring": 6.6,
+    "rise": 4.8,
+    "gauge": 1
+   }
+  },
+  {
+   "id": "door-screen",
+   "type": "group",
+   "group": "screen",
+   "bindings": {
+    "door": 1,
+    "span": 10,
+    "spring": 6.6,
+    "rise": 4.8,
+    "gauge": 1
+   }
+  },
+  {
+   "id": "closed-screen",
+   "type": "group",
+   "group": "screen",
+   "bindings": {
+    "door": 0,
+    "span": 10,
+    "spring": 6.6,
+    "rise": 4.8,
+    "gauge": 1
+   }
+  },
+  {
+   "id": "entry-screen",
+   "type": "connect",
+   "inputs": [
+    "door-screen"
+   ],
+   "options": {
+    "a": [
+     "@nave",
+     "south"
+    ],
+    "b": [
+     "@door-screen",
+     "section"
+    ]
+   }
+  },
+  {
+   "id": "wing-north",
+   "type": "connect",
+   "inputs": [
+    "wing"
+   ],
+   "options": {
+    "a": [
+     "@hall-at",
+     "north"
+    ],
+    "b": [
+     "@wing",
+     "south"
+    ]
+   }
+  },
+  {
+   "id": "screen-north",
+   "type": "connect",
+   "inputs": [
+    "door-screen"
+   ],
+   "options": {
+    "a": [
+     "@wing-north",
+     "north"
+    ],
+    "b": [
+     "@door-screen",
+     "section"
+    ]
+   }
+  },
+  {
+   "id": "wing-east",
+   "type": "connect",
+   "inputs": [
+    "wing"
+   ],
+   "options": {
+    "a": [
+     "@hall-at",
+     "east"
+    ],
+    "b": [
+     "@wing",
+     "south"
+    ]
+   }
+  },
+  {
+   "id": "screen-east",
+   "type": "connect",
+   "inputs": [
+    "closed-screen"
+   ],
+   "options": {
+    "a": [
+     "@wing-east",
+     "north"
+    ],
+    "b": [
+     "@closed-screen",
+     "section"
+    ]
+   }
+  },
+  {
+   "id": "wing-west",
+   "type": "connect",
+   "inputs": [
+    "wing"
+   ],
+   "options": {
+    "a": [
+     "@hall-at",
+     "west"
+    ],
+    "b": [
+     "@wing",
+     "south"
+    ]
+   }
+  },
+  {
+   "id": "screen-west",
+   "type": "connect",
+   "inputs": [
+    "closed-screen"
+   ],
+   "options": {
+    "a": [
+     "@wing-west",
+     "north"
+    ],
+    "b": [
+     "@closed-screen",
+     "section"
+    ]
+   }
+  },
+  {
+   "id": "bridge",
+   "type": "group",
+   "group": "bridge",
+   "bindings": {
+    "width": 2.4,
+    "pitch": 4.2
+   }
+  },
+  {
+   "id": "bridge-0",
+   "type": "connect",
+   "inputs": [
+    "bridge"
+   ],
+   "options": {
+    "a": [
+     "@screen-north",
+     "door"
+    ],
+    "b": [
+     "@bridge",
+     "south"
+    ]
+   }
+  },
+  {
+   "id": "bridge-1",
+   "type": "connect",
+   "inputs": [
+    "bridge"
+   ],
+   "options": {
+    "a": [
+     "@bridge-0",
+     "north"
+    ],
+    "b": [
+     "@bridge",
+     "south"
+    ]
+   }
+  },
+  {
+   "id": "terrace",
+   "type": "group",
+   "group": "terrace",
+   "bindings": {
+    "height": "$platform"
+   }
+  },
+  {
+   "id": "belvedere",
+   "type": "connect",
+   "inputs": [
+    "terrace"
+   ],
+   "options": {
+    "a": [
+     "@bridge-1",
+     "north"
+    ],
+    "b": [
+     "@terrace",
+     "entry"
+    ]
+   }
+  },
+  {
+   "id": "out",
+   "type": "join",
+   "inputs": [
+    "nave",
+    "hall-at",
+    "entry-screen",
+    "wing-north",
+    "screen-north",
+    "wing-east",
+    "screen-east",
+    "wing-west",
+    "screen-west",
+    "bridge-0",
+    "bridge-1",
+    "belvedere"
+   ]
+  }
+ ],
+ "output": "out"
+}

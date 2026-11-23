@@ -1,0 +1,435 @@
+{
+ "version": 1,
+ "references": {
+  "atlas": [
+   "A01"
+  ],
+  "sources": [
+   "eiffel-xvii",
+   "waucquez-light"
+  ],
+  "plates": [],
+  "notes": "Pendant on a serviceable suspension (A01); the opal lantern is a model design.",
+  "review": {
+   "by": "Fable 5.2",
+   "reviewed": "Opus 5.5 (medium)",
+   "date": "2026-11-15",
+   "seen": "sheet renders",
+   "weak": "Reads well, small.",
+   "pass1": "Not touched.",
+   "left": []
+  }
+ },
+ "controls": {
+  "drop": {
+   "value": 3,
+   "min": 0.8,
+   "max": 20
+  }
+ },
+ "modulePorts": {
+  "mount": {
+   "origin": [
+    0,
+    0,
+    0
+   ],
+   "normal": [
+    0,
+    0,
+    1
+   ],
+   "up": [
+    1,
+    0,
+    0
+   ],
+   "type": "greenhouse.hanger",
+   "dimensions": {
+    "rod": 0.024
+   }
+  }
+ },
+ "nodes": [
+  {
+   "id": "finial-turned-turned",
+   "type": "revolve",
+   "options": {
+    "profile": [
+     [
+      0,
+      -0.65
+     ],
+     [
+      0.06,
+      -0.59
+     ],
+     [
+      0.11,
+      -0.48
+     ],
+     [
+      0.08,
+      -0.4
+     ],
+     [
+      0.2,
+      -0.34
+     ],
+     [
+      0.2,
+      -0.29
+     ],
+     [
+      0,
+      -0.29
+     ]
+    ],
+    "sides": 24
+   }
+  },
+  {
+   "id": "finial-turned",
+   "type": "smoothNormals",
+   "inputs": [
+    "finial-turned-turned"
+   ]
+  },
+  {
+   "id": "cage-bar-path",
+   "type": "curve",
+   "options": {
+    "point": [
+     [
+      "+",
+      0.21,
+      [
+       "*",
+       0.095,
+       [
+        "sin",
+        [
+         "*",
+         "@t",
+         3.141592653589793
+        ]
+       ]
+      ]
+     ],
+     0,
+     [
+      "+",
+      -0.3,
+      [
+       "*",
+       0.62,
+       "@t"
+      ]
+     ]
+    ],
+    "segments": 12
+   }
+  },
+  {
+   "id": "cage-bar",
+   "type": "tube",
+   "inputs": [
+    "cage-bar-path"
+   ],
+   "options": {
+    "radius": 0.014,
+    "sides": 6,
+    "up": [
+     0,
+     1,
+     0
+    ]
+   }
+  },
+  {
+   "id": "cage-at",
+   "type": "line",
+   "options": {
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "step": [
+     0,
+     0,
+     0
+    ],
+    "count": 8
+   }
+  },
+  {
+   "id": "cage",
+   "type": "instance",
+   "inputs": [
+    "cage-at",
+    "cage-bar"
+   ],
+   "options": {
+    "rotation": [
+     0,
+     0,
+     [
+      "+",
+      [
+       "*",
+       "@index",
+       0.7853981633974483
+      ],
+      0
+     ]
+    ]
+   }
+  },
+  {
+   "id": "bronze-parts",
+   "type": "join",
+   "inputs": [
+    "finial-turned",
+    "cage"
+   ]
+  },
+  {
+   "id": "bronze",
+   "type": "material",
+   "inputs": [
+    "bronze-parts"
+   ],
+   "options": {
+    "slot": "bronze"
+   }
+  },
+  {
+   "id": "cap-turned-turned",
+   "type": "revolve",
+   "options": {
+    "profile": [
+     [
+      0,
+      0.29
+     ],
+     [
+      0.21,
+      0.29
+     ],
+     [
+      0.27,
+      0.33
+     ],
+     [
+      0.27,
+      0.38
+     ],
+     [
+      0.19,
+      0.41
+     ],
+     [
+      0.15,
+      0.53
+     ],
+     [
+      0.06,
+      0.6
+     ],
+     [
+      0.06,
+      0.68
+     ],
+     [
+      0,
+      0.68
+     ]
+    ],
+    "sides": 24
+   }
+  },
+  {
+   "id": "cap-turned",
+   "type": "smoothNormals",
+   "inputs": [
+    "cap-turned-turned"
+   ]
+  },
+  {
+   "id": "rod",
+   "type": "sweep",
+   "options": {
+    "path": [
+     [
+      0,
+      0,
+      0.68
+     ],
+     [
+      0,
+      0,
+      "$drop"
+     ]
+    ],
+    "radius": 0.012,
+    "sides": 8
+   }
+  },
+  {
+   "id": "iron-parts",
+   "type": "join",
+   "inputs": [
+    "cap-turned",
+    "rod"
+   ]
+  },
+  {
+   "id": "iron",
+   "type": "material",
+   "inputs": [
+    "iron-parts"
+   ],
+   "options": {
+    "slot": "iron"
+   }
+  },
+  {
+   "id": "globe-turned-turned",
+   "type": "revolve",
+   "options": {
+    "profile": [
+     [
+      0,
+      -0.3
+     ],
+     [
+      0.205,
+      -0.3
+     ],
+     [
+      0.2245090322016128,
+      -0.2625
+     ],
+     [
+      0.24326834323650898,
+      -0.22499999999999998
+     ],
+     [
+      0.2605570233019602,
+      -0.1875
+     ],
+     [
+      0.27571067811865474,
+      -0.15
+     ],
+     [
+      0.2881469612302545,
+      -0.11249999999999999
+     ],
+     [
+      0.29738795325112866,
+      -0.07500000000000001
+     ],
+     [
+      0.30307852804032304,
+      -0.03749999999999998
+     ],
+     [
+      0.305,
+      0.0
+     ],
+     [
+      0.30307852804032304,
+      0.03749999999999998
+     ],
+     [
+      0.29738795325112866,
+      0.07500000000000001
+     ],
+     [
+      0.2881469612302545,
+      0.11249999999999999
+     ],
+     [
+      0.27571067811865474,
+      0.14999999999999997
+     ],
+     [
+      0.2605570233019602,
+      0.1875
+     ],
+     [
+      0.24326834323650898,
+      0.22500000000000003
+     ],
+     [
+      0.22450903220161283,
+      0.2625
+     ],
+     [
+      0.205,
+      0.3
+     ],
+     [
+      0,
+      0.3
+     ]
+    ],
+    "sides": 32
+   }
+  },
+  {
+   "id": "globe-turned",
+   "type": "smoothNormals",
+   "inputs": [
+    "globe-turned-turned"
+   ]
+  },
+  {
+   "id": "globe",
+   "type": "material",
+   "inputs": [
+    "globe-turned"
+   ],
+   "options": {
+    "slot": "opal"
+   }
+  },
+  {
+   "id": "lamp",
+   "type": "join",
+   "inputs": [
+    "bronze",
+    "iron",
+    "globe"
+   ]
+  },
+  {
+   "id": "pendant",
+   "type": "transform",
+   "inputs": [
+    "lamp"
+   ],
+   "options": {
+    "translation": [
+     0,
+     0,
+     [
+      "-",
+      0,
+      "$drop"
+     ]
+    ]
+   }
+  },
+  {
+   "id": "pendant.baked",
+   "type": "bake",
+   "inputs": [
+    "pendant"
+   ]
+  }
+ ],
+ "output": "pendant.baked"
+}

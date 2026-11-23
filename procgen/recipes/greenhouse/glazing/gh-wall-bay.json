@@ -1,0 +1,1113 @@
+{
+ "version": 1,
+ "references": {
+  "atlas": [
+   "G03",
+   "G04"
+  ],
+  "sources": [
+   "vitry",
+   "kew"
+  ],
+  "plates": [
+   "s10"
+  ],
+  "notes": "Glazed arcade on a solid stone base with a projecting coping (Vitry orangery section and cornice); gutter at the springing.",
+  "review": {
+   "by": "Fable 5.2",
+   "reviewed": "Opus 5.5 (medium)",
+   "date": "2026-11-15",
+   "seen": "sheet renders",
+   "weak": "Reads well.",
+   "pass1": "Audit: panes reach the mullions and transoms; the gutter runs back to the wall.",
+   "left": []
+  }
+ },
+ "controls": {
+  "spring": {
+   "value": 6.6,
+   "min": 2.0,
+   "max": 24
+  },
+  "pitch": {
+   "value": 4.2,
+   "min": 1,
+   "max": 10
+  },
+  "gauge": {
+   "value": 1,
+   "min": 0.2,
+   "max": 2.5
+  }
+ },
+ "modulePorts": {
+  "inner": {
+   "origin": [
+    0,
+    [
+     "*",
+     "$pitch",
+     0.5
+    ],
+    0
+   ],
+   "normal": [
+    -1,
+    0,
+    0
+   ],
+   "up": [
+    0,
+    0,
+    1
+   ],
+   "type": "greenhouse.side",
+   "dimensions": {
+    "pitch": "$pitch",
+    "spring": "$spring",
+    "gauge": "$gauge"
+   }
+  }
+ },
+ "nodes": [
+  {
+   "id": "jamb-a",
+   "type": "sweep",
+   "options": {
+    "path": [
+     [
+      0,
+      0.12,
+      0.65
+     ],
+     [
+      0,
+      0.12,
+      [
+       "-",
+       [
+        "/",
+        "$spring",
+        "$gauge"
+       ],
+       1.3
+      ]
+     ]
+    ],
+    "radius": 0.044,
+    "sides": 8
+   }
+  },
+  {
+   "id": "jamb-b",
+   "type": "sweep",
+   "options": {
+    "path": [
+     [
+      0,
+      [
+       "-",
+       [
+        "/",
+        "$pitch",
+        "$gauge"
+       ],
+       0.12
+      ],
+      0.65
+     ],
+     [
+      0,
+      [
+       "-",
+       [
+        "/",
+        "$pitch",
+        "$gauge"
+       ],
+       0.12
+      ],
+      [
+       "-",
+       [
+        "/",
+        "$spring",
+        "$gauge"
+       ],
+       1.3
+      ]
+     ]
+    ],
+    "radius": 0.044,
+    "sides": 8
+   }
+  },
+  {
+   "id": "arch-path",
+   "type": "curve",
+   "options": {
+    "point": [
+     0,
+     [
+      "+",
+      [
+       "*",
+       [
+        "/",
+        "$pitch",
+        "$gauge"
+       ],
+       0.5
+      ],
+      [
+       "*",
+       [
+        "-",
+        [
+         "*",
+         [
+          "/",
+          "$pitch",
+          "$gauge"
+         ],
+         0.5
+        ],
+        0.12
+       ],
+       [
+        "cos",
+        [
+         "*",
+         "@t",
+         3.141592653589793
+        ]
+       ]
+      ]
+     ],
+     [
+      "+",
+      [
+       "-",
+       [
+        "/",
+        "$spring",
+        "$gauge"
+       ],
+       1.3
+      ],
+      [
+       "*",
+       1.16,
+       [
+        "sin",
+        [
+         "*",
+         "@t",
+         3.141592653589793
+        ]
+       ]
+      ]
+     ]
+    ],
+    "segments": 24
+   }
+  },
+  {
+   "id": "arch",
+   "type": "tube",
+   "inputs": [
+    "arch-path"
+   ],
+   "options": {
+    "radius": 0.045,
+    "sides": 10,
+    "up": [
+     1,
+     0,
+     0
+    ]
+   }
+  },
+  {
+   "id": "mullion",
+   "type": "sweep",
+   "options": {
+    "path": [
+     [
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      1
+     ]
+    ],
+    "radius": 0.015,
+    "sides": 6
+   }
+  },
+  {
+   "id": "mullions-at",
+   "type": "line",
+   "options": {
+    "start": [
+     0,
+     [
+      "+",
+      0.12,
+      [
+       "/",
+       [
+        "-",
+        [
+         "/",
+         "$pitch",
+         "$gauge"
+        ],
+        0.24
+       ],
+       [
+        "max",
+        2,
+        [
+         "round",
+         [
+          "/",
+          [
+           "/",
+           "$pitch",
+           "$gauge"
+          ],
+          0.7
+         ]
+        ]
+       ]
+      ]
+     ],
+     0.65
+    ],
+    "step": [
+     0,
+     [
+      "/",
+      [
+       "-",
+       [
+        "/",
+        "$pitch",
+        "$gauge"
+       ],
+       0.24
+      ],
+      [
+       "max",
+       2,
+       [
+        "round",
+        [
+         "/",
+         [
+          "/",
+          "$pitch",
+          "$gauge"
+         ],
+         0.7
+        ]
+       ]
+      ]
+     ],
+     0
+    ],
+    "count": [
+     "-",
+     [
+      "max",
+      2,
+      [
+       "round",
+       [
+        "/",
+        [
+         "/",
+         "$pitch",
+         "$gauge"
+        ],
+        0.7
+       ]
+      ]
+     ],
+     1
+    ]
+   }
+  },
+  {
+   "id": "mullions",
+   "type": "instance",
+   "inputs": [
+    "mullions-at",
+    "mullion"
+   ],
+   "options": {
+    "scale": [
+     1,
+     1,
+     [
+      "+",
+      [
+       "-",
+       [
+        "-",
+        [
+         "/",
+         "$spring",
+         "$gauge"
+        ],
+        1.3
+       ],
+       0.65
+      ],
+      [
+       "*",
+       1.16,
+       [
+        "sqrt",
+        [
+         "max",
+         0,
+         [
+          "-",
+          1,
+          [
+           "*",
+           [
+            "/",
+            [
+             "-",
+             "@y",
+             [
+              "*",
+              [
+               "/",
+               "$pitch",
+               "$gauge"
+              ],
+              0.5
+             ]
+            ],
+            [
+             "-",
+             [
+              "*",
+              [
+               "/",
+               "$pitch",
+               "$gauge"
+              ],
+              0.5
+             ],
+             0.12
+            ]
+           ],
+           [
+            "/",
+            [
+             "-",
+             "@y",
+             [
+              "*",
+              [
+               "/",
+               "$pitch",
+               "$gauge"
+              ],
+              0.5
+             ]
+            ],
+            [
+             "-",
+             [
+              "*",
+              [
+               "/",
+               "$pitch",
+               "$gauge"
+              ],
+              0.5
+             ],
+             0.12
+            ]
+           ]
+          ]
+         ]
+        ]
+       ]
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "id": "transom",
+   "type": "sweep",
+   "options": {
+    "path": [
+     [
+      0,
+      0.12,
+      0
+     ],
+     [
+      0,
+      [
+       "-",
+       [
+        "/",
+        "$pitch",
+        "$gauge"
+       ],
+       0.12
+      ],
+      0
+     ]
+    ],
+    "radius": 0.019,
+    "sides": 6
+   }
+  },
+  {
+   "id": "transoms-at",
+   "type": "line",
+   "options": {
+    "start": [
+     0,
+     0,
+     0.7
+    ],
+    "step": [
+     0,
+     0,
+     [
+      "/",
+      [
+       "-",
+       [
+        "-",
+        [
+         "/",
+         "$spring",
+         "$gauge"
+        ],
+        1.3
+       ],
+       0.7
+      ],
+      [
+       "max",
+       1,
+       [
+        "ceil",
+        [
+         "/",
+         [
+          "-",
+          [
+           "-",
+           [
+            "/",
+            "$spring",
+            "$gauge"
+           ],
+           1.3
+          ],
+          0.7
+         ],
+         1.3
+        ]
+       ]
+      ]
+     ]
+    ],
+    "count": [
+     "+",
+     [
+      "max",
+      1,
+      [
+       "ceil",
+       [
+        "/",
+        [
+         "-",
+         [
+          "-",
+          [
+           "/",
+           "$spring",
+           "$gauge"
+          ],
+          1.3
+         ],
+         0.7
+        ],
+        1.3
+       ]
+      ]
+     ],
+     1
+    ]
+   }
+  },
+  {
+   "id": "transoms",
+   "type": "instance",
+   "inputs": [
+    "transoms-at",
+    "transom"
+   ]
+  },
+  {
+   "id": "frame-parts",
+   "type": "join",
+   "inputs": [
+    "jamb-a",
+    "jamb-b",
+    "arch",
+    "mullions",
+    "transoms"
+   ]
+  },
+  {
+   "id": "gutter-stock",
+   "type": "cube",
+   "options": {
+    "size": [
+     0.42,
+     [
+      "/",
+      "$pitch",
+      "$gauge"
+     ],
+     0.15
+    ]
+   }
+  },
+  {
+   "id": "gutter",
+   "type": "transform",
+   "inputs": [
+    "gutter-stock"
+   ],
+   "options": {
+    "translation": [
+     0.19,
+     [
+      "*",
+      [
+       "/",
+       "$pitch",
+       "$gauge"
+      ],
+      0.5
+     ],
+     [
+      "-",
+      [
+       "/",
+       "$spring",
+       "$gauge"
+      ],
+      0.045
+     ]
+    ]
+   }
+  },
+  {
+   "id": "iron-parts",
+   "type": "join",
+   "inputs": [
+    "frame-parts",
+    "gutter"
+   ]
+  },
+  {
+   "id": "ironwork",
+   "type": "material",
+   "inputs": [
+    "iron-parts"
+   ],
+   "options": {
+    "slot": "iron"
+   }
+  },
+  {
+   "id": "bead-stock",
+   "type": "sweep",
+   "options": {
+    "path": [
+     [
+      0.26,
+      0,
+      [
+       "+",
+       [
+        "/",
+        "$spring",
+        "$gauge"
+       ],
+       0.05
+      ]
+     ],
+     [
+      0.26,
+      [
+       "/",
+       "$pitch",
+       "$gauge"
+      ],
+      [
+       "+",
+       [
+        "/",
+        "$spring",
+        "$gauge"
+       ],
+       0.05
+      ]
+     ]
+    ],
+    "radius": 0.05,
+    "sides": 8
+   }
+  },
+  {
+   "id": "bead",
+   "type": "material",
+   "inputs": [
+    "bead-stock"
+   ],
+   "options": {
+    "slot": "bronze"
+   }
+  },
+  {
+   "id": "panes",
+   "type": "patch",
+   "options": {
+    "point": [
+     0,
+     [
+      "+",
+      0.12,
+      [
+       "*",
+       "@u",
+       [
+        "-",
+        [
+         "/",
+         "$pitch",
+         "$gauge"
+        ],
+        0.24
+       ]
+      ]
+     ],
+     [
+      "+",
+      0.7,
+      [
+       "*",
+       "@v",
+       [
+        "-",
+        [
+         "-",
+         [
+          "/",
+          "$spring",
+          "$gauge"
+         ],
+         1.3
+        ],
+        0.7
+       ]
+      ]
+     ]
+    ],
+    "panels": [
+     [
+      "max",
+      2,
+      [
+       "round",
+       [
+        "/",
+        [
+         "/",
+         "$pitch",
+         "$gauge"
+        ],
+        0.7
+       ]
+      ]
+     ],
+     [
+      "max",
+      1,
+      [
+       "ceil",
+       [
+        "/",
+        [
+         "-",
+         [
+          "-",
+          [
+           "/",
+           "$spring",
+           "$gauge"
+          ],
+          1.3
+         ],
+         0.7
+        ],
+        1.3
+       ]
+      ]
+     ]
+    ],
+    "inset": [
+     0.012,
+     0.012
+    ],
+    "divisions": [
+     1,
+     1
+    ],
+    "thickness": 0.008
+   }
+  },
+  {
+   "id": "arch-panes",
+   "type": "patch",
+   "options": {
+    "point": [
+     0,
+     [
+      "+",
+      0.12,
+      [
+       "*",
+       "@u",
+       [
+        "-",
+        [
+         "/",
+         "$pitch",
+         "$gauge"
+        ],
+        0.24
+       ]
+      ]
+     ],
+     [
+      "+",
+      [
+       "-",
+       [
+        "/",
+        "$spring",
+        "$gauge"
+       ],
+       1.3
+      ],
+      [
+       "*",
+       "@v",
+       [
+        "*",
+        1.16,
+        [
+         "sqrt",
+         [
+          "max",
+          0,
+          [
+           "-",
+           1,
+           [
+            "*",
+            [
+             "/",
+             [
+              "-",
+              [
+               "+",
+               0.12,
+               [
+                "*",
+                "@u",
+                [
+                 "-",
+                 [
+                  "/",
+                  "$pitch",
+                  "$gauge"
+                 ],
+                 0.24
+                ]
+               ]
+              ],
+              [
+               "*",
+               [
+                "/",
+                "$pitch",
+                "$gauge"
+               ],
+               0.5
+              ]
+             ],
+             [
+              "-",
+              [
+               "*",
+               [
+                "/",
+                "$pitch",
+                "$gauge"
+               ],
+               0.5
+              ],
+              0.12
+             ]
+            ],
+            [
+             "/",
+             [
+              "-",
+              [
+               "+",
+               0.12,
+               [
+                "*",
+                "@u",
+                [
+                 "-",
+                 [
+                  "/",
+                  "$pitch",
+                  "$gauge"
+                 ],
+                 0.24
+                ]
+               ]
+              ],
+              [
+               "*",
+               [
+                "/",
+                "$pitch",
+                "$gauge"
+               ],
+               0.5
+              ]
+             ],
+             [
+              "-",
+              [
+               "*",
+               [
+                "/",
+                "$pitch",
+                "$gauge"
+               ],
+               0.5
+              ],
+              0.12
+             ]
+            ]
+           ]
+          ]
+         ]
+        ]
+       ]
+      ]
+     ]
+    ],
+    "panels": [
+     [
+      "max",
+      2,
+      [
+       "round",
+       [
+        "/",
+        [
+         "/",
+         "$pitch",
+         "$gauge"
+        ],
+        0.7
+       ]
+      ]
+     ],
+     1
+    ],
+    "inset": [
+     0.012,
+     0.012
+    ],
+    "divisions": [
+     4,
+     1
+    ],
+    "thickness": 0.008
+   }
+  },
+  {
+   "id": "glass-parts",
+   "type": "join",
+   "inputs": [
+    "panes",
+    "arch-panes"
+   ]
+  },
+  {
+   "id": "glass",
+   "type": "material",
+   "inputs": [
+    "glass-parts"
+   ],
+   "options": {
+    "slot": "glass"
+   }
+  },
+  {
+   "id": "sill-stock",
+   "type": "cube",
+   "options": {
+    "size": [
+     0.64,
+     [
+      "/",
+      "$pitch",
+      "$gauge"
+     ],
+     0.56
+    ]
+   }
+  },
+  {
+   "id": "sill",
+   "type": "transform",
+   "inputs": [
+    "sill-stock"
+   ],
+   "options": {
+    "translation": [
+     0,
+     [
+      "*",
+      [
+       "/",
+       "$pitch",
+       "$gauge"
+      ],
+      0.5
+     ],
+     0.28
+    ]
+   }
+  },
+  {
+   "id": "coping-stock",
+   "type": "cube",
+   "options": {
+    "size": [
+     0.76,
+     [
+      "/",
+      "$pitch",
+      "$gauge"
+     ],
+     0.09
+    ]
+   }
+  },
+  {
+   "id": "coping",
+   "type": "transform",
+   "inputs": [
+    "coping-stock"
+   ],
+   "options": {
+    "translation": [
+     0,
+     [
+      "*",
+      [
+       "/",
+       "$pitch",
+       "$gauge"
+      ],
+      0.5
+     ],
+     0.605
+    ]
+   }
+  },
+  {
+   "id": "stone-parts",
+   "type": "join",
+   "inputs": [
+    "sill",
+    "coping"
+   ]
+  },
+  {
+   "id": "stone",
+   "type": "material",
+   "inputs": [
+    "stone-parts"
+   ],
+   "options": {
+    "slot": "stone"
+   }
+  },
+  {
+   "id": "all",
+   "type": "join",
+   "inputs": [
+    "ironwork",
+    "bead",
+    "glass",
+    "stone"
+   ]
+  },
+  {
+   "id": "wall",
+   "type": "transform",
+   "inputs": [
+    "all"
+   ],
+   "options": {
+    "scale": [
+     "$gauge",
+     "$gauge",
+     "$gauge"
+    ]
+   }
+  },
+  {
+   "id": "wall.baked",
+   "type": "bake",
+   "inputs": [
+    "wall"
+   ]
+  }
+ ],
+ "output": "wall.baked"
+}

@@ -1,0 +1,11493 @@
+{
+ "version": 1,
+ "references": {
+  "atlas": [
+   "G04"
+  ],
+  "sources": [],
+  "plates": [],
+  "notes": "Glasshouse service ventilator after the supplied G04/G10 brief; no measured maker drawing was consulted. 1.04 m sash, 48 mm frame, 420 mm curved rack, 78 mm pinion and 25 mm shaft are design assumptions. The rack is concentric with the hinge and rotates rigidly with the bottom rail. The horizontal shaft is below the LOWER transverse purlin, not the upper hinge purlin: this keeps the short rack at the bottom rail. The 18 degree opening is limited to the usable toothed quadrant travel.",
+  "other": [
+   "User brief: Glasshouse vent sash with rack gear",
+   "Unmerged atlas ids: G10"
+  ],
+  "review": {
+   "by": "OpenAI GPT-6.1",
+   "reviewed": "OpenAI GPT-6.1",
+   "date": "2026-11-18",
+   "seen": "Beauty, clay, opposite, front and parts renders; closed and open states",
+   "weak": "The shaft is carried under the lower purlin rather than the upper hinge purlin requested in the brief. Quadrant teeth are simplified trapezoids, not generated conjugate tooth forms; engagement is visual, not a mechanical contact simulation. Cast members meet by overlapping closed solids, without foundry fillets.",
+   "improve": [
+    "Maker-derived tooth form and bearing castings [self-review]",
+    "Add a worm reduction for a genuinely self-locking operator [self-review]"
+   ]
+  }
+ },
+ "controls": {
+  "width": {
+   "value": 1.2,
+   "min": 0.8,
+   "max": 1.8
+  },
+  "pitch": {
+   "value": 26,
+   "min": 20,
+   "max": 40
+  },
+  "open": {
+   "value": 0,
+   "min": 0,
+   "max": 1
+  }
+ },
+ "modulePorts": {
+  "roof-west": {
+   "origin": [
+    [
+     "-",
+     [
+      "/",
+      [
+       "-",
+       0,
+       "$width"
+      ],
+      2
+     ],
+     0.6
+    ],
+    0,
+    0
+   ],
+   "normal": [
+    -1,
+    0,
+    0
+   ],
+   "up": [
+    0,
+    0,
+    1
+   ],
+   "type": "deck",
+   "dimensions": {
+    "width": 1.2
+   }
+  },
+  "roof-east": {
+   "origin": [
+    [
+     "+",
+     [
+      "/",
+      "$width",
+      2
+     ],
+     0.6
+    ],
+    0,
+    0
+   ],
+   "normal": [
+    1,
+    0,
+    0
+   ],
+   "up": [
+    0,
+    0,
+    1
+   ],
+   "type": "deck",
+   "dimensions": {
+    "width": 1.2
+   }
+  }
+ },
+ "derived": [
+  [
+   "roof-angle",
+   [
+    "/",
+    [
+     "*",
+     "$pitch",
+     3.141592653589793
+    ],
+    180
+   ]
+  ],
+  [
+   "opening-angle",
+   [
+    "/",
+    [
+     "*",
+     "$open",
+     3.141592653589793
+    ],
+    10
+   ]
+  ],
+  [
+   "sash-length",
+   [
+    "+",
+    1.04,
+    [
+     "*",
+     "$width",
+     0
+    ]
+   ]
+  ],
+  [
+   "frame-section",
+   [
+    "+",
+    0.048,
+    [
+     "*",
+     "$width",
+     0
+    ]
+   ]
+  ],
+  [
+   "roof-half-width",
+   [
+    "+",
+    [
+     "/",
+     "$width",
+     2
+    ],
+    0.6
+   ]
+  ],
+  [
+   "rack-radius",
+   "$sash-length"
+  ],
+  [
+   "shaft-radius-from-hinge",
+   [
+    "+",
+    "$rack-radius",
+    0.049
+   ]
+  ],
+  [
+   "shaft-y",
+   [
+    "*",
+    [
+     "-",
+     0,
+     "$shaft-radius-from-hinge"
+    ],
+    0.9978882436713011
+   ]
+  ],
+  [
+   "shaft-z",
+   [
+    "*",
+    [
+     "-",
+     0,
+     "$shaft-radius-from-hinge"
+    ],
+    0.0649542388347826
+   ]
+  ]
+ ],
+ "nodes": [
+  {
+   "id": "rafter-0-web-blank",
+   "type": "cube",
+   "options": {
+    "size": [
+     0.026,
+     [
+      "+",
+      "$sash-length",
+      0.15
+     ],
+     0.075
+    ]
+   }
+  },
+  {
+   "id": "rafter-0-web-bevel",
+   "type": "boxBevel",
+   "inputs": [
+    "rafter-0-web-blank"
+   ],
+   "options": {
+    "width": 0.002
+   }
+  },
+  {
+   "id": "rafter-0-web-placed",
+   "type": "transform",
+   "inputs": [
+    "rafter-0-web-bevel"
+   ],
+   "options": {
+    "translation": [
+     [
+      "-",
+      0,
+      "$roof-half-width"
+     ],
+     [
+      "/",
+      [
+       "-",
+       0,
+       "$sash-length"
+      ],
+      2
+     ],
+     -0.07
+    ]
+   }
+  },
+  {
+   "id": "rafter-0-web",
+   "type": "transform",
+   "inputs": [
+    "rafter-0-web-placed"
+   ]
+  },
+  {
+   "id": "rafter-0-foot-blank",
+   "type": "cube",
+   "options": {
+    "size": [
+     0.067,
+     [
+      "+",
+      "$sash-length",
+      0.15
+     ],
+     0.016
+    ]
+   }
+  },
+  {
+   "id": "rafter-0-foot-bevel",
+   "type": "boxBevel",
+   "inputs": [
+    "rafter-0-foot-blank"
+   ],
+   "options": {
+    "width": 0.002
+   }
+  },
+  {
+   "id": "rafter-0-foot-placed",
+   "type": "transform",
+   "inputs": [
+    "rafter-0-foot-bevel"
+   ],
+   "options": {
+    "translation": [
+     [
+      "-",
+      0,
+      "$roof-half-width"
+     ],
+     [
+      "/",
+      [
+       "-",
+       0,
+       "$sash-length"
+      ],
+      2
+     ],
+     -0.1
+    ]
+   }
+  },
+  {
+   "id": "rafter-0-foot",
+   "type": "transform",
+   "inputs": [
+    "rafter-0-foot-placed"
+   ]
+  },
+  {
+   "id": "rafter-0-cap-blank",
+   "type": "cube",
+   "options": {
+    "size": [
+     0.05,
+     [
+      "+",
+      "$sash-length",
+      0.15
+     ],
+     0.018
+    ]
+   }
+  },
+  {
+   "id": "rafter-0-cap-bevel",
+   "type": "boxBevel",
+   "inputs": [
+    "rafter-0-cap-blank"
+   ],
+   "options": {
+    "width": 0.002
+   }
+  },
+  {
+   "id": "rafter-0-cap-placed",
+   "type": "transform",
+   "inputs": [
+    "rafter-0-cap-bevel"
+   ],
+   "options": {
+    "translation": [
+     [
+      "-",
+      0,
+      "$roof-half-width"
+     ],
+     [
+      "/",
+      [
+       "-",
+       0,
+       "$sash-length"
+      ],
+      2
+     ],
+     -0.023
+    ]
+   }
+  },
+  {
+   "id": "rafter-0-cap",
+   "type": "transform",
+   "inputs": [
+    "rafter-0-cap-placed"
+   ]
+  },
+  {
+   "id": "rafter-0-fixing-line",
+   "type": "line",
+   "options": {
+    "start": [
+     [
+      "-",
+      0,
+      "$roof-half-width"
+     ],
+     [
+      "-",
+      [
+       "-",
+       0,
+       "$sash-length"
+      ],
+      0.025
+     ],
+     -0.006
+    ],
+    "step": [
+     [
+      "-",
+      [
+       "-",
+       0,
+       "$roof-half-width"
+      ],
+      [
+       "-",
+       0,
+       "$roof-half-width"
+      ]
+     ],
+     [
+      "-",
+      0.025,
+      [
+       "-",
+       [
+        "-",
+        0,
+        "$sash-length"
+       ],
+       0.025
+      ]
+     ],
+     0.0
+    ],
+    "count": 2
+   }
+  },
+  {
+   "id": "rafter-0-fixed",
+   "type": "fastener",
+   "inputs": [
+    "rafter-0-cap",
+    "rafter-0-fixing-line"
+   ],
+   "options": {
+    "head": "slotted",
+    "pitch": 0.18,
+    "radius": 0.005,
+    "height": 0.002,
+    "slot": "bronze"
+   }
+  },
+  {
+   "id": "rafter-1-web-blank",
+   "type": "cube",
+   "options": {
+    "size": [
+     0.026,
+     [
+      "+",
+      "$sash-length",
+      0.15
+     ],
+     0.075
+    ]
+   }
+  },
+  {
+   "id": "rafter-1-web-bevel",
+   "type": "boxBevel",
+   "inputs": [
+    "rafter-1-web-blank"
+   ],
+   "options": {
+    "width": 0.002
+   }
+  },
+  {
+   "id": "rafter-1-web-placed",
+   "type": "transform",
+   "inputs": [
+    "rafter-1-web-bevel"
+   ],
+   "options": {
+    "translation": [
+     [
+      "/",
+      [
+       "-",
+       0,
+       "$width"
+      ],
+      2
+     ],
+     [
+      "/",
+      [
+       "-",
+       0,
+       "$sash-length"
+      ],
+      2
+     ],
+     -0.07
+    ]
+   }
+  },
+  {
+   "id": "rafter-1-web",
+   "type": "transform",
+   "inputs": [
+    "rafter-1-web-placed"
+   ]
+  },
+  {
+   "id": "rafter-1-foot-blank",
+   "type": "cube",
+   "options": {
+    "size": [
+     0.067,
+     [
+      "+",
+      "$sash-length",
+      0.15
+     ],
+     0.016
+    ]
+   }
+  },
+  {
+   "id": "rafter-1-foot-bevel",
+   "type": "boxBevel",
+   "inputs": [
+    "rafter-1-foot-blank"
+   ],
+   "options": {
+    "width": 0.002
+   }
+  },
+  {
+   "id": "rafter-1-foot-placed",
+   "type": "transform",
+   "inputs": [
+    "rafter-1-foot-bevel"
+   ],
+   "options": {
+    "translation": [
+     [
+      "/",
+      [
+       "-",
+       0,
+       "$width"
+      ],
+      2
+     ],
+     [
+      "/",
+      [
+       "-",
+       0,
+       "$sash-length"
+      ],
+      2
+     ],
+     -0.1
+    ]
+   }
+  },
+  {
+   "id": "rafter-1-foot",
+   "type": "transform",
+   "inputs": [
+    "rafter-1-foot-placed"
+   ]
+  },
+  {
+   "id": "rafter-1-cap-blank",
+   "type": "cube",
+   "options": {
+    "size": [
+     0.05,
+     [
+      "+",
+      "$sash-length",
+      0.15
+     ],
+     0.018
+    ]
+   }
+  },
+  {
+   "id": "rafter-1-cap-bevel",
+   "type": "boxBevel",
+   "inputs": [
+    "rafter-1-cap-blank"
+   ],
+   "options": {
+    "width": 0.002
+   }
+  },
+  {
+   "id": "rafter-1-cap-placed",
+   "type": "transform",
+   "inputs": [
+    "rafter-1-cap-bevel"
+   ],
+   "options": {
+    "translation": [
+     [
+      "/",
+      [
+       "-",
+       0,
+       "$width"
+      ],
+      2
+     ],
+     [
+      "/",
+      [
+       "-",
+       0,
+       "$sash-length"
+      ],
+      2
+     ],
+     -0.023
+    ]
+   }
+  },
+  {
+   "id": "rafter-1-cap",
+   "type": "transform",
+   "inputs": [
+    "rafter-1-cap-placed"
+   ]
+  },
+  {
+   "id": "rafter-1-fixing-line",
+   "type": "line",
+   "options": {
+    "start": [
+     [
+      "/",
+      [
+       "-",
+       0,
+       "$width"
+      ],
+      2
+     ],
+     [
+      "-",
+      [
+       "-",
+       0,
+       "$sash-length"
+      ],
+      0.025
+     ],
+     -0.006
+    ],
+    "step": [
+     [
+      "-",
+      [
+       "/",
+       [
+        "-",
+        0,
+        "$width"
+       ],
+       2
+      ],
+      [
+       "/",
+       [
+        "-",
+        0,
+        "$width"
+       ],
+       2
+      ]
+     ],
+     [
+      "-",
+      0.025,
+      [
+       "-",
+       [
+        "-",
+        0,
+        "$sash-length"
+       ],
+       0.025
+      ]
+     ],
+     0.0
+    ],
+    "count": 2
+   }
+  },
+  {
+   "id": "rafter-1-fixed",
+   "type": "fastener",
+   "inputs": [
+    "rafter-1-cap",
+    "rafter-1-fixing-line"
+   ],
+   "options": {
+    "head": "slotted",
+    "pitch": 0.18,
+    "radius": 0.005,
+    "height": 0.002,
+    "slot": "bronze"
+   }
+  },
+  {
+   "id": "rafter-2-web-blank",
+   "type": "cube",
+   "options": {
+    "size": [
+     0.026,
+     [
+      "+",
+      "$sash-length",
+      0.15
+     ],
+     0.075
+    ]
+   }
+  },
+  {
+   "id": "rafter-2-web-bevel",
+   "type": "boxBevel",
+   "inputs": [
+    "rafter-2-web-blank"
+   ],
+   "options": {
+    "width": 0.002
+   }
+  },
+  {
+   "id": "rafter-2-web-placed",
+   "type": "transform",
+   "inputs": [
+    "rafter-2-web-bevel"
+   ],
+   "options": {
+    "translation": [
+     [
+      "/",
+      "$width",
+      2
+     ],
+     [
+      "/",
+      [
+       "-",
+       0,
+       "$sash-length"
+      ],
+      2
+     ],
+     -0.07
+    ]
+   }
+  },
+  {
+   "id": "rafter-2-web",
+   "type": "transform",
+   "inputs": [
+    "rafter-2-web-placed"
+   ]
+  },
+  {
+   "id": "rafter-2-foot-blank",
+   "type": "cube",
+   "options": {
+    "size": [
+     0.067,
+     [
+      "+",
+      "$sash-length",
+      0.15
+     ],
+     0.016
+    ]
+   }
+  },
+  {
+   "id": "rafter-2-foot-bevel",
+   "type": "boxBevel",
+   "inputs": [
+    "rafter-2-foot-blank"
+   ],
+   "options": {
+    "width": 0.002
+   }
+  },
+  {
+   "id": "rafter-2-foot-placed",
+   "type": "transform",
+   "inputs": [
+    "rafter-2-foot-bevel"
+   ],
+   "options": {
+    "translation": [
+     [
+      "/",
+      "$width",
+      2
+     ],
+     [
+      "/",
+      [
+       "-",
+       0,
+       "$sash-length"
+      ],
+      2
+     ],
+     -0.1
+    ]
+   }
+  },
+  {
+   "id": "rafter-2-foot",
+   "type": "transform",
+   "inputs": [
+    "rafter-2-foot-placed"
+   ]
+  },
+  {
+   "id": "rafter-2-cap-blank",
+   "type": "cube",
+   "options": {
+    "size": [
+     0.05,
+     [
+      "+",
+      "$sash-length",
+      0.15
+     ],
+     0.018
+    ]
+   }
+  },
+  {
+   "id": "rafter-2-cap-bevel",
+   "type": "boxBevel",
+   "inputs": [
+    "rafter-2-cap-blank"
+   ],
+   "options": {
+    "width": 0.002
+   }
+  },
+  {
+   "id": "rafter-2-cap-placed",
+   "type": "transform",
+   "inputs": [
+    "rafter-2-cap-bevel"
+   ],
+   "options": {
+    "translation": [
+     [
+      "/",
+      "$width",
+      2
+     ],
+     [
+      "/",
+      [
+       "-",
+       0,
+       "$sash-length"
+      ],
+      2
+     ],
+     -0.023
+    ]
+   }
+  },
+  {
+   "id": "rafter-2-cap",
+   "type": "transform",
+   "inputs": [
+    "rafter-2-cap-placed"
+   ]
+  },
+  {
+   "id": "rafter-2-fixing-line",
+   "type": "line",
+   "options": {
+    "start": [
+     [
+      "/",
+      "$width",
+      2
+     ],
+     [
+      "-",
+      [
+       "-",
+       0,
+       "$sash-length"
+      ],
+      0.025
+     ],
+     -0.006
+    ],
+    "step": [
+     [
+      "-",
+      [
+       "/",
+       "$width",
+       2
+      ],
+      [
+       "/",
+       "$width",
+       2
+      ]
+     ],
+     [
+      "-",
+      0.025,
+      [
+       "-",
+       [
+        "-",
+        0,
+        "$sash-length"
+       ],
+       0.025
+      ]
+     ],
+     0.0
+    ],
+    "count": 2
+   }
+  },
+  {
+   "id": "rafter-2-fixed",
+   "type": "fastener",
+   "inputs": [
+    "rafter-2-cap",
+    "rafter-2-fixing-line"
+   ],
+   "options": {
+    "head": "slotted",
+    "pitch": 0.18,
+    "radius": 0.005,
+    "height": 0.002,
+    "slot": "bronze"
+   }
+  },
+  {
+   "id": "rafter-3-web-blank",
+   "type": "cube",
+   "options": {
+    "size": [
+     0.026,
+     [
+      "+",
+      "$sash-length",
+      0.15
+     ],
+     0.075
+    ]
+   }
+  },
+  {
+   "id": "rafter-3-web-bevel",
+   "type": "boxBevel",
+   "inputs": [
+    "rafter-3-web-blank"
+   ],
+   "options": {
+    "width": 0.002
+   }
+  },
+  {
+   "id": "rafter-3-web-placed",
+   "type": "transform",
+   "inputs": [
+    "rafter-3-web-bevel"
+   ],
+   "options": {
+    "translation": [
+     "$roof-half-width",
+     [
+      "/",
+      [
+       "-",
+       0,
+       "$sash-length"
+      ],
+      2
+     ],
+     -0.07
+    ]
+   }
+  },
+  {
+   "id": "rafter-3-web",
+   "type": "transform",
+   "inputs": [
+    "rafter-3-web-placed"
+   ]
+  },
+  {
+   "id": "rafter-3-foot-blank",
+   "type": "cube",
+   "options": {
+    "size": [
+     0.067,
+     [
+      "+",
+      "$sash-length",
+      0.15
+     ],
+     0.016
+    ]
+   }
+  },
+  {
+   "id": "rafter-3-foot-bevel",
+   "type": "boxBevel",
+   "inputs": [
+    "rafter-3-foot-blank"
+   ],
+   "options": {
+    "width": 0.002
+   }
+  },
+  {
+   "id": "rafter-3-foot-placed",
+   "type": "transform",
+   "inputs": [
+    "rafter-3-foot-bevel"
+   ],
+   "options": {
+    "translation": [
+     "$roof-half-width",
+     [
+      "/",
+      [
+       "-",
+       0,
+       "$sash-length"
+      ],
+      2
+     ],
+     -0.1
+    ]
+   }
+  },
+  {
+   "id": "rafter-3-foot",
+   "type": "transform",
+   "inputs": [
+    "rafter-3-foot-placed"
+   ]
+  },
+  {
+   "id": "rafter-3-cap-blank",
+   "type": "cube",
+   "options": {
+    "size": [
+     0.05,
+     [
+      "+",
+      "$sash-length",
+      0.15
+     ],
+     0.018
+    ]
+   }
+  },
+  {
+   "id": "rafter-3-cap-bevel",
+   "type": "boxBevel",
+   "inputs": [
+    "rafter-3-cap-blank"
+   ],
+   "options": {
+    "width": 0.002
+   }
+  },
+  {
+   "id": "rafter-3-cap-placed",
+   "type": "transform",
+   "inputs": [
+    "rafter-3-cap-bevel"
+   ],
+   "options": {
+    "translation": [
+     "$roof-half-width",
+     [
+      "/",
+      [
+       "-",
+       0,
+       "$sash-length"
+      ],
+      2
+     ],
+     -0.023
+    ]
+   }
+  },
+  {
+   "id": "rafter-3-cap",
+   "type": "transform",
+   "inputs": [
+    "rafter-3-cap-placed"
+   ]
+  },
+  {
+   "id": "rafter-3-fixing-line",
+   "type": "line",
+   "options": {
+    "start": [
+     "$roof-half-width",
+     [
+      "-",
+      [
+       "-",
+       0,
+       "$sash-length"
+      ],
+      0.025
+     ],
+     -0.006
+    ],
+    "step": [
+     [
+      "-",
+      "$roof-half-width",
+      "$roof-half-width"
+     ],
+     [
+      "-",
+      0.025,
+      [
+       "-",
+       [
+        "-",
+        0,
+        "$sash-length"
+       ],
+       0.025
+      ]
+     ],
+     0.0
+    ],
+    "count": 2
+   }
+  },
+  {
+   "id": "rafter-3-fixed",
+   "type": "fastener",
+   "inputs": [
+    "rafter-3-cap",
+    "rafter-3-fixing-line"
+   ],
+   "options": {
+    "head": "slotted",
+    "pitch": 0.18,
+    "radius": 0.005,
+    "height": 0.002,
+    "slot": "bronze"
+   }
+  },
+  {
+   "id": "head-purlin-web-blank",
+   "type": "cube",
+   "options": {
+    "size": [
+     [
+      "+",
+      [
+       "*",
+       "$roof-half-width",
+       2
+      ],
+      0.06
+     ],
+     0.03,
+     0.1
+    ]
+   }
+  },
+  {
+   "id": "head-purlin-web-bevel",
+   "type": "boxBevel",
+   "inputs": [
+    "head-purlin-web-blank"
+   ],
+   "options": {
+    "width": 0.002
+   }
+  },
+  {
+   "id": "head-purlin-web-placed",
+   "type": "transform",
+   "inputs": [
+    "head-purlin-web-bevel"
+   ],
+   "options": {
+    "translation": [
+     0,
+     0.028,
+     -0.068
+    ]
+   }
+  },
+  {
+   "id": "head-purlin-web",
+   "type": "transform",
+   "inputs": [
+    "head-purlin-web-placed"
+   ]
+  },
+  {
+   "id": "head-purlin-foot-blank",
+   "type": "cube",
+   "options": {
+    "size": [
+     [
+      "+",
+      [
+       "*",
+       "$roof-half-width",
+       2
+      ],
+      0.06
+     ],
+     0.09,
+     0.015
+    ]
+   }
+  },
+  {
+   "id": "head-purlin-foot-bevel",
+   "type": "boxBevel",
+   "inputs": [
+    "head-purlin-foot-blank"
+   ],
+   "options": {
+    "width": 0.002
+   }
+  },
+  {
+   "id": "head-purlin-foot-placed",
+   "type": "transform",
+   "inputs": [
+    "head-purlin-foot-bevel"
+   ],
+   "options": {
+    "translation": [
+     0,
+     0.028,
+     -0.111
+    ]
+   }
+  },
+  {
+   "id": "head-purlin-foot",
+   "type": "transform",
+   "inputs": [
+    "head-purlin-foot-placed"
+   ]
+  },
+  {
+   "id": "head-weather-cap-blank",
+   "type": "cube",
+   "options": {
+    "size": [
+     [
+      "+",
+      [
+       "*",
+       "$roof-half-width",
+       2
+      ],
+      0.06
+     ],
+     0.074,
+     0.022
+    ]
+   }
+  },
+  {
+   "id": "head-weather-cap-bevel",
+   "type": "boxBevel",
+   "inputs": [
+    "head-weather-cap-blank"
+   ],
+   "options": {
+    "width": 0.002
+   }
+  },
+  {
+   "id": "head-weather-cap-placed",
+   "type": "transform",
+   "inputs": [
+    "head-weather-cap-bevel"
+   ],
+   "options": {
+    "translation": [
+     0,
+     0.028,
+     -0.025
+    ]
+   }
+  },
+  {
+   "id": "head-weather-cap",
+   "type": "transform",
+   "inputs": [
+    "head-weather-cap-placed"
+   ]
+  },
+  {
+   "id": "sill-purlin-web-blank",
+   "type": "cube",
+   "options": {
+    "size": [
+     [
+      "+",
+      [
+       "*",
+       "$roof-half-width",
+       2
+      ],
+      0.06
+     ],
+     0.03,
+     0.1
+    ]
+   }
+  },
+  {
+   "id": "sill-purlin-web-bevel",
+   "type": "boxBevel",
+   "inputs": [
+    "sill-purlin-web-blank"
+   ],
+   "options": {
+    "width": 0.002
+   }
+  },
+  {
+   "id": "sill-purlin-web-placed",
+   "type": "transform",
+   "inputs": [
+    "sill-purlin-web-bevel"
+   ],
+   "options": {
+    "translation": [
+     0,
+     [
+      "-",
+      [
+       "-",
+       0,
+       "$sash-length"
+      ],
+      0.012
+     ],
+     -0.068
+    ]
+   }
+  },
+  {
+   "id": "sill-purlin-web",
+   "type": "transform",
+   "inputs": [
+    "sill-purlin-web-placed"
+   ]
+  },
+  {
+   "id": "sill-purlin-foot-blank",
+   "type": "cube",
+   "options": {
+    "size": [
+     [
+      "+",
+      [
+       "*",
+       "$roof-half-width",
+       2
+      ],
+      0.06
+     ],
+     0.09,
+     0.015
+    ]
+   }
+  },
+  {
+   "id": "sill-purlin-foot-bevel",
+   "type": "boxBevel",
+   "inputs": [
+    "sill-purlin-foot-blank"
+   ],
+   "options": {
+    "width": 0.002
+   }
+  },
+  {
+   "id": "sill-purlin-foot-placed",
+   "type": "transform",
+   "inputs": [
+    "sill-purlin-foot-bevel"
+   ],
+   "options": {
+    "translation": [
+     0,
+     [
+      "-",
+      [
+       "-",
+       0,
+       "$sash-length"
+      ],
+      0.012
+     ],
+     -0.111
+    ]
+   }
+  },
+  {
+   "id": "sill-purlin-foot",
+   "type": "transform",
+   "inputs": [
+    "sill-purlin-foot-placed"
+   ]
+  },
+  {
+   "id": "sill-weather-cap-blank",
+   "type": "cube",
+   "options": {
+    "size": [
+     [
+      "+",
+      [
+       "*",
+       "$roof-half-width",
+       2
+      ],
+      0.06
+     ],
+     0.074,
+     0.022
+    ]
+   }
+  },
+  {
+   "id": "sill-weather-cap-bevel",
+   "type": "boxBevel",
+   "inputs": [
+    "sill-weather-cap-blank"
+   ],
+   "options": {
+    "width": 0.002
+   }
+  },
+  {
+   "id": "sill-weather-cap-placed",
+   "type": "transform",
+   "inputs": [
+    "sill-weather-cap-bevel"
+   ],
+   "options": {
+    "translation": [
+     0,
+     [
+      "-",
+      [
+       "-",
+       0,
+       "$sash-length"
+      ],
+      0.012
+     ],
+     -0.025
+    ]
+   }
+  },
+  {
+   "id": "sill-weather-cap",
+   "type": "transform",
+   "inputs": [
+    "sill-weather-cap-placed"
+   ]
+  },
+  {
+   "id": "vent-seat-0-blank",
+   "type": "cube",
+   "options": {
+    "size": [
+     0.04,
+     "$sash-length",
+     0.014
+    ]
+   }
+  },
+  {
+   "id": "vent-seat-0-bevel",
+   "type": "boxBevel",
+   "inputs": [
+    "vent-seat-0-blank"
+   ],
+   "options": {
+    "width": 0.002
+   }
+  },
+  {
+   "id": "vent-seat-0-placed",
+   "type": "transform",
+   "inputs": [
+    "vent-seat-0-bevel"
+   ],
+   "options": {
+    "translation": [
+     [
+      "*",
+      -1,
+      [
+       "-",
+       [
+        "/",
+        "$width",
+        2
+       ],
+       0.022
+      ]
+     ],
+     [
+      "/",
+      [
+       "-",
+       0,
+       "$sash-length"
+      ],
+      2
+     ],
+     -0.031
+    ]
+   }
+  },
+  {
+   "id": "vent-seat-0",
+   "type": "transform",
+   "inputs": [
+    "vent-seat-0-placed"
+   ]
+  },
+  {
+   "id": "vent-seat-1-blank",
+   "type": "cube",
+   "options": {
+    "size": [
+     0.04,
+     "$sash-length",
+     0.014
+    ]
+   }
+  },
+  {
+   "id": "vent-seat-1-bevel",
+   "type": "boxBevel",
+   "inputs": [
+    "vent-seat-1-blank"
+   ],
+   "options": {
+    "width": 0.002
+   }
+  },
+  {
+   "id": "vent-seat-1-placed",
+   "type": "transform",
+   "inputs": [
+    "vent-seat-1-bevel"
+   ],
+   "options": {
+    "translation": [
+     [
+      "*",
+      1,
+      [
+       "-",
+       [
+        "/",
+        "$width",
+        2
+       ],
+       0.022
+      ]
+     ],
+     [
+      "/",
+      [
+       "-",
+       0,
+       "$sash-length"
+      ],
+      2
+     ],
+     -0.031
+    ]
+   }
+  },
+  {
+   "id": "vent-seat-1",
+   "type": "transform",
+   "inputs": [
+    "vent-seat-1-placed"
+   ]
+  },
+  {
+   "id": "fixed-west-pane-0-blank",
+   "type": "cube",
+   "options": {
+    "size": [
+     0.57,
+     [
+      "-",
+      [
+       "/",
+       "$sash-length",
+       3
+      ],
+      0.012
+     ],
+     0.006
+    ]
+   }
+  },
+  {
+   "id": "fixed-west-pane-0-placed",
+   "type": "transform",
+   "inputs": [
+    "fixed-west-pane-0-blank"
+   ],
+   "options": {
+    "translation": [
+     [
+      "*",
+      -1,
+      [
+       "+",
+       [
+        "/",
+        "$width",
+        2
+       ],
+       0.3
+      ]
+     ],
+     [
+      "/",
+      [
+       "*",
+       [
+        "-",
+        0,
+        "$sash-length"
+       ],
+       0.5
+      ],
+      3
+     ],
+     -0.028
+    ]
+   }
+  },
+  {
+   "id": "fixed-west-pane-0",
+   "type": "transform",
+   "inputs": [
+    "fixed-west-pane-0-placed"
+   ]
+  },
+  {
+   "id": "fixed-west-pane-1-blank",
+   "type": "cube",
+   "options": {
+    "size": [
+     0.57,
+     [
+      "-",
+      [
+       "/",
+       "$sash-length",
+       3
+      ],
+      0.012
+     ],
+     0.006
+    ]
+   }
+  },
+  {
+   "id": "fixed-west-pane-1-placed",
+   "type": "transform",
+   "inputs": [
+    "fixed-west-pane-1-blank"
+   ],
+   "options": {
+    "translation": [
+     [
+      "*",
+      -1,
+      [
+       "+",
+       [
+        "/",
+        "$width",
+        2
+       ],
+       0.3
+      ]
+     ],
+     [
+      "/",
+      [
+       "*",
+       [
+        "-",
+        0,
+        "$sash-length"
+       ],
+       1.5
+      ],
+      3
+     ],
+     -0.028
+    ]
+   }
+  },
+  {
+   "id": "fixed-west-pane-1",
+   "type": "transform",
+   "inputs": [
+    "fixed-west-pane-1-placed"
+   ]
+  },
+  {
+   "id": "fixed-west-pane-2-blank",
+   "type": "cube",
+   "options": {
+    "size": [
+     0.57,
+     [
+      "-",
+      [
+       "/",
+       "$sash-length",
+       3
+      ],
+      0.012
+     ],
+     0.006
+    ]
+   }
+  },
+  {
+   "id": "fixed-west-pane-2-placed",
+   "type": "transform",
+   "inputs": [
+    "fixed-west-pane-2-blank"
+   ],
+   "options": {
+    "translation": [
+     [
+      "*",
+      -1,
+      [
+       "+",
+       [
+        "/",
+        "$width",
+        2
+       ],
+       0.3
+      ]
+     ],
+     [
+      "/",
+      [
+       "*",
+       [
+        "-",
+        0,
+        "$sash-length"
+       ],
+       2.5
+      ],
+      3
+     ],
+     -0.028
+    ]
+   }
+  },
+  {
+   "id": "fixed-west-pane-2",
+   "type": "transform",
+   "inputs": [
+    "fixed-west-pane-2-placed"
+   ]
+  },
+  {
+   "id": "fixed-west-lap-1-blank",
+   "type": "cube",
+   "options": {
+    "size": [
+     0.6,
+     0.017,
+     0.014
+    ]
+   }
+  },
+  {
+   "id": "fixed-west-lap-1-bevel",
+   "type": "boxBevel",
+   "inputs": [
+    "fixed-west-lap-1-blank"
+   ],
+   "options": {
+    "width": 0.001
+   }
+  },
+  {
+   "id": "fixed-west-lap-1-placed",
+   "type": "transform",
+   "inputs": [
+    "fixed-west-lap-1-bevel"
+   ],
+   "options": {
+    "translation": [
+     [
+      "*",
+      -1,
+      [
+       "+",
+       [
+        "/",
+        "$width",
+        2
+       ],
+       0.3
+      ]
+     ],
+     [
+      "/",
+      [
+       "*",
+       [
+        "-",
+        0,
+        "$sash-length"
+       ],
+       1
+      ],
+      3
+     ],
+     -0.022
+    ]
+   }
+  },
+  {
+   "id": "fixed-west-lap-1",
+   "type": "transform",
+   "inputs": [
+    "fixed-west-lap-1-placed"
+   ]
+  },
+  {
+   "id": "fixed-west-lap-2-blank",
+   "type": "cube",
+   "options": {
+    "size": [
+     0.6,
+     0.017,
+     0.014
+    ]
+   }
+  },
+  {
+   "id": "fixed-west-lap-2-bevel",
+   "type": "boxBevel",
+   "inputs": [
+    "fixed-west-lap-2-blank"
+   ],
+   "options": {
+    "width": 0.001
+   }
+  },
+  {
+   "id": "fixed-west-lap-2-placed",
+   "type": "transform",
+   "inputs": [
+    "fixed-west-lap-2-bevel"
+   ],
+   "options": {
+    "translation": [
+     [
+      "*",
+      -1,
+      [
+       "+",
+       [
+        "/",
+        "$width",
+        2
+       ],
+       0.3
+      ]
+     ],
+     [
+      "/",
+      [
+       "*",
+       [
+        "-",
+        0,
+        "$sash-length"
+       ],
+       2
+      ],
+      3
+     ],
+     -0.022
+    ]
+   }
+  },
+  {
+   "id": "fixed-west-lap-2",
+   "type": "transform",
+   "inputs": [
+    "fixed-west-lap-2-placed"
+   ]
+  },
+  {
+   "id": "fixed-east-pane-0-blank",
+   "type": "cube",
+   "options": {
+    "size": [
+     0.57,
+     [
+      "-",
+      [
+       "/",
+       "$sash-length",
+       3
+      ],
+      0.012
+     ],
+     0.006
+    ]
+   }
+  },
+  {
+   "id": "fixed-east-pane-0-placed",
+   "type": "transform",
+   "inputs": [
+    "fixed-east-pane-0-blank"
+   ],
+   "options": {
+    "translation": [
+     [
+      "*",
+      1,
+      [
+       "+",
+       [
+        "/",
+        "$width",
+        2
+       ],
+       0.3
+      ]
+     ],
+     [
+      "/",
+      [
+       "*",
+       [
+        "-",
+        0,
+        "$sash-length"
+       ],
+       0.5
+      ],
+      3
+     ],
+     -0.028
+    ]
+   }
+  },
+  {
+   "id": "fixed-east-pane-0",
+   "type": "transform",
+   "inputs": [
+    "fixed-east-pane-0-placed"
+   ]
+  },
+  {
+   "id": "fixed-east-pane-1-blank",
+   "type": "cube",
+   "options": {
+    "size": [
+     0.57,
+     [
+      "-",
+      [
+       "/",
+       "$sash-length",
+       3
+      ],
+      0.012
+     ],
+     0.006
+    ]
+   }
+  },
+  {
+   "id": "fixed-east-pane-1-placed",
+   "type": "transform",
+   "inputs": [
+    "fixed-east-pane-1-blank"
+   ],
+   "options": {
+    "translation": [
+     [
+      "*",
+      1,
+      [
+       "+",
+       [
+        "/",
+        "$width",
+        2
+       ],
+       0.3
+      ]
+     ],
+     [
+      "/",
+      [
+       "*",
+       [
+        "-",
+        0,
+        "$sash-length"
+       ],
+       1.5
+      ],
+      3
+     ],
+     -0.028
+    ]
+   }
+  },
+  {
+   "id": "fixed-east-pane-1",
+   "type": "transform",
+   "inputs": [
+    "fixed-east-pane-1-placed"
+   ]
+  },
+  {
+   "id": "fixed-east-pane-2-blank",
+   "type": "cube",
+   "options": {
+    "size": [
+     0.57,
+     [
+      "-",
+      [
+       "/",
+       "$sash-length",
+       3
+      ],
+      0.012
+     ],
+     0.006
+    ]
+   }
+  },
+  {
+   "id": "fixed-east-pane-2-placed",
+   "type": "transform",
+   "inputs": [
+    "fixed-east-pane-2-blank"
+   ],
+   "options": {
+    "translation": [
+     [
+      "*",
+      1,
+      [
+       "+",
+       [
+        "/",
+        "$width",
+        2
+       ],
+       0.3
+      ]
+     ],
+     [
+      "/",
+      [
+       "*",
+       [
+        "-",
+        0,
+        "$sash-length"
+       ],
+       2.5
+      ],
+      3
+     ],
+     -0.028
+    ]
+   }
+  },
+  {
+   "id": "fixed-east-pane-2",
+   "type": "transform",
+   "inputs": [
+    "fixed-east-pane-2-placed"
+   ]
+  },
+  {
+   "id": "fixed-east-lap-1-blank",
+   "type": "cube",
+   "options": {
+    "size": [
+     0.6,
+     0.017,
+     0.014
+    ]
+   }
+  },
+  {
+   "id": "fixed-east-lap-1-bevel",
+   "type": "boxBevel",
+   "inputs": [
+    "fixed-east-lap-1-blank"
+   ],
+   "options": {
+    "width": 0.001
+   }
+  },
+  {
+   "id": "fixed-east-lap-1-placed",
+   "type": "transform",
+   "inputs": [
+    "fixed-east-lap-1-bevel"
+   ],
+   "options": {
+    "translation": [
+     [
+      "*",
+      1,
+      [
+       "+",
+       [
+        "/",
+        "$width",
+        2
+       ],
+       0.3
+      ]
+     ],
+     [
+      "/",
+      [
+       "*",
+       [
+        "-",
+        0,
+        "$sash-length"
+       ],
+       1
+      ],
+      3
+     ],
+     -0.022
+    ]
+   }
+  },
+  {
+   "id": "fixed-east-lap-1",
+   "type": "transform",
+   "inputs": [
+    "fixed-east-lap-1-placed"
+   ]
+  },
+  {
+   "id": "fixed-east-lap-2-blank",
+   "type": "cube",
+   "options": {
+    "size": [
+     0.6,
+     0.017,
+     0.014
+    ]
+   }
+  },
+  {
+   "id": "fixed-east-lap-2-bevel",
+   "type": "boxBevel",
+   "inputs": [
+    "fixed-east-lap-2-blank"
+   ],
+   "options": {
+    "width": 0.001
+   }
+  },
+  {
+   "id": "fixed-east-lap-2-placed",
+   "type": "transform",
+   "inputs": [
+    "fixed-east-lap-2-bevel"
+   ],
+   "options": {
+    "translation": [
+     [
+      "*",
+      1,
+      [
+       "+",
+       [
+        "/",
+        "$width",
+        2
+       ],
+       0.3
+      ]
+     ],
+     [
+      "/",
+      [
+       "*",
+       [
+        "-",
+        0,
+        "$sash-length"
+       ],
+       2
+      ],
+      3
+     ],
+     -0.022
+    ]
+   }
+  },
+  {
+   "id": "fixed-east-lap-2",
+   "type": "transform",
+   "inputs": [
+    "fixed-east-lap-2-placed"
+   ]
+  },
+  {
+   "id": "sash-stile-0-blank",
+   "type": "cube",
+   "options": {
+    "size": [
+     "$frame-section",
+     "$sash-length",
+     "$frame-section"
+    ]
+   }
+  },
+  {
+   "id": "sash-stile-0-bevel",
+   "type": "boxBevel",
+   "inputs": [
+    "sash-stile-0-blank"
+   ],
+   "options": {
+    "width": 0.002
+   }
+  },
+  {
+   "id": "sash-stile-0-placed",
+   "type": "transform",
+   "inputs": [
+    "sash-stile-0-bevel"
+   ],
+   "options": {
+    "translation": [
+     [
+      "*",
+      -1,
+      [
+       "-",
+       [
+        "-",
+        [
+         "/",
+         "$width",
+         2
+        ],
+        [
+         "/",
+         "$frame-section",
+         2
+        ]
+       ],
+       0.01
+      ]
+     ],
+     [
+      "/",
+      [
+       "-",
+       0,
+       "$sash-length"
+      ],
+      2
+     ],
+     0
+    ]
+   }
+  },
+  {
+   "id": "sash-stile-0",
+   "type": "transform",
+   "inputs": [
+    "sash-stile-0-placed"
+   ]
+  },
+  {
+   "id": "sash-stile-1-blank",
+   "type": "cube",
+   "options": {
+    "size": [
+     "$frame-section",
+     "$sash-length",
+     "$frame-section"
+    ]
+   }
+  },
+  {
+   "id": "sash-stile-1-bevel",
+   "type": "boxBevel",
+   "inputs": [
+    "sash-stile-1-blank"
+   ],
+   "options": {
+    "width": 0.002
+   }
+  },
+  {
+   "id": "sash-stile-1-placed",
+   "type": "transform",
+   "inputs": [
+    "sash-stile-1-bevel"
+   ],
+   "options": {
+    "translation": [
+     [
+      "*",
+      1,
+      [
+       "-",
+       [
+        "-",
+        [
+         "/",
+         "$width",
+         2
+        ],
+        [
+         "/",
+         "$frame-section",
+         2
+        ]
+       ],
+       0.01
+      ]
+     ],
+     [
+      "/",
+      [
+       "-",
+       0,
+       "$sash-length"
+      ],
+      2
+     ],
+     0
+    ]
+   }
+  },
+  {
+   "id": "sash-stile-1",
+   "type": "transform",
+   "inputs": [
+    "sash-stile-1-placed"
+   ]
+  },
+  {
+   "id": "sash-top-rail-blank",
+   "type": "cube",
+   "options": {
+    "size": [
+     [
+      "-",
+      "$width",
+      0.02
+     ],
+     "$frame-section",
+     "$frame-section"
+    ]
+   }
+  },
+  {
+   "id": "sash-top-rail-bevel",
+   "type": "boxBevel",
+   "inputs": [
+    "sash-top-rail-blank"
+   ],
+   "options": {
+    "width": 0.002
+   }
+  },
+  {
+   "id": "sash-top-rail-placed",
+   "type": "transform",
+   "inputs": [
+    "sash-top-rail-bevel"
+   ],
+   "options": {
+    "translation": [
+     0,
+     -0.025,
+     0
+    ]
+   }
+  },
+  {
+   "id": "sash-top-rail",
+   "type": "transform",
+   "inputs": [
+    "sash-top-rail-placed"
+   ]
+  },
+  {
+   "id": "top-rail-rivet-row",
+   "type": "line",
+   "options": {
+    "start": [
+     [
+      "+",
+      [
+       "/",
+       [
+        "-",
+        0,
+        "$width"
+       ],
+       2
+      ],
+      0.075
+     ],
+     -0.025,
+     0.032
+    ],
+    "step": [
+     [
+      "-",
+      [
+       "-",
+       [
+        "/",
+        "$width",
+        2
+       ],
+       0.075
+      ],
+      [
+       "+",
+       [
+        "/",
+        [
+         "-",
+         0,
+         "$width"
+        ],
+        2
+       ],
+       0.075
+      ]
+     ],
+     0.0,
+     0.0
+    ],
+    "count": 2
+   }
+  },
+  {
+   "id": "top-rail-rivets",
+   "type": "fastener",
+   "inputs": [
+    "sash-top-rail",
+    "top-rail-rivet-row"
+   ],
+   "options": {
+    "head": "rivet",
+    "pitch": 0.14,
+    "radius": 0.004,
+    "height": 0.0015
+   }
+  },
+  {
+   "id": "sash-bottom-rail-blank",
+   "type": "cube",
+   "options": {
+    "size": [
+     [
+      "-",
+      "$width",
+      0.02
+     ],
+     "$frame-section",
+     "$frame-section"
+    ]
+   }
+  },
+  {
+   "id": "sash-bottom-rail-bevel",
+   "type": "boxBevel",
+   "inputs": [
+    "sash-bottom-rail-blank"
+   ],
+   "options": {
+    "width": 0.002
+   }
+  },
+  {
+   "id": "sash-bottom-rail-placed",
+   "type": "transform",
+   "inputs": [
+    "sash-bottom-rail-bevel"
+   ],
+   "options": {
+    "translation": [
+     0,
+     [
+      "+",
+      [
+       "-",
+       0,
+       "$sash-length"
+      ],
+      0.024
+     ],
+     0
+    ]
+   }
+  },
+  {
+   "id": "sash-bottom-rail",
+   "type": "transform",
+   "inputs": [
+    "sash-bottom-rail-placed"
+   ]
+  },
+  {
+   "id": "bottom-rail-rivet-row",
+   "type": "line",
+   "options": {
+    "start": [
+     [
+      "+",
+      [
+       "/",
+       [
+        "-",
+        0,
+        "$width"
+       ],
+       2
+      ],
+      0.075
+     ],
+     [
+      "+",
+      [
+       "-",
+       0,
+       "$sash-length"
+      ],
+      0.024
+     ],
+     0.032
+    ],
+    "step": [
+     [
+      "-",
+      [
+       "-",
+       [
+        "/",
+        "$width",
+        2
+       ],
+       0.075
+      ],
+      [
+       "+",
+       [
+        "/",
+        [
+         "-",
+         0,
+         "$width"
+        ],
+        2
+       ],
+       0.075
+      ]
+     ],
+     [
+      "-",
+      [
+       "+",
+       [
+        "-",
+        0,
+        "$sash-length"
+       ],
+       0.024
+      ],
+      [
+       "+",
+       [
+        "-",
+        0,
+        "$sash-length"
+       ],
+       0.024
+      ]
+     ],
+     0.0
+    ],
+    "count": 2
+   }
+  },
+  {
+   "id": "bottom-rail-rivets",
+   "type": "fastener",
+   "inputs": [
+    "sash-bottom-rail",
+    "bottom-rail-rivet-row"
+   ],
+   "options": {
+    "head": "rivet",
+    "pitch": 0.14,
+    "radius": 0.004,
+    "height": 0.0015
+   }
+  },
+  {
+   "id": "sash-centre-astragal-blank",
+   "type": "cube",
+   "options": {
+    "size": [
+     0.023,
+     [
+      "-",
+      "$sash-length",
+      0.06
+     ],
+     0.032
+    ]
+   }
+  },
+  {
+   "id": "sash-centre-astragal-bevel",
+   "type": "boxBevel",
+   "inputs": [
+    "sash-centre-astragal-blank"
+   ],
+   "options": {
+    "width": 0.001
+   }
+  },
+  {
+   "id": "sash-centre-astragal-placed",
+   "type": "transform",
+   "inputs": [
+    "sash-centre-astragal-bevel"
+   ],
+   "options": {
+    "translation": [
+     0,
+     [
+      "/",
+      [
+       "-",
+       0,
+       "$sash-length"
+      ],
+      2
+     ],
+     0.004
+    ]
+   }
+  },
+  {
+   "id": "sash-centre-astragal",
+   "type": "transform",
+   "inputs": [
+    "sash-centre-astragal-placed"
+   ]
+  },
+  {
+   "id": "sash-crossbar-1-blank",
+   "type": "cube",
+   "options": {
+    "size": [
+     [
+      "-",
+      "$width",
+      0.065
+     ],
+     0.022,
+     0.029
+    ]
+   }
+  },
+  {
+   "id": "sash-crossbar-1-bevel",
+   "type": "boxBevel",
+   "inputs": [
+    "sash-crossbar-1-blank"
+   ],
+   "options": {
+    "width": 0.001
+   }
+  },
+  {
+   "id": "sash-crossbar-1-placed",
+   "type": "transform",
+   "inputs": [
+    "sash-crossbar-1-bevel"
+   ],
+   "options": {
+    "translation": [
+     0,
+     [
+      "/",
+      [
+       "*",
+       [
+        "-",
+        0,
+        "$sash-length"
+       ],
+       1
+      ],
+      3
+     ],
+     0.004
+    ]
+   }
+  },
+  {
+   "id": "sash-crossbar-1",
+   "type": "transform",
+   "inputs": [
+    "sash-crossbar-1-placed"
+   ]
+  },
+  {
+   "id": "sash-crossbar-2-blank",
+   "type": "cube",
+   "options": {
+    "size": [
+     [
+      "-",
+      "$width",
+      0.065
+     ],
+     0.022,
+     0.029
+    ]
+   }
+  },
+  {
+   "id": "sash-crossbar-2-bevel",
+   "type": "boxBevel",
+   "inputs": [
+    "sash-crossbar-2-blank"
+   ],
+   "options": {
+    "width": 0.001
+   }
+  },
+  {
+   "id": "sash-crossbar-2-placed",
+   "type": "transform",
+   "inputs": [
+    "sash-crossbar-2-bevel"
+   ],
+   "options": {
+    "translation": [
+     0,
+     [
+      "/",
+      [
+       "*",
+       [
+        "-",
+        0,
+        "$sash-length"
+       ],
+       2
+      ],
+      3
+     ],
+     0.004
+    ]
+   }
+  },
+  {
+   "id": "sash-crossbar-2",
+   "type": "transform",
+   "inputs": [
+    "sash-crossbar-2-placed"
+   ]
+  },
+  {
+   "id": "sash-glass-0-0-blank",
+   "type": "cube",
+   "options": {
+    "size": [
+     [
+      "-",
+      [
+       "/",
+       "$width",
+       2
+      ],
+      0.046
+     ],
+     [
+      "-",
+      [
+       "/",
+       "$sash-length",
+       3
+      ],
+      0.018
+     ],
+     0.006
+    ]
+   }
+  },
+  {
+   "id": "sash-glass-0-0-placed",
+   "type": "transform",
+   "inputs": [
+    "sash-glass-0-0-blank"
+   ],
+   "options": {
+    "translation": [
+     [
+      "*",
+      -1,
+      [
+       "-",
+       [
+        "/",
+        "$width",
+        4
+       ],
+       0.004
+      ]
+     ],
+     [
+      "/",
+      [
+       "*",
+       [
+        "-",
+        0,
+        "$sash-length"
+       ],
+       0.5
+      ],
+      3
+     ],
+     0.001
+    ]
+   }
+  },
+  {
+   "id": "sash-glass-0-0",
+   "type": "transform",
+   "inputs": [
+    "sash-glass-0-0-placed"
+   ]
+  },
+  {
+   "id": "sash-glass-0-1-blank",
+   "type": "cube",
+   "options": {
+    "size": [
+     [
+      "-",
+      [
+       "/",
+       "$width",
+       2
+      ],
+      0.046
+     ],
+     [
+      "-",
+      [
+       "/",
+       "$sash-length",
+       3
+      ],
+      0.018
+     ],
+     0.006
+    ]
+   }
+  },
+  {
+   "id": "sash-glass-0-1-placed",
+   "type": "transform",
+   "inputs": [
+    "sash-glass-0-1-blank"
+   ],
+   "options": {
+    "translation": [
+     [
+      "*",
+      -1,
+      [
+       "-",
+       [
+        "/",
+        "$width",
+        4
+       ],
+       0.004
+      ]
+     ],
+     [
+      "/",
+      [
+       "*",
+       [
+        "-",
+        0,
+        "$sash-length"
+       ],
+       1.5
+      ],
+      3
+     ],
+     0.001
+    ]
+   }
+  },
+  {
+   "id": "sash-glass-0-1",
+   "type": "transform",
+   "inputs": [
+    "sash-glass-0-1-placed"
+   ]
+  },
+  {
+   "id": "sash-glass-0-2-blank",
+   "type": "cube",
+   "options": {
+    "size": [
+     [
+      "-",
+      [
+       "/",
+       "$width",
+       2
+      ],
+      0.046
+     ],
+     [
+      "-",
+      [
+       "/",
+       "$sash-length",
+       3
+      ],
+      0.018
+     ],
+     0.006
+    ]
+   }
+  },
+  {
+   "id": "sash-glass-0-2-placed",
+   "type": "transform",
+   "inputs": [
+    "sash-glass-0-2-blank"
+   ],
+   "options": {
+    "translation": [
+     [
+      "*",
+      -1,
+      [
+       "-",
+       [
+        "/",
+        "$width",
+        4
+       ],
+       0.004
+      ]
+     ],
+     [
+      "/",
+      [
+       "*",
+       [
+        "-",
+        0,
+        "$sash-length"
+       ],
+       2.5
+      ],
+      3
+     ],
+     0.001
+    ]
+   }
+  },
+  {
+   "id": "sash-glass-0-2",
+   "type": "transform",
+   "inputs": [
+    "sash-glass-0-2-placed"
+   ]
+  },
+  {
+   "id": "sash-glass-1-0-blank",
+   "type": "cube",
+   "options": {
+    "size": [
+     [
+      "-",
+      [
+       "/",
+       "$width",
+       2
+      ],
+      0.046
+     ],
+     [
+      "-",
+      [
+       "/",
+       "$sash-length",
+       3
+      ],
+      0.018
+     ],
+     0.006
+    ]
+   }
+  },
+  {
+   "id": "sash-glass-1-0-placed",
+   "type": "transform",
+   "inputs": [
+    "sash-glass-1-0-blank"
+   ],
+   "options": {
+    "translation": [
+     [
+      "*",
+      1,
+      [
+       "-",
+       [
+        "/",
+        "$width",
+        4
+       ],
+       0.004
+      ]
+     ],
+     [
+      "/",
+      [
+       "*",
+       [
+        "-",
+        0,
+        "$sash-length"
+       ],
+       0.5
+      ],
+      3
+     ],
+     0.001
+    ]
+   }
+  },
+  {
+   "id": "sash-glass-1-0",
+   "type": "transform",
+   "inputs": [
+    "sash-glass-1-0-placed"
+   ]
+  },
+  {
+   "id": "sash-glass-1-1-blank",
+   "type": "cube",
+   "options": {
+    "size": [
+     [
+      "-",
+      [
+       "/",
+       "$width",
+       2
+      ],
+      0.046
+     ],
+     [
+      "-",
+      [
+       "/",
+       "$sash-length",
+       3
+      ],
+      0.018
+     ],
+     0.006
+    ]
+   }
+  },
+  {
+   "id": "sash-glass-1-1-placed",
+   "type": "transform",
+   "inputs": [
+    "sash-glass-1-1-blank"
+   ],
+   "options": {
+    "translation": [
+     [
+      "*",
+      1,
+      [
+       "-",
+       [
+        "/",
+        "$width",
+        4
+       ],
+       0.004
+      ]
+     ],
+     [
+      "/",
+      [
+       "*",
+       [
+        "-",
+        0,
+        "$sash-length"
+       ],
+       1.5
+      ],
+      3
+     ],
+     0.001
+    ]
+   }
+  },
+  {
+   "id": "sash-glass-1-1",
+   "type": "transform",
+   "inputs": [
+    "sash-glass-1-1-placed"
+   ]
+  },
+  {
+   "id": "sash-glass-1-2-blank",
+   "type": "cube",
+   "options": {
+    "size": [
+     [
+      "-",
+      [
+       "/",
+       "$width",
+       2
+      ],
+      0.046
+     ],
+     [
+      "-",
+      [
+       "/",
+       "$sash-length",
+       3
+      ],
+      0.018
+     ],
+     0.006
+    ]
+   }
+  },
+  {
+   "id": "sash-glass-1-2-placed",
+   "type": "transform",
+   "inputs": [
+    "sash-glass-1-2-blank"
+   ],
+   "options": {
+    "translation": [
+     [
+      "*",
+      1,
+      [
+       "-",
+       [
+        "/",
+        "$width",
+        4
+       ],
+       0.004
+      ]
+     ],
+     [
+      "/",
+      [
+       "*",
+       [
+        "-",
+        0,
+        "$sash-length"
+       ],
+       2.5
+      ],
+      3
+     ],
+     0.001
+    ]
+   }
+  },
+  {
+   "id": "sash-glass-1-2",
+   "type": "transform",
+   "inputs": [
+    "sash-glass-1-2-placed"
+   ]
+  },
+  {
+   "id": "putty-margin-0",
+   "type": "line",
+   "options": {
+    "start": [
+     [
+      "*",
+      -1,
+      [
+       "-",
+       [
+        "/",
+        "$width",
+        2
+       ],
+       0.04
+      ]
+     ],
+     -0.065,
+     0.028
+    ],
+    "step": [
+     [
+      "-",
+      [
+       "*",
+       -1,
+       [
+        "-",
+        [
+         "/",
+         "$width",
+         2
+        ],
+        0.04
+       ]
+      ],
+      [
+       "*",
+       -1,
+       [
+        "-",
+        [
+         "/",
+         "$width",
+         2
+        ],
+        0.04
+       ]
+      ]
+     ],
+     [
+      "-",
+      [
+       "+",
+       [
+        "-",
+        0,
+        "$sash-length"
+       ],
+       0.065
+      ],
+      -0.065
+     ],
+     0.0
+    ],
+    "count": 2
+   }
+  },
+  {
+   "id": "putty-margin-1",
+   "type": "line",
+   "options": {
+    "start": [
+     [
+      "*",
+      1,
+      [
+       "-",
+       [
+        "/",
+        "$width",
+        2
+       ],
+       0.04
+      ]
+     ],
+     -0.065,
+     0.028
+    ],
+    "step": [
+     [
+      "-",
+      [
+       "*",
+       1,
+       [
+        "-",
+        [
+         "/",
+         "$width",
+         2
+        ],
+        0.04
+       ]
+      ],
+      [
+       "*",
+       1,
+       [
+        "-",
+        [
+         "/",
+         "$width",
+         2
+        ],
+        0.04
+       ]
+      ]
+     ],
+     [
+      "-",
+      [
+       "+",
+       [
+        "-",
+        0,
+        "$sash-length"
+       ],
+       0.065
+      ],
+      -0.065
+     ],
+     0.0
+    ],
+    "count": 2
+   }
+  },
+  {
+   "id": "sash-frame-plain",
+   "type": "join",
+   "inputs": [
+    "sash-stile-0",
+    "sash-stile-1",
+    "top-rail-rivets",
+    "bottom-rail-rivets",
+    "sash-centre-astragal",
+    "sash-crossbar-1",
+    "sash-crossbar-2"
+   ]
+  },
+  {
+   "id": "sash-putty-0",
+   "type": "detailStroke",
+   "inputs": [
+    "sash-frame-plain",
+    "putty-margin-0"
+   ],
+   "options": {
+    "profile": "bead",
+    "width": 0.004,
+    "height": 0.0018,
+    "reach": 0.035
+   }
+  },
+  {
+   "id": "sash-putty-1",
+   "type": "detailStroke",
+   "inputs": [
+    "sash-putty-0",
+    "putty-margin-1"
+   ],
+   "options": {
+    "profile": "bead",
+    "width": 0.004,
+    "height": 0.0018,
+    "reach": 0.035
+   }
+  },
+  {
+   "id": "sash-corner-shoe-0-0-blank",
+   "type": "cube",
+   "options": {
+    "size": [
+     0.075,
+     0.15,
+     0.012
+    ]
+   }
+  },
+  {
+   "id": "sash-corner-shoe-0-0-bevel",
+   "type": "boxBevel",
+   "inputs": [
+    "sash-corner-shoe-0-0-blank"
+   ],
+   "options": {
+    "width": 0.002
+   }
+  },
+  {
+   "id": "sash-corner-shoe-0-0-placed",
+   "type": "transform",
+   "inputs": [
+    "sash-corner-shoe-0-0-bevel"
+   ],
+   "options": {
+    "translation": [
+     [
+      "*",
+      -1,
+      [
+       "-",
+       [
+        "/",
+        "$width",
+        2
+       ],
+       0.052
+      ]
+     ],
+     -0.09,
+     -0.028
+    ]
+   }
+  },
+  {
+   "id": "sash-corner-shoe-0-0-screws",
+   "type": "pointArray",
+   "options": {
+    "positions": [
+     [
+      [
+       "*",
+       -1,
+       [
+        "-",
+        [
+         "/",
+         "$width",
+         2
+        ],
+        0.052
+       ]
+      ],
+      -0.135,
+      -0.011999999999999999
+     ],
+     [
+      [
+       "*",
+       -1,
+       [
+        "-",
+        [
+         "/",
+         "$width",
+         2
+        ],
+        0.052
+       ]
+      ],
+      -0.045,
+      -0.011999999999999999
+     ]
+    ]
+   }
+  },
+  {
+   "id": "sash-corner-shoe-0-0",
+   "type": "fastener",
+   "inputs": [
+    "sash-corner-shoe-0-0-placed",
+    "sash-corner-shoe-0-0-screws"
+   ],
+   "options": {
+    "head": "slotted",
+    "radius": 0.005,
+    "height": 0.002,
+    "washer": 0.007,
+    "slot": "bronze"
+   }
+  },
+  {
+   "id": "sash-corner-shoe-0-1-blank",
+   "type": "cube",
+   "options": {
+    "size": [
+     0.075,
+     0.15,
+     0.012
+    ]
+   }
+  },
+  {
+   "id": "sash-corner-shoe-0-1-bevel",
+   "type": "boxBevel",
+   "inputs": [
+    "sash-corner-shoe-0-1-blank"
+   ],
+   "options": {
+    "width": 0.002
+   }
+  },
+  {
+   "id": "sash-corner-shoe-0-1-placed",
+   "type": "transform",
+   "inputs": [
+    "sash-corner-shoe-0-1-bevel"
+   ],
+   "options": {
+    "translation": [
+     [
+      "*",
+      -1,
+      [
+       "-",
+       [
+        "/",
+        "$width",
+        2
+       ],
+       0.052
+      ]
+     ],
+     [
+      "+",
+      [
+       "-",
+       0,
+       "$sash-length"
+      ],
+      0.09
+     ],
+     -0.028
+    ]
+   }
+  },
+  {
+   "id": "sash-corner-shoe-0-1-screws",
+   "type": "pointArray",
+   "options": {
+    "positions": [
+     [
+      [
+       "*",
+       -1,
+       [
+        "-",
+        [
+         "/",
+         "$width",
+         2
+        ],
+        0.052
+       ]
+      ],
+      [
+       "-",
+       [
+        "+",
+        [
+         "-",
+         0,
+         "$sash-length"
+        ],
+        0.09
+       ],
+       0.045
+      ],
+      -0.011999999999999999
+     ],
+     [
+      [
+       "*",
+       -1,
+       [
+        "-",
+        [
+         "/",
+         "$width",
+         2
+        ],
+        0.052
+       ]
+      ],
+      [
+       "+",
+       [
+        "+",
+        [
+         "-",
+         0,
+         "$sash-length"
+        ],
+        0.09
+       ],
+       0.045
+      ],
+      -0.011999999999999999
+     ]
+    ]
+   }
+  },
+  {
+   "id": "sash-corner-shoe-0-1",
+   "type": "fastener",
+   "inputs": [
+    "sash-corner-shoe-0-1-placed",
+    "sash-corner-shoe-0-1-screws"
+   ],
+   "options": {
+    "head": "slotted",
+    "radius": 0.005,
+    "height": 0.002,
+    "washer": 0.007,
+    "slot": "bronze"
+   }
+  },
+  {
+   "id": "sash-corner-shoe-1-0-blank",
+   "type": "cube",
+   "options": {
+    "size": [
+     0.075,
+     0.15,
+     0.012
+    ]
+   }
+  },
+  {
+   "id": "sash-corner-shoe-1-0-bevel",
+   "type": "boxBevel",
+   "inputs": [
+    "sash-corner-shoe-1-0-blank"
+   ],
+   "options": {
+    "width": 0.002
+   }
+  },
+  {
+   "id": "sash-corner-shoe-1-0-placed",
+   "type": "transform",
+   "inputs": [
+    "sash-corner-shoe-1-0-bevel"
+   ],
+   "options": {
+    "translation": [
+     [
+      "*",
+      1,
+      [
+       "-",
+       [
+        "/",
+        "$width",
+        2
+       ],
+       0.052
+      ]
+     ],
+     -0.09,
+     -0.028
+    ]
+   }
+  },
+  {
+   "id": "sash-corner-shoe-1-0-screws",
+   "type": "pointArray",
+   "options": {
+    "positions": [
+     [
+      [
+       "*",
+       1,
+       [
+        "-",
+        [
+         "/",
+         "$width",
+         2
+        ],
+        0.052
+       ]
+      ],
+      -0.135,
+      -0.011999999999999999
+     ],
+     [
+      [
+       "*",
+       1,
+       [
+        "-",
+        [
+         "/",
+         "$width",
+         2
+        ],
+        0.052
+       ]
+      ],
+      -0.045,
+      -0.011999999999999999
+     ]
+    ]
+   }
+  },
+  {
+   "id": "sash-corner-shoe-1-0",
+   "type": "fastener",
+   "inputs": [
+    "sash-corner-shoe-1-0-placed",
+    "sash-corner-shoe-1-0-screws"
+   ],
+   "options": {
+    "head": "slotted",
+    "radius": 0.005,
+    "height": 0.002,
+    "washer": 0.007,
+    "slot": "bronze"
+   }
+  },
+  {
+   "id": "sash-corner-shoe-1-1-blank",
+   "type": "cube",
+   "options": {
+    "size": [
+     0.075,
+     0.15,
+     0.012
+    ]
+   }
+  },
+  {
+   "id": "sash-corner-shoe-1-1-bevel",
+   "type": "boxBevel",
+   "inputs": [
+    "sash-corner-shoe-1-1-blank"
+   ],
+   "options": {
+    "width": 0.002
+   }
+  },
+  {
+   "id": "sash-corner-shoe-1-1-placed",
+   "type": "transform",
+   "inputs": [
+    "sash-corner-shoe-1-1-bevel"
+   ],
+   "options": {
+    "translation": [
+     [
+      "*",
+      1,
+      [
+       "-",
+       [
+        "/",
+        "$width",
+        2
+       ],
+       0.052
+      ]
+     ],
+     [
+      "+",
+      [
+       "-",
+       0,
+       "$sash-length"
+      ],
+      0.09
+     ],
+     -0.028
+    ]
+   }
+  },
+  {
+   "id": "sash-corner-shoe-1-1-screws",
+   "type": "pointArray",
+   "options": {
+    "positions": [
+     [
+      [
+       "*",
+       1,
+       [
+        "-",
+        [
+         "/",
+         "$width",
+         2
+        ],
+        0.052
+       ]
+      ],
+      [
+       "-",
+       [
+        "+",
+        [
+         "-",
+         0,
+         "$sash-length"
+        ],
+        0.09
+       ],
+       0.045
+      ],
+      -0.011999999999999999
+     ],
+     [
+      [
+       "*",
+       1,
+       [
+        "-",
+        [
+         "/",
+         "$width",
+         2
+        ],
+        0.052
+       ]
+      ],
+      [
+       "+",
+       [
+        "+",
+        [
+         "-",
+         0,
+         "$sash-length"
+        ],
+        0.09
+       ],
+       0.045
+      ],
+      -0.011999999999999999
+     ]
+    ]
+   }
+  },
+  {
+   "id": "sash-corner-shoe-1-1",
+   "type": "fastener",
+   "inputs": [
+    "sash-corner-shoe-1-1-placed",
+    "sash-corner-shoe-1-1-screws"
+   ],
+   "options": {
+    "head": "slotted",
+    "radius": 0.005,
+    "height": 0.002,
+    "washer": 0.007,
+    "slot": "bronze"
+   }
+  },
+  {
+   "id": "bottom-drip-nose-blank",
+   "type": "cube",
+   "options": {
+    "size": [
+     [
+      "-",
+      "$width",
+      0.014
+     ],
+     0.021,
+     0.024
+    ]
+   }
+  },
+  {
+   "id": "bottom-drip-nose-bevel",
+   "type": "boxBevel",
+   "inputs": [
+    "bottom-drip-nose-blank"
+   ],
+   "options": {
+    "width": 0.002
+   }
+  },
+  {
+   "id": "bottom-drip-nose-placed",
+   "type": "transform",
+   "inputs": [
+    "bottom-drip-nose-bevel"
+   ],
+   "options": {
+    "translation": [
+     0,
+     [
+      "-",
+      [
+       "-",
+       0,
+       "$sash-length"
+      ],
+      0.004
+     ],
+     -0.008
+    ]
+   }
+  },
+  {
+   "id": "bottom-drip-nose",
+   "type": "transform",
+   "inputs": [
+    "bottom-drip-nose-placed"
+   ]
+  },
+  {
+   "id": "hinge-0-fixed-leaf-blank",
+   "type": "cube",
+   "options": {
+    "size": [
+     0.104,
+     0.075,
+     0.011
+    ]
+   }
+  },
+  {
+   "id": "hinge-0-fixed-leaf-bevel",
+   "type": "boxBevel",
+   "inputs": [
+    "hinge-0-fixed-leaf-blank"
+   ],
+   "options": {
+    "width": 0.002
+   }
+  },
+  {
+   "id": "hinge-0-fixed-leaf-placed",
+   "type": "transform",
+   "inputs": [
+    "hinge-0-fixed-leaf-bevel"
+   ],
+   "options": {
+    "translation": [
+     [
+      "*",
+      -0.35,
+      "$width"
+     ],
+     0.033,
+     -0.011
+    ]
+   }
+  },
+  {
+   "id": "hinge-0-fixed-leaf-screws",
+   "type": "pointArray",
+   "options": {
+    "positions": [
+     [
+      [
+       "*",
+       -0.35,
+       "$width"
+      ],
+      0.010500000000000002,
+      0.0045000000000000005
+     ],
+     [
+      [
+       "*",
+       -0.35,
+       "$width"
+      ],
+      0.0555,
+      0.0045000000000000005
+     ]
+    ]
+   }
+  },
+  {
+   "id": "hinge-0-fixed-leaf",
+   "type": "fastener",
+   "inputs": [
+    "hinge-0-fixed-leaf-placed",
+    "hinge-0-fixed-leaf-screws"
+   ],
+   "options": {
+    "head": "slotted",
+    "radius": 0.005,
+    "height": 0.002,
+    "washer": 0.007,
+    "slot": "bronze"
+   }
+  },
+  {
+   "id": "hinge-0-strap-blank",
+   "type": "cube",
+   "options": {
+    "size": [
+     0.073,
+     0.145,
+     0.012
+    ]
+   }
+  },
+  {
+   "id": "hinge-0-strap-bevel",
+   "type": "boxBevel",
+   "inputs": [
+    "hinge-0-strap-blank"
+   ],
+   "options": {
+    "width": 0.002
+   }
+  },
+  {
+   "id": "hinge-0-strap-placed",
+   "type": "transform",
+   "inputs": [
+    "hinge-0-strap-bevel"
+   ],
+   "options": {
+    "translation": [
+     [
+      "*",
+      -0.35,
+      "$width"
+     ],
+     -0.074,
+     0.022
+    ]
+   }
+  },
+  {
+   "id": "hinge-0-strap-screws",
+   "type": "pointArray",
+   "options": {
+    "positions": [
+     [
+      [
+       "*",
+       -0.35,
+       "$width"
+      ],
+      -0.1175,
+      0.038
+     ],
+     [
+      [
+       "*",
+       -0.35,
+       "$width"
+      ],
+      -0.0305,
+      0.038
+     ]
+    ]
+   }
+  },
+  {
+   "id": "hinge-0-strap",
+   "type": "fastener",
+   "inputs": [
+    "hinge-0-strap-placed",
+    "hinge-0-strap-screws"
+   ],
+   "options": {
+    "head": "slotted",
+    "radius": 0.005,
+    "height": 0.002,
+    "washer": 0.007,
+    "slot": "bronze"
+   }
+  },
+  {
+   "id": "hinge-0-knuckle-0-lathe-turned",
+   "type": "revolve",
+   "options": {
+    "profile": [
+     [
+      0,
+      -0.0095
+     ],
+     [
+      0.015,
+      -0.0095
+     ],
+     [
+      0.016,
+      -0.007
+     ],
+     [
+      0.016,
+      0.007
+     ],
+     [
+      0.015,
+      0.0095
+     ],
+     [
+      0,
+      0.0095
+     ]
+    ],
+    "sides": 20
+   }
+  },
+  {
+   "id": "hinge-0-knuckle-0-lathe",
+   "type": "smoothNormals",
+   "inputs": [
+    "hinge-0-knuckle-0-lathe-turned"
+   ]
+  },
+  {
+   "id": "hinge-0-knuckle-0",
+   "type": "transform",
+   "inputs": [
+    "hinge-0-knuckle-0-lathe"
+   ],
+   "options": {
+    "translation": [
+     [
+      "+",
+      [
+       "*",
+       -0.35,
+       "$width"
+      ],
+      -0.04
+     ],
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     1.5707963267948966,
+     0
+    ]
+   }
+  },
+  {
+   "id": "hinge-0-knuckle-1-lathe-turned",
+   "type": "revolve",
+   "options": {
+    "profile": [
+     [
+      0,
+      -0.0095
+     ],
+     [
+      0.015,
+      -0.0095
+     ],
+     [
+      0.016,
+      -0.007
+     ],
+     [
+      0.016,
+      0.007
+     ],
+     [
+      0.015,
+      0.0095
+     ],
+     [
+      0,
+      0.0095
+     ]
+    ],
+    "sides": 20
+   }
+  },
+  {
+   "id": "hinge-0-knuckle-1-lathe",
+   "type": "smoothNormals",
+   "inputs": [
+    "hinge-0-knuckle-1-lathe-turned"
+   ]
+  },
+  {
+   "id": "hinge-0-knuckle-1",
+   "type": "transform",
+   "inputs": [
+    "hinge-0-knuckle-1-lathe"
+   ],
+   "options": {
+    "translation": [
+     [
+      "+",
+      [
+       "*",
+       -0.35,
+       "$width"
+      ],
+      -0.02
+     ],
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     1.5707963267948966,
+     0
+    ]
+   }
+  },
+  {
+   "id": "hinge-0-knuckle-2-lathe-turned",
+   "type": "revolve",
+   "options": {
+    "profile": [
+     [
+      0,
+      -0.0095
+     ],
+     [
+      0.015,
+      -0.0095
+     ],
+     [
+      0.016,
+      -0.007
+     ],
+     [
+      0.016,
+      0.007
+     ],
+     [
+      0.015,
+      0.0095
+     ],
+     [
+      0,
+      0.0095
+     ]
+    ],
+    "sides": 20
+   }
+  },
+  {
+   "id": "hinge-0-knuckle-2-lathe",
+   "type": "smoothNormals",
+   "inputs": [
+    "hinge-0-knuckle-2-lathe-turned"
+   ]
+  },
+  {
+   "id": "hinge-0-knuckle-2",
+   "type": "transform",
+   "inputs": [
+    "hinge-0-knuckle-2-lathe"
+   ],
+   "options": {
+    "translation": [
+     [
+      "+",
+      [
+       "*",
+       -0.35,
+       "$width"
+      ],
+      0.0
+     ],
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     1.5707963267948966,
+     0
+    ]
+   }
+  },
+  {
+   "id": "hinge-0-knuckle-3-lathe-turned",
+   "type": "revolve",
+   "options": {
+    "profile": [
+     [
+      0,
+      -0.0095
+     ],
+     [
+      0.015,
+      -0.0095
+     ],
+     [
+      0.016,
+      -0.007
+     ],
+     [
+      0.016,
+      0.007
+     ],
+     [
+      0.015,
+      0.0095
+     ],
+     [
+      0,
+      0.0095
+     ]
+    ],
+    "sides": 20
+   }
+  },
+  {
+   "id": "hinge-0-knuckle-3-lathe",
+   "type": "smoothNormals",
+   "inputs": [
+    "hinge-0-knuckle-3-lathe-turned"
+   ]
+  },
+  {
+   "id": "hinge-0-knuckle-3",
+   "type": "transform",
+   "inputs": [
+    "hinge-0-knuckle-3-lathe"
+   ],
+   "options": {
+    "translation": [
+     [
+      "+",
+      [
+       "*",
+       -0.35,
+       "$width"
+      ],
+      0.02
+     ],
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     1.5707963267948966,
+     0
+    ]
+   }
+  },
+  {
+   "id": "hinge-0-knuckle-4-lathe-turned",
+   "type": "revolve",
+   "options": {
+    "profile": [
+     [
+      0,
+      -0.0095
+     ],
+     [
+      0.015,
+      -0.0095
+     ],
+     [
+      0.016,
+      -0.007
+     ],
+     [
+      0.016,
+      0.007
+     ],
+     [
+      0.015,
+      0.0095
+     ],
+     [
+      0,
+      0.0095
+     ]
+    ],
+    "sides": 20
+   }
+  },
+  {
+   "id": "hinge-0-knuckle-4-lathe",
+   "type": "smoothNormals",
+   "inputs": [
+    "hinge-0-knuckle-4-lathe-turned"
+   ]
+  },
+  {
+   "id": "hinge-0-knuckle-4",
+   "type": "transform",
+   "inputs": [
+    "hinge-0-knuckle-4-lathe"
+   ],
+   "options": {
+    "translation": [
+     [
+      "+",
+      [
+       "*",
+       -0.35,
+       "$width"
+      ],
+      0.04
+     ],
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     1.5707963267948966,
+     0
+    ]
+   }
+  },
+  {
+   "id": "hinge-0-pin-rough",
+   "type": "sweep",
+   "options": {
+    "path": [
+     [
+      [
+       "-",
+       [
+        "*",
+        -0.35,
+        "$width"
+       ],
+       0.06
+      ],
+      0,
+      0
+     ],
+     [
+      [
+       "+",
+       [
+        "*",
+        -0.35,
+        "$width"
+       ],
+       0.06
+      ],
+      0,
+      0
+     ]
+    ],
+    "radius": 0.0065,
+    "sides": 16
+   }
+  },
+  {
+   "id": "hinge-0-pin",
+   "type": "smoothNormals",
+   "inputs": [
+    "hinge-0-pin-rough"
+   ]
+  },
+  {
+   "id": "hinge-0-pinhead--1-lathe-turned",
+   "type": "revolve",
+   "options": {
+    "profile": [
+     [
+      0,
+      -0.003
+     ],
+     [
+      0.012,
+      -0.003
+     ],
+     [
+      0.012,
+      0.003
+     ],
+     [
+      0,
+      0.003
+     ]
+    ],
+    "sides": 20
+   }
+  },
+  {
+   "id": "hinge-0-pinhead--1-lathe",
+   "type": "smoothNormals",
+   "inputs": [
+    "hinge-0-pinhead--1-lathe-turned"
+   ]
+  },
+  {
+   "id": "hinge-0-pinhead--1",
+   "type": "transform",
+   "inputs": [
+    "hinge-0-pinhead--1-lathe"
+   ],
+   "options": {
+    "translation": [
+     [
+      "+",
+      [
+       "*",
+       -0.35,
+       "$width"
+      ],
+      -0.06
+     ],
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     1.5707963267948966,
+     0
+    ]
+   }
+  },
+  {
+   "id": "hinge-0-pinhead-1-lathe-turned",
+   "type": "revolve",
+   "options": {
+    "profile": [
+     [
+      0,
+      -0.003
+     ],
+     [
+      0.012,
+      -0.003
+     ],
+     [
+      0.012,
+      0.003
+     ],
+     [
+      0,
+      0.003
+     ]
+    ],
+    "sides": 20
+   }
+  },
+  {
+   "id": "hinge-0-pinhead-1-lathe",
+   "type": "smoothNormals",
+   "inputs": [
+    "hinge-0-pinhead-1-lathe-turned"
+   ]
+  },
+  {
+   "id": "hinge-0-pinhead-1",
+   "type": "transform",
+   "inputs": [
+    "hinge-0-pinhead-1-lathe"
+   ],
+   "options": {
+    "translation": [
+     [
+      "+",
+      [
+       "*",
+       -0.35,
+       "$width"
+      ],
+      0.06
+     ],
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     1.5707963267948966,
+     0
+    ]
+   }
+  },
+  {
+   "id": "hinge-1-fixed-leaf-blank",
+   "type": "cube",
+   "options": {
+    "size": [
+     0.104,
+     0.075,
+     0.011
+    ]
+   }
+  },
+  {
+   "id": "hinge-1-fixed-leaf-bevel",
+   "type": "boxBevel",
+   "inputs": [
+    "hinge-1-fixed-leaf-blank"
+   ],
+   "options": {
+    "width": 0.002
+   }
+  },
+  {
+   "id": "hinge-1-fixed-leaf-placed",
+   "type": "transform",
+   "inputs": [
+    "hinge-1-fixed-leaf-bevel"
+   ],
+   "options": {
+    "translation": [
+     [
+      "*",
+      0,
+      "$width"
+     ],
+     0.033,
+     -0.011
+    ]
+   }
+  },
+  {
+   "id": "hinge-1-fixed-leaf-screws",
+   "type": "pointArray",
+   "options": {
+    "positions": [
+     [
+      [
+       "*",
+       0,
+       "$width"
+      ],
+      0.010500000000000002,
+      0.0045000000000000005
+     ],
+     [
+      [
+       "*",
+       0,
+       "$width"
+      ],
+      0.0555,
+      0.0045000000000000005
+     ]
+    ]
+   }
+  },
+  {
+   "id": "hinge-1-fixed-leaf",
+   "type": "fastener",
+   "inputs": [
+    "hinge-1-fixed-leaf-placed",
+    "hinge-1-fixed-leaf-screws"
+   ],
+   "options": {
+    "head": "slotted",
+    "radius": 0.005,
+    "height": 0.002,
+    "washer": 0.007,
+    "slot": "bronze"
+   }
+  },
+  {
+   "id": "hinge-1-strap-blank",
+   "type": "cube",
+   "options": {
+    "size": [
+     0.073,
+     0.145,
+     0.012
+    ]
+   }
+  },
+  {
+   "id": "hinge-1-strap-bevel",
+   "type": "boxBevel",
+   "inputs": [
+    "hinge-1-strap-blank"
+   ],
+   "options": {
+    "width": 0.002
+   }
+  },
+  {
+   "id": "hinge-1-strap-placed",
+   "type": "transform",
+   "inputs": [
+    "hinge-1-strap-bevel"
+   ],
+   "options": {
+    "translation": [
+     [
+      "*",
+      0,
+      "$width"
+     ],
+     -0.074,
+     0.022
+    ]
+   }
+  },
+  {
+   "id": "hinge-1-strap-screws",
+   "type": "pointArray",
+   "options": {
+    "positions": [
+     [
+      [
+       "*",
+       0,
+       "$width"
+      ],
+      -0.1175,
+      0.038
+     ],
+     [
+      [
+       "*",
+       0,
+       "$width"
+      ],
+      -0.0305,
+      0.038
+     ]
+    ]
+   }
+  },
+  {
+   "id": "hinge-1-strap",
+   "type": "fastener",
+   "inputs": [
+    "hinge-1-strap-placed",
+    "hinge-1-strap-screws"
+   ],
+   "options": {
+    "head": "slotted",
+    "radius": 0.005,
+    "height": 0.002,
+    "washer": 0.007,
+    "slot": "bronze"
+   }
+  },
+  {
+   "id": "hinge-1-knuckle-0-lathe-turned",
+   "type": "revolve",
+   "options": {
+    "profile": [
+     [
+      0,
+      -0.0095
+     ],
+     [
+      0.015,
+      -0.0095
+     ],
+     [
+      0.016,
+      -0.007
+     ],
+     [
+      0.016,
+      0.007
+     ],
+     [
+      0.015,
+      0.0095
+     ],
+     [
+      0,
+      0.0095
+     ]
+    ],
+    "sides": 20
+   }
+  },
+  {
+   "id": "hinge-1-knuckle-0-lathe",
+   "type": "smoothNormals",
+   "inputs": [
+    "hinge-1-knuckle-0-lathe-turned"
+   ]
+  },
+  {
+   "id": "hinge-1-knuckle-0",
+   "type": "transform",
+   "inputs": [
+    "hinge-1-knuckle-0-lathe"
+   ],
+   "options": {
+    "translation": [
+     [
+      "+",
+      [
+       "*",
+       0,
+       "$width"
+      ],
+      -0.04
+     ],
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     1.5707963267948966,
+     0
+    ]
+   }
+  },
+  {
+   "id": "hinge-1-knuckle-1-lathe-turned",
+   "type": "revolve",
+   "options": {
+    "profile": [
+     [
+      0,
+      -0.0095
+     ],
+     [
+      0.015,
+      -0.0095
+     ],
+     [
+      0.016,
+      -0.007
+     ],
+     [
+      0.016,
+      0.007
+     ],
+     [
+      0.015,
+      0.0095
+     ],
+     [
+      0,
+      0.0095
+     ]
+    ],
+    "sides": 20
+   }
+  },
+  {
+   "id": "hinge-1-knuckle-1-lathe",
+   "type": "smoothNormals",
+   "inputs": [
+    "hinge-1-knuckle-1-lathe-turned"
+   ]
+  },
+  {
+   "id": "hinge-1-knuckle-1",
+   "type": "transform",
+   "inputs": [
+    "hinge-1-knuckle-1-lathe"
+   ],
+   "options": {
+    "translation": [
+     [
+      "+",
+      [
+       "*",
+       0,
+       "$width"
+      ],
+      -0.02
+     ],
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     1.5707963267948966,
+     0
+    ]
+   }
+  },
+  {
+   "id": "hinge-1-knuckle-2-lathe-turned",
+   "type": "revolve",
+   "options": {
+    "profile": [
+     [
+      0,
+      -0.0095
+     ],
+     [
+      0.015,
+      -0.0095
+     ],
+     [
+      0.016,
+      -0.007
+     ],
+     [
+      0.016,
+      0.007
+     ],
+     [
+      0.015,
+      0.0095
+     ],
+     [
+      0,
+      0.0095
+     ]
+    ],
+    "sides": 20
+   }
+  },
+  {
+   "id": "hinge-1-knuckle-2-lathe",
+   "type": "smoothNormals",
+   "inputs": [
+    "hinge-1-knuckle-2-lathe-turned"
+   ]
+  },
+  {
+   "id": "hinge-1-knuckle-2",
+   "type": "transform",
+   "inputs": [
+    "hinge-1-knuckle-2-lathe"
+   ],
+   "options": {
+    "translation": [
+     [
+      "+",
+      [
+       "*",
+       0,
+       "$width"
+      ],
+      0.0
+     ],
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     1.5707963267948966,
+     0
+    ]
+   }
+  },
+  {
+   "id": "hinge-1-knuckle-3-lathe-turned",
+   "type": "revolve",
+   "options": {
+    "profile": [
+     [
+      0,
+      -0.0095
+     ],
+     [
+      0.015,
+      -0.0095
+     ],
+     [
+      0.016,
+      -0.007
+     ],
+     [
+      0.016,
+      0.007
+     ],
+     [
+      0.015,
+      0.0095
+     ],
+     [
+      0,
+      0.0095
+     ]
+    ],
+    "sides": 20
+   }
+  },
+  {
+   "id": "hinge-1-knuckle-3-lathe",
+   "type": "smoothNormals",
+   "inputs": [
+    "hinge-1-knuckle-3-lathe-turned"
+   ]
+  },
+  {
+   "id": "hinge-1-knuckle-3",
+   "type": "transform",
+   "inputs": [
+    "hinge-1-knuckle-3-lathe"
+   ],
+   "options": {
+    "translation": [
+     [
+      "+",
+      [
+       "*",
+       0,
+       "$width"
+      ],
+      0.02
+     ],
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     1.5707963267948966,
+     0
+    ]
+   }
+  },
+  {
+   "id": "hinge-1-knuckle-4-lathe-turned",
+   "type": "revolve",
+   "options": {
+    "profile": [
+     [
+      0,
+      -0.0095
+     ],
+     [
+      0.015,
+      -0.0095
+     ],
+     [
+      0.016,
+      -0.007
+     ],
+     [
+      0.016,
+      0.007
+     ],
+     [
+      0.015,
+      0.0095
+     ],
+     [
+      0,
+      0.0095
+     ]
+    ],
+    "sides": 20
+   }
+  },
+  {
+   "id": "hinge-1-knuckle-4-lathe",
+   "type": "smoothNormals",
+   "inputs": [
+    "hinge-1-knuckle-4-lathe-turned"
+   ]
+  },
+  {
+   "id": "hinge-1-knuckle-4",
+   "type": "transform",
+   "inputs": [
+    "hinge-1-knuckle-4-lathe"
+   ],
+   "options": {
+    "translation": [
+     [
+      "+",
+      [
+       "*",
+       0,
+       "$width"
+      ],
+      0.04
+     ],
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     1.5707963267948966,
+     0
+    ]
+   }
+  },
+  {
+   "id": "hinge-1-pin-rough",
+   "type": "sweep",
+   "options": {
+    "path": [
+     [
+      [
+       "-",
+       [
+        "*",
+        0,
+        "$width"
+       ],
+       0.06
+      ],
+      0,
+      0
+     ],
+     [
+      [
+       "+",
+       [
+        "*",
+        0,
+        "$width"
+       ],
+       0.06
+      ],
+      0,
+      0
+     ]
+    ],
+    "radius": 0.0065,
+    "sides": 16
+   }
+  },
+  {
+   "id": "hinge-1-pin",
+   "type": "smoothNormals",
+   "inputs": [
+    "hinge-1-pin-rough"
+   ]
+  },
+  {
+   "id": "hinge-1-pinhead--1-lathe-turned",
+   "type": "revolve",
+   "options": {
+    "profile": [
+     [
+      0,
+      -0.003
+     ],
+     [
+      0.012,
+      -0.003
+     ],
+     [
+      0.012,
+      0.003
+     ],
+     [
+      0,
+      0.003
+     ]
+    ],
+    "sides": 20
+   }
+  },
+  {
+   "id": "hinge-1-pinhead--1-lathe",
+   "type": "smoothNormals",
+   "inputs": [
+    "hinge-1-pinhead--1-lathe-turned"
+   ]
+  },
+  {
+   "id": "hinge-1-pinhead--1",
+   "type": "transform",
+   "inputs": [
+    "hinge-1-pinhead--1-lathe"
+   ],
+   "options": {
+    "translation": [
+     [
+      "+",
+      [
+       "*",
+       0,
+       "$width"
+      ],
+      -0.06
+     ],
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     1.5707963267948966,
+     0
+    ]
+   }
+  },
+  {
+   "id": "hinge-1-pinhead-1-lathe-turned",
+   "type": "revolve",
+   "options": {
+    "profile": [
+     [
+      0,
+      -0.003
+     ],
+     [
+      0.012,
+      -0.003
+     ],
+     [
+      0.012,
+      0.003
+     ],
+     [
+      0,
+      0.003
+     ]
+    ],
+    "sides": 20
+   }
+  },
+  {
+   "id": "hinge-1-pinhead-1-lathe",
+   "type": "smoothNormals",
+   "inputs": [
+    "hinge-1-pinhead-1-lathe-turned"
+   ]
+  },
+  {
+   "id": "hinge-1-pinhead-1",
+   "type": "transform",
+   "inputs": [
+    "hinge-1-pinhead-1-lathe"
+   ],
+   "options": {
+    "translation": [
+     [
+      "+",
+      [
+       "*",
+       0,
+       "$width"
+      ],
+      0.06
+     ],
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     1.5707963267948966,
+     0
+    ]
+   }
+  },
+  {
+   "id": "hinge-2-fixed-leaf-blank",
+   "type": "cube",
+   "options": {
+    "size": [
+     0.104,
+     0.075,
+     0.011
+    ]
+   }
+  },
+  {
+   "id": "hinge-2-fixed-leaf-bevel",
+   "type": "boxBevel",
+   "inputs": [
+    "hinge-2-fixed-leaf-blank"
+   ],
+   "options": {
+    "width": 0.002
+   }
+  },
+  {
+   "id": "hinge-2-fixed-leaf-placed",
+   "type": "transform",
+   "inputs": [
+    "hinge-2-fixed-leaf-bevel"
+   ],
+   "options": {
+    "translation": [
+     [
+      "*",
+      0.35,
+      "$width"
+     ],
+     0.033,
+     -0.011
+    ]
+   }
+  },
+  {
+   "id": "hinge-2-fixed-leaf-screws",
+   "type": "pointArray",
+   "options": {
+    "positions": [
+     [
+      [
+       "*",
+       0.35,
+       "$width"
+      ],
+      0.010500000000000002,
+      0.0045000000000000005
+     ],
+     [
+      [
+       "*",
+       0.35,
+       "$width"
+      ],
+      0.0555,
+      0.0045000000000000005
+     ]
+    ]
+   }
+  },
+  {
+   "id": "hinge-2-fixed-leaf",
+   "type": "fastener",
+   "inputs": [
+    "hinge-2-fixed-leaf-placed",
+    "hinge-2-fixed-leaf-screws"
+   ],
+   "options": {
+    "head": "slotted",
+    "radius": 0.005,
+    "height": 0.002,
+    "washer": 0.007,
+    "slot": "bronze"
+   }
+  },
+  {
+   "id": "hinge-2-strap-blank",
+   "type": "cube",
+   "options": {
+    "size": [
+     0.073,
+     0.145,
+     0.012
+    ]
+   }
+  },
+  {
+   "id": "hinge-2-strap-bevel",
+   "type": "boxBevel",
+   "inputs": [
+    "hinge-2-strap-blank"
+   ],
+   "options": {
+    "width": 0.002
+   }
+  },
+  {
+   "id": "hinge-2-strap-placed",
+   "type": "transform",
+   "inputs": [
+    "hinge-2-strap-bevel"
+   ],
+   "options": {
+    "translation": [
+     [
+      "*",
+      0.35,
+      "$width"
+     ],
+     -0.074,
+     0.022
+    ]
+   }
+  },
+  {
+   "id": "hinge-2-strap-screws",
+   "type": "pointArray",
+   "options": {
+    "positions": [
+     [
+      [
+       "*",
+       0.35,
+       "$width"
+      ],
+      -0.1175,
+      0.038
+     ],
+     [
+      [
+       "*",
+       0.35,
+       "$width"
+      ],
+      -0.0305,
+      0.038
+     ]
+    ]
+   }
+  },
+  {
+   "id": "hinge-2-strap",
+   "type": "fastener",
+   "inputs": [
+    "hinge-2-strap-placed",
+    "hinge-2-strap-screws"
+   ],
+   "options": {
+    "head": "slotted",
+    "radius": 0.005,
+    "height": 0.002,
+    "washer": 0.007,
+    "slot": "bronze"
+   }
+  },
+  {
+   "id": "hinge-2-knuckle-0-lathe-turned",
+   "type": "revolve",
+   "options": {
+    "profile": [
+     [
+      0,
+      -0.0095
+     ],
+     [
+      0.015,
+      -0.0095
+     ],
+     [
+      0.016,
+      -0.007
+     ],
+     [
+      0.016,
+      0.007
+     ],
+     [
+      0.015,
+      0.0095
+     ],
+     [
+      0,
+      0.0095
+     ]
+    ],
+    "sides": 20
+   }
+  },
+  {
+   "id": "hinge-2-knuckle-0-lathe",
+   "type": "smoothNormals",
+   "inputs": [
+    "hinge-2-knuckle-0-lathe-turned"
+   ]
+  },
+  {
+   "id": "hinge-2-knuckle-0",
+   "type": "transform",
+   "inputs": [
+    "hinge-2-knuckle-0-lathe"
+   ],
+   "options": {
+    "translation": [
+     [
+      "+",
+      [
+       "*",
+       0.35,
+       "$width"
+      ],
+      -0.04
+     ],
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     1.5707963267948966,
+     0
+    ]
+   }
+  },
+  {
+   "id": "hinge-2-knuckle-1-lathe-turned",
+   "type": "revolve",
+   "options": {
+    "profile": [
+     [
+      0,
+      -0.0095
+     ],
+     [
+      0.015,
+      -0.0095
+     ],
+     [
+      0.016,
+      -0.007
+     ],
+     [
+      0.016,
+      0.007
+     ],
+     [
+      0.015,
+      0.0095
+     ],
+     [
+      0,
+      0.0095
+     ]
+    ],
+    "sides": 20
+   }
+  },
+  {
+   "id": "hinge-2-knuckle-1-lathe",
+   "type": "smoothNormals",
+   "inputs": [
+    "hinge-2-knuckle-1-lathe-turned"
+   ]
+  },
+  {
+   "id": "hinge-2-knuckle-1",
+   "type": "transform",
+   "inputs": [
+    "hinge-2-knuckle-1-lathe"
+   ],
+   "options": {
+    "translation": [
+     [
+      "+",
+      [
+       "*",
+       0.35,
+       "$width"
+      ],
+      -0.02
+     ],
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     1.5707963267948966,
+     0
+    ]
+   }
+  },
+  {
+   "id": "hinge-2-knuckle-2-lathe-turned",
+   "type": "revolve",
+   "options": {
+    "profile": [
+     [
+      0,
+      -0.0095
+     ],
+     [
+      0.015,
+      -0.0095
+     ],
+     [
+      0.016,
+      -0.007
+     ],
+     [
+      0.016,
+      0.007
+     ],
+     [
+      0.015,
+      0.0095
+     ],
+     [
+      0,
+      0.0095
+     ]
+    ],
+    "sides": 20
+   }
+  },
+  {
+   "id": "hinge-2-knuckle-2-lathe",
+   "type": "smoothNormals",
+   "inputs": [
+    "hinge-2-knuckle-2-lathe-turned"
+   ]
+  },
+  {
+   "id": "hinge-2-knuckle-2",
+   "type": "transform",
+   "inputs": [
+    "hinge-2-knuckle-2-lathe"
+   ],
+   "options": {
+    "translation": [
+     [
+      "+",
+      [
+       "*",
+       0.35,
+       "$width"
+      ],
+      0.0
+     ],
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     1.5707963267948966,
+     0
+    ]
+   }
+  },
+  {
+   "id": "hinge-2-knuckle-3-lathe-turned",
+   "type": "revolve",
+   "options": {
+    "profile": [
+     [
+      0,
+      -0.0095
+     ],
+     [
+      0.015,
+      -0.0095
+     ],
+     [
+      0.016,
+      -0.007
+     ],
+     [
+      0.016,
+      0.007
+     ],
+     [
+      0.015,
+      0.0095
+     ],
+     [
+      0,
+      0.0095
+     ]
+    ],
+    "sides": 20
+   }
+  },
+  {
+   "id": "hinge-2-knuckle-3-lathe",
+   "type": "smoothNormals",
+   "inputs": [
+    "hinge-2-knuckle-3-lathe-turned"
+   ]
+  },
+  {
+   "id": "hinge-2-knuckle-3",
+   "type": "transform",
+   "inputs": [
+    "hinge-2-knuckle-3-lathe"
+   ],
+   "options": {
+    "translation": [
+     [
+      "+",
+      [
+       "*",
+       0.35,
+       "$width"
+      ],
+      0.02
+     ],
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     1.5707963267948966,
+     0
+    ]
+   }
+  },
+  {
+   "id": "hinge-2-knuckle-4-lathe-turned",
+   "type": "revolve",
+   "options": {
+    "profile": [
+     [
+      0,
+      -0.0095
+     ],
+     [
+      0.015,
+      -0.0095
+     ],
+     [
+      0.016,
+      -0.007
+     ],
+     [
+      0.016,
+      0.007
+     ],
+     [
+      0.015,
+      0.0095
+     ],
+     [
+      0,
+      0.0095
+     ]
+    ],
+    "sides": 20
+   }
+  },
+  {
+   "id": "hinge-2-knuckle-4-lathe",
+   "type": "smoothNormals",
+   "inputs": [
+    "hinge-2-knuckle-4-lathe-turned"
+   ]
+  },
+  {
+   "id": "hinge-2-knuckle-4",
+   "type": "transform",
+   "inputs": [
+    "hinge-2-knuckle-4-lathe"
+   ],
+   "options": {
+    "translation": [
+     [
+      "+",
+      [
+       "*",
+       0.35,
+       "$width"
+      ],
+      0.04
+     ],
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     1.5707963267948966,
+     0
+    ]
+   }
+  },
+  {
+   "id": "hinge-2-pin-rough",
+   "type": "sweep",
+   "options": {
+    "path": [
+     [
+      [
+       "-",
+       [
+        "*",
+        0.35,
+        "$width"
+       ],
+       0.06
+      ],
+      0,
+      0
+     ],
+     [
+      [
+       "+",
+       [
+        "*",
+        0.35,
+        "$width"
+       ],
+       0.06
+      ],
+      0,
+      0
+     ]
+    ],
+    "radius": 0.0065,
+    "sides": 16
+   }
+  },
+  {
+   "id": "hinge-2-pin",
+   "type": "smoothNormals",
+   "inputs": [
+    "hinge-2-pin-rough"
+   ]
+  },
+  {
+   "id": "hinge-2-pinhead--1-lathe-turned",
+   "type": "revolve",
+   "options": {
+    "profile": [
+     [
+      0,
+      -0.003
+     ],
+     [
+      0.012,
+      -0.003
+     ],
+     [
+      0.012,
+      0.003
+     ],
+     [
+      0,
+      0.003
+     ]
+    ],
+    "sides": 20
+   }
+  },
+  {
+   "id": "hinge-2-pinhead--1-lathe",
+   "type": "smoothNormals",
+   "inputs": [
+    "hinge-2-pinhead--1-lathe-turned"
+   ]
+  },
+  {
+   "id": "hinge-2-pinhead--1",
+   "type": "transform",
+   "inputs": [
+    "hinge-2-pinhead--1-lathe"
+   ],
+   "options": {
+    "translation": [
+     [
+      "+",
+      [
+       "*",
+       0.35,
+       "$width"
+      ],
+      -0.06
+     ],
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     1.5707963267948966,
+     0
+    ]
+   }
+  },
+  {
+   "id": "hinge-2-pinhead-1-lathe-turned",
+   "type": "revolve",
+   "options": {
+    "profile": [
+     [
+      0,
+      -0.003
+     ],
+     [
+      0.012,
+      -0.003
+     ],
+     [
+      0.012,
+      0.003
+     ],
+     [
+      0,
+      0.003
+     ]
+    ],
+    "sides": 20
+   }
+  },
+  {
+   "id": "hinge-2-pinhead-1-lathe",
+   "type": "smoothNormals",
+   "inputs": [
+    "hinge-2-pinhead-1-lathe-turned"
+   ]
+  },
+  {
+   "id": "hinge-2-pinhead-1",
+   "type": "transform",
+   "inputs": [
+    "hinge-2-pinhead-1-lathe"
+   ],
+   "options": {
+    "translation": [
+     [
+      "+",
+      [
+       "*",
+       0.35,
+       "$width"
+      ],
+      0.06
+     ],
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     1.5707963267948966,
+     0
+    ]
+   }
+  },
+  {
+   "id": "rack-band-flat",
+   "type": "profileSolid",
+   "options": {
+    "profile": [
+     [
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "-",
+         "$rack-radius",
+         0.009
+        ]
+       ],
+       0.9998380043739528
+      ],
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "-",
+         "$rack-radius",
+         0.009
+        ]
+       ],
+       0.017999028015746276
+      ]
+     ],
+     [
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "-",
+         "$rack-radius",
+         0.009
+        ]
+       ],
+       0.9996052209778142
+      ],
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "-",
+         "$rack-radius",
+         0.009
+        ]
+       ],
+       0.02809630213916308
+      ]
+     ],
+     [
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "-",
+         "$rack-radius",
+         0.009
+        ]
+       ],
+       0.9992704687199085
+      ],
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "-",
+         "$rack-radius",
+         0.009
+        ]
+       ],
+       0.038190710183162856
+      ]
+     ],
+     [
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "-",
+         "$rack-radius",
+         0.009
+        ]
+       ],
+       0.9988337817480231
+      ],
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "-",
+         "$rack-radius",
+         0.009
+        ]
+       ],
+       0.04828122242593457
+      ]
+     ],
+     [
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "-",
+         "$rack-radius",
+         0.009
+        ]
+       ],
+       0.9982952046082173
+      ],
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "-",
+         "$rack-radius",
+         0.009
+        ]
+       ],
+       0.05836680954307451
+      ]
+     ],
+     [
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "-",
+         "$rack-radius",
+         0.009
+        ]
+       ],
+       0.9976547922402782
+      ],
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "-",
+         "$rack-radius",
+         0.009
+        ]
+       ],
+       0.06844644271258672
+      ]
+     ],
+     [
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "-",
+         "$rack-radius",
+         0.009
+        ]
+       ],
+       0.996912609972116
+      ],
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "-",
+         "$rack-radius",
+         0.009
+        ]
+       ],
+       0.07851909371983233
+      ]
+     ],
+     [
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "-",
+         "$rack-radius",
+         0.009
+        ]
+       ],
+       0.9960687335131002
+      ],
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "-",
+         "$rack-radius",
+         0.009
+        ]
+       ],
+       0.08858373506241676
+      ]
+     ],
+     [
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "-",
+         "$rack-radius",
+         0.009
+        ]
+       ],
+       0.9951232489463369
+      ],
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "-",
+         "$rack-radius",
+         0.009
+        ]
+       ],
+       0.09863934005500435
+      ]
+     ],
+     [
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "-",
+         "$rack-radius",
+         0.009
+        ]
+       ],
+       0.9940762527198866
+      ],
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "-",
+         "$rack-radius",
+         0.009
+        ]
+       ],
+       0.10868488293404972
+      ]
+     ],
+     [
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "-",
+         "$rack-radius",
+         0.009
+        ]
+       ],
+       0.9929278516369265
+      ],
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "-",
+         "$rack-radius",
+         0.009
+        ]
+       ],
+       0.11871933896243494
+      ]
+     ],
+     [
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "-",
+         "$rack-radius",
+         0.009
+        ]
+       ],
+       0.9916781628448553
+      ],
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "-",
+         "$rack-radius",
+         0.009
+        ]
+       ],
+       0.1287416845340021
+      ]
+     ],
+     [
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "-",
+         "$rack-radius",
+         0.009
+        ]
+       ],
+       0.990327313823343
+      ],
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "-",
+         "$rack-radius",
+         0.009
+        ]
+       ],
+       0.13875089727797052
+      ]
+     ],
+     [
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "-",
+         "$rack-radius",
+         0.009
+        ]
+       ],
+       0.9888754423713267
+      ],
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "-",
+         "$rack-radius",
+         0.009
+        ]
+       ],
+       0.1487459561632278
+      ]
+     ],
+     [
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "-",
+         "$rack-radius",
+         0.009
+        ]
+       ],
+       0.9873226965929544
+      ],
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "-",
+         "$rack-radius",
+         0.009
+        ]
+       ],
+       0.15872584160248446
+      ]
+     ],
+     [
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "-",
+         "$rack-radius",
+         0.009
+        ]
+       ],
+       0.9856692348824763
+      ],
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "-",
+         "$rack-radius",
+         0.009
+        ]
+       ],
+       0.16868953555628108
+      ]
+     ],
+     [
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "-",
+         "$rack-radius",
+         0.009
+        ]
+       ],
+       0.9839152259080877
+      ],
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "-",
+         "$rack-radius",
+         0.009
+        ]
+       ],
+       0.1786360216368376
+      ]
+     ],
+     [
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "-",
+         "$rack-radius",
+         0.009
+        ]
+       ],
+       0.9820608485947232
+      ],
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "-",
+         "$rack-radius",
+         0.009
+        ]
+       ],
+       0.1885642852117342
+      ]
+     ],
+     [
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "-",
+         "$rack-radius",
+         0.009
+        ]
+       ],
+       0.9801062921058042
+      ],
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "-",
+         "$rack-radius",
+         0.009
+        ]
+       ],
+       0.19847331350741312
+      ]
+     ],
+     [
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "-",
+         "$rack-radius",
+         0.009
+        ]
+       ],
+       0.9780517558239435
+      ],
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "-",
+         "$rack-radius",
+         0.009
+        ]
+       ],
+       0.20836209571249067
+      ]
+     ],
+     [
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "-",
+         "$rack-radius",
+         0.009
+        ]
+       ],
+       0.9758974493306055
+      ],
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "-",
+         "$rack-radius",
+         0.009
+        ]
+       ],
+       0.21822962308086932
+      ]
+     ],
+     [
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "-",
+         "$rack-radius",
+         0.009
+        ]
+       ],
+       0.9736435923847273
+      ],
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "-",
+         "$rack-radius",
+         0.009
+        ]
+       ],
+       0.22807488903463904
+      ]
+     ],
+     [
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "-",
+         "$rack-radius",
+         0.009
+        ]
+       ],
+       0.9712904149003017
+      ],
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "-",
+         "$rack-radius",
+         0.009
+        ]
+       ],
+       0.23789688926675737
+      ]
+     ],
+     [
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "-",
+         "$rack-radius",
+         0.009
+        ]
+       ],
+       0.9688381569229231
+      ],
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "-",
+         "$rack-radius",
+         0.009
+        ]
+       ],
+       0.24769462184349797
+      ]
+     ],
+     [
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "-",
+         "$rack-radius",
+         0.009
+        ]
+       ],
+       0.9662870686053013
+      ],
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "-",
+         "$rack-radius",
+         0.009
+        ]
+       ],
+       0.2574670873066569
+      ]
+     ],
+     [
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "-",
+         "$rack-radius",
+         0.009
+        ]
+       ],
+       0.9636374101817434
+      ],
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "-",
+         "$rack-radius",
+         0.009
+        ]
+       ],
+       0.2672132887755067
+      ]
+     ],
+     [
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "-",
+         "$rack-radius",
+         0.009
+        ]
+       ],
+       0.9608894519416076
+      ],
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "-",
+         "$rack-radius",
+         0.009
+        ]
+       ],
+       0.276932232048487
+      ]
+     ],
+     [
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "-",
+         "$rack-radius",
+         0.009
+        ]
+       ],
+       0.9580434742017307
+      ],
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "-",
+         "$rack-radius",
+         0.009
+        ]
+       ],
+       0.2866229257046226
+      ]
+     ],
+     [
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "-",
+         "$rack-radius",
+         0.009
+        ]
+       ],
+       0.9550997672778344
+      ],
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "-",
+         "$rack-radius",
+         0.009
+        ]
+       ],
+       0.296284381204657
+      ]
+     ],
+     [
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "-",
+         "$rack-radius",
+         0.009
+        ]
+       ],
+       0.9520586314549091
+      ],
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "-",
+         "$rack-radius",
+         0.009
+        ]
+       ],
+       0.30591561299189274
+      ]
+     ],
+     [
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "-",
+         "$rack-radius",
+         0.009
+        ]
+       ],
+       0.948920376956583
+      ],
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "-",
+         "$rack-radius",
+         0.009
+        ]
+       ],
+       0.3155156385927272
+      ]
+     ],
+     [
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "-",
+         "$rack-radius",
+         0.009
+        ]
+       ],
+       0.945685323913476
+      ],
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "-",
+         "$rack-radius",
+         0.009
+        ]
+       ],
+       0.3250834787168735
+      ]
+     ],
+     [
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "-",
+         "$rack-radius",
+         0.009
+        ]
+       ],
+       0.9423538023305438
+      ],
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "-",
+         "$rack-radius",
+         0.009
+        ]
+       ],
+       0.33461815735725764
+      ]
+     ],
+     [
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "-",
+         "$rack-radius",
+         0.009
+        ]
+       ],
+       0.938926152053414
+      ],
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "-",
+         "$rack-radius",
+         0.009
+        ]
+       ],
+       0.34411870188957955
+      ]
+     ],
+     [
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "-",
+         "$rack-radius",
+         0.009
+        ]
+       ],
+       0.935402722733719
+      ],
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "-",
+         "$rack-radius",
+         0.009
+        ]
+       ],
+       0.35358414317153014
+      ]
+     ],
+     [
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "-",
+         "$rack-radius",
+         0.009
+        ]
+       ],
+       0.9317838737934285
+      ],
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "-",
+         "$rack-radius",
+         0.009
+        ]
+       ],
+       0.36301351564165235
+      ]
+     ],
+     [
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "-",
+         "$rack-radius",
+         0.009
+        ]
+       ],
+       0.9280699743881845
+      ],
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "-",
+         "$rack-radius",
+         0.009
+        ]
+       ],
+       0.37240585741783727
+      ]
+     ],
+     [
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "-",
+         "$rack-radius",
+         0.009
+        ]
+       ],
+       0.9242614033696449
+      ],
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "-",
+         "$rack-radius",
+         0.009
+        ]
+       ],
+       0.3817602103954451
+      ]
+     ],
+     [
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "-",
+         "$rack-radius",
+         0.009
+        ]
+       ],
+       0.9203585492468367
+      ],
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "-",
+         "$rack-radius",
+         0.009
+        ]
+       ],
+       0.3910756203450404
+      ]
+     ],
+     [
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "-",
+         "$rack-radius",
+         0.009
+        ]
+       ],
+       0.9163618101465243
+      ],
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "-",
+         "$rack-radius",
+         0.009
+        ]
+       ],
+       0.4003511370097321
+      ]
+     ],
+     [
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "-",
+         "$rack-radius",
+         0.009
+        ]
+       ],
+       0.9122715937725977
+      ],
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "-",
+         "$rack-radius",
+         0.009
+        ]
+       ],
+       0.4095858142021089
+      ]
+     ],
+     [
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "+",
+         "$rack-radius",
+         0.007
+        ]
+       ],
+       0.9122715937725977
+      ],
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "+",
+         "$rack-radius",
+         0.007
+        ]
+       ],
+       0.4095858142021089
+      ]
+     ],
+     [
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "+",
+         "$rack-radius",
+         0.007
+        ]
+       ],
+       0.9163618101465243
+      ],
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "+",
+         "$rack-radius",
+         0.007
+        ]
+       ],
+       0.4003511370097321
+      ]
+     ],
+     [
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "+",
+         "$rack-radius",
+         0.007
+        ]
+       ],
+       0.9203585492468367
+      ],
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "+",
+         "$rack-radius",
+         0.007
+        ]
+       ],
+       0.3910756203450404
+      ]
+     ],
+     [
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "+",
+         "$rack-radius",
+         0.007
+        ]
+       ],
+       0.9242614033696449
+      ],
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "+",
+         "$rack-radius",
+         0.007
+        ]
+       ],
+       0.3817602103954451
+      ]
+     ],
+     [
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "+",
+         "$rack-radius",
+         0.007
+        ]
+       ],
+       0.9280699743881845
+      ],
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "+",
+         "$rack-radius",
+         0.007
+        ]
+       ],
+       0.37240585741783727
+      ]
+     ],
+     [
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "+",
+         "$rack-radius",
+         0.007
+        ]
+       ],
+       0.9317838737934285
+      ],
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "+",
+         "$rack-radius",
+         0.007
+        ]
+       ],
+       0.36301351564165235
+      ]
+     ],
+     [
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "+",
+         "$rack-radius",
+         0.007
+        ]
+       ],
+       0.935402722733719
+      ],
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "+",
+         "$rack-radius",
+         0.007
+        ]
+       ],
+       0.35358414317153014
+      ]
+     ],
+     [
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "+",
+         "$rack-radius",
+         0.007
+        ]
+       ],
+       0.938926152053414
+      ],
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "+",
+         "$rack-radius",
+         0.007
+        ]
+       ],
+       0.34411870188957955
+      ]
+     ],
+     [
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "+",
+         "$rack-radius",
+         0.007
+        ]
+       ],
+       0.9423538023305438
+      ],
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "+",
+         "$rack-radius",
+         0.007
+        ]
+       ],
+       0.33461815735725764
+      ]
+     ],
+     [
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "+",
+         "$rack-radius",
+         0.007
+        ]
+       ],
+       0.945685323913476
+      ],
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "+",
+         "$rack-radius",
+         0.007
+        ]
+       ],
+       0.3250834787168735
+      ]
+     ],
+     [
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "+",
+         "$rack-radius",
+         0.007
+        ]
+       ],
+       0.948920376956583
+      ],
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "+",
+         "$rack-radius",
+         0.007
+        ]
+       ],
+       0.3155156385927272
+      ]
+     ],
+     [
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "+",
+         "$rack-radius",
+         0.007
+        ]
+       ],
+       0.9520586314549091
+      ],
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "+",
+         "$rack-radius",
+         0.007
+        ]
+       ],
+       0.30591561299189274
+      ]
+     ],
+     [
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "+",
+         "$rack-radius",
+         0.007
+        ]
+       ],
+       0.9550997672778344
+      ],
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "+",
+         "$rack-radius",
+         0.007
+        ]
+       ],
+       0.296284381204657
+      ]
+     ],
+     [
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "+",
+         "$rack-radius",
+         0.007
+        ]
+       ],
+       0.9580434742017307
+      ],
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "+",
+         "$rack-radius",
+         0.007
+        ]
+       ],
+       0.2866229257046226
+      ]
+     ],
+     [
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "+",
+         "$rack-radius",
+         0.007
+        ]
+       ],
+       0.9608894519416076
+      ],
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "+",
+         "$rack-radius",
+         0.007
+        ]
+       ],
+       0.276932232048487
+      ]
+     ],
+     [
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "+",
+         "$rack-radius",
+         0.007
+        ]
+       ],
+       0.9636374101817434
+      ],
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "+",
+         "$rack-radius",
+         0.007
+        ]
+       ],
+       0.2672132887755067
+      ]
+     ],
+     [
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "+",
+         "$rack-radius",
+         0.007
+        ]
+       ],
+       0.9662870686053013
+      ],
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "+",
+         "$rack-radius",
+         0.007
+        ]
+       ],
+       0.2574670873066569
+      ]
+     ],
+     [
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "+",
+         "$rack-radius",
+         0.007
+        ]
+       ],
+       0.9688381569229231
+      ],
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "+",
+         "$rack-radius",
+         0.007
+        ]
+       ],
+       0.24769462184349797
+      ]
+     ],
+     [
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "+",
+         "$rack-radius",
+         0.007
+        ]
+       ],
+       0.9712904149003017
+      ],
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "+",
+         "$rack-radius",
+         0.007
+        ]
+       ],
+       0.23789688926675737
+      ]
+     ],
+     [
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "+",
+         "$rack-radius",
+         0.007
+        ]
+       ],
+       0.9736435923847273
+      ],
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "+",
+         "$rack-radius",
+         0.007
+        ]
+       ],
+       0.22807488903463904
+      ]
+     ],
+     [
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "+",
+         "$rack-radius",
+         0.007
+        ]
+       ],
+       0.9758974493306055
+      ],
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "+",
+         "$rack-radius",
+         0.007
+        ]
+       ],
+       0.21822962308086932
+      ]
+     ],
+     [
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "+",
+         "$rack-radius",
+         0.007
+        ]
+       ],
+       0.9780517558239435
+      ],
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "+",
+         "$rack-radius",
+         0.007
+        ]
+       ],
+       0.20836209571249067
+      ]
+     ],
+     [
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "+",
+         "$rack-radius",
+         0.007
+        ]
+       ],
+       0.9801062921058042
+      ],
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "+",
+         "$rack-radius",
+         0.007
+        ]
+       ],
+       0.19847331350741312
+      ]
+     ],
+     [
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "+",
+         "$rack-radius",
+         0.007
+        ]
+       ],
+       0.9820608485947232
+      ],
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "+",
+         "$rack-radius",
+         0.007
+        ]
+       ],
+       0.1885642852117342
+      ]
+     ],
+     [
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "+",
+         "$rack-radius",
+         0.007
+        ]
+       ],
+       0.9839152259080877
+      ],
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "+",
+         "$rack-radius",
+         0.007
+        ]
+       ],
+       0.1786360216368376
+      ]
+     ],
+     [
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "+",
+         "$rack-radius",
+         0.007
+        ]
+       ],
+       0.9856692348824763
+      ],
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "+",
+         "$rack-radius",
+         0.007
+        ]
+       ],
+       0.16868953555628108
+      ]
+     ],
+     [
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "+",
+         "$rack-radius",
+         0.007
+        ]
+       ],
+       0.9873226965929544
+      ],
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "+",
+         "$rack-radius",
+         0.007
+        ]
+       ],
+       0.15872584160248446
+      ]
+     ],
+     [
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "+",
+         "$rack-radius",
+         0.007
+        ]
+       ],
+       0.9888754423713267
+      ],
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "+",
+         "$rack-radius",
+         0.007
+        ]
+       ],
+       0.1487459561632278
+      ]
+     ],
+     [
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "+",
+         "$rack-radius",
+         0.007
+        ]
+       ],
+       0.990327313823343
+      ],
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "+",
+         "$rack-radius",
+         0.007
+        ]
+       ],
+       0.13875089727797052
+      ]
+     ],
+     [
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "+",
+         "$rack-radius",
+         0.007
+        ]
+       ],
+       0.9916781628448553
+      ],
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "+",
+         "$rack-radius",
+         0.007
+        ]
+       ],
+       0.1287416845340021
+      ]
+     ],
+     [
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "+",
+         "$rack-radius",
+         0.007
+        ]
+       ],
+       0.9929278516369265
+      ],
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "+",
+         "$rack-radius",
+         0.007
+        ]
+       ],
+       0.11871933896243494
+      ]
+     ],
+     [
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "+",
+         "$rack-radius",
+         0.007
+        ]
+       ],
+       0.9940762527198866
+      ],
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "+",
+         "$rack-radius",
+         0.007
+        ]
+       ],
+       0.10868488293404972
+      ]
+     ],
+     [
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "+",
+         "$rack-radius",
+         0.007
+        ]
+       ],
+       0.9951232489463369
+      ],
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "+",
+         "$rack-radius",
+         0.007
+        ]
+       ],
+       0.09863934005500435
+      ]
+     ],
+     [
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "+",
+         "$rack-radius",
+         0.007
+        ]
+       ],
+       0.9960687335131002
+      ],
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "+",
+         "$rack-radius",
+         0.007
+        ]
+       ],
+       0.08858373506241676
+      ]
+     ],
+     [
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "+",
+         "$rack-radius",
+         0.007
+        ]
+       ],
+       0.996912609972116
+      ],
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "+",
+         "$rack-radius",
+         0.007
+        ]
+       ],
+       0.07851909371983233
+      ]
+     ],
+     [
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "+",
+         "$rack-radius",
+         0.007
+        ]
+       ],
+       0.9976547922402782
+      ],
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "+",
+         "$rack-radius",
+         0.007
+        ]
+       ],
+       0.06844644271258672
+      ]
+     ],
+     [
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "+",
+         "$rack-radius",
+         0.007
+        ]
+       ],
+       0.9982952046082173
+      ],
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "+",
+         "$rack-radius",
+         0.007
+        ]
+       ],
+       0.05836680954307451
+      ]
+     ],
+     [
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "+",
+         "$rack-radius",
+         0.007
+        ]
+       ],
+       0.9988337817480231
+      ],
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "+",
+         "$rack-radius",
+         0.007
+        ]
+       ],
+       0.04828122242593457
+      ]
+     ],
+     [
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "+",
+         "$rack-radius",
+         0.007
+        ]
+       ],
+       0.9992704687199085
+      ],
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "+",
+         "$rack-radius",
+         0.007
+        ]
+       ],
+       0.038190710183162856
+      ]
+     ],
+     [
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "+",
+         "$rack-radius",
+         0.007
+        ]
+       ],
+       0.9996052209778142
+      ],
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "+",
+         "$rack-radius",
+         0.007
+        ]
+       ],
+       0.02809630213916308
+      ]
+     ],
+     [
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "+",
+         "$rack-radius",
+         0.007
+        ]
+       ],
+       0.9998380043739528
+      ],
+      [
+       "*",
+       [
+        "-",
+        0,
+        [
+         "+",
+         "$rack-radius",
+         0.007
+        ]
+       ],
+       0.017999028015746276
+      ]
+     ]
+    ],
+    "depth": 0.022,
+    "bevel": 0.001
+   }
+  },
+  {
+   "id": "rack-band-up",
+   "type": "transform",
+   "inputs": [
+    "rack-band-flat"
+   ],
+   "options": {
+    "rotation": [
+     1.5707963267948966,
+     0,
+     1.5707963267948966
+    ]
+   }
+  },
+  {
+   "id": "rack-band",
+   "type": "transform",
+   "inputs": [
+    "rack-band-up"
+   ],
+   "options": {
+    "translation": [
+     -0.011,
+     0,
+     0
+    ]
+   }
+  },
+  {
+   "id": "rack-tooth-flat",
+   "type": "profileSolid",
+   "options": {
+    "profile": [
+     [
+      [
+       "-",
+       [
+        "-",
+        0,
+        "$rack-radius"
+       ],
+       0.004
+      ],
+      -0.0048
+     ],
+     [
+      [
+       "-",
+       [
+        "-",
+        0,
+        "$rack-radius"
+       ],
+       0.004
+      ],
+      0.0048
+     ],
+     [
+      [
+       "-",
+       [
+        "-",
+        0,
+        "$rack-radius"
+       ],
+       0.016
+      ],
+      0.003
+     ],
+     [
+      [
+       "-",
+       [
+        "-",
+        0,
+        "$rack-radius"
+       ],
+       0.016
+      ],
+      -0.003
+     ]
+    ],
+    "depth": 0.022,
+    "bevel": 0.0005
+   }
+  },
+  {
+   "id": "rack-tooth-oriented",
+   "type": "transform",
+   "inputs": [
+    "rack-tooth-flat"
+   ],
+   "options": {
+    "rotation": [
+     1.5707963267948966,
+     0,
+     1.5707963267948966
+    ]
+   }
+  },
+  {
+   "id": "rack-tooth-seed",
+   "type": "transform",
+   "inputs": [
+    "rack-tooth-oriented"
+   ],
+   "options": {
+    "translation": [
+     -0.011,
+     0,
+     0
+    ]
+   }
+  },
+  {
+   "id": "rack-teeth-at",
+   "type": "line",
+   "options": {
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "step": [
+     0,
+     0,
+     0
+    ],
+    "count": 34
+   }
+  },
+  {
+   "id": "rack-teeth",
+   "type": "instance",
+   "inputs": [
+    "rack-teeth-at",
+    "rack-tooth-seed"
+   ],
+   "options": {
+    "rotation": [
+     [
+      "+",
+      0.023,
+      [
+       "*",
+       "@index",
+       0.0119
+      ]
+     ],
+     0,
+     0
+    ]
+   }
+  },
+  {
+   "id": "rack-saddle-cheek-0-blank",
+   "type": "cube",
+   "options": {
+    "size": [
+     0.013,
+     0.075,
+     0.08
+    ]
+   }
+  },
+  {
+   "id": "rack-saddle-cheek-0-bevel",
+   "type": "boxBevel",
+   "inputs": [
+    "rack-saddle-cheek-0-blank"
+   ],
+   "options": {
+    "width": 0.002
+   }
+  },
+  {
+   "id": "rack-saddle-cheek-0-placed",
+   "type": "transform",
+   "inputs": [
+    "rack-saddle-cheek-0-bevel"
+   ],
+   "options": {
+    "translation": [
+     -0.02,
+     [
+      "+",
+      [
+       "-",
+       0,
+       "$sash-length"
+      ],
+      0.024
+     ],
+     -0.02
+    ]
+   }
+  },
+  {
+   "id": "rack-saddle-cheek-0-screws",
+   "type": "pointArray",
+   "options": {
+    "positions": [
+     [
+      -0.02,
+      [
+       "-",
+       [
+        "+",
+        [
+         "-",
+         0,
+         "$sash-length"
+        ],
+        0.024
+       ],
+       0.0225
+      ],
+      0.03
+     ],
+     [
+      -0.02,
+      [
+       "+",
+       [
+        "+",
+        [
+         "-",
+         0,
+         "$sash-length"
+        ],
+        0.024
+       ],
+       0.0225
+      ],
+      0.03
+     ]
+    ]
+   }
+  },
+  {
+   "id": "rack-saddle-cheek-0",
+   "type": "fastener",
+   "inputs": [
+    "rack-saddle-cheek-0-placed",
+    "rack-saddle-cheek-0-screws"
+   ],
+   "options": {
+    "head": "slotted",
+    "radius": 0.005,
+    "height": 0.002,
+    "washer": 0.007,
+    "slot": "bronze"
+   }
+  },
+  {
+   "id": "rack-saddle-cheek-1-blank",
+   "type": "cube",
+   "options": {
+    "size": [
+     0.013,
+     0.075,
+     0.08
+    ]
+   }
+  },
+  {
+   "id": "rack-saddle-cheek-1-bevel",
+   "type": "boxBevel",
+   "inputs": [
+    "rack-saddle-cheek-1-blank"
+   ],
+   "options": {
+    "width": 0.002
+   }
+  },
+  {
+   "id": "rack-saddle-cheek-1-placed",
+   "type": "transform",
+   "inputs": [
+    "rack-saddle-cheek-1-bevel"
+   ],
+   "options": {
+    "translation": [
+     0.02,
+     [
+      "+",
+      [
+       "-",
+       0,
+       "$sash-length"
+      ],
+      0.024
+     ],
+     -0.02
+    ]
+   }
+  },
+  {
+   "id": "rack-saddle-cheek-1-screws",
+   "type": "pointArray",
+   "options": {
+    "positions": [
+     [
+      0.02,
+      [
+       "-",
+       [
+        "+",
+        [
+         "-",
+         0,
+         "$sash-length"
+        ],
+        0.024
+       ],
+       0.0225
+      ],
+      0.03
+     ],
+     [
+      0.02,
+      [
+       "+",
+       [
+        "+",
+        [
+         "-",
+         0,
+         "$sash-length"
+        ],
+        0.024
+       ],
+       0.0225
+      ],
+      0.03
+     ]
+    ]
+   }
+  },
+  {
+   "id": "rack-saddle-cheek-1",
+   "type": "fastener",
+   "inputs": [
+    "rack-saddle-cheek-1-placed",
+    "rack-saddle-cheek-1-screws"
+   ],
+   "options": {
+    "head": "slotted",
+    "radius": 0.005,
+    "height": 0.002,
+    "washer": 0.007,
+    "slot": "bronze"
+   }
+  },
+  {
+   "id": "rack-saddle-pin-rough",
+   "type": "sweep",
+   "options": {
+    "path": [
+     [
+      -0.04,
+      [
+       "-",
+       0,
+       "$sash-length"
+      ],
+      -0.023
+     ],
+     [
+      0.04,
+      [
+       "-",
+       0,
+       "$sash-length"
+      ],
+      -0.023
+     ]
+    ],
+    "radius": 0.009,
+    "sides": 16
+   }
+  },
+  {
+   "id": "rack-saddle-pin",
+   "type": "smoothNormals",
+   "inputs": [
+    "rack-saddle-pin-rough"
+   ]
+  },
+  {
+   "id": "operating-shaft-rough",
+   "type": "sweep",
+   "options": {
+    "path": [
+     [
+      [
+       "-",
+       [
+        "-",
+        0,
+        "$roof-half-width"
+       ],
+       0.055
+      ],
+      "$shaft-y",
+      "$shaft-z"
+     ],
+     [
+      [
+       "+",
+       "$roof-half-width",
+       0.13
+      ],
+      "$shaft-y",
+      "$shaft-z"
+     ]
+    ],
+    "radius": 0.0125,
+    "sides": 24
+   }
+  },
+  {
+   "id": "operating-shaft",
+   "type": "smoothNormals",
+   "inputs": [
+    "operating-shaft-rough"
+   ]
+  },
+  {
+   "id": "bearing-0-mount-blank",
+   "type": "cube",
+   "options": {
+    "size": [
+     0.115,
+     0.068,
+     0.018
+    ]
+   }
+  },
+  {
+   "id": "bearing-0-mount-bevel",
+   "type": "boxBevel",
+   "inputs": [
+    "bearing-0-mount-blank"
+   ],
+   "options": {
+    "width": 0.002
+   }
+  },
+  {
+   "id": "bearing-0-mount-placed",
+   "type": "transform",
+   "inputs": [
+    "bearing-0-mount-bevel"
+   ],
+   "options": {
+    "translation": [
+     [
+      "/",
+      [
+       "-",
+       0,
+       "$width"
+      ],
+      2
+     ],
+     [
+      "-",
+      [
+       "-",
+       0,
+       "$sash-length"
+      ],
+      0.015
+     ],
+     -0.12
+    ]
+   }
+  },
+  {
+   "id": "bearing-0-mount-screws",
+   "type": "pointArray",
+   "options": {
+    "positions": [
+     [
+      [
+       "/",
+       [
+        "-",
+        0,
+        "$width"
+       ],
+       2
+      ],
+      [
+       "-",
+       [
+        "-",
+        [
+         "-",
+         0,
+         "$sash-length"
+        ],
+        0.015
+       ],
+       0.0204
+      ],
+      -0.101
+     ],
+     [
+      [
+       "/",
+       [
+        "-",
+        0,
+        "$width"
+       ],
+       2
+      ],
+      [
+       "+",
+       [
+        "-",
+        [
+         "-",
+         0,
+         "$sash-length"
+        ],
+        0.015
+       ],
+       0.0204
+      ],
+      -0.101
+     ]
+    ]
+   }
+  },
+  {
+   "id": "bearing-0-mount",
+   "type": "fastener",
+   "inputs": [
+    "bearing-0-mount-placed",
+    "bearing-0-mount-screws"
+   ],
+   "options": {
+    "head": "slotted",
+    "radius": 0.005,
+    "height": 0.002,
+    "washer": 0.007,
+    "slot": "bronze"
+   }
+  },
+  {
+   "id": "bearing-0-hanger-blank",
+   "type": "cube",
+   "options": {
+    "size": [
+     0.026,
+     0.056,
+     0.054
+    ]
+   }
+  },
+  {
+   "id": "bearing-0-hanger-bevel",
+   "type": "boxBevel",
+   "inputs": [
+    "bearing-0-hanger-blank"
+   ],
+   "options": {
+    "width": 0.002
+   }
+  },
+  {
+   "id": "bearing-0-hanger-placed",
+   "type": "transform",
+   "inputs": [
+    "bearing-0-hanger-bevel"
+   ],
+   "options": {
+    "translation": [
+     [
+      "/",
+      [
+       "-",
+       0,
+       "$width"
+      ],
+      2
+     ],
+     "$shaft-y",
+     -0.101
+    ]
+   }
+  },
+  {
+   "id": "bearing-0-hanger",
+   "type": "transform",
+   "inputs": [
+    "bearing-0-hanger-placed"
+   ]
+  },
+  {
+   "id": "bearing-0-housing-lathe-turned",
+   "type": "revolve",
+   "options": {
+    "profile": [
+     [
+      0,
+      -0.033
+     ],
+     [
+      0.023,
+      -0.033
+     ],
+     [
+      0.029,
+      -0.023
+     ],
+     [
+      0.029,
+      0.023
+     ],
+     [
+      0.023,
+      0.033
+     ],
+     [
+      0,
+      0.033
+     ]
+    ],
+    "sides": 32
+   }
+  },
+  {
+   "id": "bearing-0-housing-lathe",
+   "type": "smoothNormals",
+   "inputs": [
+    "bearing-0-housing-lathe-turned"
+   ]
+  },
+  {
+   "id": "bearing-0-housing",
+   "type": "transform",
+   "inputs": [
+    "bearing-0-housing-lathe"
+   ],
+   "options": {
+    "translation": [
+     [
+      "/",
+      [
+       "-",
+       0,
+       "$width"
+      ],
+      2
+     ],
+     "$shaft-y",
+     "$shaft-z"
+    ],
+    "rotation": [
+     0,
+     1.5707963267948966,
+     0
+    ]
+   }
+  },
+  {
+   "id": "bearing-0-bush-0-lathe-turned",
+   "type": "revolve",
+   "options": {
+    "profile": [
+     [
+      0,
+      -0.004
+     ],
+     [
+      0.019,
+      -0.004
+     ],
+     [
+      0.019,
+      0.004
+     ],
+     [
+      0,
+      0.004
+     ]
+    ],
+    "sides": 32
+   }
+  },
+  {
+   "id": "bearing-0-bush-0-lathe",
+   "type": "smoothNormals",
+   "inputs": [
+    "bearing-0-bush-0-lathe-turned"
+   ]
+  },
+  {
+   "id": "bearing-0-bush-0",
+   "type": "transform",
+   "inputs": [
+    "bearing-0-bush-0-lathe"
+   ],
+   "options": {
+    "translation": [
+     [
+      "+",
+      [
+       "/",
+       [
+        "-",
+        0,
+        "$width"
+       ],
+       2
+      ],
+      -0.035
+     ],
+     "$shaft-y",
+     "$shaft-z"
+    ],
+    "rotation": [
+     0,
+     1.5707963267948966,
+     0
+    ]
+   }
+  },
+  {
+   "id": "bearing-0-bush-1-lathe-turned",
+   "type": "revolve",
+   "options": {
+    "profile": [
+     [
+      0,
+      -0.004
+     ],
+     [
+      0.019,
+      -0.004
+     ],
+     [
+      0.019,
+      0.004
+     ],
+     [
+      0,
+      0.004
+     ]
+    ],
+    "sides": 32
+   }
+  },
+  {
+   "id": "bearing-0-bush-1-lathe",
+   "type": "smoothNormals",
+   "inputs": [
+    "bearing-0-bush-1-lathe-turned"
+   ]
+  },
+  {
+   "id": "bearing-0-bush-1",
+   "type": "transform",
+   "inputs": [
+    "bearing-0-bush-1-lathe"
+   ],
+   "options": {
+    "translation": [
+     [
+      "+",
+      [
+       "/",
+       [
+        "-",
+        0,
+        "$width"
+       ],
+       2
+      ],
+      0.035
+     ],
+     "$shaft-y",
+     "$shaft-z"
+    ],
+    "rotation": [
+     0,
+     1.5707963267948966,
+     0
+    ]
+   }
+  },
+  {
+   "id": "bearing-0-oil-neck-rough",
+   "type": "sweep",
+   "options": {
+    "path": [
+     [
+      [
+       "/",
+       [
+        "-",
+        0,
+        "$width"
+       ],
+       2
+      ],
+      [
+       "-",
+       "$shaft-y",
+       0.02
+      ],
+      "$shaft-z"
+     ],
+     [
+      [
+       "/",
+       [
+        "-",
+        0,
+        "$width"
+       ],
+       2
+      ],
+      [
+       "-",
+       "$shaft-y",
+       0.037
+      ],
+      [
+       "+",
+       "$shaft-z",
+       0.011
+      ]
+     ]
+    ],
+    "radius": 0.0055,
+    "sides": 16
+   }
+  },
+  {
+   "id": "bearing-0-oil-neck",
+   "type": "smoothNormals",
+   "inputs": [
+    "bearing-0-oil-neck-rough"
+   ]
+  },
+  {
+   "id": "bearing-0-oil-cup-lathe-turned",
+   "type": "revolve",
+   "options": {
+    "profile": [
+     [
+      0,
+      -0.007
+     ],
+     [
+      0.01,
+      -0.007
+     ],
+     [
+      0.012,
+      -0.002
+     ],
+     [
+      0.012,
+      0.006
+     ],
+     [
+      0,
+      0.006
+     ]
+    ],
+    "sides": 16
+   }
+  },
+  {
+   "id": "bearing-0-oil-cup-lathe",
+   "type": "smoothNormals",
+   "inputs": [
+    "bearing-0-oil-cup-lathe-turned"
+   ]
+  },
+  {
+   "id": "bearing-0-oil-cup",
+   "type": "transform",
+   "inputs": [
+    "bearing-0-oil-cup-lathe"
+   ],
+   "options": {
+    "translation": [
+     [
+      "/",
+      [
+       "-",
+       0,
+       "$width"
+      ],
+      2
+     ],
+     [
+      "-",
+      "$shaft-y",
+      0.039
+     ],
+     [
+      "+",
+      "$shaft-z",
+      0.014
+     ]
+    ],
+    "rotation": [
+     0,
+     1.5707963267948966,
+     0
+    ]
+   }
+  },
+  {
+   "id": "bearing-1-mount-blank",
+   "type": "cube",
+   "options": {
+    "size": [
+     0.115,
+     0.068,
+     0.018
+    ]
+   }
+  },
+  {
+   "id": "bearing-1-mount-bevel",
+   "type": "boxBevel",
+   "inputs": [
+    "bearing-1-mount-blank"
+   ],
+   "options": {
+    "width": 0.002
+   }
+  },
+  {
+   "id": "bearing-1-mount-placed",
+   "type": "transform",
+   "inputs": [
+    "bearing-1-mount-bevel"
+   ],
+   "options": {
+    "translation": [
+     0,
+     [
+      "-",
+      [
+       "-",
+       0,
+       "$sash-length"
+      ],
+      0.015
+     ],
+     -0.12
+    ]
+   }
+  },
+  {
+   "id": "bearing-1-mount-screws",
+   "type": "pointArray",
+   "options": {
+    "positions": [
+     [
+      0,
+      [
+       "-",
+       [
+        "-",
+        [
+         "-",
+         0,
+         "$sash-length"
+        ],
+        0.015
+       ],
+       0.0204
+      ],
+      -0.101
+     ],
+     [
+      0,
+      [
+       "+",
+       [
+        "-",
+        [
+         "-",
+         0,
+         "$sash-length"
+        ],
+        0.015
+       ],
+       0.0204
+      ],
+      -0.101
+     ]
+    ]
+   }
+  },
+  {
+   "id": "bearing-1-mount",
+   "type": "fastener",
+   "inputs": [
+    "bearing-1-mount-placed",
+    "bearing-1-mount-screws"
+   ],
+   "options": {
+    "head": "slotted",
+    "radius": 0.005,
+    "height": 0.002,
+    "washer": 0.007,
+    "slot": "bronze"
+   }
+  },
+  {
+   "id": "bearing-1-hanger-blank",
+   "type": "cube",
+   "options": {
+    "size": [
+     0.026,
+     0.056,
+     0.054
+    ]
+   }
+  },
+  {
+   "id": "bearing-1-hanger-bevel",
+   "type": "boxBevel",
+   "inputs": [
+    "bearing-1-hanger-blank"
+   ],
+   "options": {
+    "width": 0.002
+   }
+  },
+  {
+   "id": "bearing-1-hanger-placed",
+   "type": "transform",
+   "inputs": [
+    "bearing-1-hanger-bevel"
+   ],
+   "options": {
+    "translation": [
+     0,
+     "$shaft-y",
+     -0.101
+    ]
+   }
+  },
+  {
+   "id": "bearing-1-hanger",
+   "type": "transform",
+   "inputs": [
+    "bearing-1-hanger-placed"
+   ]
+  },
+  {
+   "id": "bearing-1-housing-lathe-turned",
+   "type": "revolve",
+   "options": {
+    "profile": [
+     [
+      0,
+      -0.033
+     ],
+     [
+      0.023,
+      -0.033
+     ],
+     [
+      0.029,
+      -0.023
+     ],
+     [
+      0.029,
+      0.023
+     ],
+     [
+      0.023,
+      0.033
+     ],
+     [
+      0,
+      0.033
+     ]
+    ],
+    "sides": 32
+   }
+  },
+  {
+   "id": "bearing-1-housing-lathe",
+   "type": "smoothNormals",
+   "inputs": [
+    "bearing-1-housing-lathe-turned"
+   ]
+  },
+  {
+   "id": "bearing-1-housing",
+   "type": "transform",
+   "inputs": [
+    "bearing-1-housing-lathe"
+   ],
+   "options": {
+    "translation": [
+     0,
+     "$shaft-y",
+     "$shaft-z"
+    ],
+    "rotation": [
+     0,
+     1.5707963267948966,
+     0
+    ]
+   }
+  },
+  {
+   "id": "bearing-1-bush-0-lathe-turned",
+   "type": "revolve",
+   "options": {
+    "profile": [
+     [
+      0,
+      -0.004
+     ],
+     [
+      0.019,
+      -0.004
+     ],
+     [
+      0.019,
+      0.004
+     ],
+     [
+      0,
+      0.004
+     ]
+    ],
+    "sides": 32
+   }
+  },
+  {
+   "id": "bearing-1-bush-0-lathe",
+   "type": "smoothNormals",
+   "inputs": [
+    "bearing-1-bush-0-lathe-turned"
+   ]
+  },
+  {
+   "id": "bearing-1-bush-0",
+   "type": "transform",
+   "inputs": [
+    "bearing-1-bush-0-lathe"
+   ],
+   "options": {
+    "translation": [
+     -0.035,
+     "$shaft-y",
+     "$shaft-z"
+    ],
+    "rotation": [
+     0,
+     1.5707963267948966,
+     0
+    ]
+   }
+  },
+  {
+   "id": "bearing-1-bush-1-lathe-turned",
+   "type": "revolve",
+   "options": {
+    "profile": [
+     [
+      0,
+      -0.004
+     ],
+     [
+      0.019,
+      -0.004
+     ],
+     [
+      0.019,
+      0.004
+     ],
+     [
+      0,
+      0.004
+     ]
+    ],
+    "sides": 32
+   }
+  },
+  {
+   "id": "bearing-1-bush-1-lathe",
+   "type": "smoothNormals",
+   "inputs": [
+    "bearing-1-bush-1-lathe-turned"
+   ]
+  },
+  {
+   "id": "bearing-1-bush-1",
+   "type": "transform",
+   "inputs": [
+    "bearing-1-bush-1-lathe"
+   ],
+   "options": {
+    "translation": [
+     0.035,
+     "$shaft-y",
+     "$shaft-z"
+    ],
+    "rotation": [
+     0,
+     1.5707963267948966,
+     0
+    ]
+   }
+  },
+  {
+   "id": "bearing-1-oil-neck-rough",
+   "type": "sweep",
+   "options": {
+    "path": [
+     [
+      0,
+      [
+       "-",
+       "$shaft-y",
+       0.02
+      ],
+      "$shaft-z"
+     ],
+     [
+      0,
+      [
+       "-",
+       "$shaft-y",
+       0.037
+      ],
+      [
+       "+",
+       "$shaft-z",
+       0.011
+      ]
+     ]
+    ],
+    "radius": 0.0055,
+    "sides": 16
+   }
+  },
+  {
+   "id": "bearing-1-oil-neck",
+   "type": "smoothNormals",
+   "inputs": [
+    "bearing-1-oil-neck-rough"
+   ]
+  },
+  {
+   "id": "bearing-1-oil-cup-lathe-turned",
+   "type": "revolve",
+   "options": {
+    "profile": [
+     [
+      0,
+      -0.007
+     ],
+     [
+      0.01,
+      -0.007
+     ],
+     [
+      0.012,
+      -0.002
+     ],
+     [
+      0.012,
+      0.006
+     ],
+     [
+      0,
+      0.006
+     ]
+    ],
+    "sides": 16
+   }
+  },
+  {
+   "id": "bearing-1-oil-cup-lathe",
+   "type": "smoothNormals",
+   "inputs": [
+    "bearing-1-oil-cup-lathe-turned"
+   ]
+  },
+  {
+   "id": "bearing-1-oil-cup",
+   "type": "transform",
+   "inputs": [
+    "bearing-1-oil-cup-lathe"
+   ],
+   "options": {
+    "translation": [
+     0,
+     [
+      "-",
+      "$shaft-y",
+      0.039
+     ],
+     [
+      "+",
+      "$shaft-z",
+      0.014
+     ]
+    ],
+    "rotation": [
+     0,
+     1.5707963267948966,
+     0
+    ]
+   }
+  },
+  {
+   "id": "bearing-2-mount-blank",
+   "type": "cube",
+   "options": {
+    "size": [
+     0.115,
+     0.068,
+     0.018
+    ]
+   }
+  },
+  {
+   "id": "bearing-2-mount-bevel",
+   "type": "boxBevel",
+   "inputs": [
+    "bearing-2-mount-blank"
+   ],
+   "options": {
+    "width": 0.002
+   }
+  },
+  {
+   "id": "bearing-2-mount-placed",
+   "type": "transform",
+   "inputs": [
+    "bearing-2-mount-bevel"
+   ],
+   "options": {
+    "translation": [
+     [
+      "/",
+      "$width",
+      2
+     ],
+     [
+      "-",
+      [
+       "-",
+       0,
+       "$sash-length"
+      ],
+      0.015
+     ],
+     -0.12
+    ]
+   }
+  },
+  {
+   "id": "bearing-2-mount-screws",
+   "type": "pointArray",
+   "options": {
+    "positions": [
+     [
+      [
+       "/",
+       "$width",
+       2
+      ],
+      [
+       "-",
+       [
+        "-",
+        [
+         "-",
+         0,
+         "$sash-length"
+        ],
+        0.015
+       ],
+       0.0204
+      ],
+      -0.101
+     ],
+     [
+      [
+       "/",
+       "$width",
+       2
+      ],
+      [
+       "+",
+       [
+        "-",
+        [
+         "-",
+         0,
+         "$sash-length"
+        ],
+        0.015
+       ],
+       0.0204
+      ],
+      -0.101
+     ]
+    ]
+   }
+  },
+  {
+   "id": "bearing-2-mount",
+   "type": "fastener",
+   "inputs": [
+    "bearing-2-mount-placed",
+    "bearing-2-mount-screws"
+   ],
+   "options": {
+    "head": "slotted",
+    "radius": 0.005,
+    "height": 0.002,
+    "washer": 0.007,
+    "slot": "bronze"
+   }
+  },
+  {
+   "id": "bearing-2-hanger-blank",
+   "type": "cube",
+   "options": {
+    "size": [
+     0.026,
+     0.056,
+     0.054
+    ]
+   }
+  },
+  {
+   "id": "bearing-2-hanger-bevel",
+   "type": "boxBevel",
+   "inputs": [
+    "bearing-2-hanger-blank"
+   ],
+   "options": {
+    "width": 0.002
+   }
+  },
+  {
+   "id": "bearing-2-hanger-placed",
+   "type": "transform",
+   "inputs": [
+    "bearing-2-hanger-bevel"
+   ],
+   "options": {
+    "translation": [
+     [
+      "/",
+      "$width",
+      2
+     ],
+     "$shaft-y",
+     -0.101
+    ]
+   }
+  },
+  {
+   "id": "bearing-2-hanger",
+   "type": "transform",
+   "inputs": [
+    "bearing-2-hanger-placed"
+   ]
+  },
+  {
+   "id": "bearing-2-housing-lathe-turned",
+   "type": "revolve",
+   "options": {
+    "profile": [
+     [
+      0,
+      -0.033
+     ],
+     [
+      0.023,
+      -0.033
+     ],
+     [
+      0.029,
+      -0.023
+     ],
+     [
+      0.029,
+      0.023
+     ],
+     [
+      0.023,
+      0.033
+     ],
+     [
+      0,
+      0.033
+     ]
+    ],
+    "sides": 32
+   }
+  },
+  {
+   "id": "bearing-2-housing-lathe",
+   "type": "smoothNormals",
+   "inputs": [
+    "bearing-2-housing-lathe-turned"
+   ]
+  },
+  {
+   "id": "bearing-2-housing",
+   "type": "transform",
+   "inputs": [
+    "bearing-2-housing-lathe"
+   ],
+   "options": {
+    "translation": [
+     [
+      "/",
+      "$width",
+      2
+     ],
+     "$shaft-y",
+     "$shaft-z"
+    ],
+    "rotation": [
+     0,
+     1.5707963267948966,
+     0
+    ]
+   }
+  },
+  {
+   "id": "bearing-2-bush-0-lathe-turned",
+   "type": "revolve",
+   "options": {
+    "profile": [
+     [
+      0,
+      -0.004
+     ],
+     [
+      0.019,
+      -0.004
+     ],
+     [
+      0.019,
+      0.004
+     ],
+     [
+      0,
+      0.004
+     ]
+    ],
+    "sides": 32
+   }
+  },
+  {
+   "id": "bearing-2-bush-0-lathe",
+   "type": "smoothNormals",
+   "inputs": [
+    "bearing-2-bush-0-lathe-turned"
+   ]
+  },
+  {
+   "id": "bearing-2-bush-0",
+   "type": "transform",
+   "inputs": [
+    "bearing-2-bush-0-lathe"
+   ],
+   "options": {
+    "translation": [
+     [
+      "+",
+      [
+       "/",
+       "$width",
+       2
+      ],
+      -0.035
+     ],
+     "$shaft-y",
+     "$shaft-z"
+    ],
+    "rotation": [
+     0,
+     1.5707963267948966,
+     0
+    ]
+   }
+  },
+  {
+   "id": "bearing-2-bush-1-lathe-turned",
+   "type": "revolve",
+   "options": {
+    "profile": [
+     [
+      0,
+      -0.004
+     ],
+     [
+      0.019,
+      -0.004
+     ],
+     [
+      0.019,
+      0.004
+     ],
+     [
+      0,
+      0.004
+     ]
+    ],
+    "sides": 32
+   }
+  },
+  {
+   "id": "bearing-2-bush-1-lathe",
+   "type": "smoothNormals",
+   "inputs": [
+    "bearing-2-bush-1-lathe-turned"
+   ]
+  },
+  {
+   "id": "bearing-2-bush-1",
+   "type": "transform",
+   "inputs": [
+    "bearing-2-bush-1-lathe"
+   ],
+   "options": {
+    "translation": [
+     [
+      "+",
+      [
+       "/",
+       "$width",
+       2
+      ],
+      0.035
+     ],
+     "$shaft-y",
+     "$shaft-z"
+    ],
+    "rotation": [
+     0,
+     1.5707963267948966,
+     0
+    ]
+   }
+  },
+  {
+   "id": "bearing-2-oil-neck-rough",
+   "type": "sweep",
+   "options": {
+    "path": [
+     [
+      [
+       "/",
+       "$width",
+       2
+      ],
+      [
+       "-",
+       "$shaft-y",
+       0.02
+      ],
+      "$shaft-z"
+     ],
+     [
+      [
+       "/",
+       "$width",
+       2
+      ],
+      [
+       "-",
+       "$shaft-y",
+       0.037
+      ],
+      [
+       "+",
+       "$shaft-z",
+       0.011
+      ]
+     ]
+    ],
+    "radius": 0.0055,
+    "sides": 16
+   }
+  },
+  {
+   "id": "bearing-2-oil-neck",
+   "type": "smoothNormals",
+   "inputs": [
+    "bearing-2-oil-neck-rough"
+   ]
+  },
+  {
+   "id": "bearing-2-oil-cup-lathe-turned",
+   "type": "revolve",
+   "options": {
+    "profile": [
+     [
+      0,
+      -0.007
+     ],
+     [
+      0.01,
+      -0.007
+     ],
+     [
+      0.012,
+      -0.002
+     ],
+     [
+      0.012,
+      0.006
+     ],
+     [
+      0,
+      0.006
+     ]
+    ],
+    "sides": 16
+   }
+  },
+  {
+   "id": "bearing-2-oil-cup-lathe",
+   "type": "smoothNormals",
+   "inputs": [
+    "bearing-2-oil-cup-lathe-turned"
+   ]
+  },
+  {
+   "id": "bearing-2-oil-cup",
+   "type": "transform",
+   "inputs": [
+    "bearing-2-oil-cup-lathe"
+   ],
+   "options": {
+    "translation": [
+     [
+      "/",
+      "$width",
+      2
+     ],
+     [
+      "-",
+      "$shaft-y",
+      0.039
+     ],
+     [
+      "+",
+      "$shaft-z",
+      0.014
+     ]
+    ],
+    "rotation": [
+     0,
+     1.5707963267948966,
+     0
+    ]
+   }
+  },
+  {
+   "id": "rack-local",
+   "type": "join",
+   "inputs": [
+    "rack-band",
+    "rack-teeth",
+    "rack-saddle-pin"
+   ]
+  },
+  {
+   "id": "rack-side",
+   "type": "transform",
+   "inputs": [
+    "rack-local"
+   ],
+   "options": {
+    "translation": [
+     0.105,
+     0,
+     0
+    ]
+   }
+  },
+  {
+   "id": "rack-moving",
+   "type": "transform",
+   "inputs": [
+    "rack-side"
+   ],
+   "options": {
+    "rotation": [
+     [
+      "-",
+      0,
+      "$opening-angle"
+     ],
+     0,
+     0
+    ]
+   }
+  },
+  {
+   "id": "rack-fork-crosshead-blank",
+   "type": "cube",
+   "options": {
+    "size": [
+     0.24,
+     0.055,
+     0.025
+    ]
+   }
+  },
+  {
+   "id": "rack-fork-crosshead-bevel",
+   "type": "boxBevel",
+   "inputs": [
+    "rack-fork-crosshead-blank"
+   ],
+   "options": {
+    "width": 0.002
+   }
+  },
+  {
+   "id": "rack-fork-crosshead-placed",
+   "type": "transform",
+   "inputs": [
+    "rack-fork-crosshead-bevel"
+   ],
+   "options": {
+    "translation": [
+     0.06,
+     [
+      "+",
+      [
+       "-",
+       0,
+       "$sash-length"
+      ],
+      0.023
+     ],
+     -0.03
+    ]
+   }
+  },
+  {
+   "id": "rack-fork-crosshead",
+   "type": "transform",
+   "inputs": [
+    "rack-fork-crosshead-placed"
+   ]
+  },
+  {
+   "id": "pinion-flat",
+   "type": "profileSolid",
+   "options": {
+    "profile": [
+     [
+      0.030529040343378448,
+      -0.00538309350767484
+     ],
+     [
+      0.03892304240870259,
+      -0.0024488302616432218
+     ],
+     [
+      0.03892304240870259,
+      0.0024488302616432218
+     ],
+     [
+      0.030530917537517844,
+      0.005372436534505124
+     ],
+     [
+      0.030529040343378448,
+      0.00538309350767484
+     ],
+     [
+      0.037413245007062244,
+      0.011011316816872183
+     ],
+     [
+      0.03573814645292735,
+      0.015613612269718902
+     ],
+     [
+      0.026852196402289093,
+      0.015490627759161109
+     ],
+     [
+      0.0268467875173176,
+      0.015499999999999998
+     ],
+     [
+      0.03139085809688065,
+      0.023143336577544357
+     ],
+     [
+      0.028242702596061233,
+      0.02689516220569112
+     ],
+     [
+      0.01993470408473211,
+      0.023740420658744966
+     ],
+     [
+      0.01992641590028272,
+      0.023747377736688318
+     ],
+     [
+      0.02158227042049042,
+      0.03248392838769388
+     ],
+     [
+      0.017340771988212173,
+      0.0349327586493371
+     ],
+     [
+      0.010612792249657853,
+      0.029126768455590847
+     ],
+     [
+      0.010602624443095733,
+      0.029130471244363156
+     ],
+     [
+      0.009170542411001016,
+      0.0379064790225633
+     ],
+     [
+      0.004347288356046702,
+      0.03875694884726326
+     ],
+     [
+      1.0821041142621106e-05,
+      0.030999998111372017
+     ],
+     [
+      1.8982025386783975e-18,
+      0.031
+     ],
+     [
+      -0.004347288356046697,
+      0.03875694884726326
+     ],
+     [
+      -0.009170542411001013,
+      0.0379064790225633
+     ],
+     [
+      -0.010592455344635982,
+      0.02913417048367591
+     ],
+     [
+      -0.010602624443095723,
+      0.02913047124436316
+     ],
+     [
+      -0.017340771988212163,
+      0.034932758649337106
+     ],
+     [
+      -0.021582270420490417,
+      0.03248392838769388
+     ],
+     [
+      -0.01991812528785999,
+      0.02375433192108573
+     ],
+     [
+      -0.01992641590028272,
+      0.023747377736688318
+     ],
+     [
+      -0.028242702596061226,
+      0.02689516220569113
+     ],
+     [
+      -0.03139085809688065,
+      0.02314333657754436
+     ],
+     [
+      -0.026841375361146478,
+      0.015509370352210908
+     ],
+     [
+      -0.026846787517317592,
+      0.01550000000000001
+     ],
+     [
+      -0.03573814645292734,
+      0.015613612269718913
+     ],
+     [
+      -0.037413245007062244,
+      0.011011316816872185
+     ],
+     [
+      -0.030527159429368098,
+      0.00539374982493094
+     ],
+     [
+      -0.030529040343378448,
+      0.005383093507674838
+     ],
+     [
+      -0.03892304240870259,
+      0.0024488302616432296
+     ],
+     [
+      -0.03892304240870259,
+      -0.0024488302616432205
+     ],
+     [
+      -0.030530917537517844,
+      -0.005372436534505115
+     ],
+     [
+      -0.03052904034337845,
+      -0.00538309350767483
+     ],
+     [
+      -0.037413245007062244,
+      -0.011011316816872176
+     ],
+     [
+      -0.03573814645292735,
+      -0.015613612269718904
+     ],
+     [
+      -0.026852196402289096,
+      -0.015490627759161102
+     ],
+     [
+      -0.026846787517317595,
+      -0.015500000000000003
+     ],
+     [
+      -0.03139085809688064,
+      -0.023143336577544367
+     ],
+     [
+      -0.028242702596061244,
+      -0.02689516220569111
+     ],
+     [
+      -0.019934704084732097,
+      -0.02374042065874498
+     ],
+     [
+      -0.019926415900282723,
+      -0.023747377736688315
+     ],
+     [
+      -0.02158227042049042,
+      -0.03248392838769388
+     ],
+     [
+      -0.01734077198821217,
+      -0.034932758649337106
+     ],
+     [
+      -0.010612792249657844,
+      -0.02912676845559085
+     ],
+     [
+      -0.010602624443095725,
+      -0.02913047124436316
+     ],
+     [
+      -0.009170542411000996,
+      -0.037906479022563305
+     ],
+     [
+      -0.004347288356046706,
+      -0.03875694884726326
+     ],
+     [
+      -1.0821041142618018e-05,
+      -0.030999998111372017
+     ],
+     [
+      -5.694607616035192e-18,
+      -0.031
+     ],
+     [
+      0.0043472883560466925,
+      -0.03875694884726326
+     ],
+     [
+      0.009170542411001016,
+      -0.0379064790225633
+     ],
+     [
+      0.010592455344635966,
+      -0.029134170483675916
+     ],
+     [
+      0.010602624443095739,
+      -0.029130471244363156
+     ],
+     [
+      0.017340771988212187,
+      -0.03493275864933709
+     ],
+     [
+      0.02158227042049041,
+      -0.032483928387693886
+     ],
+     [
+      0.01991812528785999,
+      -0.02375433192108573
+     ],
+     [
+      0.019926415900282716,
+      -0.02374737773668832
+     ],
+     [
+      0.028242702596061233,
+      -0.02689516220569112
+     ],
+     [
+      0.03139085809688066,
+      -0.02314333657754435
+     ],
+     [
+      0.026841375361146457,
+      -0.015509370352210944
+     ],
+     [
+      0.026846787517317602,
+      -0.01549999999999999
+     ],
+     [
+      0.035738146452927354,
+      -0.015613612269718885
+     ],
+     [
+      0.037413245007062244,
+      -0.01101131681687219
+     ],
+     [
+      0.03052715942936809,
+      -0.00539374982493097
+     ]
+    ],
+    "depth": 0.025,
+    "bevel": 0.0008
+   }
+  },
+  {
+   "id": "pinion-turn",
+   "type": "transform",
+   "inputs": [
+    "pinion-flat"
+   ],
+   "options": {
+    "rotation": [
+     1.5707963267948966,
+     0,
+     1.5707963267948966
+    ]
+   }
+  },
+  {
+   "id": "pinion-spin",
+   "type": "transform",
+   "inputs": [
+    "pinion-turn"
+   ],
+   "options": {
+    "rotation": [
+     [
+      "/",
+      [
+       "*",
+       "$opening-angle",
+       "$rack-radius"
+      ],
+      0.036
+     ],
+     0,
+     0
+    ]
+   }
+  },
+  {
+   "id": "pinion",
+   "type": "transform",
+   "inputs": [
+    "pinion-spin"
+   ],
+   "options": {
+    "translation": [
+     0.0925,
+     "$shaft-y",
+     "$shaft-z"
+    ]
+   }
+  },
+  {
+   "id": "pinion-hub-lathe-turned",
+   "type": "revolve",
+   "options": {
+    "profile": [
+     [
+      0,
+      -0.029
+     ],
+     [
+      0.024,
+      -0.029
+     ],
+     [
+      0.024,
+      0.029
+     ],
+     [
+      0,
+      0.029
+     ]
+    ],
+    "sides": 32
+   }
+  },
+  {
+   "id": "pinion-hub-lathe",
+   "type": "smoothNormals",
+   "inputs": [
+    "pinion-hub-lathe-turned"
+   ]
+  },
+  {
+   "id": "pinion-hub",
+   "type": "transform",
+   "inputs": [
+    "pinion-hub-lathe"
+   ],
+   "options": {
+    "translation": [
+     0.105,
+     "$shaft-y",
+     "$shaft-z"
+    ],
+    "rotation": [
+     0,
+     1.5707963267948966,
+     0
+    ]
+   }
+  },
+  {
+   "id": "shaft-thrust-collar-0-lathe-turned",
+   "type": "revolve",
+   "options": {
+    "profile": [
+     [
+      0,
+      -0.012
+     ],
+     [
+      0.022,
+      -0.012
+     ],
+     [
+      0.022,
+      0.012
+     ],
+     [
+      0,
+      0.012
+     ]
+    ],
+    "sides": 32
+   }
+  },
+  {
+   "id": "shaft-thrust-collar-0-lathe",
+   "type": "smoothNormals",
+   "inputs": [
+    "shaft-thrust-collar-0-lathe-turned"
+   ]
+  },
+  {
+   "id": "shaft-thrust-collar-0",
+   "type": "transform",
+   "inputs": [
+    "shaft-thrust-collar-0-lathe"
+   ],
+   "options": {
+    "translation": [
+     [
+      "-",
+      [
+       "-",
+       0,
+       "$roof-half-width"
+      ],
+      0.01
+     ],
+     "$shaft-y",
+     "$shaft-z"
+    ],
+    "rotation": [
+     0,
+     1.5707963267948966,
+     0
+    ]
+   }
+  },
+  {
+   "id": "shaft-thrust-collar-1-lathe-turned",
+   "type": "revolve",
+   "options": {
+    "profile": [
+     [
+      0,
+      -0.012
+     ],
+     [
+      0.022,
+      -0.012
+     ],
+     [
+      0.022,
+      0.012
+     ],
+     [
+      0,
+      0.012
+     ]
+    ],
+    "sides": 32
+   }
+  },
+  {
+   "id": "shaft-thrust-collar-1-lathe",
+   "type": "smoothNormals",
+   "inputs": [
+    "shaft-thrust-collar-1-lathe-turned"
+   ]
+  },
+  {
+   "id": "shaft-thrust-collar-1",
+   "type": "transform",
+   "inputs": [
+    "shaft-thrust-collar-1-lathe"
+   ],
+   "options": {
+    "translation": [
+     [
+      "+",
+      "$roof-half-width",
+      0.035
+     ],
+     "$shaft-y",
+     "$shaft-z"
+    ],
+    "rotation": [
+     0,
+     1.5707963267948966,
+     0
+    ]
+   }
+  },
+  {
+   "id": "crank-outrigger-blank",
+   "type": "cube",
+   "options": {
+    "size": [
+     0.11,
+     0.07,
+     0.021
+    ]
+   }
+  },
+  {
+   "id": "crank-outrigger-bevel",
+   "type": "boxBevel",
+   "inputs": [
+    "crank-outrigger-blank"
+   ],
+   "options": {
+    "width": 0.002
+   }
+  },
+  {
+   "id": "crank-outrigger-placed",
+   "type": "transform",
+   "inputs": [
+    "crank-outrigger-bevel"
+   ],
+   "options": {
+    "translation": [
+     [
+      "-",
+      "$roof-half-width",
+      0.015
+     ],
+     [
+      "-",
+      0,
+      "$sash-length"
+     ],
+     -0.119
+    ]
+   }
+  },
+  {
+   "id": "crank-outrigger-screws",
+   "type": "pointArray",
+   "options": {
+    "positions": [
+     [
+      [
+       "-",
+       "$roof-half-width",
+       0.015
+      ],
+      [
+       "-",
+       [
+        "-",
+        0,
+        "$sash-length"
+       ],
+       0.021
+      ],
+      -0.0985
+     ],
+     [
+      [
+       "-",
+       "$roof-half-width",
+       0.015
+      ],
+      [
+       "+",
+       [
+        "-",
+        0,
+        "$sash-length"
+       ],
+       0.021
+      ],
+      -0.0985
+     ]
+    ]
+   }
+  },
+  {
+   "id": "crank-outrigger",
+   "type": "fastener",
+   "inputs": [
+    "crank-outrigger-placed",
+    "crank-outrigger-screws"
+   ],
+   "options": {
+    "head": "slotted",
+    "radius": 0.005,
+    "height": 0.002,
+    "washer": 0.007,
+    "slot": "bronze"
+   }
+  },
+  {
+   "id": "crank-bearing-web-blank",
+   "type": "cube",
+   "options": {
+    "size": [
+     0.027,
+     0.06,
+     0.055
+    ]
+   }
+  },
+  {
+   "id": "crank-bearing-web-bevel",
+   "type": "boxBevel",
+   "inputs": [
+    "crank-bearing-web-blank"
+   ],
+   "options": {
+    "width": 0.002
+   }
+  },
+  {
+   "id": "crank-bearing-web-placed",
+   "type": "transform",
+   "inputs": [
+    "crank-bearing-web-bevel"
+   ],
+   "options": {
+    "translation": [
+     [
+      "+",
+      "$roof-half-width",
+      0.02
+     ],
+     "$shaft-y",
+     -0.1
+    ]
+   }
+  },
+  {
+   "id": "crank-bearing-web",
+   "type": "transform",
+   "inputs": [
+    "crank-bearing-web-placed"
+   ]
+  },
+  {
+   "id": "crank-bearing-lathe-turned",
+   "type": "revolve",
+   "options": {
+    "profile": [
+     [
+      0,
+      -0.023
+     ],
+     [
+      0.028,
+      -0.023
+     ],
+     [
+      0.028,
+      0.023
+     ],
+     [
+      0,
+      0.023
+     ]
+    ],
+    "sides": 32
+   }
+  },
+  {
+   "id": "crank-bearing-lathe",
+   "type": "smoothNormals",
+   "inputs": [
+    "crank-bearing-lathe-turned"
+   ]
+  },
+  {
+   "id": "crank-bearing",
+   "type": "transform",
+   "inputs": [
+    "crank-bearing-lathe"
+   ],
+   "options": {
+    "translation": [
+     [
+      "+",
+      "$roof-half-width",
+      0.02
+     ],
+     "$shaft-y",
+     "$shaft-z"
+    ],
+    "rotation": [
+     0,
+     1.5707963267948966,
+     0
+    ]
+   }
+  },
+  {
+   "id": "crank-boss-lathe-turned",
+   "type": "revolve",
+   "options": {
+    "profile": [
+     [
+      0,
+      -0.015
+     ],
+     [
+      0.027,
+      -0.015
+     ],
+     [
+      0.027,
+      0.022
+     ],
+     [
+      0.021,
+      0.028
+     ],
+     [
+      0,
+      0.028
+     ]
+    ],
+    "sides": 32
+   }
+  },
+  {
+   "id": "crank-boss-lathe",
+   "type": "smoothNormals",
+   "inputs": [
+    "crank-boss-lathe-turned"
+   ]
+  },
+  {
+   "id": "crank-boss",
+   "type": "transform",
+   "inputs": [
+    "crank-boss-lathe"
+   ],
+   "options": {
+    "translation": [
+     [
+      "+",
+      "$roof-half-width",
+      0.105
+     ],
+     "$shaft-y",
+     "$shaft-z"
+    ],
+    "rotation": [
+     0,
+     1.5707963267948966,
+     0
+    ]
+   }
+  },
+  {
+   "id": "crank-arm-blank",
+   "type": "cube",
+   "options": {
+    "size": [
+     0.023,
+     0.028,
+     0.205
+    ]
+   }
+  },
+  {
+   "id": "crank-arm-bevel",
+   "type": "boxBevel",
+   "inputs": [
+    "crank-arm-blank"
+   ],
+   "options": {
+    "width": 0.006
+   }
+  },
+  {
+   "id": "crank-arm-placed",
+   "type": "transform",
+   "inputs": [
+    "crank-arm-bevel"
+   ],
+   "options": {
+    "translation": [
+     [
+      "+",
+      "$roof-half-width",
+      0.112
+     ],
+     "$shaft-y",
+     [
+      "-",
+      "$shaft-z",
+      0.09
+     ]
+    ]
+   }
+  },
+  {
+   "id": "crank-arm",
+   "type": "transform",
+   "inputs": [
+    "crank-arm-placed"
+   ]
+  },
+  {
+   "id": "crank-grip-spindle-rough",
+   "type": "sweep",
+   "options": {
+    "path": [
+     [
+      [
+       "+",
+       "$roof-half-width",
+       0.1
+      ],
+      "$shaft-y",
+      [
+       "-",
+       "$shaft-z",
+       0.19
+      ]
+     ],
+     [
+      [
+       "+",
+       "$roof-half-width",
+       0.25
+      ],
+      "$shaft-y",
+      [
+       "-",
+       "$shaft-z",
+       0.19
+      ]
+     ]
+    ],
+    "radius": 0.009,
+    "sides": 16
+   }
+  },
+  {
+   "id": "crank-grip-spindle",
+   "type": "smoothNormals",
+   "inputs": [
+    "crank-grip-spindle-rough"
+   ]
+  },
+  {
+   "id": "crank-grip-lathe-turned",
+   "type": "revolve",
+   "options": {
+    "profile": [
+     [
+      0,
+      0
+     ],
+     [
+      0.014,
+      0
+     ],
+     [
+      0.019,
+      0.018
+     ],
+     [
+      0.02,
+      0.067
+     ],
+     [
+      0.016,
+      0.095
+     ],
+     [
+      0,
+      0.102
+     ]
+    ],
+    "sides": 32
+   }
+  },
+  {
+   "id": "crank-grip-lathe",
+   "type": "smoothNormals",
+   "inputs": [
+    "crank-grip-lathe-turned"
+   ]
+  },
+  {
+   "id": "crank-grip",
+   "type": "transform",
+   "inputs": [
+    "crank-grip-lathe"
+   ],
+   "options": {
+    "translation": [
+     [
+      "+",
+      "$roof-half-width",
+      0.145
+     ],
+     "$shaft-y",
+     [
+      "-",
+      "$shaft-z",
+      0.19
+     ]
+    ],
+    "rotation": [
+     0,
+     1.5707963267948966,
+     0
+    ]
+   }
+  },
+  {
+   "id": "shaft-west-cap-lathe-turned",
+   "type": "revolve",
+   "options": {
+    "profile": [
+     [
+      0,
+      -0.007
+     ],
+     [
+      0.021,
+      -0.007
+     ],
+     [
+      0.021,
+      0.007
+     ],
+     [
+      0,
+      0.007
+     ]
+    ],
+    "sides": 32
+   }
+  },
+  {
+   "id": "shaft-west-cap-lathe",
+   "type": "smoothNormals",
+   "inputs": [
+    "shaft-west-cap-lathe-turned"
+   ]
+  },
+  {
+   "id": "shaft-west-cap",
+   "type": "transform",
+   "inputs": [
+    "shaft-west-cap-lathe"
+   ],
+   "options": {
+    "translation": [
+     [
+      "-",
+      [
+       "-",
+       0,
+       "$roof-half-width"
+      ],
+      0.055
+     ],
+     "$shaft-y",
+     "$shaft-z"
+    ],
+    "rotation": [
+     0,
+     1.5707963267948966,
+     0
+    ]
+   }
+  },
+  {
+   "id": "maker-plate-blank",
+   "type": "cube",
+   "options": {
+    "size": [
+     0.18,
+     0.008,
+     0.042
+    ]
+   }
+  },
+  {
+   "id": "maker-plate-bevel",
+   "type": "boxBevel",
+   "inputs": [
+    "maker-plate-blank"
+   ],
+   "options": {
+    "width": 0.003
+   }
+  },
+  {
+   "id": "maker-plate-placed",
+   "type": "transform",
+   "inputs": [
+    "maker-plate-bevel"
+   ],
+   "options": {
+    "translation": [
+     [
+      "*",
+      [
+       "-",
+       0,
+       "$width"
+      ],
+      0.27
+     ],
+     [
+      "-",
+      [
+       "-",
+       0,
+       "$sash-length"
+      ],
+      0.032
+     ],
+     -0.069
+    ]
+   }
+  },
+  {
+   "id": "maker-plate",
+   "type": "transform",
+   "inputs": [
+    "maker-plate-placed"
+   ]
+  },
+  {
+   "id": "maker-lettered-at",
+   "type": "pointArray",
+   "options": {
+    "positions": [
+     [
+      [
+       "*",
+       [
+        "-",
+        0,
+        "$width"
+       ],
+       0.27
+      ],
+      [
+       "-",
+       [
+        "-",
+        0,
+        "$sash-length"
+       ],
+       0.04
+      ],
+      -0.069
+     ]
+    ]
+   }
+  },
+  {
+   "id": "maker-lettered",
+   "type": "detailText",
+   "inputs": [
+    "maker-plate",
+    "maker-lettered-at"
+   ],
+   "options": {
+    "text": "VENT 04",
+    "size": 0.018,
+    "direction": [
+     1,
+     0,
+     0
+    ],
+    "align": "centre",
+    "profile": "groove",
+    "width": 0.001,
+    "reach": 0.03,
+    "depth": 0.001
+   }
+  },
+  {
+   "id": "roof-iron-local",
+   "type": "join",
+   "inputs": [
+    "rafter-0-web",
+    "rafter-0-foot",
+    "rafter-0-fixed",
+    "rafter-1-web",
+    "rafter-1-foot",
+    "rafter-1-fixed",
+    "rafter-2-web",
+    "rafter-2-foot",
+    "rafter-2-fixed",
+    "rafter-3-web",
+    "rafter-3-foot",
+    "rafter-3-fixed",
+    "head-purlin-web",
+    "head-purlin-foot",
+    "head-weather-cap",
+    "sill-purlin-web",
+    "sill-purlin-foot",
+    "sill-weather-cap",
+    "vent-seat-0",
+    "vent-seat-1",
+    "fixed-west-lap-1",
+    "fixed-west-lap-2",
+    "fixed-east-lap-1",
+    "fixed-east-lap-2",
+    "hinge-0-fixed-leaf",
+    "hinge-0-knuckle-0",
+    "hinge-0-knuckle-2",
+    "hinge-0-knuckle-4",
+    "hinge-1-fixed-leaf",
+    "hinge-1-knuckle-0",
+    "hinge-1-knuckle-2",
+    "hinge-1-knuckle-4",
+    "hinge-2-fixed-leaf",
+    "hinge-2-knuckle-0",
+    "hinge-2-knuckle-2",
+    "hinge-2-knuckle-4",
+    "bearing-0-mount",
+    "bearing-0-hanger",
+    "bearing-0-housing",
+    "bearing-1-mount",
+    "bearing-1-hanger",
+    "bearing-1-housing",
+    "bearing-2-mount",
+    "bearing-2-hanger",
+    "bearing-2-housing",
+    "crank-outrigger",
+    "crank-bearing-web",
+    "crank-bearing"
+   ]
+  },
+  {
+   "id": "roof-iron-material",
+   "type": "material",
+   "inputs": [
+    "roof-iron-local"
+   ],
+   "options": {
+    "slot": "iron"
+   }
+  },
+  {
+   "id": "sash-iron-local",
+   "type": "join",
+   "inputs": [
+    "sash-putty-1",
+    "sash-corner-shoe-0-0",
+    "sash-corner-shoe-0-1",
+    "sash-corner-shoe-1-0",
+    "sash-corner-shoe-1-1",
+    "bottom-drip-nose",
+    "hinge-0-strap",
+    "hinge-0-knuckle-1",
+    "hinge-0-knuckle-3",
+    "hinge-1-strap",
+    "hinge-1-knuckle-1",
+    "hinge-1-knuckle-3",
+    "hinge-2-strap",
+    "hinge-2-knuckle-1",
+    "hinge-2-knuckle-3",
+    "rack-saddle-cheek-0",
+    "rack-saddle-cheek-1",
+    "rack-fork-crosshead"
+   ]
+  },
+  {
+   "id": "sash-iron-material",
+   "type": "material",
+   "inputs": [
+    "sash-iron-local"
+   ],
+   "options": {
+    "slot": "iron"
+   }
+  },
+  {
+   "id": "sash-open",
+   "type": "transform",
+   "inputs": [
+    "sash-iron-material"
+   ],
+   "options": {
+    "rotation": [
+     [
+      "-",
+      0,
+      "$opening-angle"
+     ],
+     0,
+     0
+    ]
+   }
+  },
+  {
+   "id": "fixed-glass-local",
+   "type": "join",
+   "inputs": [
+    "fixed-west-pane-0",
+    "fixed-west-pane-1",
+    "fixed-west-pane-2",
+    "fixed-east-pane-0",
+    "fixed-east-pane-1",
+    "fixed-east-pane-2"
+   ]
+  },
+  {
+   "id": "fixed-glass",
+   "type": "material",
+   "inputs": [
+    "fixed-glass-local"
+   ],
+   "options": {
+    "slot": "glass"
+   }
+  },
+  {
+   "id": "sash-glass-local",
+   "type": "join",
+   "inputs": [
+    "sash-glass-0-0",
+    "sash-glass-0-1",
+    "sash-glass-0-2",
+    "sash-glass-1-0",
+    "sash-glass-1-1",
+    "sash-glass-1-2"
+   ]
+  },
+  {
+   "id": "sash-glass-material",
+   "type": "material",
+   "inputs": [
+    "sash-glass-local"
+   ],
+   "options": {
+    "slot": "glass"
+   }
+  },
+  {
+   "id": "sash-glass-open",
+   "type": "transform",
+   "inputs": [
+    "sash-glass-material"
+   ],
+   "options": {
+    "rotation": [
+     [
+      "-",
+      0,
+      "$opening-angle"
+     ],
+     0,
+     0
+    ]
+   }
+  },
+  {
+   "id": "gear-local",
+   "type": "join",
+   "inputs": [
+    "hinge-0-pin",
+    "hinge-0-pinhead--1",
+    "hinge-0-pinhead-1",
+    "hinge-1-pin",
+    "hinge-1-pinhead--1",
+    "hinge-1-pinhead-1",
+    "hinge-2-pin",
+    "hinge-2-pinhead--1",
+    "hinge-2-pinhead-1",
+    "operating-shaft",
+    "bearing-0-bush-0",
+    "bearing-0-bush-1",
+    "bearing-0-oil-neck",
+    "bearing-0-oil-cup",
+    "bearing-1-bush-0",
+    "bearing-1-bush-1",
+    "bearing-1-oil-neck",
+    "bearing-1-oil-cup",
+    "bearing-2-bush-0",
+    "bearing-2-bush-1",
+    "bearing-2-oil-neck",
+    "bearing-2-oil-cup",
+    "pinion",
+    "pinion-hub",
+    "shaft-thrust-collar-0",
+    "shaft-thrust-collar-1",
+    "crank-boss",
+    "crank-arm",
+    "crank-grip-spindle",
+    "crank-grip",
+    "shaft-west-cap",
+    "maker-lettered",
+    "rack-moving"
+   ]
+  },
+  {
+   "id": "gear-bronze",
+   "type": "material",
+   "inputs": [
+    "gear-local"
+   ],
+   "options": {
+    "slot": "bronze"
+   }
+  },
+  {
+   "id": "roof-coordinate-assembly",
+   "type": "join",
+   "inputs": [
+    "roof-iron-material",
+    "sash-open",
+    "fixed-glass",
+    "sash-glass-open",
+    "gear-bronze"
+   ]
+  },
+  {
+   "id": "vent-sash-rack",
+   "type": "transform",
+   "inputs": [
+    "roof-coordinate-assembly"
+   ],
+   "options": {
+    "rotation": [
+     "$roof-angle",
+     0,
+     0
+    ]
+   }
+  },
+  {
+   "id": "vent-sash-rack.baked",
+   "type": "bake",
+   "inputs": [
+    "vent-sash-rack"
+   ]
+  }
+ ],
+ "output": "vent-sash-rack.baked"
+}

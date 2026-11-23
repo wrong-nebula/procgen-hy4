@@ -1,0 +1,57 @@
+{
+ "note": "Blind pairwise judging of Hy4 Flash champion builds against a solo frontier-model build of the same brief. p_hy4_preferred is the calibrated probability the judges preferred the Hy4 build; below 0.5 means the frontier build was preferred.",
+ "results": [
+  {
+   "task": "turntable",
+   "author_model": "tencent/hy4-flash (xhigh reasoning)",
+   "frontier_rival": "gpt-6.1-terra-high--H-r1",
+   "hy4_beat_frontier": true,
+   "p_hy4_preferred": 0.7072,
+   "hy4_cost_usd": 0.0483,
+   "frontier_cost_usd": 0.4859,
+   "cost_ratio": 0.0994,
+   "triangles": 101276,
+   "materials": 10,
+   "date": "2026-11-21"
+  },
+  {
+   "task": "city-gate",
+   "author_model": "tencent/hy4-flash (xhigh reasoning)",
+   "frontier_rival": "gpt-6.1-terra-high--H-r1",
+   "hy4_beat_frontier": true,
+   "p_hy4_preferred": 0.6842,
+   "hy4_cost_usd": 0.05695,
+   "frontier_cost_usd": 0.4338,
+   "cost_ratio": 0.1313,
+   "triangles": 22144,
+   "materials": 6,
+   "date": "2026-11-21"
+  },
+  {
+   "task": "metro-edicule",
+   "author_model": "tencent/hy4-flash (xhigh reasoning)",
+   "frontier_rival": "gpt-6.1-sol--solo-live",
+   "hy4_beat_frontier": false,
+   "p_hy4_preferred": 0.19,
+   "hy4_cost_usd": 0.04437,
+   "frontier_cost_usd": 0.7643,
+   "cost_ratio": 0.0581,
+   "triangles": 50760,
+   "materials": 6,
+   "date": "2026-11-21"
+  },
+  {
+   "task": "iron-shopfront",
+   "author_model": "tencent/hy4-flash (xhigh reasoning)",
+   "frontier_rival": "gpt-6.1-sol--solo-live",
+   "hy4_beat_frontier": false,
+   "p_hy4_preferred": 0.19,
+   "hy4_cost_usd": 0.04522,
+   "frontier_cost_usd": 0.6187,
+   "cost_ratio": 0.0731,
+   "triangles": 35688,
+   "materials": 7,
+   "date": "2026-11-21"
+  }
+ ]
+}

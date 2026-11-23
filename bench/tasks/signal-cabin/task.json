@@ -1,0 +1,125 @@
+{
+ "id": "signal-cabin",
+ "title": "Railway signal cabin",
+ "module": "signal-cabin",
+ "renders": [
+  {
+   "name": "iso-beauty",
+   "view": "iso",
+   "pass": "beauty",
+   "size": "1280x960"
+  },
+  {
+   "name": "iso-clay",
+   "view": "iso",
+   "pass": "clay",
+   "size": "1280x960"
+  },
+  {
+   "name": "opposite-beauty",
+   "view": "opposite",
+   "pass": "beauty",
+   "size": "1280x960"
+  },
+  {
+   "name": "front-clay",
+   "view": "front",
+   "pass": "clay",
+   "size": "1280x960",
+   "projection": "ortho"
+  },
+  {
+   "name": "parts",
+   "view": "iso",
+   "pass": "parts",
+   "size": "960x720"
+  }
+ ],
+ "baseline": null,
+ "scrub": {
+  "python_drop": [
+   {
+    "file": "recipes/build_site_kits.py",
+    "functions": [
+     "promoted_signal_cabin"
+    ],
+    "dict_keys": {}
+   }
+  ],
+  "replace": [
+   {
+    "file": "docs/KIT_CANDIDATES.md",
+    "old": "`signal-cabin`, ",
+    "new": ""
+   }
+  ],
+  "drop_lines": [
+   {
+    "file": "recipes/build_site_kits.py",
+    "pattern": "^promoted_signal_cabin\\(\\)$"
+   },
+   {
+    "file": "docs/KIT_REFERENCES.md",
+    "pattern": "signal-cabin"
+   },
+   {
+    "file": "docs/KIT_REVIEW.md",
+    "pattern": "signal-cabin"
+   }
+  ],
+  "rebuild": [
+   [
+    "python3",
+    "-c",
+    "import json, pathlib; pathlib.Path('recipes/site/railway/signal-cabin.json').unlink(missing_ok=True); p = pathlib.Path('recipes/site/railway/modules.json'); d = json.loads(p.read_text()); d['modules'].pop('signal-cabin', None); p.write_text(json.dumps(d, indent=1) + '\\n')"
+   ]
+  ],
+  "leak_terms": [
+   "signal-cabin",
+   "signal_cabin",
+   "locking room"
+  ]
+ },
+ "contract": {
+  "controls": {
+   "width": [
+    6,
+    4,
+    10
+   ],
+   "depth": [
+    3.6,
+    3,
+    5
+   ],
+   "height": [
+    6.5,
+    5,
+    8
+   ]
+  },
+  "ports": {
+   "base": {
+    "type": "footing",
+    "origin": [
+     0,
+     0,
+     0
+    ],
+    "normal": [
+     0,
+     0,
+     -1
+    ],
+    "dims": {
+     "width": "width"
+    }
+   }
+  },
+  "span": {
+   "x": "width",
+   "z": "height"
+  },
+  "min_materials": 4
+ }
+}

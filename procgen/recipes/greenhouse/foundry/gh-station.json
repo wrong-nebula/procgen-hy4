@@ -1,0 +1,340 @@
+{
+ "version": 1,
+ "references": {
+  "atlas": [
+   "G01",
+   "E02",
+   "E03",
+   "X01"
+  ],
+  "sources": [
+   "kew",
+   "laeken",
+   "eiffel-vi"
+  ],
+  "plates": [
+   "s09"
+  ],
+  "notes": "One frame per section joint; rib, columns and splice plates are separate parts with explicit seats (E02, X01).",
+  "review": {
+   "by": "Fable 5.2",
+   "reviewed": "Opus 5.5 (medium)",
+   "date": "2026-11-15",
+   "seen": "sheet renders",
+   "weak": "Reads well.",
+   "improve": [
+    "One frame owner per joint is a hand-kept convention; a check would help [transcript]"
+   ],
+   "pass1": "Audit: spring minimum 2.0 m, as gh-column.",
+   "left": [
+    "One frame owner per joint is a hand-kept convention; a check would help [transcript]"
+   ]
+  }
+ },
+ "controls": {
+  "span": {
+   "value": 10,
+   "min": 2,
+   "max": 40
+  },
+  "spring": {
+   "value": 6.6,
+   "min": 2.0,
+   "max": 24
+  },
+  "rise": {
+   "value": 4.8,
+   "min": 0.5,
+   "max": 20
+  },
+  "gauge": {
+   "value": 1,
+   "min": 0.2,
+   "max": 2.5
+  }
+ },
+ "modulePorts": {
+  "south": {
+   "origin": [
+    0,
+    0,
+    0
+   ],
+   "normal": [
+    0,
+    -1,
+    0
+   ],
+   "up": [
+    0,
+    0,
+    1
+   ],
+   "type": "greenhouse.section",
+   "dimensions": {
+    "span": "$span",
+    "spring": "$spring",
+    "rise": "$rise",
+    "gauge": "$gauge"
+   }
+  },
+  "north": {
+   "origin": [
+    0,
+    0,
+    0
+   ],
+   "normal": [
+    0,
+    1,
+    0
+   ],
+   "up": [
+    0,
+    0,
+    1
+   ],
+   "type": "greenhouse.section",
+   "dimensions": {
+    "span": "$span",
+    "spring": "$spring",
+    "rise": "$rise",
+    "gauge": "$gauge"
+   }
+  }
+ },
+ "moduleImports": {
+  "rib": "gh-vault-rib",
+  "column": "gh-column",
+  "splice": "gh-splice"
+ },
+ "nodes": [
+  {
+   "id": "rib",
+   "type": "group",
+   "group": "rib",
+   "bindings": {
+    "span": "$span",
+    "spring": "$spring",
+    "rise": "$rise",
+    "gauge": "$gauge"
+   }
+  },
+  {
+   "id": "col",
+   "type": "group",
+   "group": "column",
+   "bindings": {
+    "spring": "$spring",
+    "gauge": "$gauge"
+   }
+  },
+  {
+   "id": "west-column",
+   "type": "connect",
+   "inputs": [
+    "col"
+   ],
+   "options": {
+    "a": [
+     "@rib",
+     "west-seat"
+    ],
+    "b": [
+     "@col",
+     "head"
+    ]
+   }
+  },
+  {
+   "id": "east-column",
+   "type": "connect",
+   "inputs": [
+    "col"
+   ],
+   "options": {
+    "a": [
+     "@rib",
+     "east-seat"
+    ],
+    "b": [
+     "@col",
+     "head"
+    ]
+   }
+  },
+  {
+   "id": "plate",
+   "type": "group",
+   "group": "splice",
+   "bindings": {
+    "gauge": "$gauge"
+   }
+  },
+  {
+   "id": "plate-back",
+   "type": "transform",
+   "inputs": [
+    "plate"
+   ],
+   "options": {
+    "rotation": [
+     0,
+     0,
+     3.141592653589793
+    ]
+   }
+  },
+  {
+   "id": "north-at",
+   "type": "pointArray",
+   "options": {
+    "positions": [
+     [
+      [
+       "-",
+       0,
+       [
+        "*",
+        "$span",
+        0.5
+       ]
+      ],
+      [
+       "*",
+       0.14,
+       "$gauge"
+      ],
+      [
+       "-",
+       "$spring",
+       [
+        "*",
+        0.05,
+        "$gauge"
+       ]
+      ]
+     ],
+     [
+      [
+       "*",
+       "$span",
+       0.5
+      ],
+      [
+       "*",
+       0.14,
+       "$gauge"
+      ],
+      [
+       "-",
+       "$spring",
+       [
+        "*",
+        0.05,
+        "$gauge"
+       ]
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "id": "south-at",
+   "type": "pointArray",
+   "options": {
+    "positions": [
+     [
+      [
+       "-",
+       0,
+       [
+        "*",
+        "$span",
+        0.5
+       ]
+      ],
+      [
+       "-",
+       0,
+       [
+        "*",
+        0.14,
+        "$gauge"
+       ]
+      ],
+      [
+       "-",
+       "$spring",
+       [
+        "*",
+        0.05,
+        "$gauge"
+       ]
+      ]
+     ],
+     [
+      [
+       "*",
+       "$span",
+       0.5
+      ],
+      [
+       "-",
+       0,
+       [
+        "*",
+        0.14,
+        "$gauge"
+       ]
+      ],
+      [
+       "-",
+       "$spring",
+       [
+        "*",
+        0.05,
+        "$gauge"
+       ]
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "id": "plates-north",
+   "type": "instance",
+   "inputs": [
+    "north-at",
+    "plate"
+   ]
+  },
+  {
+   "id": "plates-south",
+   "type": "instance",
+   "inputs": [
+    "south-at",
+    "plate-back"
+   ]
+  },
+  {
+   "id": "station-parts",
+   "type": "join",
+   "inputs": [
+    "rib",
+    "west-column",
+    "east-column",
+    "plates-north",
+    "plates-south"
+   ]
+  },
+  {
+   "id": "station",
+   "type": "bake",
+   "inputs": [
+    "station-parts"
+   ]
+  }
+ ],
+ "output": "station"
+}

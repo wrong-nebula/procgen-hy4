@@ -1,0 +1,59 @@
+{
+ "id": "airship-hangar",
+ "title": "Monumental airship hangar (Chalais-Meudon brick-and-truss shed and parabolic iron-arch vault variants)",
+ "module": "airship-hangar",
+ "renders": [
+  {"name": "iso-beauty", "view": "iso", "pass": "beauty", "size": "1280x960"},
+  {"name": "iso-clay", "view": "iso", "pass": "clay", "size": "1280x960"},
+  {"name": "opposite-beauty", "view": "opposite", "pass": "beauty", "size": "1280x960"},
+  {"name": "front-clay", "view": "front", "pass": "clay", "size": "1280x960", "projection": "ortho"},
+  {"name": "parts", "view": "iso", "pass": "parts", "size": "960x720"}
+ ],
+ "baseline": null,
+ "scrub": {
+  "python_drop": [{"file": "recipes/build_airfield_kits.py", "functions": ["airship_hangar"], "dict_keys": {"REFS": ["airship-hangar"]}}],
+  "replace": [{"file": "recipes/build_airfield_kits.py", "old": "airship(), mooring_mast(), airship_hangar()", "new": "airship(), mooring_mast()"}],
+  "drop_lines": [
+   {"file": "docs/KIT_REFERENCES.md", "pattern": "\\| `airship-hangar` \\|"},
+   {"file": "docs/KIT_REVIEW.md", "pattern": "\\| `airship-hangar` \\|"}
+  ],
+  "leak_terms": []
+ },
+ "contract": {
+  "controls": {
+   "length": [36.0, 24.0, 48.0],
+   "span": [22.0, 16.0, 28.0],
+   "height": [16.6, 12.0, 21.0],
+   "variant": [0, 0, 1]
+  },
+  "ports": {
+   "door": {
+    "type": "deck",
+    "origin": ["length/2", 0, 0],
+    "normal": [1, 0, 0],
+    "dims": {"width": "span - 2"}
+   }
+  },
+  "envelope": {
+   "x": ["-length/2 - 1.5", "length/2 + 1.5"],
+   "y": ["-span/2 - 2.2", "span/2 + 2.2"],
+   "z": ["-0.15", "height + 1.8"]
+  },
+  "span": {
+   "x": "0.95 * length",
+   "y": "0.95 * span",
+   "z": "0.92 * height"
+  },
+  "clearances": {
+   "portal": {
+    "lo": ["length/2 - 1.2", "-span * 0.22", "0.30"],
+    "hi": ["length/2 + 0.4", "span * 0.22", "height * 0.48"]
+   },
+   "nave": {
+    "lo": ["-length * 0.32", "-span * 0.25", "0.30"],
+    "hi": ["length * 0.38", "span * 0.25", "height * 0.48"]
+   }
+  },
+  "min_materials": 5
+ }
+}

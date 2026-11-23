@@ -1,0 +1,48 @@
+{
+  "version": 1,
+  "controls": {
+    "length": { "value": 1.6, "min": 0.5, "max": 4 },
+    "posts": { "value": 4, "min": 2, "max": 8, "integer": true },
+    "rail": { "value": 1, "min": 0, "max": 1, "integer": true }
+  },
+  "groups": {
+    "post": {
+      "controls": { "height": { "value": 0.6, "min": 0.1, "max": 3 } },
+      "nodes": [
+        { "id": "shaft", "type": "cylinder", "options": { "radius": 0.03, "depth": "$height", "sides": 12 } },
+        { "id": "raised", "type": "transform", "inputs": ["shaft"], "options": { "translation": [0, 0, ["*", "$height", 0.5]] } },
+        { "id": "cap", "type": "cube", "options": { "size": [0.1, 0.1, 0.04] } },
+        { "id": "cap-bevel", "type": "boxBevel", "inputs": ["cap"], "options": { "width": 0.01 } },
+        { "id": "cap-up", "type": "transform", "inputs": ["cap-bevel"], "options": { "translation": [0, 0, ["+", "$height", 0.02]] } },
+        { "id": "cap-mat", "type": "material", "inputs": ["cap-up"], "options": { "slot": "bronze" } },
+        { "id": "out", "type": "join", "inputs": ["raised", "cap-mat"] }
+      ],
+      "output": "out"
+    }
+  },
+  "nodes": [
+    { "id": "plate", "type": "cube", "options": { "size": ["$length", 0.4, 0.06] } },
+    { "id": "plate-bevel", "type": "boxBevel", "inputs": ["plate"], "options": { "width": 0.012 } },
+    { "id": "plate-mat", "type": "material", "inputs": ["plate-bevel"], "options": { "slot": "chipped-limestone" } },
+    { "id": "post", "type": "group", "group": "post", "bindings": { "height": 0.5 } },
+    { "id": "post-iron", "type": "material", "inputs": ["post"], "options": { "slot": "weathered-iron", "replace": "stone" } },
+    { "id": "stations", "type": "line", "options": {
+        "start": [["*", "$length", -0.4], 0, 0.03],
+        "step": [["/", ["*", "$length", 0.8], ["-", "$posts", 1]], 0, 0],
+        "count": "$posts" } },
+    { "id": "posts", "type": "instance", "inputs": ["stations", "post-iron"] },
+    { "id": "rail-path", "type": "sweep", "options": {
+        "path": [[["*", "$length", -0.4], 0, 0.5], [["*", "$length", 0.4], 0, 0.5]], "radius": 0.02, "sides": 8 } },
+    { "id": "rail-iron", "type": "material", "inputs": ["rail-path"], "options": { "slot": "weathered-iron" } },
+    { "id": "none", "type": "empty" },
+    { "id": "rail-on", "type": "select", "inputs": ["rail-iron", "none"], "options": { "condition": "$rail" } },
+    { "id": "gusset", "type": "profileSolid", "options": {
+        "profile": [[0, 0], [0.3, 0], [0.3, 0.2], [0, 0.2]],
+        "holes": [[[0.1, 0.06], [0.2, 0.06], [0.2, 0.14], [0.1, 0.14]]],
+        "depth": 0.02, "bevel": 0.003 } },
+    { "id": "gusset-placed", "type": "transform", "inputs": ["gusset"], "options": { "translation": [-0.15, 0.2, 0.03], "rotation": [1.5707963, 0, 0] } },
+    { "id": "gusset-mat", "type": "material", "inputs": ["gusset-placed"], "options": { "slot": "steel" } },
+    { "id": "out", "type": "join", "inputs": ["plate-mat", "posts", "rail-on", "gusset-mat"] }
+  ],
+  "output": "out"
+}

@@ -1,0 +1,740 @@
+{
+ "version": 1,
+ "references": {
+  "atlas": [
+   "G01",
+   "G02"
+  ],
+  "sources": [
+   "kew",
+   "laeken"
+  ],
+  "plates": [
+   "s10",
+   "s185"
+  ],
+  "notes": "A run of G01 bays; one frame owner per joint.",
+  "review": {
+   "by": "Fable 5.2",
+   "reviewed": "Opus 5.5 (medium)",
+   "date": "2026-11-15",
+   "seen": "sheet renders",
+   "weak": "Reads well in a close-up.",
+   "pass1": "Audit: as gh-bay (panes on bars, tiles in a bed).",
+   "left": []
+  }
+ },
+ "controls": {
+  "span": {
+   "value": 10,
+   "min": 2,
+   "max": 40
+  },
+  "spring": {
+   "value": 6.6,
+   "min": 2.0,
+   "max": 24
+  },
+  "rise": {
+   "value": 4.8,
+   "min": 0.5,
+   "max": 20
+  },
+  "pitch": {
+   "value": 4.2,
+   "min": 1,
+   "max": 10
+  },
+  "gauge": {
+   "value": 1,
+   "min": 0.2,
+   "max": 2.5
+  },
+  "bays": {
+   "value": 3,
+   "min": 1,
+   "max": 24,
+   "integer": true
+  },
+  "east": {
+   "value": 1,
+   "min": 0,
+   "max": 1,
+   "integer": true
+  },
+  "west": {
+   "value": 1,
+   "min": 0,
+   "max": 1,
+   "integer": true
+  },
+  "southFrame": {
+   "value": 1,
+   "min": 0,
+   "max": 1,
+   "integer": true
+  },
+  "northFrame": {
+   "value": 0,
+   "min": 0,
+   "max": 1,
+   "integer": true
+  },
+  "plinth": {
+   "value": 0,
+   "min": 0,
+   "max": 12
+  }
+ },
+ "modulePorts": {
+  "south": {
+   "origin": [
+    0,
+    0,
+    0
+   ],
+   "normal": [
+    0,
+    -1,
+    0
+   ],
+   "up": [
+    0,
+    0,
+    1
+   ],
+   "type": "greenhouse.section",
+   "dimensions": {
+    "span": "$span",
+    "spring": "$spring",
+    "rise": "$rise",
+    "gauge": "$gauge"
+   }
+  },
+  "north": {
+   "origin": [
+    0,
+    [
+     "*",
+     "$bays",
+     "$pitch"
+    ],
+    0
+   ],
+   "normal": [
+    0,
+    1,
+    0
+   ],
+   "up": [
+    0,
+    0,
+    1
+   ],
+   "type": "greenhouse.section",
+   "dimensions": {
+    "span": "$span",
+    "spring": "$spring",
+    "rise": "$rise",
+    "gauge": "$gauge"
+   }
+  }
+ },
+ "moduleImports": {
+  "station": "gh-station",
+  "roof": "gh-roof-bay",
+  "wall": "gh-wall-bay"
+ },
+ "nodes": [
+  {
+   "id": "roof",
+   "type": "group",
+   "group": "roof",
+   "bindings": {
+    "pitch": "$pitch",
+    "span": "$span",
+    "spring": "$spring",
+    "rise": "$rise",
+    "gauge": "$gauge"
+   }
+  },
+  {
+   "id": "wall",
+   "type": "group",
+   "group": "wall",
+   "bindings": {
+    "spring": "$spring",
+    "pitch": "$pitch",
+    "gauge": "$gauge"
+   }
+  },
+  {
+   "id": "wall-east",
+   "type": "transform",
+   "inputs": [
+    "wall"
+   ],
+   "options": {
+    "translation": [
+     [
+      "*",
+      "$span",
+      0.5
+     ],
+     0,
+     0
+    ]
+   }
+  },
+  {
+   "id": "wall-west",
+   "type": "transform",
+   "inputs": [
+    "wall"
+   ],
+   "options": {
+    "translation": [
+     [
+      "*",
+      "$span",
+      -0.5
+     ],
+     "$pitch",
+     0
+    ],
+    "rotation": [
+     0,
+     0,
+     3.141592653589793
+    ]
+   }
+  },
+  {
+   "id": "none",
+   "type": "empty"
+  },
+  {
+   "id": "east-side",
+   "type": "select",
+   "inputs": [
+    "wall-east",
+    "none"
+   ],
+   "options": {
+    "condition": "$east"
+   }
+  },
+  {
+   "id": "west-side",
+   "type": "select",
+   "inputs": [
+    "wall-west",
+    "none"
+   ],
+   "options": {
+    "condition": "$west"
+   }
+  },
+  {
+   "id": "floor-tile",
+   "type": "cube",
+   "options": {
+    "size": [
+     [
+      "-",
+      [
+       "/",
+       "$span",
+       [
+        "max",
+        1,
+        [
+         "round",
+         [
+          "/",
+          "$span",
+          0.7
+         ]
+        ]
+       ]
+      ],
+      0.012
+     ],
+     [
+      "-",
+      [
+       "/",
+       "$pitch",
+       [
+        "max",
+        1,
+        [
+         "round",
+         [
+          "/",
+          "$pitch",
+          0.7
+         ]
+        ]
+       ]
+      ],
+      0.012
+     ],
+     0.08
+    ]
+   }
+  },
+  {
+   "id": "floor-row-at",
+   "type": "line",
+   "options": {
+    "start": [
+     [
+      "+",
+      [
+       "*",
+       "$span",
+       -0.5
+      ],
+      [
+       "*",
+       [
+        "/",
+        "$span",
+        [
+         "max",
+         1,
+         [
+          "round",
+          [
+           "/",
+           "$span",
+           0.7
+          ]
+         ]
+        ]
+       ],
+       0.5
+      ]
+     ],
+     [
+      "*",
+      [
+       "/",
+       "$pitch",
+       [
+        "max",
+        1,
+        [
+         "round",
+         [
+          "/",
+          "$pitch",
+          0.7
+         ]
+        ]
+       ]
+      ],
+      0.5
+     ],
+     -0.04
+    ],
+    "step": [
+     [
+      "/",
+      "$span",
+      [
+       "max",
+       1,
+       [
+        "round",
+        [
+         "/",
+         "$span",
+         0.7
+        ]
+       ]
+      ]
+     ],
+     0,
+     0
+    ],
+    "count": [
+     "max",
+     1,
+     [
+      "round",
+      [
+       "/",
+       "$span",
+       0.7
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "id": "floor-row",
+   "type": "instance",
+   "inputs": [
+    "floor-row-at",
+    "floor-tile"
+   ]
+  },
+  {
+   "id": "floor-field-at",
+   "type": "line",
+   "options": {
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "step": [
+     0,
+     [
+      "/",
+      "$pitch",
+      [
+       "max",
+       1,
+       [
+        "round",
+        [
+         "/",
+         "$pitch",
+         0.7
+        ]
+       ]
+      ]
+     ],
+     0
+    ],
+    "count": [
+     "max",
+     1,
+     [
+      "round",
+      [
+       "/",
+       "$pitch",
+       0.7
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "id": "floor-field",
+   "type": "instance",
+   "inputs": [
+    "floor-field-at",
+    "floor-row"
+   ]
+  },
+  {
+   "id": "floor-bed-stock",
+   "type": "cube",
+   "options": {
+    "size": [
+     "$span",
+     "$pitch",
+     0.06
+    ]
+   }
+  },
+  {
+   "id": "floor-bed",
+   "type": "transform",
+   "inputs": [
+    "floor-bed-stock"
+   ],
+   "options": {
+    "translation": [
+     [
+      "+",
+      [
+       "*",
+       "$span",
+       -0.5
+      ],
+      [
+       "*",
+       "$span",
+       0.5
+      ]
+     ],
+     [
+      "*",
+      "$pitch",
+      0.5
+     ],
+     -0.1
+    ]
+   }
+  },
+  {
+   "id": "floor-bed-stone",
+   "type": "material",
+   "inputs": [
+    "floor-bed"
+   ],
+   "options": {
+    "slot": "stone"
+   }
+  },
+  {
+   "id": "floor-tiles",
+   "type": "material",
+   "inputs": [
+    "floor-field"
+   ],
+   "options": {
+    "slot": "tile"
+   }
+  },
+  {
+   "id": "floor",
+   "type": "join",
+   "inputs": [
+    "floor-tiles",
+    "floor-bed-stone"
+   ]
+  },
+  {
+   "id": "infill-parts",
+   "type": "join",
+   "inputs": [
+    "roof",
+    "east-side",
+    "west-side",
+    "floor"
+   ]
+  },
+  {
+   "id": "infill",
+   "type": "bake",
+   "inputs": [
+    "infill-parts"
+   ]
+  },
+  {
+   "id": "run-at",
+   "type": "line",
+   "options": {
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "step": [
+     0,
+     "$pitch",
+     0
+    ],
+    "count": "$bays"
+   }
+  },
+  {
+   "id": "run",
+   "type": "instance",
+   "inputs": [
+    "run-at",
+    "infill"
+   ]
+  },
+  {
+   "id": "frame",
+   "type": "group",
+   "group": "station",
+   "bindings": {
+    "span": "$span",
+    "spring": "$spring",
+    "rise": "$rise",
+    "gauge": "$gauge"
+   }
+  },
+  {
+   "id": "inner-frames-at",
+   "type": "line",
+   "options": {
+    "start": [
+     0,
+     "$pitch",
+     0
+    ],
+    "step": [
+     0,
+     "$pitch",
+     0
+    ],
+    "count": [
+     "-",
+     "$bays",
+     1
+    ]
+   }
+  },
+  {
+   "id": "inner-frames",
+   "type": "instance",
+   "inputs": [
+    "inner-frames-at",
+    "frame"
+   ]
+  },
+  {
+   "id": "joints",
+   "type": "select",
+   "inputs": [
+    "inner-frames",
+    "none"
+   ],
+   "options": {
+    "condition": [
+     ">",
+     "$bays",
+     1
+    ]
+   }
+  },
+  {
+   "id": "frame-far",
+   "type": "transform",
+   "inputs": [
+    "frame"
+   ],
+   "options": {
+    "translation": [
+     0,
+     [
+      "*",
+      "$bays",
+      "$pitch"
+     ],
+     0
+    ]
+   }
+  },
+  {
+   "id": "south-frame",
+   "type": "select",
+   "inputs": [
+    "frame",
+    "none"
+   ],
+   "options": {
+    "condition": "$southFrame"
+   }
+  },
+  {
+   "id": "north-frame",
+   "type": "select",
+   "inputs": [
+    "frame-far",
+    "none"
+   ],
+   "options": {
+    "condition": "$northFrame"
+   }
+  },
+  {
+   "id": "plinth-block-stock",
+   "type": "cube",
+   "options": {
+    "size": [
+     [
+      "+",
+      "$span",
+      [
+       "*",
+       1.4,
+       "$gauge"
+      ]
+     ],
+     [
+      "*",
+      "$bays",
+      "$pitch"
+     ],
+     [
+      "max",
+      "$plinth",
+      0.2
+     ]
+    ]
+   }
+  },
+  {
+   "id": "plinth-block",
+   "type": "transform",
+   "inputs": [
+    "plinth-block-stock"
+   ],
+   "options": {
+    "translation": [
+     0,
+     [
+      "*",
+      [
+       "*",
+       "$bays",
+       "$pitch"
+      ],
+      0.5
+     ],
+     [
+      "-",
+      -0.08,
+      [
+       "*",
+       [
+        "max",
+        "$plinth",
+        0.2
+       ],
+       0.5
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "id": "plinth-stone",
+   "type": "material",
+   "inputs": [
+    "plinth-block"
+   ],
+   "options": {
+    "slot": "stone"
+   }
+  },
+  {
+   "id": "base",
+   "type": "select",
+   "inputs": [
+    "plinth-stone",
+    "none"
+   ],
+   "options": {
+    "condition": [
+     ">",
+     "$plinth",
+     0
+    ]
+   }
+  },
+  {
+   "id": "gallery",
+   "type": "join",
+   "inputs": [
+    "run",
+    "joints",
+    "south-frame",
+    "north-frame",
+    "base"
+   ]
+  }
+ ],
+ "output": "gallery"
+}

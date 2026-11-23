@@ -1,0 +1,98 @@
+{
+ "id": "catch-basin",
+ "title": "Glasshouse catch basin",
+ "module": "catch-basin",
+ "renders": [
+  {
+   "name": "iso-beauty",
+   "view": "iso",
+   "pass": "beauty",
+   "size": "1280x960"
+  },
+  {
+   "name": "iso-clay",
+   "view": "iso",
+   "pass": "clay",
+   "size": "1280x960"
+  },
+  {
+   "name": "opposite-beauty",
+   "view": "opposite",
+   "pass": "beauty",
+   "size": "1280x960"
+  },
+  {
+   "name": "front-clay",
+   "view": "front",
+   "pass": "clay",
+   "size": "1280x960",
+   "projection": "ortho"
+  },
+  {
+   "name": "parts",
+   "view": "iso",
+   "pass": "parts",
+   "size": "960x720"
+  }
+ ],
+ "baseline": null,
+ "scrub": {
+  "leak_terms": []
+ },
+ "contract": {
+  "controls": {
+   "size": [
+    0.6,
+    0.4,
+    0.9
+   ],
+   "depth": [
+    0.8,
+    0.5,
+    1.4
+   ]
+  },
+  "ports": {
+   "floor": {
+    "type": "deck",
+    "origin": [
+     0,
+     0,
+     0
+    ],
+    "normal": [
+     0,
+     0,
+     1
+    ],
+    "dims": {
+     "width": 1.2
+    }
+   },
+   "downpipe": {
+    "type": "pipe",
+    "normal": [
+     0,
+     0,
+     1
+    ],
+    "dims": {
+     "diameter": 0.1
+    }
+   },
+   "outlet": {
+    "type": "pipe",
+    "dims": {
+     "diameter": 0.15
+    }
+   }
+  },
+  "envelope": {
+   "z": [
+    "-depth - 0.3",
+    "3"
+   ]
+  },
+  "min_materials": 3
+ }
+}

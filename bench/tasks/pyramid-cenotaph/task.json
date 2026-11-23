@@ -1,0 +1,84 @@
+{
+ "id": "pyramid-cenotaph",
+ "title": "Visionary pyramid cenotaph",
+ "module": "pyramid-cenotaph",
+ "renders": [
+  {
+   "name": "iso-beauty",
+   "view": "iso",
+   "pass": "beauty",
+   "size": "1280x960"
+  },
+  {
+   "name": "iso-clay",
+   "view": "iso",
+   "pass": "clay",
+   "size": "1280x960"
+  },
+  {
+   "name": "opposite-beauty",
+   "view": "opposite",
+   "pass": "beauty",
+   "size": "1280x960"
+  },
+  {
+   "name": "front-clay",
+   "view": "front",
+   "pass": "clay",
+   "size": "1280x960",
+   "projection": "ortho"
+  },
+  {
+   "name": "parts",
+   "view": "iso",
+   "pass": "parts",
+   "size": "960x720"
+  }
+ ],
+ "baseline": null,
+ "scrub": {
+  "leak_terms": []
+ },
+ "contract": {
+  "controls": {
+   "base": [
+    30,
+    18,
+    50
+   ],
+   "height": [
+    20,
+    12,
+    34
+   ]
+  },
+  "ports": {
+   "approach": {
+    "type": "deck",
+    "origin": [
+     0,
+     null,
+     0
+    ],
+    "normal": [
+     0,
+     -1,
+     0
+    ],
+    "dims": {
+     "width": 8
+    }
+   }
+  },
+  "span": {
+   "z": "height - 0.5"
+  },
+  "clearances": {
+   "portico": {
+    "lo": ["-base * 0.035", "-base/2 - 0.6", "1.95"],
+    "hi": ["base * 0.035", "-base/2 + 0.4", "1.95 + height * 0.08"]
+   }
+  },
+  "min_materials": 2
+ }
+}

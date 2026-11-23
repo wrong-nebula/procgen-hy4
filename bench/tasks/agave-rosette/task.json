@@ -1,0 +1,92 @@
+{
+ "id": "agave-rosette",
+ "title": "Agave rosette",
+ "module": "agave-rosette",
+ "renders": [
+  {
+   "name": "iso-beauty",
+   "view": "iso",
+   "pass": "beauty",
+   "size": "1280x960"
+  },
+  {
+   "name": "iso-clay",
+   "view": "iso",
+   "pass": "clay",
+   "size": "1280x960"
+  },
+  {
+   "name": "opposite-beauty",
+   "view": "opposite",
+   "pass": "beauty",
+   "size": "1280x960"
+  },
+  {
+   "name": "front-clay",
+   "view": "front",
+   "pass": "clay",
+   "size": "1280x960",
+   "projection": "ortho"
+  },
+  {
+   "name": "parts",
+   "view": "iso",
+   "pass": "parts",
+   "size": "960x720"
+  }
+ ],
+ "baseline": null,
+ "scrub": {
+  "leak_terms": []
+ },
+ "contract": {
+  "controls": {
+   "diameter": [
+    1.8,
+    0.6,
+    3
+   ],
+   "leaves": [
+    30,
+    12,
+    48
+   ]
+  },
+  "ports": {
+   "base": {
+    "type": "footing",
+    "origin": [
+     0,
+     0,
+     0
+    ],
+    "normal": [
+     0,
+     0,
+     -1
+    ],
+    "dims": {
+     "width": 0.6
+    }
+   }
+  },
+  "envelope": {
+   "x": [
+    "-diameter/2 - 0.15",
+    "diameter/2 + 0.15"
+   ],
+   "y": [
+    "-diameter/2 - 0.15",
+    "diameter/2 + 0.15"
+   ],
+   "z": [
+    "-0.5",
+    "diameter"
+   ]
+  },
+  "span": {
+   "x": "0.7 * diameter"
+  },
+  "min_materials": 2
+ }
+}

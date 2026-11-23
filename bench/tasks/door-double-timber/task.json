@@ -1,0 +1,91 @@
+{
+ "id": "door-double-timber",
+ "title": "Double timber door in a stone surround",
+ "module": "door-double-timber",
+ "renders": [
+  {
+   "name": "iso-beauty",
+   "view": "iso",
+   "pass": "beauty",
+   "size": "1280x960"
+  },
+  {
+   "name": "iso-clay",
+   "view": "iso",
+   "pass": "clay",
+   "size": "1280x960"
+  },
+  {
+   "name": "opposite-beauty",
+   "view": "opposite",
+   "pass": "beauty",
+   "size": "1280x960"
+  },
+  {
+   "name": "front-clay",
+   "view": "front",
+   "pass": "clay",
+   "size": "1280x960",
+   "projection": "ortho"
+  },
+  {
+   "name": "parts",
+   "view": "iso",
+   "pass": "parts",
+   "size": "960x720"
+  }
+ ],
+ "baseline": null,
+ "scrub": {
+  "leak_terms": []
+ },
+ "contract": {
+  "controls": {
+   "width": [
+    1.8,
+    1.2,
+    2.6
+   ],
+   "height": [
+    3.0,
+    2.4,
+    3.8
+   ],
+   "open": [
+    0,
+    0,
+    1
+   ]
+  },
+  "ports": {
+   "wall": {
+    "type": "wall",
+    "origin": [
+     0,
+     0,
+     0
+    ],
+    "normal": [
+     0,
+     -1,
+     0
+    ],
+    "dims": {
+     "width": "width",
+     "height": "height"
+    }
+   }
+  },
+  "span": {
+   "x": "width",
+   "z": "height"
+  },
+  "clearances": {
+   "open-doorway": {
+    "lo": ["-(width * 0.28) * open", "-0.15 * open", "0.25"],
+    "hi": ["(width * 0.28) * open", "0.25 * open", "height * 0.68"]
+   }
+  },
+  "min_materials": 3
+ }
+}

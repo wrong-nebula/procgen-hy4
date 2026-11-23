@@ -1,0 +1,119 @@
+{
+ "id": "turntable",
+ "title": "Railway turntable",
+ "module": "turntable",
+ "renders": [
+  {
+   "name": "iso-beauty",
+   "view": "iso",
+   "pass": "beauty",
+   "size": "1280x960"
+  },
+  {
+   "name": "iso-clay",
+   "view": "iso",
+   "pass": "clay",
+   "size": "1280x960"
+  },
+  {
+   "name": "opposite-beauty",
+   "view": "opposite",
+   "pass": "beauty",
+   "size": "1280x960"
+  },
+  {
+   "name": "front-clay",
+   "view": "front",
+   "pass": "clay",
+   "size": "1280x960",
+   "projection": "ortho"
+  },
+  {
+   "name": "parts",
+   "view": "iso",
+   "pass": "parts",
+   "size": "960x720"
+  }
+ ],
+ "baseline": null,
+ "scrub": {
+  "leak_terms": []
+ },
+ "contract": {
+  "controls": {
+   "diameter": [
+    15,
+    10,
+    20
+   ],
+   "angle": [
+    0,
+    0,
+    360
+   ]
+  },
+  "ports": {
+   "track-a": {
+    "type": "track",
+    "dims": {
+     "gauge": 1.435
+    }
+   },
+   "track-b": {
+    "type": "track",
+    "dims": {
+     "gauge": 1.435
+    }
+   },
+   "approach-e": {
+    "type": "track",
+    "dims": {
+     "gauge": 1.435
+    },
+    "normal": [
+     1,
+     0,
+     0
+    ]
+   },
+   "approach-n": {
+    "type": "track",
+    "dims": {
+     "gauge": 1.435
+    },
+    "normal": [
+     0,
+     1,
+     0
+    ]
+   },
+   "approach-w": {
+    "type": "track",
+    "dims": {
+     "gauge": 1.435
+    },
+    "normal": [
+     -1,
+     0,
+     0
+    ]
+   },
+   "approach-s": {
+    "type": "track",
+    "dims": {
+     "gauge": 1.435
+    },
+    "normal": [
+     0,
+     -1,
+     0
+    ]
+   }
+  },
+  "span": {
+   "x": "diameter",
+   "y": "diameter"
+  },
+  "min_materials": 3
+ }
+}

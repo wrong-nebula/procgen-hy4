@@ -1,0 +1,377 @@
+{
+ "_note": "OpenRouter ids, checked against https://openrouter.ai/api/v1/models on 2026-11-17. vision=false models cannot see their renders (they iterate blind).",
+ "pilot": [
+  "sonnet-5.5",
+  "gpt-6.1-sol",
+  "deepseek-v4.1-flash"
+ ],
+ "models": {
+  "sonnet-5.5": {
+   "id": "anthropic/claude-sonnet-5.5",
+   "effort": "medium",
+   "vision": true
+  },
+  "opus-5.5": {
+   "id": "anthropic/claude-opus-5.5",
+   "effort": "medium",
+   "vision": true
+  },
+  "haiku-5.5": {
+   "id": "anthropic/claude-haiku-5.5",
+   "effort": "medium",
+   "vision": true
+  },
+  "fable-5.2": {
+   "id": "anthropic/claude-fable-5.2",
+   "effort": "medium",
+   "vision": true
+  },
+  "gpt-6.1-sol": {
+   "id": "openai/gpt-6.1-sol",
+   "effort": "medium",
+   "vision": true
+  },
+  "gpt-6.1-terra": {
+   "id": "openai/gpt-6.1-terra",
+   "effort": "medium",
+   "vision": true
+  },
+  "gpt-6-luna": {
+   "id": "openai/gpt-6-luna",
+   "effort": "medium",
+   "vision": true
+  },
+  "gemini-4-carbon": {
+   "id": "google/gemini-4-carbon",
+   "effort": "medium",
+   "vision": true
+  },
+  "gemini-4-carbon-low": {
+   "id": "google/gemini-4-carbon",
+   "effort": "low",
+   "vision": true
+  },
+  "gemini-4-carbon-high": {
+   "id": "google/gemini-4-carbon",
+   "effort": "high",
+   "vision": true
+  },
+  "gemini-4-neon": {
+   "id": "google/gemini-4-neon",
+   "effort": "medium",
+   "vision": true
+  },
+  "gemini-4-neon-low": {
+   "id": "google/gemini-4-neon",
+   "effort": "low",
+   "vision": true
+  },
+  "gemini-4-neon-medium": {
+   "id": "google/gemini-4-neon",
+   "effort": "medium",
+   "vision": true
+  },
+  "gemini-4-neon-high": {
+   "id": "google/gemini-4-neon",
+   "effort": "high",
+   "vision": true
+  },
+  "gemini-4-neon-xhigh": {
+   "id": "google/gemini-4-neon",
+   "effort": "xhigh",
+   "vision": true
+  },
+  "gemini-4-argon": {
+   "id": "google/gemini-4-argon",
+   "effort": "medium",
+   "vision": true
+  },
+  "gemini-4-argon-low": {
+   "id": "google/gemini-4-argon",
+   "effort": "low",
+   "vision": true
+  },
+  "gemini-4-argon-high": {
+   "id": "google/gemini-4-argon",
+   "effort": "high",
+   "vision": true
+  },
+  "gemini-4-hydrogen-low": {
+   "id": "google/gemini-4-hydrogen",
+   "effort": "low",
+   "vision": true
+  },
+  "gemini-4-hydrogen-high": {
+   "id": "google/gemini-4-hydrogen",
+   "effort": "high",
+   "vision": true
+  },
+  "gemini-3.8-flash-low": {
+   "id": "google/gemini-3.8-flash",
+   "effort": "low",
+   "vision": true
+  },
+  "gemini-3.8-flash-high": {
+   "id": "google/gemini-3.8-flash",
+   "effort": "high",
+   "vision": true
+  },
+  "grok-4.7": {
+   "id": "x-ai/grok-4.7",
+   "effort": "medium",
+   "vision": true
+  },
+  "qwen4-max": {
+   "id": "qwen/qwen4-max",
+   "effort": "medium",
+   "vision": true
+  },
+  "kimi-k3.1-pro": {
+   "id": "moonshotai/kimi-k3.1-pro",
+   "effort": "medium",
+   "vision": true
+  },
+  "minimax-m3": {
+   "id": "minimax/minimax-m3",
+   "effort": "medium",
+   "vision": true
+  },
+  "deepseek-v4.1-flash": {
+   "id": "deepseek/deepseek-v4.1-flash",
+   "effort": "medium",
+   "vision": true,
+   "max_views": 2,
+   "max_context_tokens": 48000,
+   "function_scoped": true,
+   "max_tokens": 24000
+  },
+  "deepseek-v4-pro": {
+   "id": "deepseek/deepseek-v4-pro",
+   "effort": "medium",
+   "vision": false
+  },
+  "glm-5.3": {
+   "id": "z-ai/glm-5.3",
+   "effort": "medium",
+   "vision": false
+  },
+  "hy4": {
+   "id": "tencent/hy4",
+   "effort": "medium",
+   "vision": true
+  },
+  "hy4-flash": {
+   "id": "tencent/hy4-flash",
+   "effort": "xhigh",
+   "vision": true,
+   "max_views": 2,
+   "max_context_tokens": 48000,
+   "function_scoped": true,
+   "max_tokens": 24000
+  },
+  "hy4-flash-free": {
+   "id": "opencode/hy4-flash-free",
+   "effort": "high",
+   "vision": true,
+   "max_views": 2,
+   "max_context_tokens": 48000,
+   "function_scoped": true,
+   "max_tokens": 24000,
+   "note": "Free OpenCode subagent tier; falls back to tencent/hy4-flash on direct OpenRouter API."
+  },
+  "hy4-flash-high": {
+   "id": "tencent/hy4-flash",
+   "effort": "high",
+   "vision": true,
+   "max_views": 2,
+   "max_context_tokens": 48000,
+   "function_scoped": true,
+   "max_tokens": 24000
+  },
+  "hy4-flash-xhigh": {
+   "id": "tencent/hy4-flash",
+   "effort": "xhigh",
+   "vision": true,
+   "max_views": 2,
+   "max_context_tokens": 48000,
+   "function_scoped": true,
+   "max_tokens": 24000
+  },
+  "inkling-2-mini": {
+   "id": "thinkingmachines/inkling-2-mini",
+   "effort": "medium",
+   "vision": true,
+   "max_views": 2,
+   "max_context_tokens": 48000,
+   "function_scoped": true,
+   "max_tokens": 24000
+  },
+  "inkling-2-mini-high": {
+   "id": "thinkingmachines/inkling-2-mini",
+   "effort": "high",
+   "vision": true,
+   "max_views": 2,
+   "max_context_tokens": 48000,
+   "function_scoped": true,
+   "max_tokens": 24000
+  },
+  "inkling-2-small": {
+   "id": "thinkingmachines/inkling-2-small",
+   "effort": "medium",
+   "vision": true,
+   "max_views": 2,
+   "max_context_tokens": 48000,
+   "function_scoped": true,
+   "max_tokens": 24000
+  },
+  "mimo-v2.6-pro": {
+   "id": "xiaomi/mimo-v2.6-pro",
+   "effort": "medium",
+   "vision": true
+  },
+  "mistral-large-4": {
+   "id": "mistralai/mistral-large-4-0",
+   "effort": "medium",
+   "vision": true
+  },
+  "minimax-m3.1-flash": {
+   "id": "minimax/minimax-m3.1-flash",
+   "effort": "medium",
+   "vision": true
+  },
+  "nemotron-3.5-vl": {
+   "id": "nvidia/nemotron-3.5-super-vl",
+   "effort": "medium",
+   "vision": true
+  },
+  "step-5-preview": {
+   "id": "stepfun/step-5-preview",
+   "effort": "medium",
+   "vision": true
+  },
+  "muse-ember": {
+   "id": "meta/muse-ember",
+   "effort": "medium",
+   "vision": true
+  },
+  "gpt-6.1-terra-high": {
+   "id": "openai/gpt-6.1-terra",
+   "effort": "high",
+   "vision": true
+  },
+  "gemini-4-hydrogen": {
+   "id": "google/gemini-4-hydrogen",
+   "effort": "medium",
+   "vision": true
+  },
+  "qwen3.8-flash": {
+   "id": "qwen/qwen3.8-flash",
+   "effort": "medium",
+   "vision": true
+  },
+  "qwen3.7-plus": {
+   "id": "qwen/qwen3.7-plus",
+   "effort": "medium",
+   "vision": true
+  },
+  "qwen3.8-27b": {
+   "id": "qwen/qwen3.8-27b",
+   "effort": "medium",
+   "vision": true
+  },
+  "qwen3.6-35b-a3b": {
+   "id": "qwen/qwen3.6-35b-a3b",
+   "effort": "medium",
+   "vision": true
+  },
+  "gpt-6-astra": {
+   "id": "openai/gpt-6-astra",
+   "effort": "medium",
+   "vision": true
+  },
+  "gemini-3.8-flash": {
+   "id": "google/gemini-3.8-flash",
+   "effort": "medium",
+   "vision": true
+  },
+  "glm-5.3-flash": {
+   "id": "z-ai/glm-5.3-flash",
+   "effort": "medium",
+   "vision": true
+  },
+  "gemma-4-31b": {
+   "id": "google/gemma-4-31b-it",
+   "effort": "medium",
+   "vision": true,
+   "max_views": 2,
+   "max_context_tokens": 48000,
+   "function_scoped": true,
+   "max_tokens": 24000
+  },
+  "seed-2.1-turbo": {
+   "id": "bytedance-seed/seed-2-1-turbo",
+   "effort": "medium",
+   "vision": true
+  },
+  "gpt-6.2-sol": {
+   "id": "openai/gpt-6.2-sol",
+   "effort": "medium",
+   "vision": true
+  },
+  "gpt-6.2-astra": {
+   "id": "openai/gpt-6.2-astra",
+   "effort": "medium",
+   "vision": true
+  },
+  "gpt-6.2-sol-low": {
+   "id": "openai/gpt-6.2-sol",
+   "effort": "low",
+   "vision": true
+  },
+  "gpt-6.2-sol-high": {
+   "id": "openai/gpt-6.2-sol",
+   "effort": "high",
+   "vision": true
+  },
+  "gpt-6.2-astra-low": {
+   "id": "openai/gpt-6.2-astra",
+   "effort": "low",
+   "vision": true
+  },
+  "gpt-6.2-astra-high": {
+   "id": "openai/gpt-6.2-astra",
+   "effort": "high",
+   "vision": true
+  }
+ },
+ "cheap2": [
+  "hy4",
+  "mimo-v2.6-pro",
+  "mistral-large-4",
+  "minimax-m3.1-flash",
+  "nemotron-3.5-vl",
+  "step-5-preview",
+  "muse-ember"
+ ],
+ "qwen": [
+  "qwen3.8-flash",
+  "qwen3.7-plus",
+  "qwen3.8-27b",
+  "qwen3.6-35b-a3b"
+ ],
+ "web": [
+  "gpt-6-astra",
+  "gemini-3.8-flash",
+  "glm-5.3-flash",
+  "gemma-4-31b",
+  "seed-2.1-turbo"
+ ],
+ "mini_forge": [
+  "hy4-flash-free",
+  "hy4-flash-xhigh",
+  "inkling-2-mini",
+  "inkling-2-mini-high",
+  "gemma-4-31b",
+  "deepseek-v4.1-flash"
+ ]
+}

@@ -1,0 +1,106 @@
+{
+ "id": "city-gate",
+ "title": "Neoclassical toll gate",
+ "module": "city-gate",
+ "renders": [
+  {
+   "name": "iso-beauty",
+   "view": "iso",
+   "pass": "beauty",
+   "size": "1280x960"
+  },
+  {
+   "name": "iso-clay",
+   "view": "iso",
+   "pass": "clay",
+   "size": "1280x960"
+  },
+  {
+   "name": "opposite-beauty",
+   "view": "opposite",
+   "pass": "beauty",
+   "size": "1280x960"
+  },
+  {
+   "name": "front-clay",
+   "view": "front",
+   "pass": "clay",
+   "size": "1280x960",
+   "projection": "ortho"
+  },
+  {
+   "name": "parts",
+   "view": "iso",
+   "pass": "parts",
+   "size": "960x720"
+  }
+ ],
+ "baseline": null,
+ "scrub": {
+  "leak_terms": []
+ },
+ "contract": {
+  "controls": {
+   "width": [
+    16,
+    11,
+    22
+   ],
+   "height": [
+    14,
+    10,
+    18
+   ],
+   "columns": [
+    4,
+    4,
+    6
+   ]
+  },
+  "ports": {
+   "road-front": {
+    "type": "deck",
+    "origin": [
+     0,
+     null,
+     0
+    ],
+    "normal": [
+     0,
+     -1,
+     0
+    ],
+    "dims": {
+     "width": 5
+    }
+   },
+   "road-back": {
+    "type": "deck",
+    "origin": [
+     0,
+     null,
+     0
+    ],
+    "normal": [
+     0,
+     1,
+     0
+    ],
+    "dims": {
+     "width": 5
+    }
+   }
+  },
+  "span": {
+   "x": "width",
+   "z": "height - 0.3"
+  },
+  "clearances": {
+   "roadway": {
+    "lo": ["-1.4", "-width * 0.6", "0.18"],
+    "hi": ["1.4", "width * 0.6", "height * 0.34"]
+   }
+  },
+  "min_materials": 2
+ }
+}

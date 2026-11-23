@@ -1,0 +1,59 @@
+{
+  "version": 3,
+  "name": "kit-forge-gepa-v1",
+  "dev_tasks_only": [
+    "handwheel-valve",
+    "arched-spandrel",
+    "reeving-block",
+    "signal-cabin",
+    "mitre-gate-jamb"
+  ],
+  "prompt_rules": [
+    "Use `kitlib_learned` helpers (`drafted_plinth_base`, `flanged_collar_ring`, `bolted_gusset_bracket`, `stepped_cornice_cap`, `foundry_plaque_mount`, `beveled_portal_frame`) whenever matching architectural or mechanical idioms appear.",
+    "Always anchor `build_base` flush on `DATUMS['ground_z']` and seat `build_primary_mass` with `0.0005` m flush-butt overlap (never floating, never deeply buried).",
+    "Keep every doorway, arch, window opening, and bearing bore (`mech_bore(r) = r + 0.0018`) 100% unobstructed across the entire control sweep.",
+    "Finish BOTH front (`iso-beauty`) AND rear (`opposite-beauty`) elevations symmetrically or with intentional rear joinery, access panels, and masonry courses.",
+    "Escalate craft in `build_secondary_craft` and `build_details_and_signage`: add chamfered FWN flanges/mouldings, restrained Chaikin SDS (`limit=1, limit_normals=1`, `cap='quad'`), post-SDS `0x8007` details (`courses`, `seam`, `rivets`, `fasteners`), and legible `kittype` plaques."
+  ],
+  "cma_defaults": {
+    "generations": 3,
+    "popsize": 6,
+    "sigma": 0.24,
+    "max_params": 12
+  },
+  "verifier_routing": {
+    "tier_s1_model": "baseten/groundhog-1",
+    "tier_s2_primary": "baseten/bison-1",
+    "tier_s2_partner": "nace-ai/drex-max",
+    "tier_s3_tie_elo": 15.0,
+    "verifier_cap_usd": 0.05
+  },
+  "history": [
+    {
+      "ts": 1795241105.4,
+      "version": 2,
+      "dev_tasks": [
+        "handwheel-valve",
+        "arched-spandrel",
+        "reeving-block",
+        "signal-cabin",
+        "mitre-gate-jamb"
+      ],
+      "traces_scanned": 0,
+      "eval_receipt": null
+    },
+    {
+      "ts": 1795245531.9,
+      "version": 3,
+      "dev_tasks": [
+        "handwheel-valve",
+        "arched-spandrel",
+        "reeving-block",
+        "signal-cabin",
+        "mitre-gate-jamb"
+      ],
+      "traces_scanned": 1,
+      "eval_receipt": null
+    }
+  ]
+}

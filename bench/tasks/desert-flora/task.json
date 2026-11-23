@@ -1,0 +1,215 @@
+{
+ "id": "desert-flora",
+ "title": "Desert flora (cactus column, agave, barrel cactus, aloe)",
+ "family": true,
+ "modules": [
+  "cactus-column",
+  "agave-rosette",
+  "cactus-barrel",
+  "aloe"
+ ],
+ "renders": [
+  {
+   "name": "iso-beauty",
+   "view": "iso",
+   "pass": "beauty",
+   "size": "1280x960"
+  },
+  {
+   "name": "iso-clay",
+   "view": "iso",
+   "pass": "clay",
+   "size": "1280x960"
+  },
+  {
+   "name": "opposite-beauty",
+   "view": "opposite",
+   "pass": "beauty",
+   "size": "1280x960"
+  },
+  {
+   "name": "front-clay",
+   "view": "front",
+   "pass": "clay",
+   "size": "1280x960",
+   "projection": "ortho"
+  },
+  {
+   "name": "parts",
+   "view": "iso",
+   "pass": "parts",
+   "size": "960x720"
+  }
+ ],
+ "baseline": null,
+ "scrub": {
+  "leak_terms": []
+ },
+ "max_turns": 260,
+ "timeout_min": 75,
+ "contracts": {
+  "cactus-column": {
+   "controls": {
+    "height": [
+     4,
+     1.5,
+     8
+    ],
+    "arms": [
+     2,
+     0,
+     4
+    ],
+    "ribs": [
+     16,
+     10,
+     24
+    ]
+   },
+   "ports": {
+    "base": {
+     "type": "footing",
+     "origin": [
+      0,
+      0,
+      0
+     ],
+     "normal": [
+      0,
+      0,
+      -1
+     ],
+     "dims": {
+      "width": 0.8
+     }
+    }
+   },
+   "envelope": {
+    "z": [
+     "-0.5",
+     "height + 0.1"
+    ]
+   },
+   "span": {
+    "z": "height - 0.1"
+   },
+   "min_materials": 2
+  },
+  "agave-rosette": {
+   "controls": {
+    "diameter": [
+     1.8,
+     0.6,
+     3
+    ],
+    "leaves": [
+     30,
+     12,
+     48
+    ]
+   },
+   "ports": {
+    "base": {
+     "type": "footing",
+     "origin": [
+      0,
+      0,
+      0
+     ],
+     "normal": [
+      0,
+      0,
+      -1
+     ],
+     "dims": {
+      "width": 0.6
+     }
+    }
+   },
+   "envelope": {
+    "x": [
+     "-diameter/2 - 0.15",
+     "diameter/2 + 0.15"
+    ],
+    "y": [
+     "-diameter/2 - 0.15",
+     "diameter/2 + 0.15"
+    ],
+    "z": [
+     "-0.5",
+     "diameter"
+    ]
+   },
+   "span": {
+    "x": "0.7 * diameter"
+   },
+   "min_materials": 2
+  },
+  "cactus-barrel": {
+   "controls": {
+    "height": [
+     0.7,
+     0.3,
+     1.2
+    ],
+    "ribs": [
+     20,
+     13,
+     30
+    ]
+   },
+   "ports": {
+    "base": {
+     "type": "footing",
+     "origin": [
+      0,
+      0,
+      0
+     ],
+     "normal": [
+      0,
+      0,
+      -1
+     ],
+     "dims": {
+      "width": 0.6
+     }
+    }
+   },
+   "min_materials": 2
+  },
+  "aloe": {
+   "controls": {
+    "height": [
+     1.6,
+     0.6,
+     3
+    ],
+    "spikes": [
+     2,
+     0,
+     3
+    ]
+   },
+   "ports": {
+    "base": {
+     "type": "footing",
+     "origin": [
+      0,
+      0,
+      0
+     ],
+     "normal": [
+      0,
+      0,
+      -1
+     ],
+     "dims": {
+      "width": 0.7
+     }
+    }
+   },
+   "min_materials": 2
+  }
+ }
+}

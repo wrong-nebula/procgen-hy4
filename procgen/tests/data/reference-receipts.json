@@ -1,0 +1,1493 @@
+{
+ "arched-door-pull": {
+  "boundsZUp": [
+   [
+    -0.023999998345971107,
+    -0.14300000667572021,
+    -0.1574999988079071
+   ],
+   [
+    0.023999998345971107,
+    0.002499997615814209,
+    0.1574999988079071
+   ]
+  ],
+  "evaluatedNodes": 8,
+  "instances": 3,
+  "passed": true,
+  "placedLooseEdges": 0,
+  "placedTriangles": 1364,
+  "prototypeVertices": 640,
+  "prototypes": 2
+ },
+ "arts-et-metiers-metro-platform": {
+  "boundsZUp": [
+   [
+    -0.03799999877810478,
+    -6.719997882843018,
+    0
+   ],
+   [
+    24,
+    6.719997882843018,
+    5.849998950958252
+   ]
+  ],
+  "evaluatedNodes": 483,
+  "instances": 1360,
+  "passed": true,
+  "placedLooseEdges": 0,
+  "placedTriangles": 49320,
+  "prototypeVertices": 3376,
+  "prototypes": 126
+ },
+ "ashlar-retaining-bay": {
+  "boundsZUp": [
+   [
+    0,
+    -0.36000001430511475,
+    0
+   ],
+   [
+    4.199999809265137,
+    0.905500054359436,
+    5.820000171661377
+   ]
+  ],
+  "evaluatedNodes": 105,
+  "instances": 41,
+  "passed": true,
+  "placedLooseEdges": 0,
+  "placedTriangles": 556,
+  "prototypeVertices": 176,
+  "prototypes": 18
+ },
+ "brusel-cable-walkway": {
+  "boundsZUp": [
+   [
+    0,
+    -1.100000023841858,
+    -0.41499999165534973
+   ],
+   [
+    13.5,
+    1.100000023841858,
+    3.7874999046325684
+   ]
+  ],
+  "evaluatedNodes": 89,
+  "instances": 96,
+  "passed": true,
+  "placedLooseEdges": 0,
+  "placedTriangles": 2728,
+  "prototypeVertices": 1060,
+  "prototypes": 34
+ },
+ "brusel-ribbed-facade-bay": {
+  "boundsZUp": [
+   [
+    -2.799999952316284,
+    -0.20999999344348907,
+    0
+   ],
+   [
+    2.799999952316284,
+    0.46000000834465027,
+    3.4000000953674316
+   ]
+  ],
+  "evaluatedNodes": 69,
+  "instances": 20,
+  "passed": true,
+  "placedLooseEdges": 0,
+  "placedTriangles": 432,
+  "prototypeVertices": 256,
+  "prototypes": 20
+ },
+ "brusel-stepped-landing-tower": {
+  "boundsZUp": [
+   [
+    -3.009999990463257,
+    -3.0099997520446777,
+    0
+   ],
+   [
+    3.009999990463257,
+    3.010000228881836,
+    19
+   ]
+  ],
+  "evaluatedNodes": 194,
+  "instances": 403,
+  "passed": true,
+  "placedLooseEdges": 0,
+  "placedTriangles": 8964,
+  "prototypeVertices": 744,
+  "prototypes": 49
+ },
+ "brusel-suspended-crossing": {
+  "boundsZUp": [
+   [
+    -3.009999990463257,
+    -3.0099997520446777,
+    0
+   ],
+   [
+    22.109996795654297,
+    3.010000228881836,
+    19
+   ]
+  ],
+  "evaluatedNodes": 483,
+  "instances": 902,
+  "passed": true,
+  "placedLooseEdges": 0,
+  "placedTriangles": 20656,
+  "prototypeVertices": 2548,
+  "prototypes": 132
+ },
+ "calvani-exhibition-gallery": {
+  "boundsZUp": [
+   [
+    0,
+    -11.099998474121094,
+    -2.2199997901916504
+   ],
+   [
+    13.5,
+    2.0250000953674316,
+    6.136999607086182
+   ]
+  ],
+  "evaluatedNodes": 903,
+  "instances": 731,
+  "passed": true,
+  "placedLooseEdges": 0,
+  "placedTriangles": 40492,
+  "prototypeVertices": 11484,
+  "prototypes": 243
+ },
+ "calvani-glazed-crosswalk": {
+  "boundsZUp": [
+   [
+    0,
+    -1.1749999523162842,
+    -2.2200000286102295
+   ],
+   [
+    9.199999809265137,
+    1.1749999523162842,
+    2.996999502182007
+   ]
+  ],
+  "evaluatedNodes": 186,
+  "instances": 181,
+  "passed": true,
+  "placedLooseEdges": 0,
+  "placedTriangles": 3428,
+  "prototypeVertices": 1076,
+  "prototypes": 56
+ },
+ "calvani-pendant-cluster": {
+  "boundsZUp": [
+   [
+    -0.42900002002716064,
+    -0.15799999237060547,
+    -0.949999988079071
+   ],
+   [
+    0.42900002002716064,
+    0.15299999713897705,
+    0
+   ]
+  ],
+  "evaluatedNodes": 42,
+  "instances": 17,
+  "passed": true,
+  "placedLooseEdges": 0,
+  "placedTriangles": 5140,
+  "prototypeVertices": 2076,
+  "prototypes": 11
+ },
+ "calvani-promenade-bay": {
+  "boundsZUp": [
+   [
+    0,
+    -2.057999849319458,
+    -0.281000018119812
+   ],
+   [
+    4.5,
+    2.0250000953674316,
+    6.136999607086182
+   ]
+  ],
+  "evaluatedNodes": 230,
+  "instances": 178,
+  "passed": true,
+  "placedLooseEdges": 0,
+  "placedTriangles": 10424,
+  "prototypeVertices": 3448,
+  "prototypes": 61
+ },
+ "cenerentola-bound-book-leaf": {
+  "boundsZUp": [
+   [
+    -0.2432502955198288,
+    -0.7197651863098145,
+    -0.14612865447998047
+   ],
+   [
+    4.190199851989746,
+    0.5914188623428345,
+    9.0730562210083
+   ]
+  ],
+  "evaluatedNodes": 80,
+  "instances": 39,
+  "passed": true,
+  "placedLooseEdges": 0,
+  "placedTriangles": 4276,
+  "prototypeVertices": 2212,
+  "prototypes": 39
+ },
+ "cherbourg-four-blade-screw": {
+  "boundsZUp": [
+   [
+    -0.3100000023841858,
+    -1.6500000953674316,
+    -1.6499998569488525
+   ],
+   [
+    0.9795000553131104,
+    1.649999976158142,
+    1.6499998569488525
+   ]
+  ],
+  "evaluatedNodes": 31,
+  "instances": 13,
+  "passed": true,
+  "placedLooseEdges": 0,
+  "placedTriangles": 2092,
+  "prototypeVertices": 664,
+  "prototypes": 7
+ },
+ "cherbourg-twin-screw-stern": {
+  "boundsZUp": [
+   [
+    -17.052000045776367,
+    -5.223501205444336,
+    -1.9499998092651367
+   ],
+   [
+    3.1064181327819824,
+    5.223501205444336,
+    6.319039821624756
+   ]
+  ],
+  "evaluatedNodes": 363,
+  "instances": 410,
+  "passed": true,
+  "placedLooseEdges": 0,
+  "placedTriangles": 22928,
+  "prototypeVertices": 5654,
+  "prototypes": 77
+ },
+ "elevated-transit-crossing": {
+  "boundsZUp": [
+   [
+    -11.5,
+    -9.3149995803833,
+    0
+   ],
+   [
+    11.5,
+    9.3149995803833,
+    14.090001106262207
+   ]
+  ],
+  "evaluatedNodes": 163,
+  "instances": 106,
+  "passed": true,
+  "placedLooseEdges": 0,
+  "placedTriangles": 4460,
+  "prototypeVertices": 2118,
+  "prototypes": 56
+ },
+ "flagey-curved-ribbon-storey": {
+  "boundsZUp": [
+   [
+    -2.93999981880188,
+    -2.93999981880188,
+    0
+   ],
+   [
+    2.93999981880188,
+    2.93999981880188,
+    3
+   ]
+  ],
+  "evaluatedNodes": 47,
+  "instances": 147,
+  "passed": true,
+  "placedLooseEdges": 0,
+  "placedTriangles": 2996,
+  "prototypeVertices": 728,
+  "prototypes": 14
+ },
+ "flagey-stepped-corner-building": {
+  "boundsZUp": [
+   [
+    -4.990000247955322,
+    -4.990000247955322,
+    0
+   ],
+   [
+    19.489999771118164,
+    10.199999809265137,
+    27.989999771118164
+   ]
+  ],
+  "evaluatedNodes": 469,
+  "instances": 1247,
+  "passed": true,
+  "placedLooseEdges": 0,
+  "placedTriangles": 21492,
+  "prototypeVertices": 2784,
+  "prototypes": 139
+ },
+ "frontieres-layered-wall-fragment": {
+  "boundsZUp": [
+   [
+    0,
+    -0.4938499927520752,
+    0
+   ],
+   [
+    4.5,
+    0.4938499927520752,
+    2.049999952316284
+   ]
+  ],
+  "evaluatedNodes": 213,
+  "instances": 106,
+  "passed": true,
+  "placedLooseEdges": 0,
+  "placedTriangles": 1272,
+  "prototypeVertices": 848,
+  "prototypes": 106
+ },
+ "hangar-y-airship-shed": {
+  "boundsZUp": [
+   [
+    -0.44999998807907104,
+    -11.594999313354492,
+    0
+   ],
+   [
+    26.450000762939453,
+    11.594999313354492,
+    18.4060001373291
+   ]
+  ],
+  "evaluatedNodes": 772,
+  "instances": 1331,
+  "passed": true,
+  "placedLooseEdges": 0,
+  "placedTriangles": 28084,
+  "prototypeVertices": 2920,
+  "prototypes": 238
+ },
+ "hangar-y-lattice-frame": {
+  "boundsZUp": [
+   [
+    -0.44999998807907104,
+    -11.470000267028809,
+    0
+   ],
+   [
+    0.44999998807907104,
+    11.470000267028809,
+    18.315889358520508
+   ]
+  ],
+  "evaluatedNodes": 101,
+  "instances": 106,
+  "passed": true,
+  "placedLooseEdges": 0,
+  "placedTriangles": 3024,
+  "prototypeVertices": 668,
+  "prototypes": 40
+ },
+ "hangar-y-ridge-light-bay": {
+  "boundsZUp": [
+   [
+    -0.0949999988079071,
+    -11.594999313354492,
+    0
+   ],
+   [
+    5.199999809265137,
+    11.594999313354492,
+    18.4060001373291
+   ]
+  ],
+  "evaluatedNodes": 276,
+  "instances": 139,
+  "passed": true,
+  "placedLooseEdges": 0,
+  "placedTriangles": 1988,
+  "prototypeVertices": 792,
+  "prototypes": 79
+ },
+ "hangar-y-shed-bay": {
+  "boundsZUp": [
+   [
+    -0.44999998807907104,
+    -11.594999313354492,
+    0
+   ],
+   [
+    5.199999809265137,
+    11.594999313354492,
+    18.4060001373291
+   ]
+  ],
+  "evaluatedNodes": 383,
+  "instances": 245,
+  "passed": true,
+  "placedLooseEdges": 0,
+  "placedTriangles": 5012,
+  "prototypeVertices": 1460,
+  "prototypes": 119
+ },
+ "inhabited-railway-crossings": {
+  "boundsZUp": [
+   [
+    -11.5,
+    -8,
+    -0.4399999976158142
+   ],
+   [
+    11.5,
+    28,
+    22.330001831054688
+   ]
+  ],
+  "evaluatedNodes": 594,
+  "instances": 790,
+  "passed": true,
+  "placedLooseEdges": 0,
+  "placedTriangles": 10548,
+  "prototypeVertices": 1458,
+  "prototypes": 160
+ },
+ "la-tour-armillary-stand": {
+  "boundsZUp": [
+   [
+    -0.6327999234199524,
+    -0.5793965458869934,
+    0
+   ],
+   [
+    0.6327999234199524,
+    0.5793965458869934,
+    2.3387999534606934
+   ]
+  ],
+  "evaluatedNodes": 31,
+  "instances": 9,
+  "passed": true,
+  "placedLooseEdges": 0,
+  "placedTriangles": 2940,
+  "prototypeVertices": 1480,
+  "prototypes": 9
+ },
+ "la-tour-library-bookcase": {
+  "boundsZUp": [
+   [
+    -1.059999942779541,
+    -0.09450000524520874,
+    0
+   ],
+   [
+    1.059999942779541,
+    0.4480000138282776,
+    3.0199999809265137
+   ]
+  ],
+  "evaluatedNodes": 61,
+  "instances": 162,
+  "passed": true,
+  "placedLooseEdges": 0,
+  "placedTriangles": 1944,
+  "prototypeVertices": 128,
+  "prototypes": 16
+ },
+ "la-tour-library-star-floor": {
+  "boundsZUp": [
+   [
+    0,
+    0,
+    -0.10200000554323196
+   ],
+   [
+    4.199999809265137,
+    5.460000038146973,
+    0
+   ]
+  ],
+  "evaluatedNodes": 14,
+  "instances": 390,
+  "passed": true,
+  "placedLooseEdges": 0,
+  "placedTriangles": 30160,
+  "prototypeVertices": 120,
+  "prototypes": 3
+ },
+ "la-tour-library-threshold": {
+  "boundsZUp": [
+   [
+    -2.547999858856201,
+    0,
+    -0.10200000554323196
+   ],
+   [
+    2.547999858856201,
+    7.070000171661377,
+    3.2699999809265137
+   ]
+  ],
+  "evaluatedNodes": 196,
+  "instances": 1493,
+  "passed": true,
+  "placedLooseEdges": 0,
+  "placedTriangles": 53316,
+  "prototypeVertices": 2588,
+  "prototypes": 60
+ },
+ "la-tour-maintenance-bay": {
+  "boundsZUp": [
+   [
+    -4.699999809265137,
+    -1.8539999723434448,
+    0
+   ],
+   [
+    4.699999809265137,
+    1.5499999523162842,
+    8
+   ]
+  ],
+  "evaluatedNodes": 296,
+  "instances": 89,
+  "passed": true,
+  "placedLooseEdges": 0,
+  "placedTriangles": 3804,
+  "prototypeVertices": 2074,
+  "prototypes": 89
+ },
+ "la-tour-recessed-arch-bay": {
+  "boundsZUp": [
+   [
+    -4.699999809265137,
+    -0.16600000858306885,
+    0
+   ],
+   [
+    4.699999809265137,
+    1.5499999523162842,
+    8
+   ]
+  ],
+  "evaluatedNodes": 228,
+  "instances": 70,
+  "passed": true,
+  "placedLooseEdges": 0,
+  "placedTriangles": 1752,
+  "prototypeVertices": 1016,
+  "prototypes": 70
+ },
+ "la-tour-repair-ledge": {
+  "boundsZUp": [
+   [
+    -1.0749999284744263,
+    -1.6469999551773071,
+    -1.0299999713897705
+   ],
+   [
+    1.0749999284744263,
+    0,
+    0
+   ]
+  ],
+  "evaluatedNodes": 46,
+  "instances": 12,
+  "passed": true,
+  "placedLooseEdges": 0,
+  "placedTriangles": 712,
+  "prototypeVertices": 380,
+  "prototypes": 12
+ },
+ "la-tour-rope-bucket": {
+  "boundsZUp": [
+   [
+    -0.229946106672287,
+    -0.2290000021457672,
+    -2.6534998416900635
+   ],
+   [
+    0.229946106672287,
+    0.2290000021457672,
+    0.00016927719116210938
+   ]
+  ],
+  "evaluatedNodes": 16,
+  "instances": 7,
+  "passed": true,
+  "placedLooseEdges": 0,
+  "placedTriangles": 1340,
+  "prototypeVertices": 678,
+  "prototypes": 7
+ },
+ "metro-copper-porthole": {
+  "boundsZUp": [
+   [
+    -0.3099999725818634,
+    -0.09000000357627869,
+    -0.3099999725818634
+   ],
+   [
+    0.3099999725818634,
+    1.862645149230957e-09,
+    0.3099999725818634
+   ]
+  ],
+  "evaluatedNodes": 27,
+  "instances": 13,
+  "passed": true,
+  "placedLooseEdges": 0,
+  "placedTriangles": 1756,
+  "prototypeVertices": 784,
+  "prototypes": 6
+ },
+ "mylos-corbelled-chimney-crown": {
+  "boundsZUp": [
+   [
+    -1.1950000524520874,
+    -1.1950000524520874,
+    0
+   ],
+   [
+    1.1950000524520874,
+    1.1950000524520874,
+    0.9300000667572021
+   ]
+  ],
+  "evaluatedNodes": 19,
+  "instances": 52,
+  "passed": true,
+  "placedLooseEdges": 0,
+  "placedTriangles": 2496,
+  "prototypeVertices": 976,
+  "prototypes": 6
+ },
+ "mylos-patterned-chimney": {
+  "boundsZUp": [
+   [
+    -1.9070000648498535,
+    -1.9070000648498535,
+    0
+   ],
+   [
+    1.9070000648498535,
+    1.9070000648498535,
+    17.729999542236328
+   ]
+  ],
+  "evaluatedNodes": 303,
+  "instances": 539,
+  "passed": true,
+  "placedLooseEdges": 0,
+  "placedTriangles": 24924,
+  "prototypeVertices": 7096,
+  "prototypes": 63
+ },
+ "nord-midi-covered-cutting": {
+  "boundsZUp": [
+   [
+    -0.012000083923339844,
+    -5.124250411987305,
+    -0.5699999928474426
+   ],
+   [
+    42.46500015258789,
+    9.444999694824219,
+    6.390000343322754
+   ]
+  ],
+  "evaluatedNodes": 313,
+  "instances": 1026,
+  "passed": true,
+  "placedLooseEdges": 0,
+  "placedTriangles": 18776,
+  "prototypeVertices": 3312,
+  "prototypes": 86
+ },
+ "nord-midi-curved-return": {
+  "boundsZUp": [
+   [
+    -0.012000083923339844,
+    -5.135500431060791,
+    -0.5699999928474426
+   ],
+   [
+    84.01200103759766,
+    14.135503768920898,
+    6.390000343322754
+   ]
+  ],
+  "evaluatedNodes": 320,
+  "instances": 1980,
+  "passed": true,
+  "placedLooseEdges": 0,
+  "placedTriangles": 38160,
+  "prototypeVertices": 3696,
+  "prototypes": 88
+ },
+ "nord-midi-track-join": {
+  "boundsZUp": [
+   [
+    -0.012000083923339844,
+    -5.135500431060791,
+    -0.5699999928474426
+   ],
+   [
+    84.46499633789062,
+    5.135499954223633,
+    6.390000343322754
+   ]
+  ],
+  "evaluatedNodes": 316,
+  "instances": 2052,
+  "passed": true,
+  "placedLooseEdges": 0,
+  "placedTriangles": 37552,
+  "prototypeVertices": 3312,
+  "prototypes": 86
+ },
+ "parliament-colonnade-bay": {
+  "boundsZUp": [
+   [
+    -2.7410500049591064,
+    -0.7139999866485596,
+    0
+   ],
+   [
+    2.7410500049591064,
+    0.7139999866485596,
+    12.499999046325684
+   ]
+  ],
+  "evaluatedNodes": 68,
+  "instances": 40,
+  "passed": true,
+  "placedLooseEdges": 0,
+  "placedTriangles": 480,
+  "prototypeVertices": 136,
+  "prototypes": 17
+ },
+ "rail-hall": {
+  "boundsZUp": [
+   [
+    -0.33500000834465027,
+    -6.735000133514404,
+    -0.36000001430511475
+   ],
+   [
+    21.93499755859375,
+    6.735000133514404,
+    8.221999168395996
+   ]
+  ],
+  "evaluatedNodes": 413,
+  "instances": 966,
+  "passed": true,
+  "placedLooseEdges": 0,
+  "placedTriangles": 28600,
+  "prototypeVertices": 2576,
+  "prototypes": 140
+ },
+ "samaris-bridge-tower": {
+  "boundsZUp": [
+   [
+    -3.375000238418579,
+    -3.375000238418579,
+    0
+   ],
+   [
+    3.375000238418579,
+    3.375000238418579,
+    18.737998962402344
+   ]
+  ],
+  "evaluatedNodes": 232,
+  "instances": 453,
+  "passed": true,
+  "placedLooseEdges": 0,
+  "placedTriangles": 17692,
+  "prototypeVertices": 1262,
+  "prototypes": 66
+ },
+ "samaris-flared-hip-crown": {
+  "boundsZUp": [
+   [
+    -3.375000238418579,
+    -3.375000238418579,
+    0
+   ],
+   [
+    3.375000238418579,
+    3.375000238418579,
+    3.23799991607666
+   ]
+  ],
+  "evaluatedNodes": 84,
+  "instances": 94,
+  "passed": true,
+  "placedLooseEdges": 0,
+  "placedTriangles": 3848,
+  "prototypeVertices": 660,
+  "prototypes": 28
+ },
+ "samaris-iron-arch-skybridge": {
+  "boundsZUp": [
+   [
+    0,
+    -1.2000000476837158,
+    -4.880000114440918
+   ],
+   [
+    15.5,
+    1.2000000476837158,
+    1.0699999332427979
+   ]
+  ],
+  "evaluatedNodes": 167,
+  "instances": 146,
+  "passed": true,
+  "placedLooseEdges": 0,
+  "placedTriangles": 6712,
+  "prototypeVertices": 2376,
+  "prototypes": 57
+ },
+ "samaris-twin-tower-crossing": {
+  "boundsZUp": [
+   [
+    -3.375000238418579,
+    -3.375000238418579,
+    0
+   ],
+   [
+    23.674999237060547,
+    3.375000238418579,
+    18.737998962402344
+   ]
+  ],
+  "evaluatedNodes": 637,
+  "instances": 1052,
+  "passed": true,
+  "placedLooseEdges": 0,
+  "placedTriangles": 42096,
+  "prototypeVertices": 4900,
+  "prototypes": 189
+ },
+ "cenerentola-book-stage": {
+  "boundsZUp": [
+   [
+    -7.589999675750732,
+    -7.589999675750732,
+    -0.3199999928474426
+   ],
+   [
+    7.589999675750732,
+    7.589999675750732,
+    9.376276016235352
+   ]
+  ],
+  "evaluatedNodes": 289,
+  "instances": 782,
+  "passed": true,
+  "placedLooseEdges": 0,
+  "placedTriangles": 22452,
+  "prototypeVertices": 5280,
+  "prototypes": 83
+ },
+ "museum-of-borders": {
+  "boundsZUp": [
+   [
+    -7.659999847412109,
+    -9.5,
+    -0.3400000035762787
+   ],
+   [
+    7.5,
+    9.65999984741211,
+    7.5
+   ]
+  ],
+  "evaluatedNodes": 727,
+  "instances": 483,
+  "passed": true,
+  "placedLooseEdges": 0,
+  "placedTriangles": 6692,
+  "prototypeVertices": 3200,
+  "prototypes": 344
+ },
+ "parliament-rotunda": {
+  "boundsZUp": [
+   [
+    -21.639999389648438,
+    -23.535343170166016,
+    -0.9000000357627869
+   ],
+   [
+    21.639999389648438,
+    21.639999389648438,
+    24.38896369934082
+   ]
+  ],
+  "evaluatedNodes": 195,
+  "instances": 971,
+  "passed": true,
+  "placedLooseEdges": 0,
+  "placedTriangles": 17494,
+  "prototypeVertices": 1641,
+  "prototypes": 38
+ },
+ "shopfront": {
+  "boundsZUp": [
+   [
+    -2.745000123977661,
+    -0.3100000023841858,
+    0
+   ],
+   [
+    2.745000123977661,
+    0.6155999898910522,
+    3.738999843597412
+   ]
+  ],
+  "evaluatedNodes": 235,
+  "instances": 119,
+  "passed": true,
+  "placedLooseEdges": 0,
+  "placedTriangles": 4180,
+  "prototypeVertices": 1208,
+  "prototypes": 67
+ },
+ "segmental-arch-rib-seat": {
+  "boundsZUp": [
+   [
+    -9.83799934387207,
+    -2.990000009536743,
+    -0.8650000095367432
+   ],
+   [
+    9.83799934387207,
+    2.990000009536743,
+    5.299952507019043
+   ]
+  ],
+  "evaluatedNodes": 130,
+  "instances": 43,
+  "passed": true,
+  "placedLooseEdges": 0,
+  "placedTriangles": 732,
+  "prototypeVertices": 452,
+  "prototypes": 43
+ },
+ "segmental-iron-liner": {
+  "boundsZUp": [
+   [
+    -1.2319998741149902,
+    -0.09500002861022949,
+    0.23799991607666016
+   ],
+   [
+    1.2319998741149902,
+    -3.725290298461914e-09,
+    2.7819998264312744
+   ]
+  ],
+  "evaluatedNodes": 3,
+  "instances": 1,
+  "passed": true,
+  "placedLooseEdges": 0,
+  "placedTriangles": 432,
+  "prototypeVertices": 216,
+  "prototypes": 1
+ },
+ "segmental-masonry-opening": {
+  "boundsZUp": [
+   [
+    -1.6499998569488525,
+    -0.36000001430511475,
+    0
+   ],
+   [
+    1.6499998569488525,
+    -1.4901161193847656e-08,
+    3.200000047683716
+   ]
+  ],
+  "evaluatedNodes": 3,
+  "instances": 1,
+  "passed": true,
+  "placedLooseEdges": 0,
+  "placedTriangles": 124,
+  "prototypeVertices": 62,
+  "prototypes": 1
+ },
+ "segmental-opening-assembly": {
+  "boundsZUp": [
+   [
+    -1.6499998569488525,
+    -0.36000001430511475,
+    0
+   ],
+   [
+    1.6499998569488525,
+    -1.4901161193847656e-08,
+    3.200000047683716
+   ]
+  ],
+  "evaluatedNodes": 11,
+  "instances": 2,
+  "passed": true,
+  "placedLooseEdges": 0,
+  "placedTriangles": 556,
+  "prototypeVertices": 278,
+  "prototypes": 2
+ },
+ "shopfront-door-leaf": {
+  "boundsZUp": [
+   [
+    -0.7139999866485596,
+    -0.049000002443790436,
+    -0.974000096321106
+   ],
+   [
+    0.041999999433755875,
+    0.049000002443790436,
+    1.3865001201629639
+   ]
+  ],
+  "evaluatedNodes": 31,
+  "instances": 10,
+  "passed": true,
+  "placedLooseEdges": 0,
+  "placedTriangles": 120,
+  "prototypeVertices": 80,
+  "prototypes": 10
+ },
+ "suspended-passenger-pod": {
+  "boundsZUp": [
+   [
+    -1.2565863132476807,
+    -1.2565863132476807,
+    -1.2300000190734863
+   ],
+   [
+    1.2565243244171143,
+    1.2565863132476807,
+    2.0804998874664307
+   ]
+  ],
+  "evaluatedNodes": 40,
+  "instances": 17,
+  "passed": true,
+  "placedLooseEdges": 0,
+  "placedTriangles": 3392,
+  "prototypeVertices": 1806,
+  "prototypes": 17
+ },
+ "taxandria-flooded-boardwalk": {
+  "boundsZUp": [
+   [
+    -6.199999809265137,
+    -3.09999942779541,
+    -0.4798295199871063
+   ],
+   [
+    12.59999942779541,
+    20.299999237060547,
+    1.0303421020507812
+   ]
+  ],
+  "evaluatedNodes": 620,
+  "instances": 249,
+  "passed": true,
+  "placedLooseEdges": 0,
+  "placedTriangles": 24860,
+  "prototypeVertices": 12048,
+  "prototypes": 205
+ },
+ "taxandria-lashed-pile-bent": {
+  "boundsZUp": [
+   [
+    -1.0499999523162842,
+    -0.177918940782547,
+    -1.1290841102600098
+   ],
+   [
+    1.0499999523162842,
+    0.16099995374679565,
+    0.35501405596733093
+   ]
+  ],
+  "evaluatedNodes": 25,
+  "instances": 10,
+  "passed": true,
+  "placedLooseEdges": 0,
+  "placedTriangles": 1536,
+  "prototypeVertices": 788,
+  "prototypes": 10
+ },
+ "tervuren-deep-eaved-house": {
+  "boundsZUp": [
+   [
+    -0.8600006103515625,
+    -2.8350000381469727,
+    0
+   ],
+   [
+    17.847000122070312,
+    8.260000228881836,
+    6.880000591278076
+   ]
+  ],
+  "evaluatedNodes": 784,
+  "instances": 743,
+  "passed": true,
+  "placedLooseEdges": 0,
+  "placedTriangles": 10484,
+  "prototypeVertices": 2544,
+  "prototypes": 220
+ },
+ "tervuren-rounded-balcony": {
+  "boundsZUp": [
+   [
+    -2.93500018119812,
+    -2.8350000381469727,
+    -0.29499998688697815
+   ],
+   [
+    2.93500018119812,
+    0,
+    1.062999963760376
+   ]
+  ],
+  "evaluatedNodes": 29,
+  "instances": 10,
+  "passed": true,
+  "placedLooseEdges": 0,
+  "placedTriangles": 1432,
+  "prototypeVertices": 736,
+  "prototypes": 10
+ },
+ "time-stair-arched-portal": {
+  "boundsZUp": [
+   [
+    -5.912499904632568,
+    -0.10999998450279236,
+    -0.25
+   ],
+   [
+    5.912499904632568,
+    1.0299999713897705,
+    5.735499858856201
+   ]
+  ],
+  "evaluatedNodes": 251,
+  "instances": 102,
+  "passed": true,
+  "placedLooseEdges": 0,
+  "placedTriangles": 7096,
+  "prototypeVertices": 1136,
+  "prototypes": 75
+ },
+ "time-stair-clock-wheel": {
+  "boundsZUp": [
+   [
+    -3.497398853302002,
+    -3.497398853302002,
+    -0.3312000334262848
+   ],
+   [
+    3.497398853302002,
+    3.497398853302002,
+    0.4062000513076782
+   ]
+  ],
+  "evaluatedNodes": 21,
+  "instances": 35,
+  "passed": true,
+  "placedLooseEdges": 0,
+  "placedTriangles": 4232,
+  "prototypeVertices": 1676,
+  "prototypes": 7
+ },
+ "time-stair-clockwork-court": {
+  "boundsZUp": [
+   [
+    -6.423377513885498,
+    -2.9549999237060547,
+    -0.11049999296665192
+   ],
+   [
+    6.19798469543457,
+    7.473000526428223,
+    14.468029975891113
+   ]
+  ],
+  "evaluatedNodes": 397,
+  "instances": 615,
+  "passed": true,
+  "placedLooseEdges": 0,
+  "placedTriangles": 35084,
+  "prototypeVertices": 5080,
+  "prototypes": 113
+ },
+ "time-stair-processional-flight": {
+  "boundsZUp": [
+   [
+    -0.02199999988079071,
+    -1.8275001049041748,
+    0
+   ],
+   [
+    4.800000190734863,
+    1.8275001049041748,
+    1.149999976158142
+   ]
+  ],
+  "evaluatedNodes": 69,
+  "instances": 17,
+  "passed": true,
+  "placedLooseEdges": 0,
+  "placedTriangles": 748,
+  "prototypeVertices": 408,
+  "prototypes": 17
+ },
+ "tram-81-suspended-car": {
+  "boundsZUp": [
+   [
+    -1.0469999313354492,
+    -4.284999847412109,
+    0.0010000169277191162
+   ],
+   [
+    1.1829999685287476,
+    4.245999813079834,
+    4.084970474243164
+   ]
+  ],
+  "evaluatedNodes": 812,
+  "instances": 264,
+  "passed": true,
+  "placedLooseEdges": 0,
+  "placedTriangles": 12764,
+  "prototypeVertices": 6456,
+  "prototypes": 209
+ },
+ "urbicande-fluted-water-pier": {
+  "boundsZUp": [
+   [
+    -1.253999948501587,
+    -1.0875000953674316,
+    0
+   ],
+   [
+    1.253999948501587,
+    1.0875000953674316,
+    5.400000095367432
+   ]
+  ],
+  "evaluatedNodes": 12,
+  "instances": 4,
+  "passed": true,
+  "placedLooseEdges": 0,
+  "placedTriangles": 1458,
+  "prototypeVertices": 737,
+  "prototypes": 4
+ },
+ "urbicande-raking-floodwall": {
+  "boundsZUp": [
+   [
+    -19.009998321533203,
+    -7.849999904632568,
+    -0.9000000357627869
+   ],
+   [
+    13.909998893737793,
+    14.54999828338623,
+    16.37999725341797
+   ]
+  ],
+  "evaluatedNodes": 94,
+  "instances": 71,
+  "passed": true,
+  "placedLooseEdges": 0,
+  "placedTriangles": 5126,
+  "prototypeVertices": 2353,
+  "prototypes": 27
+ },
+ "utopie-cellular-globe": {
+  "boundsZUp": [
+   [
+    -5.357627868652344,
+    -5.357627868652344,
+    -5.357627868652344
+   ],
+   [
+    5.357627868652344,
+    5.357627868652344,
+    5.357627868652344
+   ]
+  ],
+  "evaluatedNodes": 561,
+  "instances": 277,
+  "passed": true,
+  "placedLooseEdges": 0,
+  "placedTriangles": 10944,
+  "prototypeVertices": 5656,
+  "prototypes": 277
+ },
+ "utopie-glazed-cell": {
+  "boundsZUp": [
+   [
+    -0.8726249933242798,
+    -0.7557154297828674,
+    -0.07500000298023224
+   ],
+   [
+    0.8726249933242798,
+    0.7557154297828674,
+    0
+   ]
+  ],
+  "evaluatedNodes": 8,
+  "instances": 3,
+  "passed": true,
+  "placedLooseEdges": 0,
+  "placedTriangles": 116,
+  "prototypeVertices": 60,
+  "prototypes": 3
+ },
+ "utopie-sociale-pavilion": {
+  "boundsZUp": [
+   [
+    -7.344000339508057,
+    -7.344000339508057,
+    0
+   ],
+   [
+    7.344000339508057,
+    7.344000339508057,
+    11.277828216552734
+   ]
+  ],
+  "evaluatedNodes": 599,
+  "instances": 371,
+  "passed": true,
+  "placedLooseEdges": 0,
+  "placedTriangles": 16544,
+  "prototypeVertices": 7388,
+  "prototypes": 288
+ },
+ "utopie-viewing-platform": {
+  "boundsZUp": [
+   [
+    -7.344000339508057,
+    -7.344000339508057,
+    0
+   ],
+   [
+    7.344000339508057,
+    7.344000339508057,
+    1.9620001316070557
+   ]
+  ],
+  "evaluatedNodes": 34,
+  "instances": 94,
+  "passed": true,
+  "placedLooseEdges": 0,
+  "placedTriangles": 5600,
+  "prototypeVertices": 1732,
+  "prototypes": 11
+ },
+ "xhystos-ribbed-lantern-crown": {
+  "boundsZUp": [
+   [
+    -1.8599998950958252,
+    -1.8599998950958252,
+    0
+   ],
+   [
+    1.8599998950958252,
+    1.8599998950958252,
+    3.8269999027252197
+   ]
+  ],
+  "evaluatedNodes": 40,
+  "instances": 36,
+  "passed": true,
+  "placedLooseEdges": 0,
+  "placedTriangles": 10044,
+  "prototypeVertices": 2244,
+  "prototypes": 15
+ },
+ "xhystos-round-turret": {
+  "boundsZUp": [
+   [
+    -1.8599998950958252,
+    -1.8599998950958252,
+    0
+   ],
+   [
+    1.8599998950958252,
+    1.8599998950958252,
+    12.946999549865723
+   ]
+  ],
+  "evaluatedNodes": 96,
+  "instances": 258,
+  "passed": true,
+  "placedLooseEdges": 0,
+  "placedTriangles": 17916,
+  "prototypeVertices": 3268,
+  "prototypes": 28
+ },
+ "xhystos-stepped-crossing": {
+  "boundsZUp": [
+   [
+    0,
+    -1.3610000610351562,
+    -0.9960000514984131
+   ],
+   [
+    9.539999961853027,
+    1.3610000610351562,
+    3.636000156402588
+   ]
+  ],
+  "evaluatedNodes": 64,
+  "instances": 76,
+  "passed": true,
+  "placedLooseEdges": 0,
+  "placedTriangles": 1424,
+  "prototypeVertices": 336,
+  "prototypes": 20
+ }
+}

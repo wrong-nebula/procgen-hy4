@@ -1,0 +1,497 @@
+{
+ "version": 1,
+ "references": {
+  "atlas": [
+   "G01"
+  ],
+  "sources": [
+   "kew"
+  ],
+  "plates": [
+   "s185"
+  ],
+  "notes": "Nave with lower aisles, as at Kew; 16 m span is inside the G01 range.",
+  "review": {
+   "by": "Fable 5.2",
+   "reviewed": "Opus 5.5 (medium)",
+   "date": "2026-11-15",
+   "seen": "sheet renders",
+   "weak": "Assembly; not looked at in this review.",
+   "improve": [
+    "Look at the assembly [review]"
+   ],
+   "pass1": "Audit: fixed through gh-bay and gh-gallery.",
+   "left": [
+    "Look at the assembly [review]"
+   ]
+  }
+ },
+ "controls": {},
+ "modulePorts": {
+  "door": {
+   "origin": [
+    0,
+    0,
+    0
+   ],
+   "normal": [
+    0,
+    -1,
+    0
+   ],
+   "up": [
+    0,
+    0,
+    1
+   ],
+   "type": "deck",
+   "dimensions": {
+    "width": 3.2
+   }
+  }
+ },
+ "moduleImports": {
+  "gallery": "gh-gallery",
+  "bay": "gh-bay",
+  "aisle": "gh-lean-to",
+  "screen": "gh-end-screen",
+  "crossing": "gh-crossing",
+  "planter": "gh-planter",
+  "pendant": "gh-pendant",
+  "bridge": "gh-bridge-bay",
+  "terrace": "gh-terrace"
+ },
+ "nodes": [
+  {
+   "id": "bay-inner",
+   "type": "group",
+   "group": "bay",
+   "bindings": {
+    "pitch": 5,
+    "east": 0,
+    "west": 0,
+    "span": 16,
+    "spring": 9.5,
+    "rise": 7,
+    "gauge": 1.4
+   }
+  },
+  {
+   "id": "bay-end",
+   "type": "group",
+   "group": "bay",
+   "bindings": {
+    "pitch": 5,
+    "east": 0,
+    "west": 0,
+    "northFrame": 1,
+    "span": 16,
+    "spring": 9.5,
+    "rise": 7,
+    "gauge": 1.4
+   }
+  },
+  {
+   "id": "aisle-inner",
+   "type": "group",
+   "group": "aisle",
+   "bindings": {
+    "width": 5,
+    "spring": 9.5,
+    "eave": 5.2,
+    "pitch": 5,
+    "gauge": 1.4
+   }
+  },
+  {
+   "id": "aisle-e-first",
+   "type": "group",
+   "group": "aisle",
+   "bindings": {
+    "southEnd": 1,
+    "width": 5,
+    "spring": 9.5,
+    "eave": 5.2,
+    "pitch": 5,
+    "gauge": 1.4
+   }
+  },
+  {
+   "id": "aisle-e-last",
+   "type": "group",
+   "group": "aisle",
+   "bindings": {
+    "northFrame": 1,
+    "northEnd": 1,
+    "width": 5,
+    "spring": 9.5,
+    "eave": 5.2,
+    "pitch": 5,
+    "gauge": 1.4
+   }
+  },
+  {
+   "id": "aisle-w-first",
+   "type": "group",
+   "group": "aisle",
+   "bindings": {
+    "northFrame": 1,
+    "northEnd": 1,
+    "width": 5,
+    "spring": 9.5,
+    "eave": 5.2,
+    "pitch": 5,
+    "gauge": 1.4
+   }
+  },
+  {
+   "id": "aisle-w-last",
+   "type": "group",
+   "group": "aisle",
+   "bindings": {
+    "southEnd": 1,
+    "width": 5,
+    "spring": 9.5,
+    "eave": 5.2,
+    "pitch": 5,
+    "gauge": 1.4
+   }
+  },
+  {
+   "id": "bay-0",
+   "type": "transform",
+   "inputs": [
+    "bay-inner"
+   ],
+   "options": {
+    "translation": [
+     0,
+     0,
+     0
+    ]
+   }
+  },
+  {
+   "id": "aisle-east-0",
+   "type": "connect",
+   "inputs": [
+    "aisle-e-first"
+   ],
+   "options": {
+    "a": [
+     "@bay-0",
+     "east"
+    ],
+    "b": [
+     "@aisle-e-first",
+     "inner"
+    ]
+   }
+  },
+  {
+   "id": "aisle-west-0",
+   "type": "connect",
+   "inputs": [
+    "aisle-w-first"
+   ],
+   "options": {
+    "a": [
+     "@bay-0",
+     "west"
+    ],
+    "b": [
+     "@aisle-w-first",
+     "inner"
+    ]
+   }
+  },
+  {
+   "id": "bay-1",
+   "type": "connect",
+   "inputs": [
+    "bay-inner"
+   ],
+   "options": {
+    "a": [
+     "@bay-0",
+     "north"
+    ],
+    "b": [
+     "@bay-inner",
+     "south"
+    ]
+   }
+  },
+  {
+   "id": "aisle-east-1",
+   "type": "connect",
+   "inputs": [
+    "aisle-inner"
+   ],
+   "options": {
+    "a": [
+     "@bay-1",
+     "east"
+    ],
+    "b": [
+     "@aisle-inner",
+     "inner"
+    ]
+   }
+  },
+  {
+   "id": "aisle-west-1",
+   "type": "connect",
+   "inputs": [
+    "aisle-inner"
+   ],
+   "options": {
+    "a": [
+     "@bay-1",
+     "west"
+    ],
+    "b": [
+     "@aisle-inner",
+     "inner"
+    ]
+   }
+  },
+  {
+   "id": "bay-2",
+   "type": "connect",
+   "inputs": [
+    "bay-inner"
+   ],
+   "options": {
+    "a": [
+     "@bay-1",
+     "north"
+    ],
+    "b": [
+     "@bay-inner",
+     "south"
+    ]
+   }
+  },
+  {
+   "id": "aisle-east-2",
+   "type": "connect",
+   "inputs": [
+    "aisle-inner"
+   ],
+   "options": {
+    "a": [
+     "@bay-2",
+     "east"
+    ],
+    "b": [
+     "@aisle-inner",
+     "inner"
+    ]
+   }
+  },
+  {
+   "id": "aisle-west-2",
+   "type": "connect",
+   "inputs": [
+    "aisle-inner"
+   ],
+   "options": {
+    "a": [
+     "@bay-2",
+     "west"
+    ],
+    "b": [
+     "@aisle-inner",
+     "inner"
+    ]
+   }
+  },
+  {
+   "id": "bay-3",
+   "type": "connect",
+   "inputs": [
+    "bay-inner"
+   ],
+   "options": {
+    "a": [
+     "@bay-2",
+     "north"
+    ],
+    "b": [
+     "@bay-inner",
+     "south"
+    ]
+   }
+  },
+  {
+   "id": "aisle-east-3",
+   "type": "connect",
+   "inputs": [
+    "aisle-inner"
+   ],
+   "options": {
+    "a": [
+     "@bay-3",
+     "east"
+    ],
+    "b": [
+     "@aisle-inner",
+     "inner"
+    ]
+   }
+  },
+  {
+   "id": "aisle-west-3",
+   "type": "connect",
+   "inputs": [
+    "aisle-inner"
+   ],
+   "options": {
+    "a": [
+     "@bay-3",
+     "west"
+    ],
+    "b": [
+     "@aisle-inner",
+     "inner"
+    ]
+   }
+  },
+  {
+   "id": "bay-4",
+   "type": "connect",
+   "inputs": [
+    "bay-end"
+   ],
+   "options": {
+    "a": [
+     "@bay-3",
+     "north"
+    ],
+    "b": [
+     "@bay-end",
+     "south"
+    ]
+   }
+  },
+  {
+   "id": "aisle-east-4",
+   "type": "connect",
+   "inputs": [
+    "aisle-e-last"
+   ],
+   "options": {
+    "a": [
+     "@bay-4",
+     "east"
+    ],
+    "b": [
+     "@aisle-e-last",
+     "inner"
+    ]
+   }
+  },
+  {
+   "id": "aisle-west-4",
+   "type": "connect",
+   "inputs": [
+    "aisle-w-last"
+   ],
+   "options": {
+    "a": [
+     "@bay-4",
+     "west"
+    ],
+    "b": [
+     "@aisle-w-last",
+     "inner"
+    ]
+   }
+  },
+  {
+   "id": "door-screen",
+   "type": "group",
+   "group": "screen",
+   "bindings": {
+    "door": 1,
+    "doorWidth": 3.2,
+    "doorHeight": 4.2,
+    "span": 16,
+    "spring": 9.5,
+    "rise": 7,
+    "gauge": 1.4
+   }
+  },
+  {
+   "id": "back-screen",
+   "type": "group",
+   "group": "screen",
+   "bindings": {
+    "door": 0,
+    "span": 16,
+    "spring": 9.5,
+    "rise": 7,
+    "gauge": 1.4
+   }
+  },
+  {
+   "id": "front",
+   "type": "connect",
+   "inputs": [
+    "door-screen"
+   ],
+   "options": {
+    "a": [
+     "@bay-0",
+     "south"
+    ],
+    "b": [
+     "@door-screen",
+     "section"
+    ]
+   }
+  },
+  {
+   "id": "back",
+   "type": "connect",
+   "inputs": [
+    "back-screen"
+   ],
+   "options": {
+    "a": [
+     "@bay-4",
+     "north"
+    ],
+    "b": [
+     "@back-screen",
+     "section"
+    ]
+   }
+  },
+  {
+   "id": "out",
+   "type": "join",
+   "inputs": [
+    "bay-0",
+    "aisle-east-0",
+    "aisle-west-0",
+    "bay-1",
+    "aisle-east-1",
+    "aisle-west-1",
+    "bay-2",
+    "aisle-east-2",
+    "aisle-west-2",
+    "bay-3",
+    "aisle-east-3",
+    "aisle-west-3",
+    "bay-4",
+    "aisle-east-4",
+    "aisle-west-4",
+    "front",
+    "back"
+   ]
+  }
+ ],
+ "output": "out"
+}

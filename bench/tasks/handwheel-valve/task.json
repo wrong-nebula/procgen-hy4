@@ -1,0 +1,222 @@
+{
+ "id": "handwheel-valve",
+ "title": "Rising-stem gate valve on a cast main",
+ "module": "handwheel-valve",
+ "baseline": {
+  "label": "repo baseline (Opus 5.5 medium, 2026-11-16)",
+  "document": "recipes/site/machinery/handwheel-valve.json"
+ },
+ "scrub": {
+  "python_drop": [
+   {
+    "file": "recipes/build_machinery_kits.py",
+    "functions": [
+     "promoted_handwheel_valve"
+    ],
+    "dict_keys": {}
+   }
+  ],
+  "replace": [
+   {
+    "file": "recipes/build_machinery_kits.py",
+    "old": "pump main, handwheel valve, gate winch",
+    "new": "pump main, gate winch"
+   },
+   {
+    "file": "docs/KIT_CANDIDATES.md",
+    "old": "`handwheel-valve`, ",
+    "new": ""
+   },
+   {
+    "file": "docs/KIT_CANDIDATES.md",
+    "old": "handwheel-valve, ",
+    "new": ""
+   },
+   {
+    "file": "recipes/build_site_kits.py",
+    "old": "handwheel",
+    "new": "opwheel"
+   },
+   {
+    "file": "recipes/site/canal/boat-lift-carriage.json",
+    "old": "handwheel",
+    "new": "opwheel"
+   },
+   {
+    "file": "docs/KITPARTS.md",
+    "old": "handwheel",
+    "new": "opwheel"
+   },
+   {
+    "file": "docs/KIT_REVIEW.md",
+    "old": "handwheel",
+    "new": "opwheel"
+   },
+   {
+    "file": "docs/KIT_REVIEW.md",
+    "old": "gate valve",
+    "new": "sluice"
+   },
+   {
+    "file": "recipes/kitlib.py",
+    "old": "handwheel",
+    "new": "opwheel"
+   },
+   {
+    "file": "recipes/kitparts.py",
+    "old": "handwheel",
+    "new": "opwheel"
+   },
+   {
+    "file": "recipes/kitlib_pipes.py",
+    "old": "handwheel",
+    "new": "opwheel"
+   },
+   {
+    "file": "recipes/kitlib_pipes.py",
+    "old": "gate valve",
+    "new": "sluice"
+   },
+   {
+    "file": "recipes/test_kitlib_pipes.py",
+    "old": "gate valve",
+    "new": "sluice"
+   },
+   {
+    "file": "recipes/test_kitlib_pipes.py",
+    "old": "rising stem",
+    "new": "spindle"
+   },
+   {
+    "file": "recipes/build_waterworks_kits.py",
+    "old": "handwheel",
+    "new": "opwheel"
+   },
+   {
+    "file": "recipes/build_powerhouse_kits.py",
+    "old": "handwheel",
+    "new": "opwheel"
+   },
+   {
+    "file": "recipes/build_steelworks_kits.py",
+    "old": "handwheel",
+    "new": "opwheel"
+   },
+   {
+    "file": "recipes/site/waterworks/steam-manifold.json",
+    "old": "handwheel",
+    "new": "opwheel"
+   },
+   {
+    "file": "recipes/site/steelworks/tank-roof.json",
+    "old": "handwheel",
+    "new": "opwheel"
+   },
+   {
+    "file": "recipes/site/powerhouse/switchboard-pedestal.json",
+    "old": "handwheel",
+    "new": "opwheel"
+   }
+  ],
+  "drop_lines": [
+   {
+    "file": "recipes/build_machinery_kits.py",
+    "pattern": "^promoted_handwheel_valve\\(\\)$"
+   },
+   {
+    "file": "docs/KIT_REFERENCES.md",
+    "pattern": "handwheel-valve"
+   },
+   {
+    "file": "docs/KIT_REVIEW.md",
+    "pattern": "handwheel-valve"
+   },
+   {
+    "file": "recipes/sheets/site-machinery.json",
+    "pattern": "handwheel-valve"
+   }
+  ],
+  "rebuild": [
+   [
+    "python3",
+    "recipes/build_machinery_kits.py"
+   ]
+  ],
+  "leak_terms": [
+   "handwheel",
+   "gate valve",
+   "rising stem",
+   "rising-stem"
+  ]
+ },
+ "renders": [
+  {
+   "name": "iso-beauty",
+   "view": "iso",
+   "pass": "beauty",
+   "size": "1280x960"
+  },
+  {
+   "name": "iso-clay",
+   "view": "iso",
+   "pass": "clay",
+   "size": "1280x960"
+  },
+  {
+   "name": "opposite-beauty",
+   "view": "opposite",
+   "pass": "beauty",
+   "size": "1280x960"
+  },
+  {
+   "name": "front-clay",
+   "view": "front",
+   "pass": "clay",
+   "size": "1280x960",
+   "projection": "ortho"
+  },
+  {
+   "name": "parts",
+   "view": "iso",
+   "pass": "parts",
+   "size": "960x720"
+  }
+ ],
+ "contract": {
+  "ports": {
+   "west": {
+    "type": "pipe",
+    "origin": [
+     null,
+     0,
+     0
+    ],
+    "normal": [
+     -1,
+     0,
+     0
+    ],
+    "dims": {
+     "diameter": 0.76
+    }
+   },
+   "east": {
+    "type": "pipe",
+    "origin": [
+     null,
+     0,
+     0
+    ],
+    "normal": [
+     1,
+     0,
+     0
+    ],
+    "dims": {
+     "diameter": 0.76
+    }
+   }
+  },
+  "min_materials": 3
+ }
+}

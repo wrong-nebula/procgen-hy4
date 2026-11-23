@@ -1,0 +1,341 @@
+{
+ "version": 1,
+ "kit": "greenhouse-fittings",
+ "modules": {
+  "gh-railing": {
+   "document": "gh-railing.json",
+   "ports": {
+    "start": {
+     "origin": [
+      0,
+      0,
+      0
+     ],
+     "normal": [
+      0,
+      -1,
+      0
+     ],
+     "up": [
+      0,
+      0,
+      1
+     ],
+     "type": "greenhouse.rail",
+     "dimensions": {
+      "height": 1.12
+     }
+    },
+    "end": {
+     "origin": [
+      0,
+      "$length",
+      0
+     ],
+     "normal": [
+      0,
+      1,
+      0
+     ],
+     "up": [
+      0,
+      0,
+      1
+     ],
+     "type": "greenhouse.rail",
+     "dimensions": {
+      "height": 1.12
+     }
+    }
+   }
+  },
+  "gh-planter": {
+   "document": "gh-planter.json",
+   "ports": {
+    "base": {
+     "origin": [
+      0,
+      0,
+      0
+     ],
+     "normal": [
+      0,
+      0,
+      -1
+     ],
+     "up": [
+      1,
+      0,
+      0
+     ],
+     "type": "greenhouse.pot",
+     "dimensions": {
+      "diameter": 0.66
+     }
+    }
+   }
+  },
+  "gh-pendant": {
+   "document": "gh-pendant.json",
+   "ports": {
+    "mount": {
+     "origin": [
+      0,
+      0,
+      0
+     ],
+     "normal": [
+      0,
+      0,
+      1
+     ],
+     "up": [
+      1,
+      0,
+      0
+     ],
+     "type": "greenhouse.hanger",
+     "dimensions": {
+      "rod": 0.024
+     }
+    }
+   }
+  },
+  "gh-bridge-bay": {
+   "document": "gh-bridge-bay.json",
+   "ports": {
+    "south": {
+     "origin": [
+      0,
+      0,
+      0
+     ],
+     "normal": [
+      0,
+      -1,
+      0
+     ],
+     "up": [
+      0,
+      0,
+      1
+     ],
+     "type": "deck",
+     "dimensions": {
+      "width": "$width"
+     }
+    },
+    "north": {
+     "origin": [
+      0,
+      "$pitch",
+      0
+     ],
+     "normal": [
+      0,
+      1,
+      0
+     ],
+     "up": [
+      0,
+      0,
+      1
+     ],
+     "type": "deck",
+     "dimensions": {
+      "width": "$width"
+     }
+    }
+   }
+  },
+  "gh-terrace": {
+   "document": "gh-terrace.json",
+   "ports": {
+    "entry": {
+     "origin": [
+      0,
+      0,
+      0
+     ],
+     "normal": [
+      0,
+      -1,
+      0
+     ],
+     "up": [
+      0,
+      0,
+      1
+     ],
+     "type": "deck",
+     "dimensions": {
+      "width": "$entry"
+     }
+    }
+   }
+  },
+  "catch-basin": {
+   "document": "catch-basin.json",
+   "ports": {
+    "floor": {
+     "origin": [
+      0,
+      0,
+      0
+     ],
+     "normal": [
+      0,
+      0,
+      1
+     ],
+     "up": [
+      0,
+      1,
+      0
+     ],
+     "type": "deck",
+     "dimensions": {
+      "width": 1.2
+     }
+    },
+    "downpipe": {
+     "origin": [
+      0,
+      [
+       "+",
+       [
+        "*",
+        "$size",
+        0.5
+       ],
+       0.13
+      ],
+      0.84
+     ],
+     "normal": [
+      0,
+      0,
+      1
+     ],
+     "up": [
+      0,
+      1,
+      0
+     ],
+     "type": "pipe",
+     "dimensions": {
+      "diameter": 0.1
+     }
+    },
+    "outlet": {
+     "origin": [
+      [
+       "+",
+       [
+        "+",
+        [
+         "*",
+         "$size",
+         0.5
+        ],
+        0.075
+       ],
+       0.29
+      ],
+      0,
+      [
+       "+",
+       [
+        "-",
+        0,
+        "$depth"
+       ],
+       0.19
+      ]
+     ],
+     "normal": [
+      1,
+      0,
+      0
+     ],
+     "up": [
+      0,
+      0,
+      1
+     ],
+     "type": "pipe",
+     "dimensions": {
+      "diameter": 0.15
+     }
+    }
+   }
+  },
+  "vent-sash-rack": {
+   "document": "vent-sash-rack.json",
+   "ports": {
+    "roof-west": {
+     "origin": [
+      [
+       "-",
+       [
+        "/",
+        [
+         "-",
+         0,
+         "$width"
+        ],
+        2
+       ],
+       0.6
+      ],
+      0,
+      0
+     ],
+     "normal": [
+      -1,
+      0,
+      0
+     ],
+     "up": [
+      0,
+      0,
+      1
+     ],
+     "type": "deck",
+     "dimensions": {
+      "width": 1.2
+     }
+    },
+    "roof-east": {
+     "origin": [
+      [
+       "+",
+       [
+        "/",
+        "$width",
+        2
+       ],
+       0.6
+      ],
+      0,
+      0
+     ],
+     "normal": [
+      1,
+      0,
+      0
+     ],
+     "up": [
+      0,
+      0,
+      1
+     ],
+     "type": "deck",
+     "dimensions": {
+      "width": 1.2
+     }
+    }
+   }
+  }
+ }
+}

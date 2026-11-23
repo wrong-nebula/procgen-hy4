@@ -1,0 +1,157 @@
+{
+ "version": 1,
+ "references": {
+  "atlas": [
+   "G01"
+  ],
+  "sources": [
+   "kew"
+  ],
+  "plates": [],
+  "notes": "Below the G01 design range (4.2 m span): an extrapolation of the same bay.",
+  "review": {
+   "by": "Fable 5.2",
+   "reviewed": "Opus 5.5 (medium)",
+   "date": "2026-11-15",
+   "seen": "sheet renders",
+   "weak": "Assembly; not looked at in this review.",
+   "improve": [
+    "4.2 m span is below G01's range; look at the assembly [KIT_REFERENCES][review]"
+   ],
+   "pass1": "Audit: fixed through gh-bay.",
+   "left": [
+    "4.2 m span is below G01's range; look at the assembly [KIT_REFERENCES][review]"
+   ]
+  }
+ },
+ "controls": {
+  "bays": {
+   "value": 3,
+   "min": 1,
+   "max": 16,
+   "integer": true
+  }
+ },
+ "modulePorts": {
+  "door": {
+   "origin": [
+    0,
+    0,
+    0
+   ],
+   "normal": [
+    0,
+    -1,
+    0
+   ],
+   "up": [
+    0,
+    0,
+    1
+   ],
+   "type": "deck",
+   "dimensions": {
+    "width": 0.9
+   }
+  }
+ },
+ "moduleImports": {
+  "gallery": "gh-gallery",
+  "bay": "gh-bay",
+  "aisle": "gh-lean-to",
+  "screen": "gh-end-screen",
+  "crossing": "gh-crossing",
+  "planter": "gh-planter",
+  "pendant": "gh-pendant",
+  "bridge": "gh-bridge-bay",
+  "terrace": "gh-terrace"
+ },
+ "nodes": [
+  {
+   "id": "house",
+   "type": "group",
+   "group": "gallery",
+   "bindings": {
+    "pitch": 2.1,
+    "bays": "$bays",
+    "northFrame": 1,
+    "span": 4.2,
+    "spring": 2.3,
+    "rise": 1.5,
+    "gauge": 0.42
+   }
+  },
+  {
+   "id": "door-screen",
+   "type": "group",
+   "group": "screen",
+   "bindings": {
+    "door": 1,
+    "doorWidth": 0.9,
+    "doorHeight": 1.7,
+    "span": 4.2,
+    "spring": 2.3,
+    "rise": 1.5,
+    "gauge": 0.42
+   }
+  },
+  {
+   "id": "back-screen",
+   "type": "group",
+   "group": "screen",
+   "bindings": {
+    "door": 0,
+    "doorWidth": 0.9,
+    "doorHeight": 1.7,
+    "span": 4.2,
+    "spring": 2.3,
+    "rise": 1.5,
+    "gauge": 0.42
+   }
+  },
+  {
+   "id": "front",
+   "type": "connect",
+   "inputs": [
+    "door-screen"
+   ],
+   "options": {
+    "a": [
+     "@house",
+     "south"
+    ],
+    "b": [
+     "@door-screen",
+     "section"
+    ]
+   }
+  },
+  {
+   "id": "back",
+   "type": "connect",
+   "inputs": [
+    "back-screen"
+   ],
+   "options": {
+    "a": [
+     "@house",
+     "north"
+    ],
+    "b": [
+     "@back-screen",
+     "section"
+    ]
+   }
+  },
+  {
+   "id": "out",
+   "type": "join",
+   "inputs": [
+    "house",
+    "front",
+    "back"
+   ]
+  }
+ ],
+ "output": "out"
+}

@@ -1,0 +1,69 @@
+{
+ "version": 1,
+ "kit": "metro-edicule",
+ "modules": {
+  "metro-edicule": {
+   "document": "metro-edicule.json",
+   "ports": {
+    "pavement": {
+     "origin": [
+      0.0,
+      [
+       "*",
+       "$length",
+       -0.5
+      ],
+      0.0
+     ],
+     "normal": [
+      0.0,
+      -1.0,
+      0.0
+     ],
+     "up": [
+      0,
+      0,
+      1
+     ],
+     "type": "deck",
+     "dimensions": {
+      "width": "$width"
+     }
+    },
+    "stair": {
+     "origin": [
+      0.0,
+      [
+       "*",
+       "$length",
+       0.5
+      ],
+      [
+       "*",
+       [
+        "*",
+        "$length",
+        -0.5
+       ],
+       0.55
+      ]
+     ],
+     "normal": [
+      0.0,
+      1.0,
+      0.0
+     ],
+     "up": [
+      0,
+      0,
+      1
+     ],
+     "type": "deck",
+     "dimensions": {
+      "width": "$width"
+     }
+    }
+   }
+  }
+ }
+}

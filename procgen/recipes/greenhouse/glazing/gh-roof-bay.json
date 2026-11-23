@@ -1,0 +1,1238 @@
+{
+ "version": 1,
+ "references": {
+  "atlas": [
+   "G01",
+   "G06"
+  ],
+  "sources": [
+   "kew-palm-ribs",
+   "laeken",
+   "lord-burnham"
+  ],
+  "plates": [
+   "s09",
+   "s185"
+  ],
+  "notes": "Purlins, secondary hoops and separate lights between ribs. G06 records no historical glazing dimensions; pane widths are model dimensions.",
+  "review": {
+   "by": "Fable 5.2",
+   "reviewed": "Opus 5.5 (medium)",
+   "date": "2026-11-15",
+   "seen": "sheet renders",
+   "weak": "Reads well; uniform glazing grid.",
+   "improve": [
+    "Pane widths are model dimensions; G06 records none [KIT_REFERENCES]"
+   ],
+   "pass1": "Audit: panes reach the purlins (inset 0.035 -> 0.012 of a strip).",
+   "left": [
+    "Pane widths are model dimensions; G06 records none [KIT_REFERENCES]"
+   ]
+  }
+ },
+ "controls": {
+  "span": {
+   "value": 10,
+   "min": 2,
+   "max": 40
+  },
+  "spring": {
+   "value": 6.6,
+   "min": 2.0,
+   "max": 24
+  },
+  "rise": {
+   "value": 4.8,
+   "min": 0.5,
+   "max": 20
+  },
+  "pitch": {
+   "value": 4.2,
+   "min": 1,
+   "max": 10
+  },
+  "gauge": {
+   "value": 1,
+   "min": 0.2,
+   "max": 2.5
+  }
+ },
+ "modulePorts": {
+  "south": {
+   "origin": [
+    0,
+    0,
+    0
+   ],
+   "normal": [
+    0,
+    -1,
+    0
+   ],
+   "up": [
+    0,
+    0,
+    1
+   ],
+   "type": "greenhouse.section",
+   "dimensions": {
+    "span": "$span",
+    "spring": "$spring",
+    "rise": "$rise",
+    "gauge": "$gauge"
+   }
+  },
+  "north": {
+   "origin": [
+    0,
+    "$pitch",
+    0
+   ],
+   "normal": [
+    0,
+    1,
+    0
+   ],
+   "up": [
+    0,
+    0,
+    1
+   ],
+   "type": "greenhouse.section",
+   "dimensions": {
+    "span": "$span",
+    "spring": "$spring",
+    "rise": "$rise",
+    "gauge": "$gauge"
+   }
+  }
+ },
+ "nodes": [
+  {
+   "id": "purlin",
+   "type": "cube",
+   "options": {
+    "size": [
+     0.054,
+     [
+      "/",
+      "$pitch",
+      "$gauge"
+     ],
+     0.07
+    ]
+   }
+  },
+  {
+   "id": "east-at",
+   "type": "curve",
+   "options": {
+    "point": [
+     [
+      "*",
+      [
+       "*",
+       [
+        "/",
+        "$span",
+        "$gauge"
+       ],
+       0.5
+      ],
+      [
+       "cos",
+       [
+        "/",
+        [
+         "*",
+         3.141592653589793,
+         "@index"
+        ],
+        [
+         "*",
+         2,
+         [
+          "max",
+          2,
+          [
+           "round",
+           [
+            "/",
+            [
+             "*",
+             3.141592653589793,
+             [
+              "sqrt",
+              [
+               "*",
+               [
+                "+",
+                [
+                 "*",
+                 [
+                  "*",
+                  [
+                   "/",
+                   "$span",
+                   "$gauge"
+                  ],
+                  0.5
+                 ],
+                 [
+                  "*",
+                  [
+                   "/",
+                   "$span",
+                   "$gauge"
+                  ],
+                  0.5
+                 ]
+                ],
+                [
+                 "*",
+                 [
+                  "/",
+                  "$rise",
+                  "$gauge"
+                 ],
+                 [
+                  "/",
+                  "$rise",
+                  "$gauge"
+                 ]
+                ]
+               ],
+               0.5
+              ]
+             ]
+            ],
+            1.54
+           ]
+          ]
+         ]
+        ]
+       ]
+      ]
+     ],
+     [
+      "*",
+      [
+       "/",
+       "$pitch",
+       "$gauge"
+      ],
+      0.5
+     ],
+     [
+      "+",
+      [
+       "/",
+       "$spring",
+       "$gauge"
+      ],
+      [
+       "*",
+       [
+        "/",
+        "$rise",
+        "$gauge"
+       ],
+       [
+        "sin",
+        [
+         "/",
+         [
+          "*",
+          3.141592653589793,
+          "@index"
+         ],
+         [
+          "*",
+          2,
+          [
+           "max",
+           2,
+           [
+            "round",
+            [
+             "/",
+             [
+              "*",
+              3.141592653589793,
+              [
+               "sqrt",
+               [
+                "*",
+                [
+                 "+",
+                 [
+                  "*",
+                  [
+                   "*",
+                   [
+                    "/",
+                    "$span",
+                    "$gauge"
+                   ],
+                   0.5
+                  ],
+                  [
+                   "*",
+                   [
+                    "/",
+                    "$span",
+                    "$gauge"
+                   ],
+                   0.5
+                  ]
+                 ],
+                 [
+                  "*",
+                  [
+                   "/",
+                   "$rise",
+                   "$gauge"
+                  ],
+                  [
+                   "/",
+                   "$rise",
+                   "$gauge"
+                  ]
+                 ]
+                ],
+                0.5
+               ]
+              ]
+             ],
+             1.54
+            ]
+           ]
+          ]
+         ]
+        ]
+       ]
+      ]
+     ]
+    ],
+    "segments": [
+     "-",
+     [
+      "*",
+      [
+       "*",
+       2,
+       [
+        "max",
+        2,
+        [
+         "round",
+         [
+          "/",
+          [
+           "*",
+           3.141592653589793,
+           [
+            "sqrt",
+            [
+             "*",
+             [
+              "+",
+              [
+               "*",
+               [
+                "*",
+                [
+                 "/",
+                 "$span",
+                 "$gauge"
+                ],
+                0.5
+               ],
+               [
+                "*",
+                [
+                 "/",
+                 "$span",
+                 "$gauge"
+                ],
+                0.5
+               ]
+              ],
+              [
+               "*",
+               [
+                "/",
+                "$rise",
+                "$gauge"
+               ],
+               [
+                "/",
+                "$rise",
+                "$gauge"
+               ]
+              ]
+             ],
+             0.5
+            ]
+           ]
+          ],
+          1.54
+         ]
+        ]
+       ]
+      ],
+      0.5
+     ],
+     1
+    ]
+   }
+  },
+  {
+   "id": "west-at",
+   "type": "curve",
+   "options": {
+    "point": [
+     [
+      "*",
+      [
+       "-",
+       0,
+       [
+        "*",
+        [
+         "/",
+         "$span",
+         "$gauge"
+        ],
+        0.5
+       ]
+      ],
+      [
+       "cos",
+       [
+        "/",
+        [
+         "*",
+         3.141592653589793,
+         "@index"
+        ],
+        [
+         "*",
+         2,
+         [
+          "max",
+          2,
+          [
+           "round",
+           [
+            "/",
+            [
+             "*",
+             3.141592653589793,
+             [
+              "sqrt",
+              [
+               "*",
+               [
+                "+",
+                [
+                 "*",
+                 [
+                  "*",
+                  [
+                   "/",
+                   "$span",
+                   "$gauge"
+                  ],
+                  0.5
+                 ],
+                 [
+                  "*",
+                  [
+                   "/",
+                   "$span",
+                   "$gauge"
+                  ],
+                  0.5
+                 ]
+                ],
+                [
+                 "*",
+                 [
+                  "/",
+                  "$rise",
+                  "$gauge"
+                 ],
+                 [
+                  "/",
+                  "$rise",
+                  "$gauge"
+                 ]
+                ]
+               ],
+               0.5
+              ]
+             ]
+            ],
+            1.54
+           ]
+          ]
+         ]
+        ]
+       ]
+      ]
+     ],
+     [
+      "*",
+      [
+       "/",
+       "$pitch",
+       "$gauge"
+      ],
+      0.5
+     ],
+     [
+      "+",
+      [
+       "/",
+       "$spring",
+       "$gauge"
+      ],
+      [
+       "*",
+       [
+        "/",
+        "$rise",
+        "$gauge"
+       ],
+       [
+        "sin",
+        [
+         "/",
+         [
+          "*",
+          3.141592653589793,
+          "@index"
+         ],
+         [
+          "*",
+          2,
+          [
+           "max",
+           2,
+           [
+            "round",
+            [
+             "/",
+             [
+              "*",
+              3.141592653589793,
+              [
+               "sqrt",
+               [
+                "*",
+                [
+                 "+",
+                 [
+                  "*",
+                  [
+                   "*",
+                   [
+                    "/",
+                    "$span",
+                    "$gauge"
+                   ],
+                   0.5
+                  ],
+                  [
+                   "*",
+                   [
+                    "/",
+                    "$span",
+                    "$gauge"
+                   ],
+                   0.5
+                  ]
+                 ],
+                 [
+                  "*",
+                  [
+                   "/",
+                   "$rise",
+                   "$gauge"
+                  ],
+                  [
+                   "/",
+                   "$rise",
+                   "$gauge"
+                  ]
+                 ]
+                ],
+                0.5
+               ]
+              ]
+             ],
+             1.54
+            ]
+           ]
+          ]
+         ]
+        ]
+       ]
+      ]
+     ]
+    ],
+    "segments": [
+     "-",
+     [
+      "*",
+      [
+       "*",
+       2,
+       [
+        "max",
+        2,
+        [
+         "round",
+         [
+          "/",
+          [
+           "*",
+           3.141592653589793,
+           [
+            "sqrt",
+            [
+             "*",
+             [
+              "+",
+              [
+               "*",
+               [
+                "*",
+                [
+                 "/",
+                 "$span",
+                 "$gauge"
+                ],
+                0.5
+               ],
+               [
+                "*",
+                [
+                 "/",
+                 "$span",
+                 "$gauge"
+                ],
+                0.5
+               ]
+              ],
+              [
+               "*",
+               [
+                "/",
+                "$rise",
+                "$gauge"
+               ],
+               [
+                "/",
+                "$rise",
+                "$gauge"
+               ]
+              ]
+             ],
+             0.5
+            ]
+           ]
+          ],
+          1.54
+         ]
+        ]
+       ]
+      ],
+      0.5
+     ],
+     1
+    ]
+   }
+  },
+  {
+   "id": "purlins-east",
+   "type": "instance",
+   "inputs": [
+    "east-at",
+    "purlin"
+   ],
+   "options": {
+    "rotation": [
+     0,
+     [
+      "-",
+      1.5707963267948966,
+      [
+       "/",
+       [
+        "*",
+        3.141592653589793,
+        "@index"
+       ],
+       [
+        "*",
+        2,
+        [
+         "max",
+         2,
+         [
+          "round",
+          [
+           "/",
+           [
+            "*",
+            3.141592653589793,
+            [
+             "sqrt",
+             [
+              "*",
+              [
+               "+",
+               [
+                "*",
+                [
+                 "*",
+                 [
+                  "/",
+                  "$span",
+                  "$gauge"
+                 ],
+                 0.5
+                ],
+                [
+                 "*",
+                 [
+                  "/",
+                  "$span",
+                  "$gauge"
+                 ],
+                 0.5
+                ]
+               ],
+               [
+                "*",
+                [
+                 "/",
+                 "$rise",
+                 "$gauge"
+                ],
+                [
+                 "/",
+                 "$rise",
+                 "$gauge"
+                ]
+               ]
+              ],
+              0.5
+             ]
+            ]
+           ],
+           1.54
+          ]
+         ]
+        ]
+       ]
+      ]
+     ],
+     0
+    ]
+   }
+  },
+  {
+   "id": "purlins-west",
+   "type": "instance",
+   "inputs": [
+    "west-at",
+    "purlin"
+   ],
+   "options": {
+    "rotation": [
+     0,
+     [
+      "-",
+      [
+       "/",
+       [
+        "*",
+        3.141592653589793,
+        "@index"
+       ],
+       [
+        "*",
+        2,
+        [
+         "max",
+         2,
+         [
+          "round",
+          [
+           "/",
+           [
+            "*",
+            3.141592653589793,
+            [
+             "sqrt",
+             [
+              "*",
+              [
+               "+",
+               [
+                "*",
+                [
+                 "*",
+                 [
+                  "/",
+                  "$span",
+                  "$gauge"
+                 ],
+                 0.5
+                ],
+                [
+                 "*",
+                 [
+                  "/",
+                  "$span",
+                  "$gauge"
+                 ],
+                 0.5
+                ]
+               ],
+               [
+                "*",
+                [
+                 "/",
+                 "$rise",
+                 "$gauge"
+                ],
+                [
+                 "/",
+                 "$rise",
+                 "$gauge"
+                ]
+               ]
+              ],
+              0.5
+             ]
+            ]
+           ],
+           1.54
+          ]
+         ]
+        ]
+       ]
+      ],
+      1.5707963267948966
+     ],
+     0
+    ]
+   }
+  },
+  {
+   "id": "ridge-stock",
+   "type": "cube",
+   "options": {
+    "size": [
+     0.13,
+     [
+      "/",
+      "$pitch",
+      "$gauge"
+     ],
+     0.19
+    ]
+   }
+  },
+  {
+   "id": "ridge",
+   "type": "transform",
+   "inputs": [
+    "ridge-stock"
+   ],
+   "options": {
+    "translation": [
+     0,
+     [
+      "*",
+      [
+       "/",
+       "$pitch",
+       "$gauge"
+      ],
+      0.5
+     ],
+     [
+      "+",
+      [
+       "/",
+       "$spring",
+       "$gauge"
+      ],
+      [
+       "/",
+       "$rise",
+       "$gauge"
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "id": "hoop-path",
+   "type": "curve",
+   "options": {
+    "point": [
+     [
+      "*",
+      [
+       "*",
+       [
+        "/",
+        "$span",
+        "$gauge"
+       ],
+       0.5
+      ],
+      [
+       "cos",
+       [
+        "*",
+        "@t",
+        3.141592653589793
+       ]
+      ]
+     ],
+     0,
+     [
+      "+",
+      [
+       "/",
+       "$spring",
+       "$gauge"
+      ],
+      [
+       "*",
+       [
+        "/",
+        "$rise",
+        "$gauge"
+       ],
+       [
+        "sin",
+        [
+         "*",
+         "@t",
+         3.141592653589793
+        ]
+       ]
+      ]
+     ]
+    ],
+    "segments": 40
+   }
+  },
+  {
+   "id": "hoop",
+   "type": "tube",
+   "inputs": [
+    "hoop-path"
+   ],
+   "options": {
+    "radius": 0.024,
+    "sides": 8,
+    "up": [
+     0,
+     1,
+     0
+    ]
+   }
+  },
+  {
+   "id": "hoops-at",
+   "type": "line",
+   "options": {
+    "start": [
+     0,
+     [
+      "/",
+      [
+       "/",
+       "$pitch",
+       "$gauge"
+      ],
+      3
+     ],
+     0
+    ],
+    "step": [
+     0,
+     [
+      "/",
+      [
+       "/",
+       "$pitch",
+       "$gauge"
+      ],
+      3
+     ],
+     0
+    ],
+    "count": 2
+   }
+  },
+  {
+   "id": "hoops",
+   "type": "instance",
+   "inputs": [
+    "hoops-at",
+    "hoop"
+   ]
+  },
+  {
+   "id": "iron-parts",
+   "type": "join",
+   "inputs": [
+    "purlins-east",
+    "purlins-west",
+    "ridge",
+    "hoops"
+   ]
+  },
+  {
+   "id": "ironwork",
+   "type": "material",
+   "inputs": [
+    "iron-parts"
+   ],
+   "options": {
+    "slot": "iron"
+   }
+  },
+  {
+   "id": "lights",
+   "type": "patch",
+   "options": {
+    "point": [
+     [
+      "*",
+      [
+       "*",
+       [
+        "/",
+        "$span",
+        "$gauge"
+       ],
+       0.5
+      ],
+      [
+       "cos",
+       [
+        "*",
+        "@u",
+        3.141592653589793
+       ]
+      ]
+     ],
+     [
+      "/",
+      [
+       "*",
+       "@v",
+       [
+        "/",
+        "$pitch",
+        "$gauge"
+       ]
+      ],
+      3
+     ],
+     [
+      "+",
+      [
+       "/",
+       "$spring",
+       "$gauge"
+      ],
+      [
+       "*",
+       [
+        "/",
+        "$rise",
+        "$gauge"
+       ],
+       [
+        "sin",
+        [
+         "*",
+         "@u",
+         3.141592653589793
+        ]
+       ]
+      ]
+     ]
+    ],
+    "panels": [
+     [
+      "*",
+      2,
+      [
+       "max",
+       2,
+       [
+        "round",
+        [
+         "/",
+         [
+          "*",
+          3.141592653589793,
+          [
+           "sqrt",
+           [
+            "*",
+            [
+             "+",
+             [
+              "*",
+              [
+               "*",
+               [
+                "/",
+                "$span",
+                "$gauge"
+               ],
+               0.5
+              ],
+              [
+               "*",
+               [
+                "/",
+                "$span",
+                "$gauge"
+               ],
+               0.5
+              ]
+             ],
+             [
+              "*",
+              [
+               "/",
+               "$rise",
+               "$gauge"
+              ],
+              [
+               "/",
+               "$rise",
+               "$gauge"
+              ]
+             ]
+            ],
+            0.5
+           ]
+          ]
+         ],
+         1.54
+        ]
+       ]
+      ]
+     ],
+     1
+    ],
+    "inset": [
+     0.012,
+     [
+      "/",
+      0.075,
+      [
+       "/",
+       "$pitch",
+       "$gauge"
+      ]
+     ]
+    ],
+    "divisions": [
+     3,
+     1
+    ],
+    "thickness": 0.008
+   }
+  },
+  {
+   "id": "lights-run-at",
+   "type": "line",
+   "options": {
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "step": [
+     0,
+     [
+      "/",
+      [
+       "/",
+       "$pitch",
+       "$gauge"
+      ],
+      3
+     ],
+     0
+    ],
+    "count": 3
+   }
+  },
+  {
+   "id": "lights-run",
+   "type": "instance",
+   "inputs": [
+    "lights-run-at",
+    "lights"
+   ]
+  },
+  {
+   "id": "glass",
+   "type": "material",
+   "inputs": [
+    "lights-run"
+   ],
+   "options": {
+    "slot": "glass"
+   }
+  },
+  {
+   "id": "all",
+   "type": "join",
+   "inputs": [
+    "ironwork",
+    "glass"
+   ]
+  },
+  {
+   "id": "roof",
+   "type": "transform",
+   "inputs": [
+    "all"
+   ],
+   "options": {
+    "scale": [
+     "$gauge",
+     "$gauge",
+     "$gauge"
+    ]
+   }
+  },
+  {
+   "id": "roof.baked",
+   "type": "bake",
+   "inputs": [
+    "roof"
+   ]
+  }
+ ],
+ "output": "roof.baked"
+}

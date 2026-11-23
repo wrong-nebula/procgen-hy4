@@ -1,0 +1,78 @@
+{
+ "id": "boat-lift-carriage",
+ "title": "Hydraulic boat-lift carriage",
+ "module": "boat-lift-carriage",
+ "renders": [
+  {
+   "name": "iso-beauty",
+   "view": "iso",
+   "pass": "beauty",
+   "size": "1280x960"
+  },
+  {
+   "name": "iso-clay",
+   "view": "iso",
+   "pass": "clay",
+   "size": "1280x960"
+  },
+  {
+   "name": "opposite-beauty",
+   "view": "opposite",
+   "pass": "beauty",
+   "size": "1280x960"
+  },
+  {
+   "name": "front-clay",
+   "view": "front",
+   "pass": "clay",
+   "size": "1280x960",
+   "projection": "ortho"
+  },
+  {
+   "name": "parts",
+   "view": "iso",
+   "pass": "parts",
+   "size": "960x720"
+  }
+ ],
+ "baseline": null,
+ "scrub": {
+  "leak_terms": []
+ },
+ "contract": {
+  "controls": {
+   "length": [
+    40,
+    25,
+    70
+   ],
+   "level": [
+    0.5,
+    0,
+    1
+   ]
+  },
+  "ports": {
+   "canal-west": {
+    "type": "water",
+    "normal": [
+     -1,
+     0,
+     0
+    ]
+   },
+   "canal-east": {
+    "type": "water",
+    "normal": [
+     1,
+     0,
+     0
+    ]
+   }
+  },
+  "span": {
+   "x": "length"
+  },
+  "min_materials": 4
+ }
+}

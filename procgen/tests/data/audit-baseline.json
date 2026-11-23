@@ -1,0 +1,4 @@
+{
+ "about": "Known contact-audit findings (pgm audit recipes --sweep): the most pieces each document falls into across its control sweep, and why. Fix the module, then lower or remove its entry; the gate fails when a document is worse than this and when it is better (so the baseline is tightened). Found 2026-11-15 by Opus 5.5 (medium). 2026-11-16: all 28 findings fixed by Opus 5.5 (medium); the baseline is empty.",
+ "documents": {}
+}

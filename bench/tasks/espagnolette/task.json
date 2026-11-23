@@ -1,0 +1,78 @@
+{
+ "id": "espagnolette",
+ "title": "Espagnolette window bolt",
+ "module": "espagnolette",
+ "renders": [
+  {
+   "name": "iso-beauty",
+   "view": "iso",
+   "pass": "beauty",
+   "size": "1280x960"
+  },
+  {
+   "name": "iso-clay",
+   "view": "iso",
+   "pass": "clay",
+   "size": "1280x960"
+  },
+  {
+   "name": "opposite-beauty",
+   "view": "opposite",
+   "pass": "beauty",
+   "size": "1280x960"
+  },
+  {
+   "name": "front-clay",
+   "view": "front",
+   "pass": "clay",
+   "size": "1280x960",
+   "projection": "ortho"
+  },
+  {
+   "name": "parts",
+   "view": "iso",
+   "pass": "parts",
+   "size": "960x720"
+  }
+ ],
+ "baseline": null,
+ "scrub": {
+  "leak_terms": []
+ },
+ "contract": {
+  "controls": {
+   "length": [
+    1.6,
+    0.8,
+    2.6
+   ],
+   "turn": [
+    0,
+    0,
+    1
+   ]
+  },
+  "ports": {
+   "mount": {
+    "type": "fitting",
+    "origin": [
+     0,
+     0,
+     "length/2"
+    ],
+    "normal": [
+     0,
+     -1,
+     0
+    ],
+    "dims": {
+     "width": 0.08
+    }
+   }
+  },
+  "span": {
+   "z": "length"
+  },
+  "min_materials": 2
+ }
+}

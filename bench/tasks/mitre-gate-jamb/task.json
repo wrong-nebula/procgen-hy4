@@ -1,0 +1,109 @@
+{
+ "id": "mitre-gate-jamb",
+ "title": "Hollow-quoin jamb for a mitre lock gate",
+ "module": "mitre-gate-jamb",
+ "baseline": null,
+ "scrub": {
+  "leak_terms": []
+ },
+ "renders": [
+  {
+   "name": "iso-beauty",
+   "view": "opposite",
+   "pass": "beauty",
+   "size": "1280x960"
+  },
+  {
+   "name": "iso-clay",
+   "view": "opposite",
+   "pass": "clay",
+   "size": "1280x960"
+  },
+  {
+   "name": "opposite-beauty",
+   "view": "iso",
+   "pass": "beauty",
+   "size": "1280x960"
+  },
+  {
+   "name": "front-clay",
+   "yaw": 90,
+   "pitch": 0,
+   "pass": "clay",
+   "size": "1280x960",
+   "projection": "ortho"
+  },
+  {
+   "name": "parts",
+   "view": "opposite",
+   "pass": "parts",
+   "size": "960x720"
+  }
+ ],
+ "renders_note": "The jamb's working face looks into the chamber (+y), so the 'iso' renders use pgm's opposite camera, 'opposite' shows the landward back, and 'front' looks straight at the chamber face (yaw 90).",
+ "contract": {
+  "controls": {
+   "depth": [
+    4.85,
+    2,
+    10
+   ]
+  },
+  "ports": {
+   "heel": {
+    "type": "hinge",
+    "origin": [
+     0,
+     0.25,
+     "-depth"
+    ],
+    "normal": [
+     0,
+     0,
+     1
+    ],
+    "dims": {
+     "radius": 0.25,
+     "height": "depth"
+    }
+   },
+   "quay": {
+    "type": "deck",
+    "origin": [
+     0,
+     -0.75,
+     0
+    ],
+    "normal": [
+     0,
+     0,
+     1
+    ],
+    "dims": {
+     "width": 1.5
+    }
+   }
+  },
+  "envelope": {
+   "z": [
+    "-depth - 1.5",
+    "0.6"
+   ]
+  },
+  "span": {
+   "x": "3.5",
+   "y": "1.5"
+  },
+  "clearances": {
+   "chamber": {
+    "lo": ["-1.0", "0.60", "-depth + 0.40"],
+    "hi": ["1.0", "1.40", "-0.35"]
+   },
+   "quay": {
+    "lo": ["-1.0", "-1.20", "0.20"],
+    "hi": ["1.0", "-0.40", "2.00"]
+   }
+  },
+  "min_materials": 3
+ }
+}

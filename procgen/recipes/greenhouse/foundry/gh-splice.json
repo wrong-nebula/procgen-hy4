@@ -1,0 +1,221 @@
+{
+ "version": 1,
+ "references": {
+  "atlas": [
+   "E03",
+   "A03"
+  ],
+  "sources": [
+   "eiffel-vi",
+   "eiffel-xvii"
+  ],
+  "plates": [],
+  "notes": "Built-up splice: four bolts from one drill pattern (E03, shank radius 18 mm). The old model drilled real holes (A03) and modelled the bolts; the plate sits out of reach on the ribs, so heads, washers, nuts and bolt ends are surface detail (owner's note, 2026-11-15).",
+  "review": {
+   "by": "Fable 5.2",
+   "reviewed": "Opus 5.5 (medium)",
+   "date": "2026-11-15",
+   "seen": "sheet renders",
+   "weak": "Reads well; bolts are detail.",
+   "improve": [
+    "The old model drilled real holes; now bolts are detail only, by reach [KIT_REFERENCES]"
+   ],
+   "pass1": "Not touched.",
+   "left": [
+    "The old model drilled real holes; now bolts are detail only, by reach [KIT_REFERENCES]"
+   ]
+  }
+ },
+ "controls": {
+  "gauge": {
+   "value": 1,
+   "min": 0.2,
+   "max": 2.5
+  }
+ },
+ "modulePorts": {
+  "back": {
+   "origin": [
+    0,
+    [
+     "*",
+     -0.022,
+     "$gauge"
+    ],
+    0
+   ],
+   "normal": [
+    0,
+    -1,
+    0
+   ],
+   "up": [
+    0,
+    0,
+    1
+   ],
+   "type": "greenhouse.plate",
+   "dimensions": {
+    "gauge": "$gauge"
+   }
+  }
+ },
+ "nodes": [
+  {
+   "id": "plate-stock",
+   "type": "cube",
+   "options": {
+    "size": [
+     0.4,
+     0.044,
+     0.44
+    ]
+   }
+  },
+  {
+   "id": "plate",
+   "type": "transform",
+   "inputs": [
+    "plate-stock"
+   ],
+   "options": {
+    "translation": [
+     0,
+     0,
+     0
+    ]
+   }
+  },
+  {
+   "id": "head-at",
+   "type": "pointArray",
+   "options": {
+    "positions": [
+     [
+      -0.08,
+      0.1,
+      -0.13
+     ],
+     [
+      -0.08,
+      0.1,
+      0.17
+     ],
+     [
+      0.08,
+      0.1,
+      -0.13
+     ],
+     [
+      0.08,
+      0.1,
+      0.17
+     ]
+    ]
+   }
+  },
+  {
+   "id": "headed",
+   "type": "fastener",
+   "inputs": [
+    "plate",
+    "head-at"
+   ],
+   "options": {
+    "head": "hex",
+    "radius": 0.029,
+    "height": 0.024,
+    "washer": 0.044,
+    "seed": 1
+   }
+  },
+  {
+   "id": "nut-at",
+   "type": "pointArray",
+   "options": {
+    "positions": [
+     [
+      -0.08,
+      -0.1,
+      -0.13
+     ],
+     [
+      -0.08,
+      -0.1,
+      0.17
+     ],
+     [
+      0.08,
+      -0.1,
+      -0.13
+     ],
+     [
+      0.08,
+      -0.1,
+      0.17
+     ]
+    ]
+   }
+  },
+  {
+   "id": "nutted",
+   "type": "fastener",
+   "inputs": [
+    "headed",
+    "nut-at"
+   ],
+   "options": {
+    "head": "hex",
+    "radius": 0.029,
+    "height": 0.026,
+    "washer": 0.044,
+    "seed": 2
+   }
+  },
+  {
+   "id": "parts",
+   "type": "detailStamp",
+   "inputs": [
+    "nutted",
+    "nut-at"
+   ],
+   "options": {
+    "profile": "dome",
+    "radius": 0.016,
+    "height": 0.008
+   }
+  },
+  {
+   "id": "iron",
+   "type": "material",
+   "inputs": [
+    "parts"
+   ],
+   "options": {
+    "slot": "iron"
+   }
+  },
+  {
+   "id": "splice",
+   "type": "transform",
+   "inputs": [
+    "iron"
+   ],
+   "options": {
+    "scale": [
+     "$gauge",
+     "$gauge",
+     "$gauge"
+    ]
+   }
+  },
+  {
+   "id": "splice.baked",
+   "type": "bake",
+   "inputs": [
+    "splice"
+   ]
+  }
+ ],
+ "output": "splice.baked"
+}

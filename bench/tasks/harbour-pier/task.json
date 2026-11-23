@@ -1,0 +1,53 @@
+{
+ "id": "harbour-pier",
+ "title": "Timber-and-iron harbour finger pier with braced pile bents, fender dolphins and bollards",
+ "module": "pier",
+ "renders": [
+  {"name": "iso-beauty", "view": "iso", "pass": "beauty", "size": "1280x960"},
+  {"name": "iso-clay", "view": "iso", "pass": "clay", "size": "1280x960"},
+  {"name": "opposite-beauty", "view": "opposite", "pass": "beauty", "size": "1280x960"},
+  {"name": "front-clay", "view": "front", "pass": "clay", "size": "1280x960", "projection": "ortho"},
+  {"name": "parts", "view": "iso", "pass": "parts", "size": "960x720"}
+ ],
+ "baseline": null,
+ "scrub": {
+  "python_drop": [{"file": "recipes/build_site_kits.py", "functions": ["pier"], "dict_keys": {"REFS": ["pier"]}}],
+  "replace": [{"file": "recipes/build_site_kits.py", "old": "\npier()\n", "new": "\n"}],
+  "drop_lines": [
+   {"file": "docs/KIT_REFERENCES.md", "pattern": "\\| `pier` \\|"},
+   {"file": "docs/KIT_REVIEW.md", "pattern": "\\| `pier` \\|"}
+  ],
+  "leak_terms": []
+ },
+ "contract": {
+  "controls": {
+   "length": [30.0, 6.0, 60.0],
+   "width": [6.5, 2.0, 12.0],
+   "bed": [-4.6, -12.0, -1.5]
+  },
+  "ports": {
+   "root": {
+    "type": "deck",
+    "origin": [0, 0, 0],
+    "normal": [-1, 0, 0],
+    "dims": {"width": "width"}
+   }
+  },
+  "envelope": {
+   "x": ["-0.25", "length + 0.8"],
+   "y": ["-width/2 - 0.8", "width/2 + 0.8"],
+   "z": ["bed - 0.25", "1.4"]
+  },
+  "span": {
+   "x": "0.95 * length",
+   "y": "0.9 * width"
+  },
+  "clearances": {
+   "deck": {
+    "lo": ["0.40", "-max(0.10, width * 0.20 - 0.30)", "0.28"],
+    "hi": ["length - 1.0", "max(0.10, width * 0.20 - 0.30)", "2.20"]
+   }
+  },
+  "min_materials": 4
+ }
+}

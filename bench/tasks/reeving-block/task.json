@@ -1,0 +1,112 @@
+{
+ "id": "reeving-block",
+ "title": "Quayside reeving block for a gate winch's haul line",
+ "module": "reeving-block",
+ "baseline": null,
+ "scrub": {
+  "leak_terms": [
+   "reeving-block",
+   "reeving_block"
+  ],
+  "python_drop": [
+   {
+    "file": "recipes/build_machinery_kits.py",
+    "functions": [
+     "promoted_reeving_block"
+    ],
+    "dict_keys": {}
+   }
+  ],
+  "drop_lines": [
+   {
+    "file": "recipes/build_machinery_kits.py",
+    "pattern": "^promoted_reeving_block\\(\\)$"
+   },
+   {
+    "file": "docs/KIT_REFERENCES.md",
+    "pattern": "reeving-block"
+   },
+   {
+    "file": "docs/KIT_REVIEW.md",
+    "pattern": "reeving-block"
+   },
+   {
+    "file": "docs/KIT_CANDIDATES.md",
+    "pattern": "reeving-block"
+   },
+   {
+    "file": "docs/SITE_KIT_BACKLOG.md",
+    "pattern": "reeving-block"
+   }
+  ],
+  "rebuild": [
+   [
+    "python3",
+    "recipes/build_machinery_kits.py"
+   ]
+  ]
+ },
+ "renders": [
+  {
+   "name": "iso-beauty",
+   "view": "iso",
+   "pass": "beauty",
+   "size": "1280x960"
+  },
+  {
+   "name": "iso-clay",
+   "view": "iso",
+   "pass": "clay",
+   "size": "1280x960"
+  },
+  {
+   "name": "opposite-beauty",
+   "view": "opposite",
+   "pass": "beauty",
+   "size": "1280x960"
+  },
+  {
+   "name": "front-clay",
+   "view": "front",
+   "pass": "clay",
+   "size": "1280x960",
+   "projection": "ortho"
+  },
+  {
+   "name": "parts",
+   "view": "iso",
+   "pass": "parts",
+   "size": "960x720"
+  }
+ ],
+ "contract": {
+  "ports": {
+   "base": {
+    "type": "footing",
+    "origin": [
+     0,
+     0,
+     0
+    ],
+    "normal": [
+     0,
+     0,
+     -1
+    ]
+   },
+   "lead-in": {
+    "type": "cable",
+    "dims": {
+     "diameter": 0.056
+    }
+   },
+   "lead-out": {
+    "type": "cable",
+    "dims": {
+     "diameter": 0.056
+    }
+   }
+  },
+  "min_materials": 3
+ }
+}

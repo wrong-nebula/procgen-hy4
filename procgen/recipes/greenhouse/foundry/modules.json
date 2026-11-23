@@ -1,0 +1,191 @@
+{
+ "version": 1,
+ "kit": "greenhouse-foundry",
+ "modules": {
+  "gh-vault-rib": {
+   "document": "gh-vault-rib.json",
+   "ports": {
+    "west-seat": {
+     "origin": [
+      [
+       "*",
+       "$span",
+       -0.5
+      ],
+      0,
+      "$spring"
+     ],
+     "normal": [
+      0,
+      0,
+      -1
+     ],
+     "up": [
+      1,
+      0,
+      0
+     ],
+     "type": "greenhouse.seat",
+     "dimensions": {
+      "gauge": "$gauge"
+     }
+    },
+    "east-seat": {
+     "origin": [
+      [
+       "*",
+       "$span",
+       0.5
+      ],
+      0,
+      "$spring"
+     ],
+     "normal": [
+      0,
+      0,
+      -1
+     ],
+     "up": [
+      1,
+      0,
+      0
+     ],
+     "type": "greenhouse.seat",
+     "dimensions": {
+      "gauge": "$gauge"
+     }
+    }
+   }
+  },
+  "gh-column": {
+   "document": "gh-column.json",
+   "ports": {
+    "head": {
+     "origin": [
+      0,
+      0,
+      "$spring"
+     ],
+     "normal": [
+      0,
+      0,
+      1
+     ],
+     "up": [
+      1,
+      0,
+      0
+     ],
+     "type": "greenhouse.seat",
+     "dimensions": {
+      "gauge": "$gauge"
+     }
+    },
+    "foot": {
+     "origin": [
+      0,
+      0,
+      0
+     ],
+     "normal": [
+      0,
+      0,
+      -1
+     ],
+     "up": [
+      1,
+      0,
+      0
+     ],
+     "type": "greenhouse.footing",
+     "dimensions": {
+      "gauge": "$gauge"
+     }
+    }
+   }
+  },
+  "gh-splice": {
+   "document": "gh-splice.json",
+   "ports": {
+    "back": {
+     "origin": [
+      0,
+      [
+       "*",
+       -0.022,
+       "$gauge"
+      ],
+      0
+     ],
+     "normal": [
+      0,
+      -1,
+      0
+     ],
+     "up": [
+      0,
+      0,
+      1
+     ],
+     "type": "greenhouse.plate",
+     "dimensions": {
+      "gauge": "$gauge"
+     }
+    }
+   }
+  },
+  "gh-station": {
+   "document": "gh-station.json",
+   "ports": {
+    "south": {
+     "origin": [
+      0,
+      0,
+      0
+     ],
+     "normal": [
+      0,
+      -1,
+      0
+     ],
+     "up": [
+      0,
+      0,
+      1
+     ],
+     "type": "greenhouse.section",
+     "dimensions": {
+      "span": "$span",
+      "spring": "$spring",
+      "rise": "$rise",
+      "gauge": "$gauge"
+     }
+    },
+    "north": {
+     "origin": [
+      0,
+      0,
+      0
+     ],
+     "normal": [
+      0,
+      1,
+      0
+     ],
+     "up": [
+      0,
+      0,
+      1
+     ],
+     "type": "greenhouse.section",
+     "dimensions": {
+      "span": "$span",
+      "spring": "$spring",
+      "rise": "$rise",
+      "gauge": "$gauge"
+     }
+    }
+   }
+  }
+ }
+}

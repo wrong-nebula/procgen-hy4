@@ -1,0 +1,98 @@
+{
+ "id": "metro-edicule",
+ "title": "Art Nouveau metro entrance",
+ "module": "metro-edicule",
+ "renders": [
+  {
+   "name": "iso-beauty",
+   "view": "iso",
+   "pass": "beauty",
+   "size": "1280x960"
+  },
+  {
+   "name": "iso-clay",
+   "view": "iso",
+   "pass": "clay",
+   "size": "1280x960"
+  },
+  {
+   "name": "opposite-beauty",
+   "view": "opposite",
+   "pass": "beauty",
+   "size": "1280x960"
+  },
+  {
+   "name": "front-clay",
+   "view": "front",
+   "pass": "clay",
+   "size": "1280x960",
+   "projection": "ortho"
+  },
+  {
+   "name": "parts",
+   "view": "iso",
+   "pass": "parts",
+   "size": "960x720"
+  }
+ ],
+ "baseline": null,
+ "scrub": {
+  "leak_terms": []
+ },
+ "contract": {
+  "controls": {
+   "width": [
+    2.2,
+    1.6,
+    3.2
+   ],
+   "length": [
+    5,
+    3.5,
+    7
+   ]
+  },
+  "ports": {
+   "pavement": {
+    "type": "deck",
+    "origin": [
+     0,
+     "-length/2",
+     0
+    ],
+    "normal": [
+     0,
+     -1,
+     0
+    ],
+    "dims": {
+     "width": "width"
+    }
+   },
+   "stair": {
+    "type": "deck",
+    "normal": [
+     0,
+     1,
+     0
+    ],
+    "dims": {
+     "width": "width"
+    }
+   }
+  },
+  "envelope": {
+   "z": [
+    "-length",
+    "4.5"
+   ]
+  },
+  "clearances": {
+   "entrance": {
+    "lo": ["-width * 0.32", "-length/2 - 0.15", "0.15"],
+    "hi": ["width * 0.32", "-length/2 + 0.25", "2.05"]
+   }
+  },
+  "min_materials": 4
+ }
+}

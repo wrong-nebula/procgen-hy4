@@ -1,0 +1,134 @@
+{
+ "version": 1,
+ "kit": "greenhouse-crossing",
+ "imports": [
+  "../foundry"
+ ],
+ "modules": {
+  "gh-crossing": {
+   "document": "gh-crossing.json",
+   "ports": {
+    "south": {
+     "origin": [
+      0,
+      [
+       "-",
+       0,
+       [
+        "*",
+        "$span",
+        1.2071067811865475
+       ]
+      ],
+      0
+     ],
+     "normal": [
+      0,
+      -1,
+      0
+     ],
+     "up": [
+      0,
+      0,
+      1
+     ],
+     "type": "greenhouse.section",
+     "dimensions": {
+      "span": "$span",
+      "spring": "$spring",
+      "rise": "$rise",
+      "gauge": "$gauge"
+     }
+    },
+    "north": {
+     "origin": [
+      0,
+      [
+       "*",
+       "$span",
+       1.2071067811865475
+      ],
+      0
+     ],
+     "normal": [
+      0,
+      1,
+      0
+     ],
+     "up": [
+      0,
+      0,
+      1
+     ],
+     "type": "greenhouse.section",
+     "dimensions": {
+      "span": "$span",
+      "spring": "$spring",
+      "rise": "$rise",
+      "gauge": "$gauge"
+     }
+    },
+    "east": {
+     "origin": [
+      [
+       "*",
+       "$span",
+       1.2071067811865475
+      ],
+      0,
+      0
+     ],
+     "normal": [
+      1,
+      0,
+      0
+     ],
+     "up": [
+      0,
+      0,
+      1
+     ],
+     "type": "greenhouse.section",
+     "dimensions": {
+      "span": "$span",
+      "spring": "$spring",
+      "rise": "$rise",
+      "gauge": "$gauge"
+     }
+    },
+    "west": {
+     "origin": [
+      [
+       "-",
+       0,
+       [
+        "*",
+        "$span",
+        1.2071067811865475
+       ]
+      ],
+      0,
+      0
+     ],
+     "normal": [
+      -1,
+      0,
+      0
+     ],
+     "up": [
+      0,
+      0,
+      1
+     ],
+     "type": "greenhouse.section",
+     "dimensions": {
+      "span": "$span",
+      "spring": "$spring",
+      "rise": "$rise",
+      "gauge": "$gauge"
+     }
+    }
+   }
+  }
+ }
+}

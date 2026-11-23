@@ -1,0 +1,141 @@
+{
+ "version": 1,
+ "kit": "greenhouse-glazing",
+ "modules": {
+  "gh-roof-bay": {
+   "document": "gh-roof-bay.json",
+   "ports": {
+    "south": {
+     "origin": [
+      0,
+      0,
+      0
+     ],
+     "normal": [
+      0,
+      -1,
+      0
+     ],
+     "up": [
+      0,
+      0,
+      1
+     ],
+     "type": "greenhouse.section",
+     "dimensions": {
+      "span": "$span",
+      "spring": "$spring",
+      "rise": "$rise",
+      "gauge": "$gauge"
+     }
+    },
+    "north": {
+     "origin": [
+      0,
+      "$pitch",
+      0
+     ],
+     "normal": [
+      0,
+      1,
+      0
+     ],
+     "up": [
+      0,
+      0,
+      1
+     ],
+     "type": "greenhouse.section",
+     "dimensions": {
+      "span": "$span",
+      "spring": "$spring",
+      "rise": "$rise",
+      "gauge": "$gauge"
+     }
+    }
+   }
+  },
+  "gh-wall-bay": {
+   "document": "gh-wall-bay.json",
+   "ports": {
+    "inner": {
+     "origin": [
+      0,
+      [
+       "*",
+       "$pitch",
+       0.5
+      ],
+      0
+     ],
+     "normal": [
+      -1,
+      0,
+      0
+     ],
+     "up": [
+      0,
+      0,
+      1
+     ],
+     "type": "greenhouse.side",
+     "dimensions": {
+      "pitch": "$pitch",
+      "spring": "$spring",
+      "gauge": "$gauge"
+     }
+    }
+   }
+  },
+  "gh-end-screen": {
+   "document": "gh-end-screen.json",
+   "ports": {
+    "section": {
+     "origin": [
+      0,
+      0,
+      0
+     ],
+     "normal": [
+      0,
+      1,
+      0
+     ],
+     "up": [
+      0,
+      0,
+      1
+     ],
+     "type": "greenhouse.section",
+     "dimensions": {
+      "span": "$span",
+      "spring": "$spring",
+      "rise": "$rise",
+      "gauge": "$gauge"
+     }
+    },
+    "door": {
+     "origin": [
+      0,
+      0,
+      0
+     ],
+     "normal": [
+      0,
+      -1,
+      0
+     ],
+     "up": [
+      0,
+      0,
+      1
+     ],
+     "type": "deck",
+     "dimensions": {
+      "width": "$doorWidth"
+     }
+    }
+   }
+  }
+ }
+}

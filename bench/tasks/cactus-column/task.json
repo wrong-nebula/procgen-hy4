@@ -1,0 +1,89 @@
+{
+ "id": "cactus-column",
+ "title": "Columnar desert cactus",
+ "module": "cactus-column",
+ "renders": [
+  {
+   "name": "iso-beauty",
+   "view": "iso",
+   "pass": "beauty",
+   "size": "1280x960"
+  },
+  {
+   "name": "iso-clay",
+   "view": "iso",
+   "pass": "clay",
+   "size": "1280x960"
+  },
+  {
+   "name": "opposite-beauty",
+   "view": "opposite",
+   "pass": "beauty",
+   "size": "1280x960"
+  },
+  {
+   "name": "front-clay",
+   "view": "front",
+   "pass": "clay",
+   "size": "1280x960",
+   "projection": "ortho"
+  },
+  {
+   "name": "parts",
+   "view": "iso",
+   "pass": "parts",
+   "size": "960x720"
+  }
+ ],
+ "baseline": null,
+ "scrub": {
+  "leak_terms": []
+ },
+ "contract": {
+  "controls": {
+   "height": [
+    4,
+    1.5,
+    8
+   ],
+   "arms": [
+    2,
+    0,
+    4
+   ],
+   "ribs": [
+    16,
+    10,
+    24
+   ]
+  },
+  "ports": {
+   "base": {
+    "type": "footing",
+    "origin": [
+     0,
+     0,
+     0
+    ],
+    "normal": [
+     0,
+     0,
+     -1
+    ],
+    "dims": {
+     "width": 0.8
+    }
+   }
+  },
+  "envelope": {
+   "z": [
+    "-0.5",
+    "height + 0.1"
+   ]
+  },
+  "span": {
+   "z": "height - 0.1"
+  },
+  "min_materials": 2
+ }
+}
