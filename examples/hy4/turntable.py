@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
-"""KIT-FORGE modular builder: a late-19th-century railway turntable in its pit.
+"""Built by Hy4 Flash (tencent/hy4-flash, xhigh) in the 2026-11-21 showdown. One later human edit: the
+`wall` control (0 = Hy4's block-built pit, the default; 1 = one turned wall ring, one coping ring, plain floor).
+
+KIT-FORGE modular builder: a late-19th-century railway turntable in its pit.
 
 The masonry pit, ring rail and approach tracks are static; the girder bridge,
 deck, track, end carriages and turning gear are assembled in a local frame and
@@ -139,6 +142,7 @@ def build_base(g: Graph, DATUMS: dict, C) -> list[str]:
     static = DATUMS["static"]
     wall_t, r, inner_r, pit_d = v["wall_t"], v["R"], v["inner_r"], v["pit_d"]
     ft = v["floor_top"]
+    blocks = []   # pieces of Hy4's block-built pit (wall = 0)
 
     # Concrete floor and its cinder/ballast wearing layer.
     g.n("pit_floor_raw", "cylinder", radius=inner_r, depth=DATUMS["floor_thick"],
@@ -167,7 +171,7 @@ def build_base(g: Graph, DATUMS: dict, C) -> list[str]:
         nm = f"floor_flags_{k}"
         g.ring(nm, _material_leaf(raw), count, 2 * PI / count,
                start_angle=(0.5 if k % 2 else 0.0) * PI / count)
-        static.append(nm)
+        blocks.append(nm)
 
     # Solid structural backing ring: the ashlar blocks below are the facing veneer,
     # so the bonded joints read as mortar rather than as holes through the wall.
@@ -179,7 +183,7 @@ def build_base(g: Graph, DATUMS: dict, C) -> list[str]:
     ]
     g.lathe("wall_core", core + [core[0]], sides=96, cap="quad")
     g.mat("wall_core", "wall_core", "chipped-limestone")
-    static.append("wall_core")
+    blocks.append("wall_core")
 
     # Three bonded courses of individual ashlar blocks, alternately half-offset.
     seg = 2 * PI * r / WALL_SEGMENTS
@@ -199,7 +203,7 @@ def build_base(g: Graph, DATUMS: dict, C) -> list[str]:
                   "brick" if (course == 0 and i % 7 == 0)
                   else ("stone" if (i + 2 * course) % 9 < 2
                         else "chipped-limestone"))
-            static.append(name)
+            blocks.append(name)
 
     # Projecting string bands articulate the deep wall into rusticated courses.
     for b, frac in enumerate((0.34, 0.67)):
@@ -238,7 +242,32 @@ def build_base(g: Graph, DATUMS: dict, C) -> list[str]:
                      width=0.011, segments=3, mode="fwn")
         g.xf(name, name + "_raw", r=[0, 0, a])
         g.mat(name, name, "chipped-limestone")
-        static.append(name)
+        blocks.append(name)
+
+    # Solid pit (wall = 1): one turned wall ring, one coping ring, plain cinder floor.
+    # Added after the Hy4 run; wall = 0 keeps Hy4's block-built pit exactly.
+    wall = [
+        [inner_r, -pit_d],
+        [r, -pit_d],
+        [r, -DATUMS["coping_thick"]],
+        [inner_r, -DATUMS["coping_thick"]],
+    ]
+    g.lathe("pit_wall", wall + [wall[0]], sides=128, cap="quad")
+    g.mat("pit_wall", "pit_wall", "chipped-limestone")
+    cop_w = wall_t + 0.26
+    cop_c = r - wall_t * 0.42
+    coping = [
+        [cop_c - cop_w * 0.5, -DATUMS["coping_thick"]],
+        [cop_c + cop_w * 0.5, -DATUMS["coping_thick"]],
+        [cop_c + cop_w * 0.5, 0.0],
+        [cop_c - cop_w * 0.5, 0.0],
+    ]
+    g.lathe("pit_coping", coping + [coping[0]], sides=128, cap="quad")
+    g.mat("pit_coping", "pit_coping", "stone")
+    g.join("pit_solid", _material_leaf("pit_wall"), _material_leaf("pit_coping"))
+    g.join("pit_blocks", *[_material_leaf(x) for x in blocks])
+    g.n("pit_masonry", "select", ["pit_solid", "pit_blocks"], condition=C("wall"))
+    static.append("pit_masonry")
 
     # Foundation ring under the running rail and the rail itself (an iron annulus).
     bed = [
@@ -749,6 +778,7 @@ def build_module():
     controls = {
         "diameter": control(15, 10, 20),
         "angle": control(0, 0, 360),
+        "wall": control(0, 0, 1, integer=True),   # 0 = Hy4's block-built pit, 1 = solid turned ring
     }
     v = _derived(C)
     ports = {

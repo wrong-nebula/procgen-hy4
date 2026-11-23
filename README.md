@@ -32,6 +32,11 @@ python3 examples/hy4/turntable.py                       # -> examples/hy4/out/tu
 procgen/build-release/pgm render examples/hy4/out/turntable/turntable.json --out turntable.png --view iso
 ```
 
+The turntable has one control added after the Hy4 run: `wall` (0 = Hy4's block-built pit, the default and
+geometrically identical to Hy4's build; 1 = one turned wall ring, one coping ring and a plain floor,
+56,764 triangles instead of 101,276). Try `--set wall=1`. Comparison:
+[`examples/hy4/renders/turntable_wall_compare.jpg`](examples/hy4/renders/turntable_wall_compare.jpg).
+
 ## How it works
 
 1. **Parametric build.** The model writes a builder on `kitlib` (Z-up, metres): a datum table, then five
@@ -60,7 +65,6 @@ procgen/build-release/pgm render examples/hy4/out/turntable/turntable.json --out
 | `bench/tasks/` | 28 modelling briefs with controls, ports and materials |
 | `examples/starter/` | Smallest builder that passes every gate |
 | `examples/hy4/` | The four Hy4 Flash builds above, their documents and results |
-| `examples/variants/` | Edits of the Hy4 builds, e.g. the turntable with one turned wall ring instead of 192 blocks |
 
 ## Requirements
 
