@@ -8,6 +8,35 @@ at about a tenth of the cost.
 
 Agents: start with [AGENTS.md](AGENTS.md).
 
+## Quick start
+
+Run every command from the repository root.
+
+```bash
+git clone https://github.com/wrong-nebula/procgen-hy4.git
+cd procgen-hy4
+(cd procgen && cmake --preset release && cmake --build --preset release -j 8)
+```
+
+Render a kit Hy4 Flash built (the generated documents are in the repo, so no Python is needed):
+
+```bash
+procgen/build-release/pgm render examples/hy4/out/turntable/turntable.json --out /tmp/turntable.png --view iso
+```
+
+Views: `iso`, `opposite`, `front`, `side`, `top`. Passes: `--pass beauty` (default), `clay`, `parts`.
+`--set name=value` changes a control, e.g. `--set diameter=20`.
+
+Build your own kit: copy the starter, run it, check it.
+
+```bash
+python3 examples/starter/bollard.py
+(cd procgen && python3 tools/kit_harness/verify_round.py --script ../examples/starter/bollard.py \
+  --doc ../examples/starter/out/bollard/bollard.json --render /tmp/bollard.png --stamp /tmp/bollard.ok)
+```
+
+It prints `ALL GATES PASS | tris=216 | ... | MuJoCo=100/100 ...` when every gate passes.
+
 ## Hy4 Flash results
 
 Each kit below was written by Hy4 Flash, then judged blind against a frontier model's build of the same brief.
@@ -24,18 +53,27 @@ All four pass `pgm check`, `pgm sweep` and `pgm audit --sweep`. None passes the 
 gate (`check --intersections`): solids of one material overlap inside the merged material leaf. That gate
 was added after these runs.
 
-Rebuild them:
+Rebuild a document from Hy4's builder:
 
 ```bash
-cd procgen && cmake --preset release && cmake --build --preset release -j 8 && cd ..
 python3 examples/hy4/turntable.py                       # -> examples/hy4/out/turntable/turntable.json
-procgen/build-release/pgm render examples/hy4/out/turntable/turntable.json --out turntable.png --view iso
 ```
 
-The turntable has one control added after the Hy4 run: `wall` (0 = Hy4's block-built pit, the default and
-geometrically identical to Hy4's build; 1 = one turned wall ring, one coping ring and a plain floor,
-56,764 triangles instead of 101,276). Try `--set wall=1`. Comparison:
-[`examples/hy4/renders/turntable_wall_compare.jpg`](examples/hy4/renders/turntable_wall_compare.jpg).
+### Turntable `wall` control
+
+The turntable has one control added after the Hy4 run:
+
+- `wall=0` (default): Hy4's block-built pit (192 wall blocks, 64 coping stones, 132 floor flags),
+  geometrically identical to Hy4's build. 101,276 triangles.
+- `wall=1`: one turned wall ring, one coping ring and a plain floor. 56,764 triangles.
+
+```bash
+procgen/build-release/pgm render examples/hy4/out/turntable/turntable.json --set wall=1 --out /tmp/turntable.png --view iso
+```
+
+![Turntable with wall=1](examples/hy4/renders/turntable-wall1.jpg)
+
+Both settings pass `check`, `sweep` and `audit --sweep`.
 
 ## How it works
 
@@ -53,6 +91,21 @@ geometrically identical to Hy4's build; 1 = one turned wall ring, one coping rin
 5. **Evolution loop.** `bench/harness/kit_evolve.py` seeds builders with Hy4, refines the function holding the
    worst defect, tunes proportions with CMA-ES (no LLM calls) and keeps the best per behaviour cell.
    `verify_optimizer.py showdown` judges the winner against a frontier build.
+
+## Subdivision surfaces (SDS)
+
+`pgm` has its own Catmull–Clark subdivision (no external library):
+
+- semi-sharp creases on edges and vertices, and Chaikin blending between crease weights;
+- `limit=1` snaps points onto the exact limit surface, so a subdivided part does not shrink and keeps its
+  3 mm contacts and port positions; `limit_normals=1` gives exact smooth normals;
+- `lodLevels=[2, 1, 0]` writes levels of detail.
+
+In a builder: `g.subdivide(id, src, levels=2, creaseMethod="chaikin", limit=1, limit_normals=1)`, or the
+ready parts `sds_cylinder` and `cast_housing` in `procgen/recipes/kitparts.py`. `pgm check` reports how
+SDS-ready each mesh is (quad ratio, creased edges, high-valence poles, pinched poles).
+The Hy4 builds use SDS for cast pieces (king-pin housing, drums, collars, capitals) and bevelled flat
+faces for machined and stone parts.
 
 ## Layout
 
@@ -78,7 +131,7 @@ geometrically identical to Hy4's build; 1 = one turned wall ring, one coping rin
 ## Tests
 
 ```bash
-procgen/build-release/pg_tests                         # 145 C++ tests
+procgen/build-release/pg_tests                         # 145 C++ tests, from the repository root
 for t in procgen/recipes/test_*.py procgen/tools/test_*.py; do python3 "$t" || break; done
 ```
 
