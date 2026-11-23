@@ -60,6 +60,7 @@ procgen/build-release/pgm render examples/hy4/out/turntable/turntable.json --out
 | `bench/tasks/` | 28 modelling briefs with controls, ports and materials |
 | `examples/starter/` | Smallest builder that passes every gate |
 | `examples/hy4/` | The four Hy4 Flash builds above, their documents and results |
+| `examples/variants/` | Edits of the Hy4 builds, e.g. the turntable with one turned wall ring instead of 192 blocks |
 
 ## Requirements
 
